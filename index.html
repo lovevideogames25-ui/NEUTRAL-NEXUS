@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vapor</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Inter", Arial, sans-serif;
+        overflow: hidden;
+      }
+
+      .content {
+        background-color: none;
+        color: white;
+        padding-top: 40px;
+        height: calc(100% - 40px);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .logo {
+        width: 270px;
+        height: 170px;
+        object-fit: cover;
+      }
+
+      .form {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 12px 15px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .form:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .prox_input {
+        border: none;
+        background: none;
+        height: 100%;
+        font-size: 18px;
+        outline: none;
+        color: rgba(255, 255, 255, 0.8);
+        flex-grow: 1;
+      }
+
+      .button-container {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+        width: 430px;
+      }
+
+      .action-button {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 12px 15px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1;
+        color: rgba(255, 255, 255, 0.8);
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        backdrop-filter: blur(10px);
+      }
+
+      .action-button p {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        padding-right: 23px;
+      }
+
+      .action-button:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -99;
+        background: #0f111d;
+      }
+
+      .cred {
+        font-size: 15px;
+        position: absolute;
+        bottom: 10px;
+        margin: 0;
+        color: rgb(200, 200, 200);
+      }
+
+      .cred a {
+        color: rgb(200, 200, 200);
+        text-decoration: none;
+        transition: 0.15s ease;
+      }
+
+      .cred a:hover {
+        color: white;
+        text-decoration: underline;
+        font-weight: 700;
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <script src="scripts/nav.js"></script>
+    <script src="scripts/particle.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+
+    <div id="nav">
+      <div class="nav-left"></div>
+      <div class="nav-right"></div>
+    </div>
+    <div class="content">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+      <form class="form">
+        <i class="fa-regular fa-search"></i>
+        <input type="text" class="prox_input" />
+      </form>
+      <div class="button-container">
+        <button class="action-button" id="info-button">
+          <i class="fa-solid fa-regular fa-info"></i>
+          <p>Information</p>
+        </button>
+        <button class="action-button" id="ab-cloak-button">
+          <i class="fa-solid fa-regular fa-arrow-up-right-from-square"></i>
+          <p>AB Cloak</p>
+        </button>
+      </div>
+      <p class="cred">
+        <a href="https://technonyte.pages.dev/">by technonyte0</a> - Vapor v1
+      </p>
+    </div>
+
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script>
+      const form = document.querySelector(".form");
+      const input = document.querySelector(".prox_input");
+      const infoButton = document.getElementById("info-button");
+      const abCloakButton = document.getElementById("ab-cloak-button");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        await window.navigator.serviceWorker.register("sw.js", {
+          scope: __uv$config.prefix,
+        });
+
+        let url = input.value.trim();
+        if (!isUrl(url)) {
+          url = "https://duckduckgo.com/?q=" + encodeURIComponent(url);
+        } else if (!(url.startsWith("https://") || url.startsWith("http://"))) {
+          url = "http://" + url;
+        }
+
+        const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
+
+        localStorage.setItem("proxString", encodedUrl);
+
+        const existingProxString = localStorage.getItem("proxString");
+
+        if (encodedUrl === existingProxString) {
+          window.location.href = "l.html?prox=true";
+        } else {
+          alert("The URL is different from the stored one.");
+        }
+      });
+
+      infoButton.addEventListener("click", () => {
+        const infoWindow = window.open(
+          "",
+          "InfoWindow",
+          "width=400,height=200"
+        );
+        infoWindow.document.write(
+          `<style> body { font-family: Arial; margin: 10px; } h1 { margin: 10px; } p { margin: 10px; } strong { margin: 10px; } </style> <h1>Vapor</h1> <p>Hiya! Welcome to Vapor.</p><p>Vapor is an unblocked gaming site designed for you to have fun on your school device.</p> <hr> <strong style="color: red;">DISCLAIMER:</strong> <p>Vapor is not designed to encourage time wasting.<br><br>Use Vapor only in your free time, and do not let them lead to distraction.</p> <hr> <strong>What Vapor Offers:</strong> <ul> <li>🎮 300+ Games</li> <li>⚡ Fast Proxy</li> <li>📺 Free Movies</li> <li>🤖 AI Chatbot</li><br> <li>and much more...</li> </ul> <hr> <strong>Credits:</strong> <ul> <li><strong>technonyte</strong>- creator</li> <li><strong>Titanium Network</strong>- Ultraviolet</li> <li><strong>Interstellar</strong>- most games</li> <li><strong>Benrogo</strong>- bare server</li> <li><strong>frogiee1</strong>- nowgg bypass</li> </ul> <hr>`
+        );
+        infoWindow.document.close();
+      });
+
+      abCloakButton.addEventListener("click", () => {
+        const cloakWindow = window.open("", "_blank");
+        cloakWindow.document.write(
+          `<iframe src="${location.hostname}" style="width: 100%; height: 100%; border: none; margin: 0; position: fixed; top: 0; left: 0;"></iframe>`
+        );
+        cloakWindow.document.close();
+      });
+
+      function isUrl(val = "") {
+        return (
+          /^http(s?):\/\//.test(val) ||
+          (val.includes(".") && val.substr(0, 1) !== " ")
+        );
+      }
+
+      if (window.self !== window.top) {
+        abCloakButton.disabled = true;
+        abCloakButton.textContent = "Cloaked";
+        abCloakButton.style.opacity = "0.6";
+        abCloakButton.style.cursor = "not-allowed";
+      }
+    </script>
+  </body>
+</html>

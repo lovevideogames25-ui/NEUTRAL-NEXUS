@@ -1,0 +1,44 @@
+#nav {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 60%;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 50px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 0px;
+}
+
+.nav-button {
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  height: 50px;
+  padding: 15px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}

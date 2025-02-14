@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vapor</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Inter", Arial, sans-serif;
+        overflow-y: hidden;
+      }
+
+      .content {
+        background-color: none;
+        color: white;
+        padding-top: 40px;
+        height: calc(100% - 40px);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -99;
+        background: #0f111d;
+      }
+
+      .game-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 300px);
+        gap: 15px;
+        justify-content: center;
+        padding: 20px;
+        margin-top: 30px;
+        transition: 0.15s ease;
+      }
+      .game {
+        position: relative;
+        width: 300px;
+        aspect-ratio: 16 / 9;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.15s ease;
+        text-align: left;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.647);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+      .overlay h2 {
+        margin: 0;
+        font-size: 25px;
+      }
+      .play-button {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        padding: 12px 22px;
+        background: #2a7a3b;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: 0.15s;
+        font-size: 19px;
+      }
+      .play-button:hover {
+        background: #368747;
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <script src="scripts/nav.js"></script>
+    <script src="scripts/particle.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+
+    <div id="nav">
+      <div class="nav-left"></div>
+      <div class="nav-right"></div>
+    </div>
+    <div class="content">
+      <div class="game-grid" id="gameGrid"></div>
+    </div>
+
+    <script src="https://technonyte.pages.dev/cdn/numcode/numcode.js"></script>
+    <script>
+      let hstUrl =
+        "26071752280712581150615225221340273861463023173711220551285421522850574824222937285057362523244725540545252312472622134727391247";
+
+      function encodeBase64(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+      }
+
+      async function loadGames() {
+        const response = await fetch("assets/games.json");
+        let games = await response.json();
+
+        games.sort((a, b) => a.name.localeCompare(b.name));
+
+        const grid = document.getElementById("gameGrid");
+        grid.innerHTML = "";
+
+        let rowIndex = 0;
+        for (let i = 0; i < games.length; i += 3) {
+          const rowGames = games.slice(i, i + 3);
+          const delay = rowIndex * 300;
+
+          rowGames.forEach((game, index) => {
+            const gameDiv = document.createElement("div");
+            gameDiv.classList.add("game");
+            gameDiv.style.backgroundImage =
+              "url(" + numcode.decode(hstUrl) + game.image + ")";
+
+            gameDiv.addEventListener("click", () => {
+              const encodedUrl = encodeBase64(game.link);
+              window.location.href = `l.html?u=${encodedUrl}`;
+            });
+
+            const overlay = document.createElement("div");
+            overlay.classList.add("overlay");
+
+            const title = document.createElement("h2");
+            title.textContent = game.name;
+
+            const playButton = document.createElement("a");
+            playButton.textContent = "PLAY";
+            playButton.classList.add("play-button");
+
+            overlay.appendChild(title);
+            overlay.appendChild(playButton);
+            gameDiv.appendChild(overlay);
+            grid.appendChild(gameDiv);
+          });
+
+          rowIndex++;
+        }
+      }
+      loadGames();
+    </script>
+  </body>
+</html>

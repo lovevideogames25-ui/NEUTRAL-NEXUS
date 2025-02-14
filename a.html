@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vapor</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Inter", Arial, sans-serif;
+        overflow-y: hidden;
+      }
+
+      .content {
+        background-color: none;
+        color: white;
+        padding-top: 40px;
+        height: calc(100% - 40px);
+        overflow-y: auto;
+        disstart: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -99;
+        background: #0f111d;
+      }
+
+      .app-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 300px);
+        gap: 15px;
+        justify-content: center;
+        padding: 20px;
+        margin-top: 30px;
+        transition: 0.15s ease;
+      }
+      .app {
+        position: relative;
+        width: 300px;
+        aspect-ratio: 16 / 9;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.15s ease;
+        text-align: left;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.647);
+        backdrop-filter: blur(5px);
+        disstart: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+      .overlay h2 {
+        margin: 0;
+        font-size: 25px;
+      }
+      .start-button {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        padding: 12px 22px;
+        background: #2a7a3b;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: 0.15s;
+        font-size: 19px;
+      }
+      .start-button:hover {
+        background: #368747;
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&disstart=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <script src="scripts/nav.js"></script>
+    <script src="scripts/particle.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+
+    <div id="nav">
+      <div class="nav-left"></div>
+      <div class="nav-right"></div>
+    </div>
+    <div class="content">
+      <div class="app-grid" id="appGrid"></div>
+    </div>
+
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script>
+      async function loadapps() {
+        const response = await fetch("assets/apps.json");
+        let apps = await response.json();
+
+        apps.sort((a, b) => a.name.localeCompare(b.name));
+
+        const grid = document.getElementById("appGrid");
+        grid.innerHTML = "";
+
+        let rowIndex = 0;
+        for (let i = 0; i < apps.length; i += 3) {
+          const rowapps = apps.slice(i, i + 3);
+          const delay = rowIndex * 300;
+
+          rowapps.forEach((app, index) => {
+            const appDiv = document.createElement("div");
+            appDiv.classList.add("app");
+            appDiv.style.backgroundImage = "url(" + app.image + ")";
+
+            appDiv.addEventListener("click", () => {
+              window.navigator.serviceWorker.register("sw.js", {
+                scope: __uv$config.prefix,
+              });
+
+              let url = app.link;
+
+              const encodedUrl =
+                __uv$config.prefix + __uv$config.encodeUrl(url);
+              localStorage.setItem("proxString", encodedUrl);
+              window.location.href = `l.html?prox=true`;
+            });
+
+            const overlay = document.createElement("div");
+            overlay.classList.add("overlay");
+
+            const title = document.createElement("h2");
+            title.textContent = app.name;
+
+            const startButton = document.createElement("a");
+            startButton.textContent = "START";
+            startButton.classList.add("start-button");
+
+            overlay.appendChild(title);
+            overlay.appendChild(startButton);
+            appDiv.appendChild(overlay);
+            grid.appendChild(appDiv);
+          });
+
+          rowIndex++;
+        }
+      }
+      loadapps();
+    </script>
+  </body>
+</html>

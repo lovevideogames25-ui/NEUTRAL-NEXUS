@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Google",
+    "link": "https://google.com/",
+    "image": "https://blog.logomyway.com/wp-content/uploads/2021/01/google-symbol.jpg"
+  },
+  {
+    "name": "TikTok",
+    "link": "https://tiktok.com/",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNkpxfsJZXIpz7pcSUkTTHdFJtbrUOyTUjgw&s"
+  },
+  {
+    "name": "Now.GG",
+    "link": "https://nowgg.lol/hub",
+    "image": "https://nowgg.lol/src/logo.png"
+  },
+  {
+    "name": "Xbox Cloud Gaming",
+    "link": "https://www.xbox.com/en-us/play",
+    "image": "https://i.pinimg.com/474x/fe/4d/0d/fe4d0da4f9a7707e2e3de5b1554a0c95.jpg"
+  },
+  {
+    "name": "Snapchat",
+    "link": "https://www.snapchat.com/?original_referrer=www.google.com",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5jvTqOh-bw-ivgqj2igxf_xspuocaF3L2A&s"
+  },
+  {
+    "name": "X",
+    "link": "https://x.com/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg"
+  }
+]
