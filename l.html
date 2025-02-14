@@ -137,7 +137,7 @@
           iframe.src = "embed.html#" + decodedUrl;
         } else if (getUrlParameter("mov")) {
           const movParam = getUrlParameter("mov");
-          iframe.src = `https://vidify.top/embed/movie/${movParam}`;
+          iframe.src = `https://vidsrcserver.global.ssl.fastly.net/embed/movie/${movParam}`;
         } else if (getUrlParameter("prox")) {
           const proxUrl = localStorage.getItem("proxString");
           iframe.src = proxUrl;
