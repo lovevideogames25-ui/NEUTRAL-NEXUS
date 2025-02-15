@@ -1,1 +1,17 @@
-[]
+[
+    {
+      "name": "LupineVault",
+      "link": "https://lupinevault.com/",
+      "image": "https://lupinevault.com/assets/favicons/favicon.ico"
+    },
+    {
+      "name": "UnblockZone",
+      "link": "https://unblockzone.github.io/",
+      "image": "https://img.icons8.com/ios_filled/512/FFFFFF/lock.png"
+    },
+    {
+      "name": "Unbore Yourself In School",
+      "link": "https://github.com/FurtiveThomas/Unbore_Yourself_in_School",
+      "image": "https://lh5.googleusercontent.com/DGfrASMVxFLPtbokGSzUnTaY81Mv2QLGJo7aJIcQo4zunszv2NLlhN2U-sdw_dvR1XQMj3TWAxlpeabfMJ41LA=w16383"
+    }
+]

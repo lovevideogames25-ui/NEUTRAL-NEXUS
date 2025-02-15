@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const rightNavItems = [
+    { icon: "fa-brands fa-discord", link: "https://discord.gg/s2WXSyJrwA" },
     { icon: "fa-handshake", link: "pn.html" },
     { icon: "fa-cog", link: "set.html" },
   ];
