@@ -12,17 +12,20 @@
         height: 100%;
         font-family: "Inter", Arial, sans-serif;
         overflow: hidden;
+        overflow-y: hidden;
+        display: flex;
+        justify-content: center;
       }
 
       .content {
         background-color: none;
         color: white;
-        padding-top: 40px;
-        height: calc(100% - 40px);
+        padding-top: 70px;
+        height: calc(100% - 70px);
         overflow-y: auto;
         display: flex;
         flex-direction: column;
-        text-align: center;
+        text-align: left;
       }
 
       #particles-js {
@@ -33,10 +36,18 @@
         background: #0f111d;
       }
 
-      .frame {
-        width: 100%;
-        height: 100%;
-        background: none;
+      a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: white;
+        text-decoration: underline;
+      }
+
+      p {
+        margin: 3px 0px;
       }
     </style>
 
@@ -56,6 +67,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="scripts/loadSettings.js"></script>
   </head>
+
   <body>
     <div id="particles-js"></div>
 
@@ -64,7 +76,22 @@
       <div class="nav-right"></div>
     </div>
     <div class="content">
-      <iframe src="pages/partners.html" frameborder="0" class="frame"></iframe>
+      <h1>~ VAPOR CREDITS ~</h1>
+      <h2>Creator</h2>
+      <a href="https://technonyte.pages.dev/">technonyte</a>
+
+      <h2>-</h2>
+      <p>
+        Ultraviolet -
+        <a href="https://titaniumnetwork.org/">Titanium Network</a>
+      </p>
+      <p>Most Games - <a href="https://gointerstellar.app/">Interstellar</a></p>
+      <p>Bare Server - <a href="https://benrogo.net/">Benrogo</a></p>
+      <p>NowGG Bypass - <a href="https://frogiee.one/">frogiee1</a></p>
+      <p>AI API - <a href="https://groq.com/">Groq</a></p>
+      <p>Movie Search - <a href="https://themoviedb.org/">TMDB</a></p>
+      <p>Movie Player - <a href="https://vidsrc.su">VidSrc</a></p>
+      <p>Being annoying - <a href="javascript:alert('no')">JavaScript</a></p>
     </div>
   </body>
 </html>

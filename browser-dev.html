@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Radical</title>
+    <title>VAPOR Tabs</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,11 +53,11 @@
         cursor: pointer;
         background-color: rgba(255, 255, 255, 0.02);
         border: none;
-        width: 225px;
+        width: 200px;
         margin: 7px;
         margin-left: 0px;
         border-radius: 10px;
-        height: 20px;
+        height: 15px;
         border: 2px solid #2b304d;
         animation: openTab 0.1s ease;
         transition: 0.1s ease;
@@ -76,11 +76,11 @@
 
       @keyframes closeTab {
         0% {
-          width: 225px;
+          width: 200px;
         }
 
         100% {
-          width: 0;
+          width: 20px;
         }
       }
 
@@ -104,8 +104,9 @@
       .tab-close {
         margin-left: auto;
         color: rgba(255, 255, 255, 0.9);
-        margin-right: 3px;
+        margin-right: 2px;
         font-size: 20px;
+        transform: translateY(-1px);
       }
 
       .tab-close:hover {
@@ -138,7 +139,7 @@
 
       .url-input:focus {
         background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 0 0 1px #2b304d;
+        box-shadow: 0 0 0 2px #454c76;
       }
 
       .icon-button {
@@ -160,18 +161,18 @@
       }
 
       .new-tab-button {
-        padding: 8px 12px;
+        padding: 8px;
         cursor: pointer;
         background: none;
         color: white;
         border: none;
         border-radius: 5px;
         font-size: 25px;
-        height: 40px;
+        height: 35px;
         margin: 8.5px 0px;
         aspect-ratio: 1;
         border-radius: 50%;
-        padding-top: 6.5px;
+        padding-top: 3.5px;
       }
 
       .new-tab-button:hover {
@@ -557,7 +558,21 @@
         }
       }
 
-      openTab("pages/newtab.html");
+      // decoder
+      function decodeBase64(str) {
+        return decodeURIComponent(atob(str));
+      }
+
+      // param
+      const urlParams = new URLSearchParams(window.location.search);
+      const encodedUrl = urlParams.get("u");
+
+      if (encodedUrl) {
+        const decodedUrl = decodeBase64(encodedUrl);
+        openTab(decodedUrl);
+      } else {
+        openTab("pages/newtab.html");
+      }
     </script>
   </body>
 </html>

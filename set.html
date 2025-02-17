@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vapor</title>
+    <title>VAPOR</title>
     <style>
       body,
       html {
@@ -17,12 +17,14 @@
       .content {
         background-color: none;
         color: white;
-        padding-top: 40px;
-        height: calc(100% - 40px);
+        padding-top: 70px;
+        height: calc(100% - 70px);
         overflow-y: auto;
         display: flex;
         flex-direction: column;
-        text-align: center;
+        align-items: center;
+        text-align: left;
+        width: 100%;
       }
 
       #particles-js {
@@ -37,6 +39,46 @@
         width: 100%;
         height: 100%;
         background: none;
+      }
+
+      .setting {
+        width: 58%;
+        margin: 0;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 15px;
+      }
+
+      .heading {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .setting select {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.05);
+        color: white;
+      }
+
+      .setting select option {
+        color: black;
+      }
+
+      .setting select:focus {
+        outline: none;
+      }
+
+      .favicon {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
       }
     </style>
 
@@ -54,6 +96,77 @@
     <script src="scripts/nav.js"></script>
     <script src="scripts/particle.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="scripts/loadSettings.js"></script>
+    <script>
+      const sites = [
+        { title: "Google", favicon: "https://www.google.com/favicon.ico" },
+        {
+          title: "My Drive - Google Drive",
+          favicon:
+            "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
+        },
+        {
+          title: "Home",
+          favicon:
+            "https://www.gstatic.com/classroom/ic_product_classroom_32.png",
+        },
+        {
+          title: "My Apps",
+          favicon: "https://myapps.classlink.com/favicon.ico",
+        },
+      ];
+
+      function populateOptions() {
+        const select = document.getElementById("site-title-select");
+        sites.forEach((site) => {
+          const option = document.createElement("option");
+          option.value = site.title;
+          option.textContent = site.title;
+
+          const faviconImg = document.createElement("img");
+          faviconImg.src = site.favicon;
+          faviconImg.className = "favicon";
+          option.appendChild(faviconImg);
+
+          select.appendChild(option);
+        });
+      }
+
+      function saveTitle() {
+        const select = document.getElementById("site-title-select");
+        const selectedTitle = select.value;
+
+        const selectedFavicon =
+          sites.find((site) => site.title === selectedTitle)?.favicon || "";
+
+        localStorage.setItem("tabCloakTitle", selectedTitle);
+        localStorage.setItem("tabCloakFavicon", selectedFavicon);
+      }
+
+      function toggleParticles() {
+        const select = document.getElementById("particles-select");
+        const isEnabled = select.value === "Enabled";
+
+        localStorage.setItem("particlesEnabled", isEnabled ? "on" : "off");
+
+        if (isEnabled) {
+          particlesJS.load("particles-js", "particles.json", function () {
+            console.log("callback - particles.js config loaded");
+          });
+        } else {
+          particlesJS.particlesJS("particles-js", {});
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        populateOptions();
+        const particlesSetting =
+          localStorage.getItem("particlesEnabled") || "on";
+        document.getElementById("particles-select").value =
+          particlesSetting === "on" ? "Enabled" : "Disabled";
+        toggleParticles();
+      });
+    </script>
   </head>
   <body>
     <div id="particles-js"></div>
@@ -63,7 +176,19 @@
       <div class="nav-right"></div>
     </div>
     <div class="content">
-      <p style="margin-top: 40px">Settings<br />Coming in v2</p>
+      <div class="setting">
+        <div class="heading">Tab Cloaking</div>
+        <select id="site-title-select" onchange="saveTitle()">
+          <option value="">Select a site</option>
+        </select>
+      </div>
+      <div class="setting">
+        <div class="heading">Particles</div>
+        <select id="particles-select" onchange="toggleParticles()">
+          <option value="Enabled">Enabled</option>
+          <option value="Disabled">Disabled</option>
+        </select>
+      </div>
     </div>
   </body>
 </html>

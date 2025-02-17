@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vapor</title>
+    <title>VAPOR</title>
     <style>
       body,
       html {
@@ -33,15 +33,65 @@
         background: #0f111d;
       }
 
+      .filter-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        width: auto;
+        margin-top: 30px;
+      }
+
+      .search-input {
+        width: 450px;
+        padding: 10px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 12px 15px;
+        border-radius: 15px;
+        margin-right: 4px;
+        border: none;
+        font-size: 18px;
+        outline: none;
+        color: rgba(255, 255, 255, 0.8);
+        font-family: "Inter";
+      }
+
+      .search-input:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .chip {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 12px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        margin: 0 3px;
+        transition: 0.15s ease;
+        font-size: 18px;
+      }
+
+      .chip:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .chip.active {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+      }
+
       .game-grid {
         display: grid;
-        grid-template-columns: repeat(4, 300px);
+        grid-template-columns: repeat(3, 300px);
         gap: 15px;
         justify-content: center;
         padding: 20px;
-        margin-top: 30px;
+        margin-top: -10px;
         transition: 0.15s ease;
       }
+
       .game {
         position: relative;
         width: 300px;
@@ -54,6 +104,7 @@
         transition: 0.15s ease;
         text-align: left;
       }
+
       .overlay {
         position: absolute;
         top: 0;
@@ -67,16 +118,18 @@
         justify-content: space-between;
         padding: 15px;
       }
+
       .overlay h2 {
         margin: 0;
         font-size: 25px;
       }
+
       .play-button {
         position: absolute;
         bottom: 40px;
         right: 40px;
         padding: 12px 22px;
-        background: #2a7a3b;
+        background: #2b304d;
         color: white;
         text-decoration: none;
         border-radius: 50px;
@@ -84,8 +137,9 @@
         transition: 0.15s;
         font-size: 19px;
       }
+
       .play-button:hover {
-        background: #368747;
+        background: #49517c;
       }
     </style>
 
@@ -103,6 +157,7 @@
     <script src="scripts/nav.js"></script>
     <script src="scripts/particle.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="scripts/loadSettings.js"></script>
   </head>
   <body>
     <div id="particles-js"></div>
@@ -112,6 +167,16 @@
       <div class="nav-right"></div>
     </div>
     <div class="content">
+      <div class="filter-container">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search games..."
+          id="searchInput"
+        />
+        <div class="chip" onclick="filterGames('emu')">emu</div>
+        <div class="chip" onclick="filterGames('2P')">2P</div>
+      </div>
       <div class="game-grid" id="gameGrid"></div>
     </div>
 
@@ -120,25 +185,37 @@
       let hstUrl =
         "26071752280712581150615225221340273861463023173711220551285421522850574824222937285057362523244725540545252312472622134727391247";
 
+      let games = [];
+      let activeFilters = [];
+
       function encodeBase64(str) {
         return btoa(unescape(encodeURIComponent(str)));
       }
 
       async function loadGames() {
         const response = await fetch("assets/games.json");
-        let games = await response.json();
+        games = await response.json();
 
         games.sort((a, b) => a.name.localeCompare(b.name));
 
+        renderGames();
+      }
+
+      function renderGames() {
         const grid = document.getElementById("gameGrid");
         grid.innerHTML = "";
 
-        let rowIndex = 0;
-        for (let i = 0; i < games.length; i += 3) {
-          const rowGames = games.slice(i, i + 3);
-          const delay = rowIndex * 300;
+        const searchInput = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
 
-          rowGames.forEach((game, index) => {
+        games.forEach((game) => {
+          const matchesSearch = game.name.toLowerCase().includes(searchInput);
+          const matchesFilters =
+            activeFilters.length === 0 ||
+            activeFilters.some((filter) => game.categories.includes(filter));
+
+          if (matchesSearch && matchesFilters) {
             const gameDiv = document.createElement("div");
             gameDiv.classList.add("game");
             gameDiv.style.backgroundImage =
@@ -163,11 +240,36 @@
             overlay.appendChild(playButton);
             gameDiv.appendChild(overlay);
             grid.appendChild(gameDiv);
-          });
-
-          rowIndex++;
-        }
+          }
+        });
       }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", renderGames);
+
+      function filterGames(category) {
+        const index = activeFilters.indexOf(category);
+        if (index > -1) {
+          activeFilters.splice(index, 1);
+        } else {
+          activeFilters.push(category);
+        }
+        updateChips();
+        renderGames();
+      }
+
+      function updateChips() {
+        const chips = document.querySelectorAll(".chip");
+        chips.forEach((chip) => {
+          if (activeFilters.includes(chip.textContent)) {
+            chip.classList.add("active");
+          } else {
+            chip.classList.remove("active");
+          }
+        });
+      }
+
       loadGames();
     </script>
   </body>

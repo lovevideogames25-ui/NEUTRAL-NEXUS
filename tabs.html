@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vapor</title>
+    <title>VAPOR</title>
     <style>
       body,
       html {
@@ -54,6 +54,28 @@
     <script src="scripts/nav.js"></script>
     <!--<script src="scripts/particle.js"></script>-->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="scripts/loadSettings.js"></script>
+    <script>
+      // param
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        const results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const paramU = getUrlParameter("u");
+        const iframe = document.querySelector(".frame");
+        if (paramU) {
+          iframe.src = `browser-dev.html?u=${paramU}`;
+        } else {
+          iframe.src = "browser-dev.html";
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="particles-js"></div>
@@ -63,7 +85,7 @@
       <div class="nav-right"></div>
     </div>
     <div class="content">
-      <iframe src="browser-dev.html" frameborder="0" class="frame"></iframe>
+      <iframe src="" frameborder="0" class="frame"></iframe>
     </div>
   </body>
 </html>

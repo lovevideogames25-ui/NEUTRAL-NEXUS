@@ -1,10 +1,10 @@
-# Vapor
-**Vapor** is an unblocked gaming site designed for you to have fun on your school device.
+# VAPOR
+**VAPOR** is an unblocked gaming site designed for you to have fun on your school device.
 ***
 ### DISCLAIMER:
-Vapor is not designed to encourage time wasting.
+VAPOR is not designed to encourage time wasting.
 
-Use Vapor only in your free time, and do not let them lead to distraction.
+Use VAPOR only in your free time, and do not let them lead to distraction.
 ***
 ### WHAT VAPOR OFFERS:
 - 🎮 300+ Games

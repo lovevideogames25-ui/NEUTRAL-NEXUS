@@ -7,10 +7,10 @@
   {
     "name": "TikTok",
     "link": "https://tiktok.com/",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNkpxfsJZXIpz7pcSUkTTHdFJtbrUOyTUjgw&s"
+    "image": "https://nestscale.com/wp-content/uploads/2023/07/Secondary-logo.png"
   },
   {
-    "name": "Now.GG",
+    "name": "Now.GG (frogiee)",
     "link": "https://nowgg.lol/hub",
     "image": "https://nowgg.lol/src/logo.png"
   },
@@ -20,9 +20,19 @@
     "image": "https://i.pinimg.com/474x/fe/4d/0d/fe4d0da4f9a7707e2e3de5b1554a0c95.jpg"
   },
   {
+    "name": "v86",
+    "link": "http://copy.sh/v86",
+    "image": "https://jobi.one/files/thumbs/v86.png"
+  },
+  {
+    "name": "Scratch",
+    "link": "https://scratch.mit.edu/",
+    "image": "https://fontmeme.com/images/SCRATCH-LOGO-FONT.png"
+  },
+  {
     "name": "Snapchat",
     "link": "https://www.snapchat.com/?original_referrer=www.google.com",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI5jvTqOh-bw-ivgqj2igxf_xspuocaF3L2A&s"
+    "image": "https://static-00.iconduck.com/assets.00/snapchat-icon-2048x2048-nmcy60kt.png"
   },
   {
     "name": "X",

@@ -13,8 +13,16 @@
   padding: 0;
   box-sizing: border-box;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
   backdrop-filter: blur(10px);
+  animation: showNav 0.3s ease;
+}
+
+@keyframes showNav {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) translateX(-50%);
+  }
 }
 
 .nav-left,
@@ -37,8 +45,47 @@
   padding: 15px;
   aspect-ratio: 1;
   position: relative;
+  transition: 0.15s ease;
+}
+
+/* button 1 radius */
+.nav-left .nav-button:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+/* button 2 radius */
+.nav-right .nav-button:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .nav-button:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+.tooltip {
+  visibility: hidden;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffffc0;
+  text-align: center;
+  border-radius: 10px;
+  padding: 6.5px 9px;
+  position: absolute;
+  z-index: 1;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 0.15s ease;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+
+.nav-button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  bottom: -40px;
+  backdrop-filter: blur(10px);
 }

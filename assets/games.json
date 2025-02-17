@@ -246,12 +246,6 @@
     "categories": ["all", "2P"]
   },
   {
-    "name": "Stickman Hook",
-    "link": "/e/stickman-hook/index.html",
-    "image": "xSRHS94JsSNRL5VYXY6y4OzH5xIQbtYFddtPCxn.webp",
-    "categories": ["all", "local"]
-  },
-  {
     "name": "Tube Jumpers",
     "link": "https://unblocked76.github.io/tube-jumpers/",
     "image": "K4ZKfH7gWvVdEFZWzYgm8v0Z5sdrDbsIKxee.webp",
@@ -334,12 +328,6 @@
     "link": "https://5dd2d607-015f-11ea-ad56-9cb6d0d995f7.poki-gdn.com/38959ae1-110b-49ab-86ae-df425fd7862a/index.html",
     "image": "VkdnejapW0ldLPP.webp",
     "categories": ["all"]
-  },
-  {
-    "name": "Jetpack Joyride",
-    "link": "/e/jetpack-joyride/index.html",
-    "image": "0JEn1ydND9eREAwimoyiVuE44Yh3eCwE4uSIDm.webp",
-    "categories": ["all", "local"]
   },
   {
     "name": "FeedVid",
@@ -504,13 +492,6 @@
     "categories": ["all"]
   },
   {
-    "name": "Duck Life 4",
-    "link": "/e/ducklife4/index.html",
-    "image": "01wa15vqVWq0sfZqWTUEoBqd.webp",
-    "categories": ["all", "local"],
-    "load": true
-  },
-  {
     "name": "Papa's Freezeria",
     "link": "https://www.coolmathgames.com/0-papas-freezeria/play",
     "image": "ttDtf9ZryjeNjr5zViLDrS0.webp",
@@ -527,12 +508,6 @@
     "link": "https://www.crazygames.com/game/bullet-force-multiplayer",
     "image": "Tce4tI1L4y6lnr3zdKoTD.webp",
     "categories": ["all,", "2P"]
-  },
-  {
-    "name": "Crazy Games",
-    "link": "https://www.crazygames.com/",
-    "image": "pAXxewqpUPfsgl1jD4GUpSIFGZrttm0zGcgne.webp",
-    "categories": ["all,", "emu,", "2P,", "sports,", "flash"]
   },
   {
     "name": "Cubes 2048",
@@ -619,12 +594,6 @@
     "categories": ["all,", "flash"]
   },
   {
-    "name": "Subway Surfers: San Francisco ",
-    "link": "/e/2/subway-surfers/index.html",
-    "image": "nhDedJRSO3hATOjfuS.webp",
-    "categories": ["all,", "emu", "local"]
-  },
-  {
     "name": "Super Mario Bros",
     "link": "https://topoi.pooq.com/hendrik/notmine/FullScreenMario/mario.html",
     "image": "TVctxpMYR4VM0FvlFuYz4W1jGILDapYI9VBeQn.webp",
@@ -638,9 +607,9 @@
   },
   {
     "name": "Web Retro",
-    "link": "/e/3/index.html",
+    "link": "https://binbashbanana.github.io/webretro/",
     "image": "m6Z56Ept7X52DF4pAUWsfCe.webp",
-    "categories": ["all,", "emu", "local"]
+    "categories": ["all,", "emu"]
   },
   {
     "name": "Slope",
@@ -664,7 +633,7 @@
     "name": "1",
     "link": "https://hgentry.github.io/1/",
     "image": "TgAH19LlMpj57y9EaKHGkui3Z4VG5ahwdcxC.webp",
-    "categories": ["all", "local"]
+    "categories": ["all"]
   },
   {
     "name": "1v1.LOL",
@@ -817,12 +786,6 @@
     "categories": ["all"]
   },
   {
-    "name": "Cluster Rush",
-    "link": "/e/2/Cluster-Rush/index.html",
-    "image": "Uc1XdDrOFAwvAIK0L2fAniExSNHgyvDkcb.webp",
-    "categories": ["all", "local"]
-  },
-  {
     "name": "Cookie Clicker",
     "link": "https://orteil.dashnet.org/cookieclicker/",
     "image": "Jb2us7nBqtyxzQxq1nY4BRqx.webp",
@@ -850,7 +813,7 @@
     "name": "Doge Miner",
     "link": "https://glcdn.githack.com/3kh0/3kh0-assets/-/raw/main/DogeMiner/index.html",
     "image": "pkBRKIygknboDFqzdH1D.webp",
-    "categories": ["all", "local"]
+    "categories": ["all"]
   },
   {
     "name": "DOOM 1",
@@ -994,7 +957,7 @@
     "name": "Idle Breakout",
     "link": "https://www.coolmathgames.com/0-idle-breakout/play",
     "image": "DA6JWXQliLD83ZoSswe7Y.webp",
-    "categories": ["all", "local"]
+    "categories": ["all"]
   },
   {
     "name": "Isleward",
@@ -1055,12 +1018,6 @@
     "link": "https://overboy.itch.io/mobs-inc",
     "image": "p1TE8wE0RNLJpnilMlhZYKFokBlr65uD1BuWiNuS.webp",
     "categories": ["all"]
-  },
-  {
-    "name": "Monkey Mart",
-    "link": "/e/2/monkey-mart/index.html",
-    "image": "aOl5ieF2Zj2qdYpSucErwT7ANtoeYH3FVE.webp",
-    "categories": ["all", "local"]
   },
   {
     "name": "MooMoo.io",
@@ -1177,8 +1134,8 @@
     "categories": ["all"]
   },
   {
-    "name": "Paper.io",
-    "link": "https://paper-io.com/",
+    "name": "Paper.io [2]",
+    "link": "https://paperio-2.github.io/a9/paper-io-2/",
     "image": "jxSJp32JKASDv366hJjf1E9im2WdzGTPSnEQds.webp",
     "categories": ["all"]
   },
@@ -1358,7 +1315,7 @@
   },
   {
     "name": "Slither.io",
-    "link": "https://slither.io/",
+    "link": "https://scratch.mit.edu/projects/108566337/embed",
     "image": "NBM9XWVkWA9kRjIh.webp",
     "categories": ["all"]
   },
@@ -1495,156 +1452,6 @@
     "categories": ["all", "emu"]
   },
   {
-    "name": "Retro Bowl",
-    "link": "/e/2/retro/index.html",
-    "image": "9tERKy08mbrnZ0AAlTUIiTx.webp",
-    "categories": ["all,", "sports", "local"]
-  },
-  {
-    "name": "Roblox (Now.GG)",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.roblox.client&partner=interstellar",
-    "image": "TQze0Ep8jrhhSe6qDE.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Madden NFL 24",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.ea.gp.maddennfl21mobile&partner=interstellar",
-    "image": "3oIZOCnIyFa.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Android",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.uncube.launcher3&partner=interstellar",
-    "image": "mNqhIm0ayitHThpufOb2ytfpxdkrx.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Genshin Impact",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.miHoYo.GenshinImpact&partner=interstellar",
-    "image": "WWvmc0hw1epMot9kYVLL.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Fortnite (Now.GG)",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.epicgames.fortnite&partner=interstellar",
-    "image": "IaTdhrN06IHvTKMRnUilTaCsiyXnRZL.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "EA SPORTS FC\u2122 MOBILE 24 SOCCER",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.ea.gp.fifamobile&partner=interstellar",
-    "image": "D8NZMlS0Yn65gpeNm.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "EA SPORTS\u2122 UFC\u00ae Mobile 2",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.ea.gp.easportsufc2&partner=interstellar",
-    "image": "ptS3ITeTcxi.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Melon Playground",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.studio27.MelonPlayground&partner=interstellar",
-    "image": "GbjBYcD7WCSTM901.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Solar Smash",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.paradyme.solarsmash&partner=interstellar",
-    "image": "yF1h2IrSDEe0O4ZuJfMzikPd414i89LJ.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Bloons TD Battles 2",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.ninjakiwi.bloonstdbattles2&partner=interstellar",
-    "image": "FBNnhV87cTCWQoYw7uLnx3eJbh3dKUcAYYc7kC0S.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Bloons TD Battles",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.ninjakiwi.bloonstdbattles&partner=interstellar",
-    "image": "6sFyW8lm5QxA01.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Cookie Run Kingdom",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.devsisters.ck&partner=interstellar",
-    "image": "r3bPLwEPh6pSHTnwS5Qqph5y2J70o8o3.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Character AI",
-    "link": "https://now.gg/iframe/snippet?app_pkg=ai.character.app&partner=interstellar",
-    "image": "hvXUMPehUfEdoOz6f9OR1GTwXcSX.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Aptoide",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.aptoide.partners.nowgg.store&partner=interstellar",
-    "image": "VWlPkcuNIr.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Akinator",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.digidust.elokence.akinator.freemium&partner=interstellar",
-    "image": "0e9Eknd4ZS31hgTiL1UarTdIXu59K.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "WorldBox",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.mkarpenko.worldbox&partner=interstellar",
-    "image": "9DoVTwfWzuUO3.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Toca Life World",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.tocaboca.tocalifeworld&partner=interstellar",
-    "image": "xGtTJoczkV5rWouIblNkykgE75sLHdtmNhk3SZ.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Toca Hair Salon 4",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.tocaboca.tocahairsalon4&partner=interstellar",
-    "image": "gcW2DeA1lnA3ja3kXO5wNMwrVAszcAaZNkgJMhU.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Toca Kitchen 2",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.tocaboca.tocakitchen2&partner=interstellar",
-    "image": "Hf8kV58JuuM.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Free Fire",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.dts.freefireth&partner=interstellar",
-    "image": "vxioxO6NdzJxfxCqctTFFtUPxrXoxHyeF.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Stumble Guys (Android)",
-    "link": "https://now.gg/iframe/snippet?app_pkg=com.kitkagames.fallbuddies&partner=interstellar",
-    "image": "SbGgGTQbqmEEENywajH.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Now.GG",
-    "link": "https://now.gg",
-    "image": "djOQkhq6UaJz.webp",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Roblox (NowGG.me) [Working]",
-    "link": "https://nowgg.me/apps/roblox-corporation/5349/roblox.html",
-    "image": "None",
-    "categories": ["all", "emu", "android"]
-  },
-  {
-    "name": "Now.GG (NowGG.me) [Working]",
-    "link": "https://nowgg.me",
-    "image": "None",
-    "categories": ["all", "emu", "android"]
-  },
-  {
     "name": "Parappa the Rapper",
     "link": "https://retrogamesonline.io/parappa-the-rapper.embed",
     "image": "3zBLPwpsynRFNUochxiug.webp",
@@ -1708,7 +1515,7 @@
     "name": "Minecraft 1.8 (Eaglercraft)",
     "link": "https://reading.q13x.com/",
     "image": "3Kh4tMEALEgwVNjz4sADYN3O1JYjN9isBM2e5.webp",
-    "categories": ["all", "2P", "emu", "local"]
+    "categories": ["all", "2P", "emu"]
   },
   {
     "name": "Getaway S.",
@@ -1727,13 +1534,13 @@
     "name": "2048",
     "link": "https://x12maybeheat.vercel.app/games/2048/index.html",
     "image": "Nze2ylXZrJqOBXF3tgSdWQtOWS9XOXkcmIGf.webp",
-    "categories": ["all", "local"]
+    "categories": ["all"]
   },
   {
     "name": "2048 Multitasking",
     "link": "https://bighummus69.github.io/actual/2048-multitask/",
     "image": "Nze2ylXZrJqOBXF3tgSdWQtOWS9XOXkcmIGf.webp",
-    "categories": ["all", "local"]
+    "categories": ["all"]
   },
   {
     "name": "Windows 96",
@@ -1793,7 +1600,7 @@
     "name": "Space Company",
     "link": "https://sparticle999.github.io/SpaceCompany/",
     "image": "xMCh2eWln2.png",
-    "categories": ["all", "local"]
+    "categories": ["all"]
   },
   {
     "name": "Mario Kart DS",
@@ -1847,7 +1654,7 @@
     "name": "Particle Clicker",
     "link": "https://particle-clicker.web.cern.ch/",
     "image": "YwhgrPGI3UU.png",
-    "categories": ["all,", "local"]
+    "categories": ["all"]
   },
   {
     "name": "ShipCraft.io",
