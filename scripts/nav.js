@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       icon: "fa-browser",
       link: "#",
-      tooltip: "Browse",
+      tooltip: "Web",
       isDropdown: true,
       dropdownItems: [
         { link: "tabs.html", tooltip: "Tabs" },
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       isDropdown: true,
       dropdownItems: [
         { link: "m.html", tooltip: "Movies" },
-        { link: "#", tooltip: "YTUB" },
+        { link: "ytub.html", tooltip: "YTUB" },
       ],
     },
     {
