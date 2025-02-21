@@ -2,7 +2,7 @@
 
 self.__uv$config = {
   prefix: "/go/vapor/",
-  bare: "https://homework.swat.lat/", // dont steal it bro ik you want to
+  bare: "https://bare.benrogo.net/", // dont steal it bro ik you want to
   encodeUrl: (url) => {
     if (url.includes(".onion")) {
       url = url.replace(".onion", ".onion.dog");
