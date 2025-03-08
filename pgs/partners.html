@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VAPOR</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Inter", Arial, sans-serif;
+      }
+      .partner-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 320px);
+        gap: 15px;
+        justify-content: center;
+        padding: 20px;
+        margin-top: 40px;
+        transition: 0.15s ease;
+      }
+      .partner {
+        position: relative;
+        width: 320px;
+        aspect-ratio: 16 / 9;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.15s ease;
+        text-align: left;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.647);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+      .overlay h2 {
+        margin: 0;
+        font-size: 25px;
+        color: white;
+      }
+      .visit-button {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        padding: 12px 22px;
+        background: #2b304d;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: 0.15s;
+        font-size: 19px;
+      }
+      .visit-button:hover {
+        background: #49517c;
+      }
+
+      p {
+        color: white;
+        text-align: center;
+        margin: 0;
+        margin-bottom: 5px;
+      }
+
+      .partnerdiv {
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="partner-grid" id="partnerGrid"></div>
+
+    <script>
+      async function loadpartners() {
+        const response = await fetch("../_a/partners.json");
+        let partners = await response.json();
+
+        partners.sort((a, b) => a.name.localeCompare(b.name));
+
+        const grid = document.getElementById("partnerGrid");
+        grid.innerHTML = "";
+
+        let rowIndex = 0;
+        for (let i = 0; i < partners.length; i += 3) {
+          const rowpartners = partners.slice(i, i + 3);
+          const delay = rowIndex * 300;
+
+          rowpartners.forEach((partner, index) => {
+            const partnerDiv = document.createElement("div");
+            partnerDiv.classList.add("partner");
+            partnerDiv.style.backgroundImage = "url(" + partner.image + ")";
+
+            partnerDiv.addEventListener("click", () => {
+              window.parent.location.href = partner.link;
+            });
+
+            const overlay = document.createElement("div");
+            overlay.classList.add("overlay");
+
+            const title = document.createElement("h2");
+            title.textContent = partner.name;
+
+            const visitButton = document.createElement("a");
+            visitButton.textContent = "VISIT";
+            visitButton.classList.add("visit-button");
+
+            overlay.appendChild(title);
+            overlay.appendChild(visitButton);
+            partnerDiv.appendChild(overlay);
+            grid.appendChild(partnerDiv);
+          });
+
+          rowIndex++;
+        }
+      }
+      loadpartners();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="VAPOR-VM-EMBED" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/_a/logo-nobg.old.png" />
+    <meta name="generator" content="Astro v4.6.1" />
+    <link
+      rel="stylesheet"
+      href="ajax/libs/normalize/8.0.1/normalize.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="npm/xterm-5.3.0/css/xterm.min.css" rel="stylesheet" />
+    <title>VAPOR-V</title>
+    <style>
+      [data-simplebar] {
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        position: relative;
+      }
+      .simplebar-wrapper {
+        height: inherit;
+        max-height: inherit;
+        max-width: inherit;
+        overflow: hidden;
+        width: inherit;
+      }
+      .simplebar-mask {
+        direction: inherit;
+        height: auto !important;
+        overflow: hidden;
+        width: auto !important;
+        z-index: 0;
+      }
+      .simplebar-mask,
+      .simplebar-offset {
+        inset: 0;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+      }
+      .simplebar-offset {
+        box-sizing: inherit !important;
+        direction: inherit !important;
+        resize: none !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .simplebar-content-wrapper {
+        box-sizing: border-box !important;
+        direction: inherit;
+        display: block;
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+        overflow: auto;
+        position: relative;
+        scrollbar-width: none;
+        width: auto;
+        -ms-overflow-style: none;
+      }
+      .simplebar-content-wrapper::-webkit-scrollbar,
+      .simplebar-hide-scrollbar::-webkit-scrollbar {
+        display: none;
+        height: 0;
+        width: 0;
+      }
+      .simplebar-content:after,
+      .simplebar-content:before {
+        content: " ";
+        display: table;
+      }
+      .simplebar-placeholder {
+        max-height: 100%;
+        max-width: 100%;
+        pointer-events: none;
+        width: 100%;
+      }
+      .simplebar-height-auto-observer-wrapper {
+        box-sizing: inherit !important;
+        flex-basis: 0;
+        flex-grow: inherit;
+        flex-shrink: 0;
+        float: left;
+        height: 100%;
+        margin: 0;
+        max-height: 1px;
+        max-width: 1px;
+        overflow: hidden;
+        padding: 0;
+        pointer-events: none;
+        position: relative;
+        width: 100%;
+        z-index: -1;
+      }
+      .simplebar-height-auto-observer {
+        box-sizing: inherit;
+        display: block;
+        height: 1000%;
+        left: 0;
+        min-height: 1px;
+        min-width: 1px;
+        opacity: 0;
+        top: 0;
+        width: 1000%;
+        z-index: -1;
+      }
+      .simplebar-height-auto-observer,
+      .simplebar-track {
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+      }
+      .simplebar-track {
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+      }
+      [data-simplebar].simplebar-dragging,
+      [data-simplebar].simplebar-dragging .simplebar-content {
+        pointer-events: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      [data-simplebar].simplebar-dragging .simplebar-track {
+        pointer-events: all;
+      }
+      .simplebar-scrollbar {
+        left: 0;
+        min-height: 10px;
+        position: absolute;
+        right: 0;
+      }
+      .simplebar-scrollbar:before {
+        background: #000;
+        border-radius: 7px;
+        content: "";
+        opacity: 0;
+        position: absolute;
+        transition: opacity 0.2s linear 0.5s;
+      }
+      .simplebar-scrollbar.simplebar-visible:before {
+        opacity: 0.5;
+        transition-delay: 0s;
+        transition-duration: 0s;
+      }
+      .simplebar-track.simplebar-vertical {
+        top: 0;
+        width: 11px;
+      }
+      .simplebar-scrollbar:before {
+        inset: 2px;
+      }
+      .simplebar-track.simplebar-horizontal {
+        height: 11px;
+        left: 0;
+      }
+      .simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+        inset: 0 auto 0 0;
+        min-height: 0;
+        min-width: 10px;
+        width: auto;
+      }
+      [data-simplebar-direction="rtl"] .simplebar-track.simplebar-vertical {
+        left: 0;
+        right: auto;
+      }
+      .simplebar-dummy-scrollbar-size {
+        direction: rtl;
+        height: 500px;
+        opacity: 0;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        position: fixed;
+        visibility: hidden;
+        width: 500px;
+        -ms-overflow-style: scrollbar !important;
+      }
+      .simplebar-dummy-scrollbar-size > div {
+        height: 200%;
+        margin: 10px 0;
+        width: 200%;
+      }
+      .simplebar-hide-scrollbar {
+        left: 0;
+        overflow-y: scroll;
+        position: fixed;
+        scrollbar-width: none;
+        visibility: hidden;
+        -ms-overflow-style: none;
+      } /*!
+* Toastify js 1.12.0
+* https://github.com/apvarun/toastify-js
+* @license MIT licensed
+*
+* Copyright (C) 2018 Varun A P
+*/
+      .toastify {
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(10px);
+        border-radius: 2px;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        max-width: calc(50% - 20px);
+        opacity: 0;
+        padding: 12px 20px;
+        position: fixed;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+        z-index: 2147483647;
+      }
+      .toastify.on {
+        opacity: 1;
+      }
+      .toast-close {
+        background: transparent;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1em;
+        opacity: 0.4;
+        padding: 0 5px;
+      }
+      .toastify-right {
+        right: 15px;
+      }
+      .toastify-left {
+        left: 15px;
+      }
+      .toastify-top {
+        top: -150px;
+      }
+      .toastify-bottom {
+        bottom: -150px;
+      }
+      .toastify-rounded {
+        border-radius: 25px;
+      }
+      .toastify-avatar {
+        border-radius: 2px;
+        height: 1.5em;
+        margin: -7px 5px;
+        width: 1.5em;
+      }
+      .toastify-center {
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: fit-content;
+        max-width: -moz-fit-content;
+        right: 0;
+      }
+      @media only screen and (max-width: 360px) {
+        .toastify-left,
+        .toastify-right {
+          left: 0;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: -moz-fit-content;
+          max-width: fit-content;
+          right: 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="_astro/index.Dr9sawZQ.css" />
+    <script type="module" src="_astro/hoisted.ClwGHnN5.js"></script>
+  </head>
+  <body>
+    <main data-astro-cid-ct3bgug4>
+      <article id="window" data-astro-cid-ct3bgug4>
+        <button class="fullscreen-button" data-astro-cid-ctt5i43z>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            data-astro-cid-ctt5i43z
+          >
+            <path
+              d="M1 9V1H9"
+              stroke="black"
+              stroke-width="2"
+              data-astro-cid-ctt5i43z
+            ></path>
+            <path
+              d="M1 15V23H9"
+              stroke="black"
+              stroke-width="2"
+              data-astro-cid-ctt5i43z
+            ></path>
+            <path
+              d="M23 9V1H15"
+              stroke="black"
+              stroke-width="2"
+              data-astro-cid-ctt5i43z
+            ></path>
+            <path
+              d="M23 15V23H15"
+              stroke="black"
+              stroke-width="2"
+              data-astro-cid-ctt5i43z
+            ></path>
+          </svg>
+        </button>
+        <div class="container" id="viewCont" data-astro-cid-ct3bgug4>
+          <p class="queue" data-astro-cid-ct3bgug4></p>
+          <div class="buttons" data-astro-cid-ct3bgug4>
+            <button class="button" data-type="windows" data-astro-cid-ct3bgug4>
+              Windows 10
+            </button>
+            <button class="button" data-type="linux" data-astro-cid-ct3bgug4>
+              Debian 12
+            </button>
+          </div>
+          <div id="captcha" data-astro-cid-ct3bgug4></div>
+          <div
+            class="terminal"
+            id="terminal"
+            style="display: none; visibility: hidden"
+            data-astro-cid-ct3bgug4
+          ></div>
+        </div>
+        <div class="footer" data-astro-cid-ct3bgug4>
+          <p class="footer-text" id="timer" data-astro-cid-ct3bgug4></p>
+          <button class="stop-button" data-astro-cid-ct3bgug4>
+            <picture>
+              <source
+                srcset="_astro/bin.CJRgIcyU_Fns7C.webp"
+                type="image/webp"
+              />
+              <img
+                src="_astro/bin.CJRgIcyU_1mPz8F.png"
+                alt="Trash can"
+                data-astro-cid-ct3bgug4
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <span data-astro-cid-ct3bgug4>End Session</span>
+          </button>
+          <p class="footer-text" data-astro-cid-ct3bgug4>
+            <span id="ping-text" data-astro-cid-ct3bgug4>~</span>
+            ms
+          </p>
+        </div>
+      </article>
+    </main>
+    <script src="1/api_render-explicit.js" async defer></script>
+    <!-- <script is:inline src="https://www.google.com/recaptcha/api.js?render=explicit"></script> -->
+  </body>
+</html>

@@ -1,17 +1,25 @@
 {
-  "name": "html-css",
-  "version": "1.0.0",
-  "description": "A template for HTML and CSS",
+  "name": "vapor-site",
+  "version": "2.0.0",
+  "description": "400+ games, windows vm, movies, ai chat, all in one package",
   "main": "index.html",
   "scripts": {
     "start": "serve"
   },
   "keywords": [
-    "html",
-    "css"
+    "games",
+    "ultraviolet",
+    "movies",
+    "ai",
+    "virtual-machine",
+    "vm",
+    "unblock",
+    "unblocking",
+    "unblocked",
+    "ubg"
   ],
-  "author": "Ives van Hoorne",
-  "license": "MIT",
+  "author": "technonyte",
+  "license": "AGPL",
   "devDependencies": {
     "serve": "11.2.0"
   }

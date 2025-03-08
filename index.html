@@ -1,386 +1,120 @@
 <!DOCTYPE html>
+<!--
+  ..................................................
+  ..................................................
+  ..................................................
+  ..................................................
+  ..................................................
+  ................:-+#@@@@@@@@@@@@@@@@@@@:..........
+  ..........:-+#%@@@@@@@@@@@@@@@@@@@@@@@@:..........
+  ..........#@@@@@@@@@@@@@@@@@@@@@@@@@@@@:..........
+  ..........#@@@@%#+:.=@@@@@@-......................
+  ..........===:......=@@@@@@-......................
+  ....................=@@@@@@-......................
+  ....................=@@@@@@-......................
+  ....................=@@@@@@-......................
+  ....................=@@@@@@-......................
+  ....................=@@@@@@-......................
+  ....................=@@@@@@@+.....................
+  ....................:#@@@@@@@@-...................
+  ......................-%@@@@@@@%-.................
+  ........................=%@@@@@@@#:...............
+  ..........................+@@@@@@@@%:.............
+  ...........................:*@@@@@@+..............
+  .............................:*@@*:...............
+  ..................................................
+  ..................................................
+  ..................................................
+  ..................................................
+  ..................................................
+  -->
+<!--
+  ☄ VAPOR v2
+  -------
+  400+ games, windows vm, movies, ai chat, all in one package
+  -------
+  created by technonyte
+  https://technonyte.pages.dev/
+  -------
+  IF YOU SKID THIS SHAME ON YOU
+  -------
+  DM @quartzz01 if you have any DMCA or copyright issues :)
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VAPOR</title>
-    <meta property="og:title" content="☄️ VAPOR" />
-  <meta name="theme-color" content="#49517c" />
-  <meta name="msapplication-TileColor" content="#49517c" />
-  <meta property="og:image" content="/assets/logo_nobg.png" />
-  <meta property="og:description" content="a fast and privacy focused ubg site." />
-    <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: "Inter", Arial, sans-serif;
-        overflow: hidden;
-      }
-      .content {
-        background-color: none;
-        color: white;
-        padding-top: 40px;
-        height: calc(100% - 40px);
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        overflow-x: hidden;
-      }
-      .logo {
-        width: 270px;
-        height: 170px;
-        object-fit: cover;
-        animation: zoom 0.45s ease;
-      }
-      @keyframes zoom {
-        0% {
-          transform: translateX(500%);
-          filter: blur(10px);
-        }
-      }
-      .form {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 12px 15px;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-        max-width: 400px;
-        animation: show-btn 0.5s ease;
-      }
-      .form:hover {
-        background: rgba(255, 255, 255, 0.15);
-      }
-      .prox_input {
-        border: none;
-        background: none;
-        height: 100%;
-        font-size: 18px;
-        outline: none;
-        color: rgba(255, 255, 255, 0.8);
-        flex-grow: 1;
-      }
-      .prox_input::placeholder {
-        color: rgba(255, 255, 255, 0.35);
-      }
-      .prox_input:focus::placeholder {
-        opacity: 0;
-      }
-      .button-container {
-        display: flex;
-        gap: 8px;
-        margin-top: 8px;
-        width: 430px;
-      }
-      .action-button {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 12px 15px;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex: 1;
-        color: rgba(255, 255, 255, 0.8);
-        border: none;
-        cursor: pointer;
-        font-size: 18px;
-        backdrop-filter: blur(10px);
-        animation: show-btn 0.5s ease;
-      }
-      .action-button p {
-        margin: 0;
-        width: 100%;
-        text-align: center;
-        padding-right: 23px;
-      }
-      .action-button:hover {
-        background: rgba(255, 255, 255, 0.15);
-      }
-      @keyframes show-btn {
-        0% {
-          transform: translateY(15px);
-          opacity: 0;
-        }
-      }
-      #particles-js {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -99;
-        background: #0f111d;
-      }
-      .cred {
-        font-size: 15px;
-        position: absolute;
-        bottom: 10px;
-        margin: 0;
-        color: rgb(200, 200, 200);
-      }
-      .cred a {
-        color: rgb(200, 200, 200);
-        text-decoration: none;
-        transition: 0.15s ease;
-      }
-      .cred a:hover {
-        color: white;
-        text-decoration: underline;
-        font-weight: 700;
-      } /* info modaal */
-      .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 100;
-        justify-content: center;
-        align-items: center;
-      }
-      .modal-content {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 20px;
-        max-width: 400px;
-        width: 90%;
-        max-height: 450px;
-        overflow-y: auto;
-        position: relative;
-        animation: scale-in 0.15s forwards;
-        color: rgba(255, 255, 255, 0.85);
-      }
-      .modal-content h1,
-      .modal-content p {
-        color: white;
-        margin: 5px 0px;
-      }
-      .modal-content ul {
-        padding-left: 20px;
-      }
-      .close-button {
-        background: transparent;
-        border: none;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 18px;
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-      }
-      @keyframes scale-in {
-        0% {
-          transform: scale(0.95);
-          opacity: 0;
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-      @keyframes scale-out {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(0.95);
-          opacity: 0;
-        }
-      }
-    </style>
-
+    <title>VAPOR v2</title>
+    <link
+      rel="stylesheet"
+      href="https://lupinevault.com/assets/font-awesome/css/all.css"
+    />
+    <link rel="icon" type="image/png" href="/_a/logo-nobg.old.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"
+    <link rel="stylesheet" href="_css/main.css" />
+    <link rel="stylesheet" href="_css/nav-minimize.css" />
+    <meta property="og:title" content="☄️ VAPOR" />
+    <meta name="theme-color" content="#49517c" />
+    <meta name="msapplication-TileColor" content="#49517c" />
+    <meta property="og:image" content="/_a/logo.old.png" />
+    <meta
+      property="og:description"
+      content="400+ games, windows vm, movies, ai chat, all in one package"
     />
-    <link rel="stylesheet" href="styles/nav.css" />
-    <script src="scripts/nav.js"></script>
-    <script src="scripts/particle.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="scripts/loadSettings.js"></script>
   </head>
   <body>
-    <div id="particles-js"></div>
-
-    <div id="nav">
-      <div class="nav-left"></div>
-      <div class="nav-right"></div>
+    <div id="loading">
+      <div class="spinner"></div>
     </div>
-    <div class="content">
-      <img src="assets/logo_nobg.png" alt="Logo" class="logo" />
-      <form class="form">
-        <i class="fa-regular fa-search"></i>
-        <input type="text" class="prox_input" />
-      </form>
-      <div class="button-container">
-        <button class="action-button" id="info-button">
-          <i class="fa-solid fa-regular fa-info"></i>
-          <p>Information</p>
+
+    <div class="main-content">
+      <iframe src="pgs/homepage.html" id="iframe"></iframe>
+    </div>
+
+    <div class="nav">
+      <div class="nav-l" id="nav-left">
+        <!-- dynamic buttons: l -->
+      </div>
+
+      <div class="nav-center">
+        <div class="time-display" id="time-display">--:-- --</div>
+        <div class="vertical-divider"></div>
+        <div class="date-display" id="date">~ ~ ~ ~</div>
+        <div class="vertical-divider"></div>
+        <div class="battery-container">
+          <div class="battery-icon">
+            <div class="battery-level"></div>
+          </div>
+          <span id="battery-percent">--%</span>
+        </div>
+        <div class="vertical-divider"></div>
+        <button id="fullscr">
+          <i class="fa-regular fa-expand"></i>
         </button>
-        <button class="action-button" id="ab-cloak-button">
-          <i class="fa-solid fa-regular fa-arrow-up-right-from-square"></i>
-          <p>AB Cloak</p>
+        <button id="hideNavBtn">
+          <i class="fa-regular fa-chevron-down"></i>
         </button>
       </div>
-      <p class="cred">
-        ~&nbsp;&nbsp;&nbsp;VAPOR v1.6&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;
-        <a href="https://technonyte.pages.dev/">created by technonyte</a
-        >&nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;
-        <a href="https://discord.gg/s2WXSyJrwA">join our discord</a> ~
-      </p>
-    </div>
 
-    <!-- info modal -->
-    <div class="modal" id="info-modal">
-      <div class="modal-content">
-        <button class="close-button" id="close-modal">&times;</button>
-        <h1>VAPOR v1.6</h1>
-        <p>Main Link: vaporsite.pages.dev</p>
-        <p>Discord: dsc.gg/vaporr</p>
-        <hr />
-        <strong style="color: red">DISCLAIMER:</strong>
-        <p>
-          VAPOR is not designed to encourage time wasting.<br /><br />Use VAPOR
-          only in your free time, and do not let them lead to distraction.
-        </p>
-        <hr />
-        <strong>Credits:</strong>
-        <ul>
-          <li><strong>technonyte</strong>- creator</li>
-          <li><strong>Titanium Network</strong>- Ultraviolet</li>
-          <li><strong>Interstellar</strong>- most games</li>
-          <li><strong>Benrogo</strong>- bare server</li>
-          <li><strong>frogiee1</strong>- nowgg bypass</li>
-        </ul>
-        <hr />
+      <div class="nav-r" id="nav-right">
+        <!-- dynamic buttons: r -->
       </div>
     </div>
-
-    <script src="uv/uv.bundle.js"></script>
-    <script src="uv/uv.config.js"></script>
-    <script>
-      const dictionary = {
-  phrases: [
-    "sponsored by furtivethomas",
-    "whatcha looking for ;)",
-    "unblockzone is so bad",
-    "age is just a number -braybray",
-    "ever heard of css?",
-    "dsc.gg/vaporr",
-    "benrogo on top!",
-    "dont do drugs kids",
-    "Sponsored by Honey",
-    "trees have leaves when raining",
-    "🗣🔥🔥🔥",
-    "my mom isn't alive lol",
-    "if you really think about it",
-    "I love piracy",
-    "vapor is the best",
-    "vapor is the best FRRR",
-    "🥺👉👈 excuse me..?",
-    "44.251.176.57",
-    "Proudly created in the USA",
-    "technonyte is a good coder",
-    "Lorem ipsum dolor sit amet,",
-    "You have joined your class! Welcome!",
-    "Now with games!",
-    "made with 99% code",
-    "created using html",
-    "this is spalsh text hi",
-    "Beep boop, boop beep?",
-    "Daily Math: 1 + 1 = 2",
-    "Redbull gives you wiiings...",
-    "\"how to make proccyyy??\"",
-    "Hello world!",
-    "ITS BLOCKED HEALPPP!!",
-    "GoGuardian (spyware in a nutshell)",
-  ],
-};
-      function setRandomPlaceholder() {
-        const randomIndex = Math.floor(
-          Math.random() * dictionary.phrases.length
-        );
-        const randomPhrase = dictionary.phrases[randomIndex];
-        const input = document.querySelector(".prox_input");
-        input.placeholder = randomPhrase;
-      }
-
-      window.onload = setRandomPlaceholder;
-
-      const form = document.querySelector(".form");
-      const infoButton = document.getElementById("info-button");
-      const abCloakButton = document.getElementById("ab-cloak-button");
-      const input = document.querySelector(".prox_input");
-      const modal = document.getElementById("info-modal");
-      const closeModalButton = document.getElementById("close-modal");
-
-      form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        await window.navigator.serviceWorker.register("sw.js", {
-          scope: __uv$config.prefix,
-        });
-
-        let url = input.value.trim();
-        if (!isUrl(url)) {
-          url = "https://duckduckgo.com/?q=" + encodeURIComponent(url);
-        } else if (!(url.startsWith("https://") || url.startsWith("http://"))) {
-          url = "http://" + url;
-        }
-
-        const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
-        window.location.href = "tabs.html?u=" + btoa(encodedUrl);
-      });
-
-      infoButton.addEventListener("click", () => {
-        modal.style.display = "flex";
-        modal.querySelector(".modal-content").style.animation =
-          "scale-in 0.3s forwards";
-      });
-
-      closeModalButton.addEventListener("click", () => {
-        modal.querySelector(".modal-content").style.animation =
-          "scale-out 0.3s forwards";
-        setTimeout(() => {
-          modal.style.display = "none";
-        }, 300);
-      });
-
-      abCloakButton.addEventListener("click", () => {
-        const cloakWindow = window.open("", "_blank");
-        cloakWindow.document.write(
-          `<iframe src="${location.hostname}" style="width: 100%; height: 100%; border: none; margin: 0; position: fixed; top: 0; left: 0;"></iframe>`
-        );
-        cloakWindow.document.close();
-      });
-
-      function isUrl(val = "") {
-        return (
-          /^http(s?):\/\//.test(val) ||
-          (val.includes(".") && val.substr(0, 1) !== " ")
-        );
-      }
-
-      if (window.self !== window.top) {
-        abCloakButton.disabled = true;
-        abCloakButton.textContent = "Cloaked";
-        abCloakButton.style.opacity = "0.6";
-        abCloakButton.style.cursor = "not-allowed";
-      }
-    </script>
+    <button id="showNavBtn" class="hidden">
+      <i class="fa-regular fa-chevron-up"></i>
+    </button>
+    <!--UV Configuration-->
+    <script src="vap/main.js"></script>
+    <script src="vap/cfg.js"></script>
+    <script src="_scr/nav-btn.js"></script>
+    <script src="_scr/navigation.js"></script>
+    <script src="_scr/updates.js"></script>
+    <script src="_scr/load.js"></script>
+    <script src="_scr/extra.js"></script>
   </body>
 </html>

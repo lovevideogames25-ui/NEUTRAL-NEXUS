@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VAPOR Movies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        background-color: none;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        margin: 20px;
+        width: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 10px;
+      }
+      form:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      input {
+        padding: 5px;
+        border: none;
+        font-size: 16px;
+        flex: 1;
+        background: none;
+        margin-left: 10px;
+        outline: none;
+        color: white;
+        font-family: "Inter";
+        vertical-align: center;
+        margin-bottom: 2px;
+      }
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .icon {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-right: 0px;
+        margin-left: 5px;
+        font-weight: 600;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 320px);
+        gap: 15px;
+        padding: 20px;
+        padding-bottom: 60px;
+      }
+      .card {
+        position: relative;
+        width: 320px;
+        aspect-ratio: 16 / 9;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: left;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+      .movie-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+      }
+      .play-button {
+        padding: 12px 22px;
+        background: #2b304d;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: 0.15s;
+        font-size: 19px;
+        text-align: center;
+        width: 50px;
+        position: absolute;
+        right: 40px;
+        bottom: 37px;
+      }
+      .play-button:hover {
+        background: #49517c;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="searchForm">
+      <i class="fas fa-search icon"></i>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for a movie..."
+        autofocus
+        spellcheck="false"
+        autocomplete="off"
+      />
+    </form>
+    <div class="grid" id="movieGrid"></div>
+
+    <script>
+      const apiKey = "2713804610e1e236b1cf44bfac3a7776";
+      const searchInput = document.getElementById("searchInput");
+      const movieGrid = document.getElementById("movieGrid");
+
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const query = searchInput.value;
+          if (query) {
+            searchMovies(query);
+          }
+        });
+
+      async function fetchPopularMovies() {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+        );
+        const data = await response.json();
+        displayMovies(data.results);
+      }
+
+      async function searchMovies(query) {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
+            query
+          )}`
+        );
+        const data = await response.json();
+        displayMovies(data.results);
+      }
+
+      function displayMovies(movies) {
+        movieGrid.innerHTML = "";
+        movies.forEach((movie) => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`;
+          card.innerHTML = `
+            <div class="overlay">
+              <div class="movie-title">${movie.title}</div>
+              <a href="../l.html?mov=${movie.id}" class="play-button">PLAY</a>
+            </div>
+          `;
+          movieGrid.appendChild(card);
+        });
+      }
+
+      fetchPopularMovies();
+    </script>
+  </body>
+</html>

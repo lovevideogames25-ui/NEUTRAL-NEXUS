@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Google",
+    "link": "https://google.com/",
+    "image": "https://blog.logomyway.com/wp-content/uploads/2021/01/google-symbol.jpg"
+  },
+  {
+    "name": "TikTok",
+    "link": "https://tiktok.com/",
+    "image": "https://nestscale.com/wp-content/uploads/2023/07/Secondary-logo.png"
+  },
+  {
+    "name": "Now.GG (frogiee)",
+    "link": "https://nowgg.lol/hub",
+    "image": "https://nowgg.lol/src/logo.png"
+  },
+  {
+    "name": "Xbox Cloud Gaming",
+    "link": "https://www.xbox.com/en-us/play",
+    "image": "https://i.pinimg.com/474x/fe/4d/0d/fe4d0da4f9a7707e2e3de5b1554a0c95.jpg"
+  },
+  {
+    "name": "v86",
+    "link": "http://copy.sh/v86",
+    "image": "https://jobi.one/files/thumbs/v86.png"
+  },
+  {
+    "name": "Scratch",
+    "link": "https://scratch.mit.edu/",
+    "image": "https://fontmeme.com/images/SCRATCH-LOGO-FONT.png"
+  },
+  {
+    "name": "Snapchat",
+    "link": "https://www.snapchat.com/?original_referrer=www.google.com",
+    "image": "https://static-00.iconduck.com/assets.00/snapchat-icon-2048x2048-nmcy60kt.png"
+  },
+  {
+    "name": "X",
+    "link": "https://x.com/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpgs/1200px-X_logo.jpg"
+  }
+]

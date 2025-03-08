@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VAPOR</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Inter", Arial, sans-serif;
+        background: transparent;
+        color: white;
+      }
+
+      .content {
+        padding-top: 20px;
+        height: calc(100% - 80px);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 60px;
+      }
+
+      .filter-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        width: auto;
+        margin-top: 10px;
+      }
+
+      .search-input {
+        width: 450px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 12px 15px;
+        border-radius: 15px;
+        margin-right: 4px;
+        border: none;
+        font-size: 18px;
+        outline: none;
+        color: rgba(255, 255, 255, 0.8);
+        font-family: "Inter";
+      }
+
+      .search-input:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .game-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 320px);
+        gap: 15px;
+        justify-content: center;
+        padding: 20px;
+        margin-top: 0px;
+        transition: 0.15s ease;
+      }
+
+      .game {
+        position: relative;
+        width: 320px;
+        aspect-ratio: 16 / 9;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 0.15s ease;
+        text-align: left;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.647);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+
+      .overlay h2 {
+        margin: 0;
+        font-size: 25px;
+      }
+
+      .play-button {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        padding: 12px 22px;
+        background: #2b304d;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: 0.15s;
+        font-size: 19px;
+      }
+
+      .play-button:hover {
+        background: #49517c;
+      }
+
+      /* New progress bar styles */
+      .progress-container {
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 10px;
+      }
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        width: 0%;
+        background: #49517c;
+        transition: 0.15s ease;
+      }
+      .progress-text {
+        margin-top: 5px;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="content">
+      <div class="filter-container">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Loading..."
+          id="searchInput"
+          disabled
+        />
+      </div>
+      <div class="progress-container" id="progressContainer">
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">0/429</div>
+      </div>
+      <div class="game-grid" id="gameGrid" style="opacity: 0"></div>
+    </div>
+    <script>
+      let games = [];
+      let activeFilters = [];
+      let host = "https://vaporsite-assets.pages.dev/game-images/img/";
+      let searchInput = document.getElementById("searchInput");
+      let progressBarFill = document.getElementById("progressBarFill");
+      let progressText = document.getElementById("progressText");
+      let progressContainer = document.getElementById("progressContainer");
+      let gameGrid = document.getElementById("gameGrid");
+
+      function encodeBase64(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+      }
+
+      async function loadGames() {
+        const response = await fetch("../_a/games.json");
+        games = await response.json();
+
+        games.sort((a, b) => a.name.localeCompare(b.name));
+
+        progressText.textContent = `0/${games.length}`;
+
+        for (let i = 0; i < games.length; i++) {
+          progressText.textContent = `${i + 1}/${games.length}`;
+          progressBarFill.style.width = `${((i + 1) / games.length) * 100}%`;
+          await new Promise((r) => setTimeout(r, 5));
+        }
+
+        searchInput.placeholder = `Search ${games.length} games...`;
+        searchInput.disabled = false;
+
+        progressContainer.style.display = "none";
+        gameGrid.style.opacity = "1";
+
+        renderGames();
+      }
+
+      function renderGames() {
+        const grid = document.getElementById("gameGrid");
+        grid.innerHTML = "";
+
+        const searchValue = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+
+        games.forEach((game) => {
+          const matchesSearch = game.name.toLowerCase().includes(searchValue);
+          const matchesFilters =
+            activeFilters.length === 0 ||
+            activeFilters.some((filter) => game.categories.includes(filter));
+
+          if (matchesSearch && matchesFilters) {
+            const gameDiv = document.createElement("div");
+            gameDiv.classList.add("game");
+            gameDiv.style.backgroundImage = "url(" + host + game.img + ")";
+
+            gameDiv.addEventListener("click", () => {
+              const encodedUrl = encodeBase64(game.link);
+              window.location.href = `../l.html?u=${encodedUrl}`;
+            });
+
+            const overlay = document.createElement("div");
+            overlay.classList.add("overlay");
+
+            const title = document.createElement("h2");
+            title.textContent = game.name;
+
+            const playButton = document.createElement("a");
+            playButton.textContent = "PLAY";
+            playButton.classList.add("play-button");
+
+            overlay.appendChild(title);
+            overlay.appendChild(playButton);
+            gameDiv.appendChild(overlay);
+            grid.appendChild(gameDiv);
+          }
+        });
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", renderGames);
+
+      function filterGames(category) {
+        const index = activeFilters.indexOf(category);
+        if (index > -1) {
+          activeFilters.splice(index, 1);
+        } else {
+          activeFilters.push(category);
+        }
+        renderGames();
+      }
+
+      loadGames();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+#hideNavBtn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 17.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3px;
+  height: 45px;
+  cursor: pointer;
+}
+
+#showNavBtn {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  border: none;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  transform: translateY(100px);
+}
+
+#showNavBtn.btn-visible {
+  transform: translateY(0);
+}
+
+.nav.nav-hidden {
+  transform: translateY(100%);
+}
+
+.nav.nav-hidden + .main-content iframe {
+  height: 100%;
+}

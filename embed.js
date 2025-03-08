@@ -8,6 +8,7 @@ try {
     destination = new URL("https://" + destination.href);
   }
 } catch (err) {
+  alert("dest: " + destination);
   alert(`Bad # string or bad URL. Got error:\n${err}`);
   throw err;
 }
