@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VAPOR v2 ~ 404</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+        }
+        body {
+            background: #0a111d;
+            font-family: "Inter";
+            color: rgba(255, 255, 255, 0.9);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div {
+            width: 60%;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+        }
+        .refresh-button {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            padding: 12px 22px;
+            font-size: 18px;
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.1s ease;
+            font-family: 'Inter';
+        }
+        .refresh-button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button class="refresh-button" onclick="location.reload();">Refresh</button>
+        <h1>Error 404:</h1><br>
+        <p>The page you were looking for could not be found</p><br>
+        <h3>Were you using the proxy?</h3><br>
+        <p>Try re-entering the URL or refresh using the button.<br>Still doesn't work? Try using <code>CTRL+SHIFT+R</code>.</p>
+    </div>
+</body>
+
+</html>
