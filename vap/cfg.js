@@ -1,6 +1,6 @@
 self.__uv$config = {
   prefix: "/go/vapor/",
-  bare: "https://v2202412246404304352.megasrv.de/bare/",
+  bare: "https://prod.benrogo.net/",
   encodeUrl: (url) => {
     if (url.includes(".onion")) {
       url = url.replace(".onion", ".onion.dog");
