@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const abCloakBtn = document.getElementById("abCloakBtn");
+const abCloakBtn = document.getElementById("abCloakBtn");
   
   if (window !== window.parent) {
     abCloakBtn.style.opacity = "0.6";
@@ -37,8 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Popup blocked! Please allow popups for this site.");
     }
   });
-});
-
 
 const fullscreenBtn = document.getElementById("fullscr");
 fullscreenBtn.addEventListener("click", () => {
