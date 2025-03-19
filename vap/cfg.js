@@ -1,5 +1,5 @@
 self.__uv$config = {
-  prefix: "/go/vapor/",
+  prefix: "/~/vap/",
   bare: "https://prod.benrogo.net/",
   encodeUrl: (url) => {
     if (url.includes(".onion")) {
