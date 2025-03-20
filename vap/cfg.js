@@ -1,12 +1,7 @@
 self.__uv$config = {
   prefix: "/~/vap/",
-  bare: "https://prod.benrogo.net/",
-  encodeUrl: (url) => {
-    if (url.includes(".onion")) {
-      url = url.replace(".onion", ".onion.dog");
-    }
-    return Ultraviolet.codec.xor.encode(url);
-  },
+  bare: "https://bore.veronicabazan.cl/bare/",
+  encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: "/vap/handle.js",
   bundle: "/vap/main.js",
