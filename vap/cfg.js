@@ -1,6 +1,6 @@
 self.__uv$config = {
   prefix: "/~/vap/",
-  bare: "https://bore.veronicabazan.cl/bare/",
+  bare: "https://prod.benrogo.net/", // BEN AURAAAA
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: "/vap/handle.js",
