@@ -23,7 +23,7 @@ const navButtons = {
     {
       icon: "fa-regular fa-desktop",
       tooltip: "VM",
-      loc: "vapor-vm/index.html",
+      loc: "pgs/vm.html",
     },
     {
       icon: "fa-regular fa-clapperboard",
