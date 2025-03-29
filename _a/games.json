@@ -1,2147 +1,2474 @@
 [
   {
-    "img": "0hh1.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/0hh1/index.html",
-    "name": "0hh1"
+    "id": "infinite-craft",
+    "name": "Infinite Craft",
+    "url": "https://infinite-craft.org/infinite-craft",
+    "img": "https://play-lh.googleusercontent.com/YJFHGSmrMGuUqyWZ0oZDgDtDErIU2jQY3yT_PG9IRL6s5dBLmKXrXQShM3n8HFoPhkM=w240-h480-rw"
   },
   {
-    "img": "0hn0.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/0hn0/index.html",
-    "name": "0hn0"
+    "id": "funny-shooter",
+    "name": "Funny Shooter",
+    "url": "https://funny-shooter.github.io/file/",
+    "img": "https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=1200,height=1200,fit=cover,f=png/894abba63a6b23fed823f404831f444f.jpeg"
   },
   {
-    "img": "1.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/1/index.html",
-    "name": "1"
+    "id": "1",
+    "name": "1",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1/splash.png"
   },
   {
-    "img": "10-minutes-till-dawn.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/10-minutes-till-dawn/index.html",
-    "name": "10 Minutes Till Dawn"
+    "id": "10-minutes-till-dawn",
+    "name": "10 Minutes Till Dawn",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/10-minutes-till-dawn/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/10-minutes-till-dawn/splash.png"
   },
   {
-    "img": "100-player-pong.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/100-player-pong/index.html",
-    "name": "100 Player Pong"
+    "id": "100ng",
+    "name": "100ng",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/100ng/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/100ng/splash.png"
   },
   {
-    "img": "2020-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/2020-game/index.html",
-    "name": "2020 Game"
+    "id": "1v1lol",
+    "name": "1v1lol",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1v1lol/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1v1lol/splash.png"
   },
   {
-    "img": "2048.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/2048/index.html",
-    "name": "2048"
+    "id": "1v1space",
+    "name": "1v1space",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1v1space/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1v1space/splash.png"
   },
   {
-    "img": "2048-multitask.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/2048-multitask/index.html",
-    "name": "2048 Multitask"
+    "id": "2048-multitask",
+    "name": "2048 Multitask",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/2048-multitask/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/2048-multitask/splash.png"
   },
   {
-    "img": "8ball-billiards-classic.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/8ball-billiards-classic/index.html",
-    "name": "8ball Billiards Classic"
+    "id": "2048",
+    "name": "2048",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/2048/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/2048/splash.png"
   },
   {
-    "img": "9007199254740992.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/9007199254740992/index.html",
-    "name": "9007199254740992"
+    "id": "9007199254740992",
+    "name": "9007199254740992",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/9007199254740992/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/9007199254740992/splash.png"
   },
   {
-    "img": "a-dark-room.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/a-dark-room/index.html",
-    "name": "A Dark Room"
+    "id": "99balls",
+    "name": "99balls",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/99balls/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/99balls/splash.png"
   },
   {
-    "img": "a-difficult-game-about-climbing.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/a-difficult-game-about-climbing/index.html",
-    "name": "A Difficult Game About Climbing"
+    "id": "cmm-client",
+    "name": "Cmm Client",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cmm-client/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cmm-client/splash.png"
   },
   {
-    "img": "achievement-unlocked.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/achievement-unlocked/index.html",
-    "name": "Achievement Unlocked"
+    "id": "doomori",
+    "name": "Doomori",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doomori/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doomori/splash.png"
   },
   {
-    "img": "age-of-war.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/age-of-war/index.html",
-    "name": "Age Of War"
+    "id": "dogeminer",
+    "name": "Dogeminer",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer/splash.png"
   },
   {
-    "img": "alien-hominid.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/alien-hominid/index.html",
-    "name": "Alien Hominid"
+    "id": "dogeminer2",
+    "name": "Dogeminer2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer2/splash.png"
   },
   {
-    "img": "alien-invaders-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/alien-invaders-io/index.html",
-    "name": "Alien Invaders Io"
+    "id": "hexgl",
+    "name": "Hexgl",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hexgl/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hexgl/splash.png"
   },
   {
-    "img": "align-4.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/align-4/index.html",
-    "name": "Align 4"
+    "id": "monkeymart",
+    "name": "Monkeymart",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/monkeymart/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/monkeymart/splash.png"
   },
   {
-    "img": "among-us.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/among-us/index.html",
-    "name": "Among Us"
+    "id": "offlineparadise",
+    "name": "Offlineparadise",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/offlineparadise/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/offlineparadise/splash.png"
   },
   {
-    "img": "angry-birds.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/angry-birds/index.html",
-    "name": "Angry Birds"
+    "id": "rocket-league",
+    "name": "Rocket League",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rocket-league/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rocket-league/splash.png"
   },
   {
-    "img": "anti-terrorist-rush.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/anti-terrorist-rush/index.html",
-    "name": "Anti Terrorist Rush"
+    "id": "run-2",
+    "name": "Run 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run-2/splash.png"
   },
   {
-    "img": "arcade-wizard.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/arcade-wizard/index.html",
-    "name": "Arcade Wizard"
+    "id": "shapeshootout",
+    "name": "Shapeshootout",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shapeshootout/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shapeshootout/splash.png"
   },
   {
-    "img": "ascii-space.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/ascii-space/index.html",
-    "name": "Ascii Space"
+    "id": "stickman-survival",
+    "name": "Stickman Survival",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-survival/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-survival/splash.png"
   },
   {
-    "img": "aspiring-artist.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/aspiring-artist/index.html",
-    "name": "Aspiring Artist"
+    "id": "trimps",
+    "name": "Trimps",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/trimps/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/trimps/splash.png"
   },
   {
-    "img": "asteroids.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/asteroids/index.html",
-    "name": "Asteroids"
+    "id": "a-dance-of-fire-and-ice",
+    "name": "A Dance Of Fire And Ice",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/a-dance-of-fire-and-ice/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/a-dance-of-fire-and-ice/splash.png"
   },
   {
-    "img": "astray.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/astray/index.html",
-    "name": "Astray"
+    "id": "achievementunlocked",
+    "name": "Achievementunlocked",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/achievementunlocked/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/achievementunlocked/splash.png"
   },
   {
-    "img": "avalanche.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/avalanche/index.html",
-    "name": "Avalanche"
+    "id": "adarkroom",
+    "name": "Adarkroom",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/adarkroom/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/adarkroom/splash.png"
   },
   {
-    "img": "awesome-tanks-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/awesome-tanks-2/index.html",
-    "name": "Awesome Tanks 2"
+    "id": "adrenalinechallenge",
+    "name": "Adrenalinechallenge",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/adrenalinechallenge/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/adrenalinechallenge/splash.png"
   },
   {
-    "img": "back-country.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/back-country/index.html",
-    "name": "Back Country"
+    "id": "adventure-drivers",
+    "name": "Adventure Drivers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/adventure-drivers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/adventure-drivers/splash.png"
   },
   {
-    "img": "backflip-dive-3d.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/backflip-dive-3d/index.html",
-    "name": "Backflip Dive 3d"
+    "id": "ages-of-conflict",
+    "name": "Ages Of Conflict",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ages-of-conflict/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ages-of-conflict/splash.png"
   },
   {
-    "img": "backrooms.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/backrooms/index.html",
-    "name": "Backrooms"
+    "id": "alienhominid",
+    "name": "Alienhominid",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/alienhominid/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/alienhominid/splash.png"
   },
   {
-    "img": "bad-ice-cream.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bad-ice-cream/index.html",
-    "name": "Bad Ice Cream"
+    "id": "align-4",
+    "name": "Align 4",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/align-4/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/align-4/splash.png"
   },
   {
-    "img": "bad-ice-cream-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bad-ice-cream-2/index.html",
-    "name": "Bad Ice Cream 2"
+    "id": "amazing-rope-police",
+    "name": "Amazing Rope Police",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/amazing-rope-police/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/amazing-rope-police/splash.png"
   },
   {
-    "img": "bad-ice-cream-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bad-ice-cream-3/index.html",
-    "name": "Bad Ice Cream 3"
+    "id": "amidst-the-clouds",
+    "name": "Amidst The Clouds",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/amidst-the-clouds/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/amidst-the-clouds/splash.png"
   },
   {
-    "img": "basket-bros-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/basket-bros-io/index.html",
-    "name": "Basket Bros Io"
+    "id": "among-us",
+    "name": "Among Us",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/among-us/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/among-us/splash.png"
   },
   {
-    "img": "basketball-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/basketball-io/index.html",
-    "name": "Basketball Io"
+    "id": "angelunder",
+    "name": "Angelunder",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/angelunder/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/angelunder/splash.png"
   },
   {
-    "img": "battle-for-gondor.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/battle-for-gondor/index.html",
-    "name": "Battle For Gondor"
+    "id": "angry-sharks",
+    "name": "Angry Sharks",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/angry-sharks/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/angry-sharks/splash.png"
   },
   {
-    "img": "big-ice-tower-tiny-square.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/big-ice-tower-tiny-square/index.html",
-    "name": "Big Ice Tower Tiny Square"
+    "id": "aquapark-slides",
+    "name": "Aquapark Slides",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/aquapark-slides/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/aquapark-slides/splash.png"
   },
   {
-    "img": "big-neon-tower-tiny-square.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/big-neon-tower-tiny-square/index.html",
-    "name": "Big Neon Tower Tiny Square"
+    "id": "astray",
+    "name": "Astray",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/astray/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/astray/splash.png"
   },
   {
-    "img": "big-red-button.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/big-red-button/index.html",
-    "name": "Big Red Button"
+    "id": "avalanche",
+    "name": "Avalanche",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/avalanche/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/avalanche/splash.png"
   },
   {
-    "img": "big-tower-tiny-square.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/big-tower-tiny-square/index.html",
-    "name": "Big Tower Tiny Square"
+    "id": "awesometanks2",
+    "name": "Awesometanks2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/awesometanks2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/awesometanks2/splash.png"
   },
   {
-    "img": "binding-of-isaac.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/binding-of-isaac/index.html",
-    "name": "Binding Of Isaac"
+    "id": "backrooms-2d",
+    "name": "Backrooms 2d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/backrooms-2d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/backrooms-2d/splash.png"
   },
   {
-    "img": "black-hole-square.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/black-hole-square/index.html",
-    "name": "Black Hole Square"
+    "id": "backrooms",
+    "name": "Backrooms",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/backrooms/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/backrooms/splash.png"
   },
   {
-    "img": "black-knight.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/black-knight/index.html",
-    "name": "Black Knight"
+    "id": "backrooms2d",
+    "name": "Backrooms2d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/backrooms2d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/backrooms2d/splash.png"
   },
   {
-    "img": "blocky-snakes.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/blocky-snakes/index.html",
-    "name": "Blocky Snakes"
+    "id": "bacon-may-die",
+    "name": "Bacon May Die",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bacon-may-die/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bacon-may-die/splash.png"
   },
   {
-    "img": "bloons-td.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bloons-td/index.html",
-    "name": "Bloons Td"
+    "id": "bad-ice-cream-2",
+    "name": "Bad Ice Cream 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bad-ice-cream-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bad-ice-cream-2/splash.png"
   },
   {
-    "img": "bloons-td-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bloons-td-2/index.html",
-    "name": "Bloons Td 2"
+    "id": "bad-ice-cream-3",
+    "name": "Bad Ice Cream 3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bad-ice-cream-3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bad-ice-cream-3/splash.png"
   },
   {
-    "img": "bloons-td-4.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bloons-td-4/index.html",
-    "name": "Bloons Td 4"
+    "id": "bad-ice-cream",
+    "name": "Bad Ice Cream",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bad-ice-cream/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bad-ice-cream/splash.png"
   },
   {
-    "img": "bloxorz.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bloxorz/index.html",
-    "name": "Bloxorz"
+    "id": "baldis-basics",
+    "name": "Baldis Basics",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/baldis-basics/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/baldis-basics/splash.png"
   },
   {
-    "img": "bounce-back.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/bounce-back/index.html",
-    "name": "Bounce Back"
+    "id": "balldodge",
+    "name": "Balldodge",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/balldodge/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/balldodge/splash.png"
   },
   {
-    "img": "boxel-rebound.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/boxel-rebound/index.html",
-    "name": "Boxel Rebound"
+    "id": "ballistic-chickens",
+    "name": "Ballistic Chickens",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ballistic-chickens/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ballistic-chickens/splash.png"
   },
   {
-    "img": "boxhead2play.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/boxhead2play/index.html",
-    "name": "Boxhead2play"
+    "id": "basket-random",
+    "name": "Basket Random",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/basket-random/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/basket-random/splash.png"
   },
   {
-    "img": "brave-explorers.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/brave-explorers/index.html",
-    "name": "Brave Explorers"
+    "id": "basketball-stars",
+    "name": "Basketball Stars",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/basketball-stars/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/basketball-stars/splash.png"
   },
   {
-    "img": "breaklock.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/breaklock/index.html",
-    "name": "Breaklock"
+    "id": "basketbros-io",
+    "name": "Basketbros Io",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/basketbros-io/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/basketbros-io/splash.png"
   },
   {
-    "img": "breakout.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/breakout/index.html",
-    "name": "Breakout"
+    "id": "battleforgondor",
+    "name": "Battleforgondor",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/battleforgondor/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/battleforgondor/splash.png"
   },
   {
-    "img": "burnin-rubber-5XS.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/burnin-rubber-5XS/index.html",
-    "name": "Burnin Rubber 5XS"
+    "id": "bigredbutton",
+    "name": "Bigredbutton",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bigredbutton/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bigredbutton/splash.png"
   },
   {
-    "img": "burning-man-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/burning-man-2/index.html",
-    "name": "Burning Man 2"
+    "id": "bitlife",
+    "name": "Bitlife",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bitlife/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bitlife/splash.png"
   },
   {
-    "img": "majoras-mask.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/majoras-mask/index.html",
-    "name": "Majoras Mask"
+    "id": "blacholesquare",
+    "name": "Blacholesquare",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/blacholesquare/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/blacholesquare/splash.png"
   },
   {
-    "img": "burnout-drift-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/burnout-drift-3/index.html",
-    "name": "Burnout Drift 3"
+    "id": "blackknight",
+    "name": "Blackknight",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/blackknight/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/blackknight/splash.png"
   },
   {
-    "img": "cannon-basketball-4.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cannon-basketball-4/index.html",
-    "name": "Cannon Basketball 4"
+    "id": "blockpost",
+    "name": "Blockpost",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/blockpost/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/blockpost/splash.png"
   },
   {
-    "img": "canyon-defense.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/canyon-defense/index.html",
-    "name": "Canyon Defense"
+    "id": "bloonstd",
+    "name": "Bloonstd",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bloonstd/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bloonstd/splash.png"
   },
   {
-    "img": "captain-callisto.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/captain-callisto/index.html",
-    "name": "Captain Callisto"
+    "id": "bloonstd2",
+    "name": "Bloonstd2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bloonstd2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bloonstd2/splash.png"
   },
   {
-    "img": "cars-simulator.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cars-simulator/index.html",
-    "name": "Cars Simulator"
+    "id": "bloxors",
+    "name": "Bloxors",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bloxors/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bloxors/splash.png"
   },
   {
-    "img": "cell-machine.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cell-machine/index.html",
-    "name": "Cell Machine"
+    "id": "bntts",
+    "name": "Bntts",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bntts/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bntts/splash.png"
   },
   {
-    "img": "champion-archer.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/champion-archer/index.html",
-    "name": "Champion Archer"
+    "id": "bobtherobber2",
+    "name": "Bobtherobber2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bobtherobber2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bobtherobber2/splash.png"
   },
   {
-    "img": "chess.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/chess/index.html",
-    "name": "Chess"
+    "id": "bonkio",
+    "name": "Bonkio",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bonkio/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bonkio/splash.png"
   },
   {
-    "img": "chill-radio.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/chill-radio/index.html",
-    "name": "Chill Radio"
+    "id": "boxhead2play",
+    "name": "Boxhead2play",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/boxhead2play/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/boxhead2play/splash.png"
   },
   {
-    "img": "chroma-incident.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/chroma-incident/index.html",
-    "name": "Chroma Incident"
+    "id": "boxing-random",
+    "name": "Boxing Random",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/boxing-random/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/boxing-random/splash.png"
   },
   {
-    "img": "chrome-dino.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/chrome-dino/index.html",
-    "name": "Chrome Dino"
+    "id": "breakingthebank",
+    "name": "Breakingthebank",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/breakingthebank/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/breakingthebank/splash.png"
   },
   {
-    "img": "circlo.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/circlo/index.html",
-    "name": "Circlo"
+    "id": "btd4",
+    "name": "Btd4",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/btd4/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/btd4/splash.png"
   },
   {
-    "img": "city-blocks-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/city-blocks-2/index.html",
-    "name": "City Blocks 2"
+    "id": "btd5",
+    "name": "Btd5",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/btd5/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/btd5/splash.png"
   },
   {
-    "img": "clean-up-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/clean-up-io/index.html",
-    "name": "Clean Up Io"
+    "id": "btts",
+    "name": "Btts",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/btts/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/btts/splash.png"
   },
   {
-    "img": "cluster-rush.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cluster-rush/index.html",
-    "name": "Cluster Rush"
+    "id": "burger-and-frights",
+    "name": "Burger And Frights",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/burger-and-frights/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/burger-and-frights/splash.png"
   },
   {
-    "img": "color-switch-2-challenges.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/color-switch-2-challenges/index.html",
-    "name": "Color Switch 2 Challenges"
+    "id": "bus-and-subway",
+    "name": "Bus And Subway",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bus-and-subway/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/bus-and-subway/splash.png"
   },
   {
-    "img": "connect3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/connect3/index.html",
-    "name": "Connect3"
+    "id": "cannon-basketball-4",
+    "name": "Cannon Basketball 4",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cannon-basketball-4/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cannon-basketball-4/splash.png"
   },
   {
-    "img": "contra-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/contra-3/index.html",
-    "name": "Contra 3"
+    "id": "canyondefense",
+    "name": "Canyondefense",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/canyondefense/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/canyondefense/splash.png"
   },
   {
-    "img": "core-ball.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/core-ball/index.html",
-    "name": "Core Ball"
+    "id": "cars-simulator",
+    "name": "Cars Simulator",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cars-simulator/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cars-simulator/splash.png"
   },
   {
-    "img": "craftmine.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/craftmine/index.html",
-    "name": "Craftmine"
+    "id": "cell-machine",
+    "name": "Cell Machine",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cell-machine/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cell-machine/splash.png"
   },
   {
-    "img": "creative-kill-chamber.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/creative-kill-chamber/index.html",
-    "name": "Creative Kill Chamber"
+    "id": "champion-island",
+    "name": "Champion Island",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/champion-island/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/champion-island/splash.png"
   },
   {
-    "img": "crossy-road.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/crossy-road/index.html",
-    "name": "Crossy Road"
+    "id": "championarcher",
+    "name": "Championarcher",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/championarcher/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/championarcher/splash.png"
   },
   {
-    "img": "crowd-city-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/crowd-city-2/index.html",
-    "name": "Crowd City 2"
+    "id": "checkers",
+    "name": "Checkers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/checkers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/checkers/splash.png"
   },
   {
-    "img": "csgo-clicker.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/csgo-clicker/index.html",
-    "name": "Csgo Clicker"
+    "id": "chess",
+    "name": "Chess",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/chess/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/chess/splash.png"
   },
   {
-    "img": "cubefield.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cubefield/index.html",
-    "name": "Cubefield"
+    "id": "chill-radio",
+    "name": "Chill Radio",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/chill-radio/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/chill-radio/splash.png"
   },
   {
-    "img": "cupcake-2048.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cupcake-2048/index.html",
-    "name": "Cupcake 2048"
+    "id": "chrome-dino",
+    "name": "Chrome Dino",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/chrome-dino/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/chrome-dino/splash.png"
   },
   {
-    "img": "cut-the-rope.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cut-the-rope/index.html",
-    "name": "Cut The Rope"
+    "id": "circlo",
+    "name": "Circlo",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/circlo/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/circlo/splash.png"
   },
   {
-    "img": "cut-the-rope-holiday.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cut-the-rope-holiday/index.html",
-    "name": "Cut The Rope Holiday"
+    "id": "classicube",
+    "name": "Classicube",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/classicube/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/classicube/splash.png"
   },
   {
-    "img": "cut-the-rope-time-travel.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/cut-the-rope-time-travel/index.html",
-    "name": "Cut The Rope Time Travel"
+    "id": "cluster-rush",
+    "name": "Cluster Rush",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cluster-rush/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cluster-rush/splash.png"
   },
   {
-    "img": "dadish.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/dadish/index.html",
-    "name": "Dadish"
+    "id": "cnpingpong",
+    "name": "Cnpingpong",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cnpingpong/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cnpingpong/splash.png"
   },
   {
-    "img": "dadish-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/dadish-2/index.html",
-    "name": "Dadish 2"
+    "id": "connect3",
+    "name": "Connect3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/connect3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/connect3/splash.png"
   },
   {
-    "img": "dadish-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/dadish-3/index.html",
-    "name": "Dadish 3"
+    "id": "cookie-clicker",
+    "name": "Cookie Clicker",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cookie-clicker/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cookie-clicker/splash.png"
   },
   {
-    "img": "dante.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/dante/index.html",
-    "name": "Dante"
+    "id": "core-ball",
+    "name": "Core Ball",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/core-ball/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/core-ball/splash.png"
   },
   {
-    "img": "deal-or-no-deal.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/deal-or-no-deal/index.html",
-    "name": "Deal Or No Deal"
+    "id": "craftmine",
+    "name": "Craftmine",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/craftmine/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/craftmine/splash.png"
   },
   {
-    "img": "death-run-3d.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/death-run-3d/index.html",
-    "name": "Death Run 3d"
+    "id": "creativekillchamber",
+    "name": "Creativekillchamber",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/creativekillchamber/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/creativekillchamber/splash.png"
   },
   {
-    "img": "death-soul.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/death-soul/index.html",
-    "name": "Death Soul"
+    "id": "crossyroad",
+    "name": "Crossyroad",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/crossyroad/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/crossyroad/splash.png"
   },
   {
-    "img": "defend-the-tank.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/defend-the-tank/index.html",
-    "name": "Defend The Tank"
+    "id": "csgo-clicker",
+    "name": "Csgo Clicker",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/csgo-clicker/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/csgo-clicker/splash.png"
   },
   {
-    "img": "doctor-acorn-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/doctor-acorn-2/index.html",
-    "name": "Doctor Acorn 2"
+    "id": "ctr-holiday",
+    "name": "Ctr Holiday",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ctr-holiday/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ctr-holiday/splash.png"
   },
   {
-    "img": "dodge.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/dodge/index.html",
-    "name": "Dodge"
+    "id": "ctr-tr",
+    "name": "Ctr Tr",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ctr-tr/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ctr-tr/splash.png"
   },
   {
-    "img": "doge-2048.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/doge-2048/index.html",
-    "name": "Doge 2048"
+    "id": "ctr",
+    "name": "Ctr",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ctr/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ctr/splash.png"
   },
   {
-    "img": "doge-miner.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/doge-miner/index.html",
-    "name": "Doge Miner"
+    "id": "cubefield",
+    "name": "Cubefield",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cubefield/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cubefield/splash.png"
   },
   {
-    "img": "doge-miner-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/doge-miner-2/index.html",
-    "name": "Doge Miner 2"
+    "id": "cupcake2048",
+    "name": "Cupcake2048",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cupcake2048/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cupcake2048/splash.png"
   },
   {
-    "img": "dont-drop-the-white-ball-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/dont-drop-the-white-ball-2/index.html",
-    "name": "Dont Drop The White Ball 2"
+    "id": "dante",
+    "name": "Dante",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dante/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dante/splash.png"
   },
   {
-    "img": "doodle-jump.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/doodle-jump/index.html",
-    "name": "Doodle Jump"
+    "id": "deal-or-no-deal",
+    "name": "Deal Or No Deal",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/deal-or-no-deal/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/deal-or-no-deal/splash.png"
   },
   {
-    "img": "doom.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/doom/index.html",
-    "name": "Doom"
+    "id": "death-run-3d",
+    "name": "Death Run 3d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/death-run-3d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/death-run-3d/splash.png"
   },
   {
-    "img": "douchebag-workout-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/douchebag-workout-2/index.html",
-    "name": "Douchebag Workout 2"
+    "id": "deepest-sword",
+    "name": "Deepest Sword",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/deepest-sword/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/deepest-sword/splash.png"
   },
   {
-    "img": "dragon-vs-bricks.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/dragon-vs-bricks/index.html",
-    "name": "Dragon Vs Bricks"
+    "id": "defend-the-tank",
+    "name": "Defend The Tank",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/defend-the-tank/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/defend-the-tank/splash.png"
   },
   {
-    "img": "draw-the-hill.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/draw-the-hill/index.html",
-    "name": "Draw The Hill"
+    "id": "doctor-acorn2",
+    "name": "Doctor Acorn2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doctor-acorn2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doctor-acorn2/splash.png"
   },
   {
-    "img": "drift-boss.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/drift-boss/index.html",
-    "name": "Drift Boss"
+    "id": "dodge",
+    "name": "Dodge",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dodge/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dodge/splash.png"
   },
   {
-    "img": "drift-hunters.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/drift-hunters/index.html",
-    "name": "Drift Hunters"
+    "id": "doge2048",
+    "name": "Doge2048",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doge2048/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doge2048/splash.png"
   },
   {
-    "img": "duck-life-1.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/duck-life-1/index.html",
-    "name": "Duck Life 1"
+    "id": "doodle-jump",
+    "name": "Doodle Jump",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doodle-jump/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doodle-jump/splash.png"
   },
   {
-    "img": "duck-life-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/duck-life-2/index.html",
-    "name": "Duck Life 2"
+    "id": "doom",
+    "name": "Doom",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doom/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doom/splash.png"
   },
   {
-    "img": "duck-life-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/duck-life-3/index.html",
-    "name": "Duck Life 3"
+    "id": "doublewires",
+    "name": "Doublewires",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doublewires/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doublewires/splash.png"
   },
   {
-    "img": "duck-life-4.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/duck-life-4/index.html",
-    "name": "Duck Life 4"
+    "id": "dragon-vs-bricks",
+    "name": "Dragon Vs Bricks",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dragon-vs-bricks/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dragon-vs-bricks/splash.png"
   },
   {
-    "img": "duck-life-treasure-hunt.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/duck-life-treasure-hunt/index.html",
-    "name": "Duck Life Treasure Hunt"
+    "id": "draw-the-hill",
+    "name": "Draw The Hill",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/draw-the-hill/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/draw-the-hill/splash.png"
   },
   {
-    "img": "duke-dashington-remastered.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/duke-dashington-remastered/index.html",
-    "name": "Duke Dashington Remastered"
+    "id": "drift-boss",
+    "name": "Drift Boss",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/drift-boss/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/drift-boss/splash.png"
   },
   {
-    "img": "edge-not-found.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/edge-not-found/index.html",
-    "name": "Edge Not Found"
+    "id": "drift-hunters",
+    "name": "Drift Hunters",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/drift-hunters/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/drift-hunters/splash.png"
   },
   {
-    "img": "edge-surf.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/edge-surf/index.html",
-    "name": "Edge Surf"
+    "id": "drive-mad",
+    "name": "Drive Mad",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/drive-mad/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/drive-mad/splash.png"
   },
   {
-    "img": "elastic-man.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/elastic-man/index.html",
-    "name": "Elastic Man"
+    "id": "ducklife1",
+    "name": "Ducklife1",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife1/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife1/splash.png"
   },
   {
-    "img": "endless-war-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/endless-war-3/index.html",
-    "name": "Endless War 3"
+    "id": "ducklife2",
+    "name": "Ducklife2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife2/splash.png"
   },
   {
-    "img": "escaping-the-prison.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/escaping-the-prison/index.html",
-    "name": "Escaping The Prison"
+    "id": "ducklife3",
+    "name": "Ducklife3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife3/splash.png"
   },
   {
-    "img": "evil-glitch.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/evil-glitch/index.html",
-    "name": "Evil Glitch"
+    "id": "ducklife4",
+    "name": "Ducklife4",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife4/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ducklife4/splash.png"
   },
   {
-    "img": "evolution.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/evolution/index.html",
-    "name": "Evolution"
+    "id": "duke-nukem-2",
+    "name": "Duke Nukem 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/duke-nukem-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/duke-nukem-2/splash.png"
   },
   {
-    "img": "exo.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/exo/index.html",
-    "name": "Exo"
+    "id": "dumbwaystodie",
+    "name": "Dumbwaystodie",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dumbwaystodie/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dumbwaystodie/splash.png"
   },
   {
-    "img": "factory-balls.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/factory-balls/index.html",
-    "name": "Factory Balls"
+    "id": "eaglerfaithful",
+    "name": "Eaglerfaithful",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eaglerfaithful/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eaglerfaithful/splash.png"
   },
   {
-    "img": "factory-balls-forever.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/factory-balls-forever/index.html",
-    "name": "Factory Balls Forever"
+    "id": "eaglerjp",
+    "name": "Eaglerjp",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eaglerjp/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eaglerjp/splash.png"
   },
   {
-    "img": "fancy-pants-adventures.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/fancy-pants-adventures/index.html",
-    "name": "Fancy Pants Adventures"
+    "id": "earntodie",
+    "name": "Earntodie",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/earntodie/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/earntodie/splash.png"
   },
   {
-    "img": "finns-fantastic-food-machine.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/finns-fantastic-food-machine/index.html",
-    "name": "Finns Fantastic Food Machine"
+    "id": "edge-surf",
+    "name": "Edge Surf",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/edge-surf/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/edge-surf/splash.png"
   },
   {
-    "img": "fireboy-and-watergirl.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/fireboy-and-watergirl/index.html",
-    "name": "Fireboy And Watergirl"
+    "id": "edgenotfound",
+    "name": "Edgenotfound",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/edgenotfound/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/edgenotfound/splash.png"
   },
   {
-    "img": "flappy-2048.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/flappy-2048/index.html",
-    "name": "Flappy 2048"
+    "id": "eel-slap",
+    "name": "Eel Slap",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eel-slap/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eel-slap/splash.png"
   },
   {
-    "img": "flappy-defense.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/flappy-defense/index.html",
-    "name": "Flappy Defense"
+    "id": "eggycar",
+    "name": "Eggycar",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eggycar/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/eggycar/splash.png"
   },
   {
-    "img": "flash-tetris.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/flash-tetris/index.html",
-    "name": "Flash Tetris"
+    "id": "elasticman",
+    "name": "Elasticman",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/elasticman/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/elasticman/splash.png"
   },
   {
-    "img": "flippy-fish.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/flippy-fish/index.html",
-    "name": "Flippy Fish"
+    "id": "endlesswar3",
+    "name": "Endlesswar3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/endlesswar3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/endlesswar3/splash.png"
   },
   {
-    "img": "flood-runner-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/flood-runner-2/index.html",
-    "name": "Flood Runner 2"
+    "id": "escapingtheprison",
+    "name": "Escapingtheprison",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/escapingtheprison/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/escapingtheprison/splash.png"
   },
   {
-    "img": "friday-night-funkin.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/friday-night-funkin/index.html",
-    "name": "Friday Night Funkin"
+    "id": "evil-glitch",
+    "name": "Evil Glitch",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/evil-glitch/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/evil-glitch/splash.png"
   },
   {
-    "img": "friendly-fire.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/friendly-fire/index.html",
-    "name": "Friendly Fire"
+    "id": "evolution",
+    "name": "Evolution",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/evolution/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/evolution/splash.png"
   },
   {
-    "img": "froggys-battle.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/froggys-battle/index.html",
-    "name": "Froggys Battle"
+    "id": "exo",
+    "name": "Exo",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/exo/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/exo/splash.png"
   },
   {
-    "img": "frying-nemo.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/frying-nemo/index.html",
-    "name": "Frying Nemo"
+    "id": "factoryballs",
+    "name": "Factoryballs",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/factoryballs/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/factoryballs/splash.png"
   },
   {
-    "img": "game-inside-a-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/game-inside-a-game/index.html",
-    "name": "Game Inside A Game"
+    "id": "fairsquares",
+    "name": "Fairsquares",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fairsquares/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fairsquares/splash.png"
   },
   {
-    "img": "generic-fishing-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/generic-fishing-game/index.html",
-    "name": "Generic Fishing Game"
+    "id": "fake-virus",
+    "name": "Fake Virus",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fake-virus/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fake-virus/splash.png"
   },
   {
-    "img": "george-and-the-printer.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/george-and-the-printer/index.html",
-    "name": "George And The Printer"
+    "id": "fancypantsadventures",
+    "name": "Fancypantsadventures",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fancypantsadventures/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fancypantsadventures/splash.png"
   },
   {
-    "img": "pdftris.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pdftris/index.html",
-    "name": "Pdftris"
+    "id": "fantasy-dash",
+    "name": "Fantasy Dash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fantasy-dash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fantasy-dash/splash.png"
   },
   {
-    "img": "getaway-shootout.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/getaway-shootout/index.html",
-    "name": "Getaway Shootout"
+    "id": "fireboywatergirlforesttemple",
+    "name": "Fireboywatergirlforesttemple",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fireboywatergirlforesttemple/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fireboywatergirlforesttemple/splash.png"
   },
   {
-    "img": "getting-over-it.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/getting-over-it/index.html",
-    "name": "Getting Over It"
+    "id": "flappy-plane",
+    "name": "Flappy Plane",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappy-plane/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappy-plane/splash.png"
   },
   {
-    "img": "gimme-the-airpod.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/gimme-the-airpod/index.html",
-    "name": "Gimme The Airpod"
+    "id": "flappy-2048",
+    "name": "Flappy 2048",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappy-2048/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappy-2048/splash.png"
   },
   {
-    "img": "glass-city.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/glass-city/index.html",
-    "name": "Glass City"
+    "id": "flappy-bird",
+    "name": "Flappy Bird",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappy-bird/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappy-bird/splash.png"
   },
   {
-    "img": "go-ball.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/go-ball/index.html",
-    "name": "Go Ball"
+    "id": "flappybird",
+    "name": "Flappybird",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappybird/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flappybird/splash.png"
   },
   {
-    "img": "golf.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/golf/index.html",
-    "name": "Golf"
+    "id": "flashtetris",
+    "name": "Flashtetris",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flashtetris/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flashtetris/splash.png"
   },
   {
-    "img": "goodnight.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/goodnight/index.html",
-    "name": "Goodnight"
+    "id": "fleeingthecomplex",
+    "name": "Fleeingthecomplex",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fleeingthecomplex/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fleeingthecomplex/splash.png"
   },
   {
-    "img": "google-snake.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/google-snake/index.html",
-    "name": "Google Snake"
+    "id": "flippy-fish",
+    "name": "Flippy Fish",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flippy-fish/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/flippy-fish/splash.png"
   },
   {
-    "img": "google-solitaire.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/google-solitaire/index.html",
-    "name": "Google Solitaire"
+    "id": "fnaw",
+    "name": "Fnaw",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fnaw/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fnaw/splash.png"
   },
   {
-    "img": "gravity-soccer.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/gravity-soccer/index.html",
-    "name": "Gravity Soccer"
+    "id": "fridaynightfunkin",
+    "name": "Fridaynightfunkin",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fridaynightfunkin/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fridaynightfunkin/splash.png"
   },
   {
-    "img": "grand-theft-auto.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/grand-theft-auto/index.html",
-    "name": "Grand Theft Auto"
+    "id": "froggys-battle",
+    "name": "Froggys Battle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/froggys-battle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/froggys-battle/splash.png"
   },
   {
-    "img": "green.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/green/index.html",
-    "name": "Green"
+    "id": "fruitninja",
+    "name": "Fruitninja",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fruitninja/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fruitninja/splash.png"
   },
   {
-    "img": "grey-box-testing.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/grey-box-testing/index.html",
-    "name": "Grey Box Testing"
+    "id": "frying-nemo",
+    "name": "Frying Nemo",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/frying-nemo/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/frying-nemo/splash.png"
   },
   {
-    "img": "grindcraft.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/grindcraft/index.html",
-    "name": "Grindcraft"
+    "id": "fsucraft",
+    "name": "Fsucraft",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fsucraft/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fsucraft/splash.png"
   },
   {
-    "img": "grow-in-the-hole.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/grow-in-the-hole/index.html",
-    "name": "Grow In The Hole"
+    "id": "fuclient",
+    "name": "Fuclient",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fuclient/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/fuclient/splash.png"
   },
   {
-    "img": "gun-spin.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/gun-spin/index.html",
-    "name": "Gun Spin"
+    "id": "gachalife",
+    "name": "Gachalife",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gachalife/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gachalife/splash.png"
   },
   {
-    "img": "hacker-typer.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/hacker-typer/index.html",
-    "name": "Hacker Typer"
+    "id": "game-inside",
+    "name": "Game Inside",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/game-inside/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/game-inside/splash.png"
   },
   {
-    "img": "happy-hop.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/happy-hop/index.html",
-    "name": "Happy Hop"
+    "id": "gdtd",
+    "name": "Gdtd",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gdtd/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gdtd/splash.png"
   },
   {
-    "img": "happy-wheels.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/happy-wheels/index.html",
-    "name": "Happy Wheels"
+    "id": "gearsofbabies",
+    "name": "Gearsofbabies",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gearsofbabies/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gearsofbabies/splash.png"
   },
   {
-    "img": "helicopter.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/helicopter/index.html",
-    "name": "Helicopter"
+    "id": "generic-fishing-game",
+    "name": "Generic Fishing Game",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/generic-fishing-game/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/generic-fishing-game/splash.png"
   },
   {
-    "img": "helios.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/helios/index.html",
-    "name": "Helios"
+    "id": "geochallenge",
+    "name": "Geochallenge",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geochallenge/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geochallenge/splash.png"
   },
   {
-    "img": "hex-empire.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/hex-empire/index.html",
-    "name": "Hex Empire"
+    "id": "geodash",
+    "name": "Geodash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geodash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geodash/splash.png"
   },
   {
-    "img": "hexgl.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/hexgl/index.html",
-    "name": "Hexgl"
+    "id": "geodashlite",
+    "name": "Geodashlite",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geodashlite/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geodashlite/splash.png"
   },
   {
-    "img": "hextris.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/hextris/index.html",
-    "name": "Hextris"
+    "id": "geogeo",
+    "name": "Geogeo",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geogeo/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geogeo/splash.png"
   },
   {
-    "img": "holonomy.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/holonomy/index.html",
-    "name": "Holonomy"
+    "id": "geojump",
+    "name": "Geojump",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geojump/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geojump/splash.png"
   },
   {
-    "img": "house-of-hazards.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/house-of-hazards/index.html",
-    "name": "House Of Hazards"
+    "id": "geoneondash",
+    "name": "Geoneondash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geoneondash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geoneondash/splash.png"
   },
   {
-    "img": "hover-bot-arena.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/hover-bot-arena/index.html",
-    "name": "Hover Bot Arena"
+    "id": "geops1",
+    "name": "Geops1",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geops1/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geops1/splash.png"
   },
   {
-    "img": "icy-purple-head-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/icy-purple-head-2/index.html",
-    "name": "Icy Purple Head 2"
+    "id": "georash",
+    "name": "Georash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/georash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/georash/splash.png"
   },
   {
-    "img": "idle-breakout.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/idle-breakout/index.html",
-    "name": "Idle Breakout"
+    "id": "georgeandtheprinter",
+    "name": "Georgeandtheprinter",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/georgeandtheprinter/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/georgeandtheprinter/splash.png"
   },
   {
-    "img": "idle-mining-empire.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/idle-mining-empire/index.html",
-    "name": "Idle Mining Empire"
+    "id": "geotrash",
+    "name": "Geotrash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geotrash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/geotrash/splash.png"
   },
   {
-    "img": "idle-shark.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/idle-shark/index.html",
-    "name": "Idle Shark"
+    "id": "getaway-shootout",
+    "name": "Getaway Shootout",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/getaway-shootout/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/getaway-shootout/splash.png"
   },
   {
-    "img": "incremancer.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/incremancer/index.html",
-    "name": "Incremancer"
+    "id": "gimme-the-airpod",
+    "name": "Gimme The Airpod",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gimme-the-airpod/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gimme-the-airpod/splash.png"
   },
   {
-    "img": "interactive-buddy.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/interactive-buddy/index.html",
-    "name": "Interactive Buddy"
+    "id": "glass-city",
+    "name": "Glass City",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/glass-city/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/glass-city/splash.png"
   },
   {
-    "img": "jelly-truck.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/jelly-truck/index.html",
-    "name": "Jelly Truck"
+    "id": "gmonster",
+    "name": "Gmonster",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gmonster/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gmonster/splash.png"
   },
   {
-    "img": "jimothy-piggerton.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/jimothy-piggerton/index.html",
-    "name": "Jimothy Piggerton"
+    "id": "go-ball",
+    "name": "Go Ball",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/go-ball/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/go-ball/splash.png"
   },
   {
-    "img": "just-one-boss.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/just-one-boss/index.html",
-    "name": "Just One Boss"
+    "id": "goodnight-meowmie",
+    "name": "Goodnight Meowmie",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/goodnight-meowmie/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/goodnight-meowmie/splash.png"
   },
   {
-    "img": "justfall-lol.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/justfall-lol/index.html",
-    "name": "Justfall Lol"
+    "id": "goodnight",
+    "name": "Goodnight",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/goodnight/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/goodnight/splash.png"
   },
   {
-    "img": "kart-fight-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/kart-fight-io/index.html",
-    "name": "Kart Fight Io"
+    "id": "google-feud",
+    "name": "Google Feud",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/google-feud/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/google-feud/splash.png"
   },
   {
-    "img": "kitchen-gun-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/kitchen-gun-game/index.html",
-    "name": "Kitchen Gun Game"
+    "id": "google-snake",
+    "name": "Google Snake",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/google-snake/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/google-snake/splash.png"
   },
   {
-    "img": "kitten-cannon.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/kitten-cannon/index.html",
-    "name": "Kitten Cannon"
+    "id": "gravity-soccer",
+    "name": "Gravity Soccer",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gravity-soccer/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/gravity-soccer/splash.png"
   },
   {
-    "img": "klocki.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/klocki/index.html",
-    "name": "Klocki"
+    "id": "greybox",
+    "name": "Greybox",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/greybox/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/greybox/splash.png"
   },
   {
-    "img": "konnekt.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/konnekt/index.html",
-    "name": "Konnekt"
+    "id": "grindcraft",
+    "name": "Grindcraft",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/grindcraft/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/grindcraft/splash.png"
   },
   {
-    "img": "learn-to-fly.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/learn-to-fly/index.html",
-    "name": "Learn To Fly"
+    "id": "hackertype",
+    "name": "Hackertype",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hackertype/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hackertype/splash.png"
   },
   {
-    "img": "learn-to-fly-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/learn-to-fly-2/index.html",
-    "name": "Learn To Fly 2"
+    "id": "handshakes",
+    "name": "Handshakes",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/handshakes/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/handshakes/splash.png"
   },
   {
-    "img": "line-rider.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/line-rider/index.html",
-    "name": "Line Rider"
+    "id": "happy-hop",
+    "name": "Happy Hop",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/happy-hop/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/happy-hop/splash.png"
   },
   {
-    "img": "linquest.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/linquest/index.html",
-    "name": "Linquest"
+    "id": "happywheels",
+    "name": "Happywheels",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/happywheels/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/happywheels/splash.png"
   },
   {
-    "img": "linux-virtual-machine.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/linux-virtual-machine/index.html",
-    "name": "Linux Virtual Machine"
+    "id": "hardware-tycoon",
+    "name": "Hardware Tycoon",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hardware-tycoon/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hardware-tycoon/splash.png"
   },
   {
-    "img": "little-alchemy.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/little-alchemy/index.html",
-    "name": "Little Alchemy"
+    "id": "hba",
+    "name": "Hba",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hba/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hba/splash.png"
   },
   {
-    "img": "little-guy.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/little-guy/index.html",
-    "name": "Little Guy"
+    "id": "helicopter",
+    "name": "Helicopter",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/helicopter/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/helicopter/splash.png"
   },
   {
-    "img": "madalin-stunt-cars-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/madalin-stunt-cars-2/index.html",
-    "name": "Madalin Stunt Cars 2"
+    "id": "hellscaper",
+    "name": "Hellscaper",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hellscaper/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hellscaper/splash.png"
   },
   {
-    "img": "madalin-stunt-cars-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/madalin-stunt-cars-3/index.html",
-    "name": "Madalin Stunt Cars 3"
+    "id": "hexempire",
+    "name": "Hexempire",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hexempire/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hexempire/splash.png"
   },
   {
-    "img": "make-it-meme.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/make-it-meme/index.html",
-    "name": "Make It Meme"
+    "id": "hextris",
+    "name": "Hextris",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hextris/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hextris/splash.png"
   },
   {
-    "img": "mario.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/mario/index.html",
-    "name": "Mario"
+    "id": "highrisehop",
+    "name": "Highrisehop",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/highrisehop/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/highrisehop/splash.png"
   },
   {
-    "img": "marvin-spectrum.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/marvin-spectrum/index.html",
-    "name": "Marvin Spectrum"
+    "id": "hill-climb-racing",
+    "name": "Hill Climb Racing",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hill-climb-racing/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hill-climb-racing/splash.png"
   },
   {
-    "img": "matrix-rampage.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/matrix-rampage/index.html",
-    "name": "Matrix Rampage"
+    "id": "hungry-lamu",
+    "name": "Hungry Lamu",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hungry-lamu/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hungry-lamu/splash.png"
   },
   {
-    "img": "meme-2048.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/meme-2048/index.html",
-    "name": "Meme 2048"
+    "id": "iceagebaby",
+    "name": "Iceagebaby",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/iceagebaby/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/iceagebaby/splash.png"
   },
   {
-    "img": "mine-blocks.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/mine-blocks/index.html",
-    "name": "Mine Blocks"
+    "id": "iceagebaby2",
+    "name": "Iceagebaby2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/iceagebaby2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/iceagebaby2/splash.png"
   },
   {
-    "img": "minecraft-1.3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/minecraft-1.3/index.html",
-    "name": "Minecraft 1.3"
+    "id": "idle-breakout",
+    "name": "Idle Breakout",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idle-breakout/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idle-breakout/splash.png"
   },
   {
-    "img": "minecraft-1.5.2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/minecraft-1.5.2/index.html",
-    "name": "Minecraft 1.5.2"
+    "id": "idle-shark",
+    "name": "Idle Shark",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idle-shark/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idle-shark/splash.png"
   },
   {
-    "img": "minecraft-1.8.8-x.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/minecraft-1.8.8-x/index.html",
-    "name": "Minecraft 1.8.8 X"
+    "id": "idledice",
+    "name": "Idledice",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idledice/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idledice/splash.png"
   },
   {
-    "img": "minecraft-1.8.8.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/minecraft-1.8.8/index.html",
-    "name": "Minecraft 1.8.8"
+    "id": "idledices",
+    "name": "Idledices",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idledices/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/idledices/splash.png"
   },
   {
-    "img": "minecraft-beta-0.30.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/minecraft-beta-0.30/index.html",
-    "name": "Minecraft Beta 0.30"
+    "id": "impossiblequiz",
+    "name": "Impossiblequiz",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/impossiblequiz/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/impossiblequiz/splash.png"
   },
   {
-    "img": "minecraft-precision-client.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/minecraft-precision-client/index.html",
-    "name": "Minecraft Precision Client"
+    "id": "interactivebuddy",
+    "name": "Interactivebuddy",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/interactivebuddy/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/interactivebuddy/splash.png"
   },
   {
-    "img": "minesweeper.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/minesweeper/index.html",
-    "name": "Minesweeper"
+    "id": "invite-the-blackbird",
+    "name": "Invite The Blackbird",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/invite-the-blackbird/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/invite-the-blackbird/splash.png"
   },
   {
-    "img": "mini-stilts.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/mini-stilts/index.html",
-    "name": "Mini Stilts"
+    "id": "iron-dash",
+    "name": "Iron Dash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/iron-dash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/iron-dash/splash.png"
   },
   {
-    "img": "miniputt.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/miniputt/index.html",
-    "name": "Miniputt"
+    "id": "jetpack-joyride",
+    "name": "Jetpack Joyride",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/jetpack-joyride/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/jetpack-joyride/splash.png"
   },
   {
-    "img": "missiles.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/missiles/index.html",
-    "name": "Missiles"
+    "id": "js",
+    "name": "Js",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/js/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/js/splash.png"
   },
   {
-    "img": "montague-mayhem.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/montague-mayhem/index.html",
-    "name": "Montague Mayhem"
+    "id": "just-fall",
+    "name": "Just Fall",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/just-fall/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/just-fall/splash.png"
   },
   {
-    "img": "moto-x3m-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/moto-x3m-2/index.html",
-    "name": "Moto X3m 2"
+    "id": "just-one-boss",
+    "name": "Just One Boss",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/just-one-boss/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/just-one-boss/splash.png"
   },
   {
-    "img": "moto-x3m-pool-party.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/moto-x3m-pool-party/index.html",
-    "name": "Moto X3m Pool Party"
+    "id": "kirkaio",
+    "name": "Kirkaio",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/kirkaio/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/kirkaio/splash.png"
   },
   {
-    "img": "moto-x3m-spooky.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/moto-x3m-spooky/index.html",
-    "name": "Moto X3m Spooky"
+    "id": "kitchen-gun-game",
+    "name": "Kitchen Gun Game",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/kitchen-gun-game/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/kitchen-gun-game/splash.png"
   },
   {
-    "img": "moto-x3m-winter.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/moto-x3m-winter/index.html",
-    "name": "Moto X3m Winter"
+    "id": "kittencannon",
+    "name": "Kittencannon",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/kittencannon/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/kittencannon/splash.png"
   },
   {
-    "img": "mr-mine.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/mr-mine/index.html",
-    "name": "Mr Mine"
+    "id": "knife-master",
+    "name": "Knife Master",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/knife-master/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/knife-master/splash.png"
   },
   {
-    "img": "my-friend-pedro.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/my-friend-pedro/index.html",
-    "name": "My Friend Pedro"
+    "id": "krunker",
+    "name": "Krunker",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/krunker/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/krunker/splash.png"
   },
   {
-    "img": "n-gon.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/n-gon/index.html",
-    "name": "N Gon"
+    "id": "learntofly",
+    "name": "Learntofly",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/learntofly/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/learntofly/splash.png"
   },
   {
-    "img": "nazi-zombies.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/nazi-zombies/index.html",
-    "name": "Nazi Zombies"
+    "id": "learntofly2",
+    "name": "Learntofly2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/learntofly2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/learntofly2/splash.png"
   },
   {
-    "img": "ninja-vs-evil-corp.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/ninja-vs-evil-corp/index.html",
-    "name": "Ninja Vs Evil Corp"
+    "id": "legacyflashgames",
+    "name": "Legacyflashgames",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/legacyflashgames/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/legacyflashgames/splash.png"
   },
   {
-    "img": "ns-shaft.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/ns-shaft/index.html",
-    "name": "Ns Shaft"
+    "id": "level13",
+    "name": "Level13",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/level13/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/level13/splash.png"
   },
   {
-    "img": "offline-paradise.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/offline-paradise/index.html",
-    "name": "Offline Paradise"
+    "id": "linerider",
+    "name": "Linerider",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/linerider/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/linerider/splash.png"
   },
   {
-    "img": "om-nom-bounce.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/om-nom-bounce/index.html",
-    "name": "Om Nom Bounce"
+    "id": "ltf-idle",
+    "name": "Ltf Idle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ltf-idle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ltf-idle/splash.png"
   },
   {
-    "img": "one-night-at-scratch-cats.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/one-night-at-scratch-cats/index.html",
-    "name": "One Night At Scratch Cats"
+    "id": "ltf3",
+    "name": "Ltf3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ltf3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ltf3/splash.png"
   },
   {
-    "img": "one-screen-run.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/one-screen-run/index.html",
-    "name": "One Screen Run"
+    "id": "madalin-stunt-cars-2",
+    "name": "Madalin Stunt Cars 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/madalin-stunt-cars-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/madalin-stunt-cars-2/splash.png"
   },
   {
-    "img": "one-screen-run-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/one-screen-run-2/index.html",
-    "name": "One Screen Run 2"
+    "id": "madalin-stunt-cars-3",
+    "name": "Madalin Stunt Cars 3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/madalin-stunt-cars-3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/madalin-stunt-cars-3/splash.png"
   },
   {
-    "img": "ovo.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/ovo/index.html",
-    "name": "Ovo"
+    "id": "mario",
+    "name": "Mario",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mario/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mario/splash.png"
   },
   {
-    "img": "packabunchas.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/packabunchas/index.html",
-    "name": "Packabunchas"
+    "id": "mart",
+    "name": "Mart",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mart/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mart/splash.png"
   },
   {
-    "img": "pacman.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pacman/index.html",
-    "name": "Pacman"
+    "id": "marvinspectrum",
+    "name": "Marvinspectrum",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/marvinspectrum/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/marvinspectrum/splash.png"
   },
   {
-    "img": "pacman-fps.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pacman-fps/index.html",
-    "name": "Pacman Fps"
+    "id": "matrixrampage",
+    "name": "Matrixrampage",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/matrixrampage/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/matrixrampage/splash.png"
   },
   {
-    "img": "pandemic-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pandemic-2/index.html",
-    "name": "Pandemic 2"
+    "id": "mc2d",
+    "name": "Mc2d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mc2d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mc2d/splash.png"
   },
   {
-    "img": "papa-louie.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papa-louie/index.html",
-    "name": "Papa Louie"
+    "id": "mcje",
+    "name": "Mcje",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mcje/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mcje/splash.png"
   },
   {
-    "img": "papas-burgeria.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papas-burgeria/index.html",
-    "name": "Papas Burgeria"
+    "id": "meme2048",
+    "name": "Meme2048",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/meme2048/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/meme2048/splash.png"
   },
   {
-    "img": "papas-freezeria.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papas-freezeria/index.html",
-    "name": "Papas Freezeria"
+    "id": "merge-round-racers",
+    "name": "Merge Round Racers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/merge-round-racers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/merge-round-racers/splash.png"
   },
   {
-    "img": "papas-hot-doggeria.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papas-hot-doggeria/index.html",
-    "name": "Papas Hot Doggeria"
+    "id": "mindustry",
+    "name": "Mindustry",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mindustry/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mindustry/splash.png"
   },
   {
-    "img": "papas-pancakeria.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papas-pancakeria/index.html",
-    "name": "Papas Pancakeria"
+    "id": "mineblocks",
+    "name": "Mineblocks",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mineblocks/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/mineblocks/splash.png"
   },
   {
-    "img": "papas-pizzeria.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papas-pizzeria/index.html",
-    "name": "Papas Pizzeria"
+    "id": "minecraft-15",
+    "name": "Minecraft 15",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraft-15/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraft-15/splash.png"
   },
   {
-    "img": "papas-sushiria.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papas-sushiria/index.html",
-    "name": "Papas Sushiria"
+    "id": "minecraft-18",
+    "name": "Minecraft 18",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraft-18/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraft-18/splash.png"
   },
   {
-    "img": "papas-wingeria.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papas-wingeria/index.html",
-    "name": "Papas Wingeria"
+    "id": "minecraft-classic",
+    "name": "Minecraft Classic",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraft-classic/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraft-classic/splash.png"
   },
   {
-    "img": "paper-io-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/paper-io-2/index.html",
-    "name": "Paper Io 2"
+    "id": "minecraftbeta",
+    "name": "Minecraftbeta",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraftbeta/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecraftbeta/splash.png"
   },
   {
-    "img": "papery-planes.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/papery-planes/index.html",
-    "name": "Papery Planes"
+    "id": "minecrafttowerdefence",
+    "name": "Minecrafttowerdefence",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecrafttowerdefence/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minecrafttowerdefence/splash.png"
   },
   {
-    "img": "particle-clicker.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/particle-clicker/index.html",
-    "name": "Particle Clicker"
+    "id": "minesweeper",
+    "name": "Minesweeper",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minesweeper/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/minesweeper/splash.png"
   },
   {
-    "img": "pe-noire.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pe-noire/index.html",
-    "name": "Pe Noire"
+    "id": "miniputt",
+    "name": "Miniputt",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/miniputt/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/miniputt/splash.png"
   },
   {
-    "img": "picohot.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/picohot/index.html",
-    "name": "Picohot"
+    "id": "missiles",
+    "name": "Missiles",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/missiles/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/missiles/splash.png"
   },
   {
-    "img": "picopong.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/picopong/index.html",
-    "name": "Picopong"
+    "id": "monster-tracks",
+    "name": "Monster Tracks",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/monster-tracks/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/monster-tracks/splash.png"
   },
   {
-    "img": "pikwip.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pikwip/index.html",
-    "name": "Pikwip"
+    "id": "motox3m-pool",
+    "name": "Motox3m Pool",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m-pool/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m-pool/splash.png"
   },
   {
-    "img": "pixel-cave.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pixel-cave/index.html",
-    "name": "Pixel Cave"
+    "id": "motox3m-spooky",
+    "name": "Motox3m Spooky",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m-spooky/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m-spooky/splash.png"
   },
   {
-    "img": "plants-vs-zombies-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/plants-vs-zombies-2/index.html",
-    "name": "Plants Vs Zombies 2"
+    "id": "motox3m-winter",
+    "name": "Motox3m Winter",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m-winter/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m-winter/splash.png"
   },
   {
-    "img": "polybranch.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/polybranch/index.html",
-    "name": "Polybranch"
+    "id": "motox3m",
+    "name": "Motox3m",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m/splash.png"
   },
   {
-    "img": "poom.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/poom/index.html",
-    "name": "Poom"
+    "id": "motox3m2",
+    "name": "Motox3m2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/motox3m2/splash.png"
   },
   {
-    "img": "popcat-classic.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/popcat-classic/index.html",
-    "name": "Popcat Classic"
+    "id": "my-rusty-submarine",
+    "name": "My Rusty Submarine",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/my-rusty-submarine/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/my-rusty-submarine/splash.png"
   },
   {
-    "img": "portal-flash.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/portal-flash/index.html",
-    "name": "Portal Flash"
+    "id": "n-gon",
+    "name": "N Gon",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/n-gon/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/n-gon/splash.png"
   },
   {
-    "img": "powder-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/powder-game/index.html",
-    "name": "Powder Game"
+    "id": "ninja",
+    "name": "Ninja",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ninja/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ninja/splash.png"
   },
   {
-    "img": "protektor.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/protektor/index.html",
-    "name": "Protektor"
+    "id": "ninjavsevilcorp",
+    "name": "Ninjavsevilcorp",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ninjavsevilcorp/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ninjavsevilcorp/splash.png"
   },
   {
-    "img": "push-the-square.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/push-the-square/index.html",
-    "name": "Push The Square"
+    "id": "noob-steve-parkour",
+    "name": "Noob Steve Parkour",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/noob-steve-parkour/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/noob-steve-parkour/splash.png"
   },
   {
-    "img": "push-your-luck.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/push-your-luck/index.html",
-    "name": "Push Your Luck"
+    "id": "ns-shaft",
+    "name": "Ns Shaft",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ns-shaft/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ns-shaft/splash.png"
   },
   {
-    "img": "pushback.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/pushback/index.html",
-    "name": "Pushback"
+    "id": "nsresurgence",
+    "name": "Nsresurgence",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/nsresurgence/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/nsresurgence/splash.png"
   },
   {
-    "img": "puzzle-ball.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/puzzle-ball/index.html",
-    "name": "Puzzle Ball"
+    "id": "om-bounce",
+    "name": "Om Bounce",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/om-bounce/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/om-bounce/splash.png"
   },
   {
-    "img": "q1k3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/q1k3/index.html",
-    "name": "Q1k3"
+    "id": "osu!",
+    "name": "Osu!",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/osu!/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/osu!/splash.png"
   },
   {
-    "img": "racer.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/racer/index.html",
-    "name": "Racer"
+    "id": "out-of-ctrl",
+    "name": "Out Of Ctrl",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/out-of-ctrl/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/out-of-ctrl/splash.png"
   },
   {
-    "img": "radius-raid.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/radius-raid/index.html",
-    "name": "Radius Raid"
+    "id": "overwatch",
+    "name": "Overwatch",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/overwatch/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/overwatch/splash.png"
   },
   {
-    "img": "retro-bowl.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/retro-bowl/index.html",
-    "name": "Retro Bowl"
+    "id": "ovo",
+    "name": "Ovo",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ovo/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ovo/splash.png"
   },
   {
-    "img": "retro-haunt.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/retro-haunt/index.html",
-    "name": "Retro Haunt"
+    "id": "pandemic2",
+    "name": "Pandemic2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/pandemic2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/pandemic2/splash.png"
   },
   {
-    "img": "rise-of-neon-square.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/rise-of-neon-square/index.html",
-    "name": "Rise Of Neon Square"
+    "id": "papasburgeria",
+    "name": "Papasburgeria",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/papasburgeria/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/papasburgeria/splash.png"
   },
   {
-    "img": "roadblocks.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/roadblocks/index.html",
-    "name": "Roadblocks"
+    "id": "papaspizzaria",
+    "name": "Papaspizzaria",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/papaspizzaria/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/papaspizzaria/splash.png"
   },
   {
-    "img": "rocking-sky-trip.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/rocking-sky-trip/index.html",
-    "name": "Rocking Sky Trip"
+    "id": "paperio2",
+    "name": "Paperio2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/paperio2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/paperio2/splash.png"
   },
   {
-    "img": "rolling-forests.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/rolling-forests/index.html",
-    "name": "Rolling Forests"
+    "id": "papery-planes",
+    "name": "Papery Planes",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/papery-planes/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/papery-planes/splash.png"
   },
   {
-    "img": "rolly-vortex.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/rolly-vortex/index.html",
-    "name": "Rolly Vortex"
+    "id": "particle-clicker",
+    "name": "Particle Clicker",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/particle-clicker/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/particle-clicker/splash.png"
   },
   {
-    "img": "rooftop-snipers.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/rooftop-snipers/index.html",
-    "name": "Rooftop Snipers"
+    "id": "particleclicker",
+    "name": "Particleclicker",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/particleclicker/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/particleclicker/splash.png"
   },
   {
-    "img": "run-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/run-3/index.html",
-    "name": "Run 3"
+    "id": "piclient",
+    "name": "Piclient",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/piclient/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/piclient/splash.png"
   },
   {
-    "img": "sand-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/sand-game/index.html",
-    "name": "Sand Game"
+    "id": "pigeon-ascent",
+    "name": "Pigeon Ascent",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/pigeon-ascent/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/pigeon-ascent/splash.png"
   },
   {
-    "img": "sandboxels.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/sandboxels/index.html",
-    "name": "Sandboxels"
+    "id": "pixel-gun-survival",
+    "name": "Pixel Gun Survival",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/pixel-gun-survival/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/pixel-gun-survival/splash.png"
   },
   {
-    "img": "sausage-flip.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/sausage-flip/index.html",
-    "name": "Sausage Flip"
+    "id": "planetlife",
+    "name": "Planetlife",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/planetlife/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/planetlife/splash.png"
   },
   {
-    "img": "scrambled-eggs.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/scrambled-eggs/index.html",
-    "name": "Scrambled Eggs"
+    "id": "plants-vs-zombies-1",
+    "name": "Plants Vs Zombies 1",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/plants-vs-zombies-1/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/plants-vs-zombies-1/splash.png"
   },
   {
-    "img": "scrap-metal-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/scrap-metal-3/index.html",
-    "name": "Scrap Metal 3"
+    "id": "polybranch",
+    "name": "Polybranch",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/polybranch/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/polybranch/splash.png"
   },
   {
-    "img": "senya-and-oscar-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/senya-and-oscar-2/index.html",
-    "name": "Senya And Oscar 2"
+    "id": "poom",
+    "name": "Poom",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/poom/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/poom/splash.png"
   },
   {
-    "img": "shadoworld-adventure.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/shadoworld-adventure/index.html",
-    "name": "Shadoworld Adventure"
+    "id": "popcat-classic",
+    "name": "Popcat Classic",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/popcat-classic/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/popcat-classic/splash.png"
   },
   {
-    "img": "shards.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/shards/index.html",
-    "name": "Shards"
+    "id": "portalflash",
+    "name": "Portalflash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/portalflash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/portalflash/splash.png"
   },
   {
-    "img": "shift-flash.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/shift-flash/index.html",
-    "name": "Shift Flash"
+    "id": "precision-client",
+    "name": "Precision Client",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/precision-client/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/precision-client/splash.png"
   },
   {
-    "img": "short-life-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/short-life-2/index.html",
-    "name": "Short Life 2"
+    "id": "protektor",
+    "name": "Protektor",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/protektor/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/protektor/splash.png"
   },
   {
-    "img": "short-ride.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/short-ride/index.html",
-    "name": "Short Ride"
+    "id": "push-the-square",
+    "name": "Push The Square",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/push-the-square/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/push-the-square/splash.png"
   },
   {
-    "img": "shuttledeck.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/shuttledeck/index.html",
-    "name": "Shuttledeck"
+    "id": "push-your-luck",
+    "name": "Push Your Luck",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/push-your-luck/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/push-your-luck/splash.png"
   },
   {
-    "img": "skyblock.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/skyblock/index.html",
-    "name": "Skyblock"
+    "id": "rabbit-samurai",
+    "name": "Rabbit Samurai",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rabbit-samurai/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rabbit-samurai/splash.png"
   },
   {
-    "img": "sleeping-beauty.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/sleeping-beauty/index.html",
-    "name": "Sleeping Beauty"
+    "id": "rabbit-samurai2",
+    "name": "Rabbit Samurai2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rabbit-samurai2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rabbit-samurai2/splash.png"
   },
   {
-    "img": "slice-of-sasha.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/slice-of-sasha/index.html",
-    "name": "Slice Of Sasha"
+    "id": "resent-client",
+    "name": "Resent Client",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/resent-client/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/resent-client/splash.png"
   },
   {
-    "img": "smokin-barrels.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/smokin-barrels/index.html",
-    "name": "Smokin Barrels"
+    "id": "retro-bowl",
+    "name": "Retro Bowl",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/retro-bowl/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/retro-bowl/splash.png"
   },
   {
-    "img": "snake.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/snake/index.html",
-    "name": "Snake"
+    "id": "rhythm-doctor",
+    "name": "Rhythm Doctor",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rhythm-doctor/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rhythm-doctor/splash.png"
   },
   {
-    "img": "snow-battle-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/snow-battle-io/index.html",
-    "name": "Snow Battle Io"
+    "id": "riddleschool",
+    "name": "Riddleschool",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool/splash.png"
   },
   {
-    "img": "soccer-random.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/soccer-random/index.html",
-    "name": "Soccer Random"
+    "id": "riddleschool2",
+    "name": "Riddleschool2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool2/splash.png"
   },
   {
-    "img": "soldier-legend.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/soldier-legend/index.html",
-    "name": "Soldier Legend"
+    "id": "riddleschool3",
+    "name": "Riddleschool3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool3/splash.png"
   },
   {
-    "img": "solitaire.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/solitaire/index.html",
-    "name": "Solitaire"
+    "id": "riddleschool4",
+    "name": "Riddleschool4",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool4/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool4/splash.png"
   },
   {
-    "img": "sort-the-court.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/sort-the-court/index.html",
-    "name": "Sort The Court"
+    "id": "riddleschool5",
+    "name": "Riddleschool5",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool5/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddleschool5/splash.png"
   },
   {
-    "img": "soundboard.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/soundboard/index.html",
-    "name": "Soundboard"
+    "id": "riddletransfer",
+    "name": "Riddletransfer",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddletransfer/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddletransfer/splash.png"
   },
   {
-    "img": "space-company.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/space-company/index.html",
-    "name": "Space Company"
+    "id": "riddletransfer2",
+    "name": "Riddletransfer2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddletransfer2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/riddletransfer2/splash.png"
   },
   {
-    "img": "space-garden.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/space-garden/index.html",
-    "name": "Space Garden"
+    "id": "robuxclicker",
+    "name": "Robuxclicker",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/robuxclicker/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/robuxclicker/splash.png"
   },
   {
-    "img": "space-huggers.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/space-huggers/index.html",
-    "name": "Space Huggers"
+    "id": "rolling-forests",
+    "name": "Rolling Forests",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rolling-forests/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rolling-forests/splash.png"
   },
   {
-    "img": "spelunky.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/spelunky/index.html",
-    "name": "Spelunky"
+    "id": "rolly-vortex",
+    "name": "Rolly Vortex",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rolly-vortex/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rolly-vortex/splash.png"
   },
   {
-    "img": "squid-gun-fest.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/squid-gun-fest/index.html",
-    "name": "Squid Gun Fest"
+    "id": "rooftop-snipers",
+    "name": "Rooftop Snipers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rooftop-snipers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/rooftop-snipers/splash.png"
   },
   {
-    "img": "stack.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stack/index.html",
-    "name": "Stack"
+    "id": "roommate",
+    "name": "Roommate",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/roommate/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/roommate/splash.png"
   },
   {
-    "img": "stack-bump-3d.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stack-bump-3d/index.html",
-    "name": "Stack Bump 3d"
+    "id": "ruffle",
+    "name": "Ruffle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ruffle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ruffle/splash.png"
   },
   {
-    "img": "station-141.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/station-141/index.html",
-    "name": "Station 141"
+    "id": "run-3",
+    "name": "Run 3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run-3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run-3/splash.png"
   },
   {
-    "img": "stealing-the-diamond.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stealing-the-diamond/index.html",
-    "name": "Stealing The Diamond"
+    "id": "run",
+    "name": "Run",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run/splash.png"
   },
   {
-    "img": "stick-archers-battle.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stick-archers-battle/index.html",
-    "name": "Stick Archers Battle"
+    "id": "run4bootleg",
+    "name": "Run4bootleg",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run4bootleg/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run4bootleg/splash.png"
   },
   {
-    "img": "stick-war.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stick-war/index.html",
-    "name": "Stick War"
+    "id": "runner",
+    "name": "Runner",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/runner/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/runner/splash.png"
   },
   {
-    "img": "stickman-boost.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stickman-boost/index.html",
-    "name": "Stickman Boost"
+    "id": "sand-game",
+    "name": "Sand Game",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sand-game/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sand-game/splash.png"
   },
   {
-    "img": "stickman-dismount.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stickman-dismount/index.html",
-    "name": "Stickman Dismount"
+    "id": "sandboxels",
+    "name": "Sandboxels",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sandboxels/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sandboxels/splash.png"
   },
   {
-    "img": "stickman-epic-battle.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stickman-epic-battle/index.html",
-    "name": "Stickman Epic Battle"
+    "id": "santy-is-home",
+    "name": "Santy Is Home",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/santy-is-home/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/santy-is-home/splash.png"
   },
   {
-    "img": "stickman-golf.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stickman-golf/index.html",
-    "name": "Stickman Golf"
+    "id": "scooperia",
+    "name": "Scooperia",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/scooperia/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/scooperia/splash.png"
   },
   {
-    "img": "stickman-hook.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stickman-hook/index.html",
-    "name": "Stickman Hook"
+    "id": "scrapmetal",
+    "name": "Scrapmetal",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/scrapmetal/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/scrapmetal/splash.png"
   },
   {
-    "img": "stickman-zombies.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/stickman-zombies/index.html",
-    "name": "Stickman Zombies"
+    "id": "scratcharia",
+    "name": "Scratcharia",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/scratcharia/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/scratcharia/splash.png"
   },
   {
-    "img": "storm-the-house-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/storm-the-house-2/index.html",
-    "name": "Storm The House 2"
+    "id": "shellshockers",
+    "name": "Shellshockers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shellshockers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shellshockers/splash.png"
   },
   {
-    "img": "subway-surfers-bali.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/subway-surfers-bali/index.html",
-    "name": "Subway Surfers Bali"
+    "id": "shogunshowdown",
+    "name": "Shogunshowdown",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shogunshowdown/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shogunshowdown/splash.png"
   },
   {
-    "img": "super-mario-63.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/super-mario-63/index.html",
-    "name": "Super Mario 63"
+    "id": "shotinthedark",
+    "name": "Shotinthedark",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shotinthedark/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shotinthedark/splash.png"
   },
   {
-    "img": "super-mario-64.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/super-mario-64/index.html",
-    "name": "Super Mario 64"
+    "id": "shuttledeck",
+    "name": "Shuttledeck",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shuttledeck/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shuttledeck/splash.png"
   },
   {
-    "img": "super-mario-kart-snes.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/super-mario-kart-snes/index.html",
-    "name": "Super Mario Kart Snes"
+    "id": "sky-car-stunt",
+    "name": "Sky Car Stunt",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sky-car-stunt/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sky-car-stunt/splash.png"
   },
   {
-    "img": "super-mario-world-1990.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/super-mario-world-1990/index.html",
-    "name": "Super Mario World 1990"
+    "id": "sleepingbeauty",
+    "name": "Sleepingbeauty",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sleepingbeauty/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sleepingbeauty/splash.png"
   },
   {
-    "img": "super-meat-boy.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/super-meat-boy/index.html",
-    "name": "Super Meat Boy"
+    "id": "slime-rush-td",
+    "name": "Slime Rush Td",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slime-rush-td/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slime-rush-td/splash.png"
   },
   {
-    "img": "super-puffer-fish-3d.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/super-puffer-fish-3d/index.html",
-    "name": "Super Puffer Fish 3d"
+    "id": "slitherio",
+    "name": "Slitherio",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slitherio/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slitherio/splash.png"
   },
   {
-    "img": "super-smash-flash.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/super-smash-flash/index.html",
-    "name": "Super Smash Flash"
+    "id": "slope-2",
+    "name": "Slope 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slope-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slope-2/splash.png"
   },
   {
-    "img": "superhero-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/superhero-io/index.html",
-    "name": "Superhero Io"
+    "id": "slope-ball",
+    "name": "Slope Ball",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slope-ball/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slope-ball/splash.png"
   },
   {
-    "img": "superhot.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/superhot/index.html",
-    "name": "Superhot"
+    "id": "slope",
+    "name": "Slope",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slope/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/slope/splash.png"
   },
   {
-    "img": "swerve.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/swerve/index.html",
-    "name": "Swerve"
+    "id": "sm64",
+    "name": "Sm64",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sm64/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sm64/splash.png"
   },
   {
-    "img": "synesthesia.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/synesthesia/index.html",
-    "name": "Synesthesia"
+    "id": "smashkarts",
+    "name": "Smashkarts",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/smashkarts/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/smashkarts/splash.png"
   },
   {
-    "img": "tactical-assassin-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tactical-assassin-2/index.html",
-    "name": "Tactical Assassin 2"
+    "id": "smokingbarrels",
+    "name": "Smokingbarrels",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/smokingbarrels/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/smokingbarrels/splash.png"
   },
   {
-    "img": "tactical-weapon-pack-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tactical-weapon-pack-2/index.html",
-    "name": "Tactical Weapon Pack 2"
+    "id": "snowbattle",
+    "name": "Snowbattle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/snowbattle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/snowbattle/splash.png"
   },
   {
-    "img": "tail-of-the-dragon.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tail-of-the-dragon/index.html",
-    "name": "Tail Of The Dragon"
+    "id": "snowrider3d",
+    "name": "Snowrider3d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/snowrider3d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/snowrider3d/splash.png"
   },
   {
-    "img": "tam-indian-truck-simulator-3d.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tam-indian-truck-simulator-3d/index.html",
-    "name": "Tam Indian Truck Simulator 3d"
+    "id": "soccer-random",
+    "name": "Soccer Random",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soccer-random/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soccer-random/splash.png"
   },
   {
-    "img": "tank-trouble-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tank-trouble-2/index.html",
-    "name": "Tank Trouble 2"
+    "id": "soccer-skills",
+    "name": "Soccer Skills",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soccer-skills/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soccer-skills/splash.png"
   },
   {
-    "img": "tanuki-sunset.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tanuki-sunset/index.html",
-    "name": "Tanuki Sunset"
+    "id": "soldier-legend",
+    "name": "Soldier Legend",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soldier-legend/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soldier-legend/splash.png"
   },
   {
-    "img": "temple-run-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/temple-run-2/index.html",
-    "name": "Temple Run 2"
+    "id": "solitaire",
+    "name": "Solitaire",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/solitaire/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/solitaire/splash.png"
   },
   {
-    "img": "territorial-io.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/territorial-io/index.html",
-    "name": "Territorial Io"
+    "id": "sort-the-court",
+    "name": "Sort The Court",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sort-the-court/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sort-the-court/splash.png"
   },
   {
-    "img": "tetris.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tetris/index.html",
-    "name": "Tetris"
+    "id": "soundboard",
+    "name": "Soundboard",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soundboard/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/soundboard/splash.png"
   },
   {
-    "img": "thats-not-my-neighbor.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/thats-not-my-neighbor/index.html",
-    "name": "Thats Not My Neighbor"
+    "id": "space-company",
+    "name": "Space Company",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/space-company/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/space-company/splash.png"
   },
   {
-    "img": "the-battle.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/the-battle/index.html",
-    "name": "The Battle"
+    "id": "spacegarden",
+    "name": "Spacegarden",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/spacegarden/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/spacegarden/splash.png"
   },
   {
-    "img": "the-final-earth.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/the-final-earth/index.html",
-    "name": "The Final Earth"
+    "id": "spelunky",
+    "name": "Spelunky",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/spelunky/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/spelunky/splash.png"
   },
   {
-    "img": "the-final-earth-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/the-final-earth-2/index.html",
-    "name": "The Final Earth 2"
+    "id": "spinningrat",
+    "name": "Spinningrat",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/spinningrat/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/spinningrat/splash.png"
   },
   {
-    "img": "the-heist.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/the-heist/index.html",
-    "name": "The Heist"
+    "id": "squaredash",
+    "name": "Squaredash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/squaredash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/squaredash/splash.png"
   },
   {
-    "img": "the-little-giant.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/the-little-giant/index.html",
-    "name": "The Little Giant"
+    "id": "squarerush",
+    "name": "Squarerush",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/squarerush/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/squarerush/splash.png"
   },
   {
-    "img": "the-maze-of-space-goblins.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/the-maze-of-space-goblins/index.html",
-    "name": "The Maze Of Space Goblins"
+    "id": "ssurferbotleg",
+    "name": "Ssurferbotleg",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ssurferbotleg/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/ssurferbotleg/splash.png"
   },
   {
-    "img": "there-is-no-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/there-is-no-game/index.html",
-    "name": "There Is No Game"
+    "id": "stack-bump-3d",
+    "name": "Stack Bump 3d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stack-bump-3d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stack-bump-3d/splash.png"
   },
   {
-    "img": "this-is-the-only-level.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/this-is-the-only-level/index.html",
-    "name": "This Is The Only Level"
+    "id": "stack",
+    "name": "Stack",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stack/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stack/splash.png"
   },
   {
-    "img": "level-devil.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/level-devil/index.html",
-    "name": "Level Devil"
+    "id": "starve",
+    "name": "Starve",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/starve/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/starve/splash.png"
   },
   {
-    "img": "time-shooter-3.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/time-shooter-3/index.html",
-    "name": "Time Shooter 3"
+    "id": "station-141",
+    "name": "Station 141",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/station-141/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/station-141/splash.png"
   },
   {
-    "img": "tiny-fishing.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tiny-fishing/index.html",
-    "name": "Tiny Fishing"
+    "id": "stationmeltdown",
+    "name": "Stationmeltdown",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stationmeltdown/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stationmeltdown/splash.png"
   },
   {
-    "img": "tiny-fragments.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tiny-fragments/index.html",
-    "name": "Tiny Fragments"
+    "id": "stealingthediamond",
+    "name": "Stealingthediamond",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stealingthediamond/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stealingthediamond/splash.png"
   },
   {
-    "img": "tiny-islands.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tiny-islands/index.html",
-    "name": "Tiny Islands"
+    "id": "stick-archers",
+    "name": "Stick Archers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stick-archers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stick-archers/splash.png"
   },
   {
-    "img": "top-speed-racing-3d.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/top-speed-racing-3d/index.html",
-    "name": "Top Speed Racing 3d"
+    "id": "stick-duel-battle",
+    "name": "Stick Duel Battle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stick-duel-battle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stick-duel-battle/splash.png"
   },
   {
-    "img": "topple-adventure.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/topple-adventure/index.html",
-    "name": "Topple Adventure"
+    "id": "stick-merge",
+    "name": "Stick Merge",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stick-merge/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stick-merge/splash.png"
   },
   {
-    "img": "toss-the-turtle.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/toss-the-turtle/index.html",
-    "name": "Toss The Turtle"
+    "id": "stickman-boost",
+    "name": "Stickman Boost",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-boost/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-boost/splash.png"
   },
   {
-    "img": "tough-growth.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tough-growth/index.html",
-    "name": "Tough Growth"
+    "id": "stickman-golf",
+    "name": "Stickman Golf",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-golf/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-golf/splash.png"
   },
   {
-    "img": "tower-master.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tower-master/index.html",
-    "name": "Tower Master"
+    "id": "stickman-hook",
+    "name": "Stickman Hook",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-hook/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-hook/splash.png"
   },
   {
-    "img": "townscaper.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/townscaper/index.html",
-    "name": "Townscaper"
+    "id": "stickwar",
+    "name": "Stickwar",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickwar/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickwar/splash.png"
   },
   {
-    "img": "treetop-royale.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/treetop-royale/index.html",
-    "name": "Treetop Royale"
+    "id": "stormthehouse2",
+    "name": "Stormthehouse2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stormthehouse2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stormthehouse2/splash.png"
   },
   {
-    "img": "trimps.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/trimps/index.html",
-    "name": "Trimps"
+    "id": "subway-surfers-ny",
+    "name": "Subway Surfers Ny",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/subway-surfers-ny/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/subway-surfers-ny/splash.png"
   },
   {
-    "img": "tube-jumpers.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tube-jumpers/index.html",
-    "name": "Tube Jumpers"
+    "id": "subway-surfers",
+    "name": "Subway Surfers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/subway-surfers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/subway-surfers/splash.png"
   },
   {
-    "img": "tunnel-rush.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tunnel-rush/index.html",
-    "name": "Tunnel Rush"
+    "id": "superautopets",
+    "name": "Superautopets",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/superautopets/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/superautopets/splash.png"
   },
   {
-    "img": "tunnelz.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/tunnelz/index.html",
-    "name": "Tunnelz"
+    "id": "superfowlist",
+    "name": "Superfowlist",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/superfowlist/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/superfowlist/splash.png"
   },
   {
-    "img": "twitch-tetris.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/twitch-tetris/index.html",
-    "name": "Twitch Tetris"
+    "id": "superhot",
+    "name": "Superhot",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/superhot/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/superhot/splash.png"
   },
   {
-    "img": "typewriter.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/typewriter/index.html",
-    "name": "Typewriter"
+    "id": "supermarioconstruct",
+    "name": "Supermarioconstruct",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/supermarioconstruct/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/supermarioconstruct/splash.png"
   },
   {
-    "img": "underrun.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/underrun/index.html",
-    "name": "Underrun"
+    "id": "surviv",
+    "name": "Surviv",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/surviv/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/surviv/splash.png"
   },
   {
-    "img": "unfold-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/unfold-2/index.html",
-    "name": "Unfold 2"
+    "id": "sushi-unroll",
+    "name": "Sushi Unroll",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sushi-unroll/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/sushi-unroll/splash.png"
   },
   {
-    "img": "up-left-out.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/up-left-out/index.html",
-    "name": "Up Left Out"
+    "id": "swarmsimulator",
+    "name": "Swarmsimulator",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/swarmsimulator/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/swarmsimulator/splash.png"
   },
   {
-    "img": "veloce.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/veloce/index.html",
-    "name": "Veloce"
+    "id": "swerve",
+    "name": "Swerve",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/swerve/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/swerve/splash.png"
   },
   {
-    "img": "very-normal-shooter.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/very-normal-shooter/index.html",
-    "name": "Very Normal Shooter"
+    "id": "synesthesia",
+    "name": "Synesthesia",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/synesthesia/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/synesthesia/splash.png"
   },
   {
-    "img": "volley-random.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/volley-random/index.html",
-    "name": "Volley Random"
+    "id": "tactical-weapon-pack-2",
+    "name": "Tactical Weapon Pack 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tactical-weapon-pack-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tactical-weapon-pack-2/splash.png"
   },
   {
-    "img": "waterworks.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/waterworks/index.html",
-    "name": "Waterworks"
+    "id": "tacticalassasin2",
+    "name": "Tacticalassasin2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tacticalassasin2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tacticalassasin2/splash.png"
   },
   {
-    "img": "we-become-what-we-behold.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/we-become-what-we-behold/index.html",
-    "name": "We Become What We Behold"
+    "id": "tank-trouble-2",
+    "name": "Tank Trouble 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tank-trouble-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tank-trouble-2/splash.png"
   },
   {
-    "img": "webretro.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/webretro/index.html",
-    "name": "Webretro"
+    "id": "tanuki-sunset",
+    "name": "Tanuki Sunset",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tanuki-sunset/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tanuki-sunset/splash.png"
   },
   {
-    "img": "winter-falling-price.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/winter-falling-price/index.html",
-    "name": "Winter Falling Price"
+    "id": "temple-run-2",
+    "name": "Temple Run 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/temple-run-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/temple-run-2/splash.png"
   },
   {
-    "img": "wipo.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/wipo/index.html",
-    "name": "Wipo"
+    "id": "the-final-earth-2",
+    "name": "The Final Earth 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/the-final-earth-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/the-final-earth-2/splash.png"
   },
   {
-    "img": "wolfenstein-3d.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/wolfenstein-3d/index.html",
-    "name": "Wolfenstein 3d"
+    "id": "the-final-earth",
+    "name": "The Final Earth",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/the-final-earth/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/the-final-earth/splash.png"
   },
   {
-    "img": "wordle.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/wordle/index.html",
-    "name": "Wordle"
+    "id": "the-hotel",
+    "name": "The Hotel",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/the-hotel/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/the-hotel/splash.png"
   },
   {
-    "img": "worlds-hardest-game.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/worlds-hardest-game/index.html",
-    "name": "Worlds Hardest Game"
+    "id": "thebattle",
+    "name": "Thebattle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/thebattle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/thebattle/splash.png"
   },
   {
-    "img": "worlds-hardest-game-2.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/worlds-hardest-game-2/index.html",
-    "name": "Worlds Hardest Game 2"
+    "id": "theheist",
+    "name": "Theheist",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/theheist/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/theheist/splash.png"
   },
   {
-    "img": "x-trial-racing.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/x-trial-racing/index.html",
-    "name": "X Trial Racing"
+    "id": "there-is-no-game",
+    "name": "There Is No Game",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/there-is-no-game/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/there-is-no-game/splash.png"
   },
   {
-    "img": "xx142-b2exe.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/xx142-b2exe/index.html",
-    "name": "Xx142 B2exe"
+    "id": "thisistheonlylevel",
+    "name": "Thisistheonlylevel",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/thisistheonlylevel/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/thisistheonlylevel/splash.png"
   },
   {
-    "img": "yoshi-fabrication.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/yoshi-fabrication/index.html",
-    "name": "Yoshi Fabrication"
+    "id": "throwrocks",
+    "name": "Throwrocks",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/throwrocks/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/throwrocks/splash.png"
   },
   {
-    "img": "you-are-bezos.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/you-are-bezos/index.html",
-    "name": "You Are Bezos"
+    "id": "tiny-fishing",
+    "name": "Tiny Fishing",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tiny-fishing/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tiny-fishing/splash.png"
   },
   {
-    "img": "zig-zag.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/zig-zag/index.html",
-    "name": "Zig Zag"
+    "id": "tiny-islands",
+    "name": "Tiny Islands",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tiny-islands/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tiny-islands/splash.png"
   },
   {
-    "img": "zombocalypse.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/zombocalypse/index.html",
-    "name": "Zombocalypse"
+    "id": "tosstheturtle",
+    "name": "Tosstheturtle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tosstheturtle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tosstheturtle/splash.png"
   },
   {
-    "img": "zombs-royale.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/zombs-royale/index.html",
-    "name": "Zombs Royale"
+    "id": "townscaper",
+    "name": "Townscaper",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/townscaper/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/townscaper/splash.png"
   },
   {
-    "img": "1v1s.png",
-    "link": "https://selenite.cc/semag/1v1lol/index.html",
-    "name": "1v1.lol"
+    "id": "tube-jumpers",
+    "name": "Tube Jumpers",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tube-jumpers/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tube-jumpers/splash.png"
   },
   {
-    "img": "1v1hacked.png",
-    "link": "https://1v1s.vercel.app/",
-    "name": "1v1.lol Hacked"
+    "id": "tunnel-rush",
+    "name": "Tunnel Rush",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tunnel-rush/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tunnel-rush/splash.png"
   },
   {
-    "img": "blockblast.png",
-    "link": "https://reunbozdo.github.io",
-    "name": "Blockblast"
+    "id": "tv-static",
+    "name": "Tv Static",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tv-static/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/tv-static/splash.png"
   },
   {
-    "img": "mc.png",
-    "link": "https://eaglercraft.com/mc/1.8.8/",
-    "name": "Mc"
+    "id": "twitch-tetris",
+    "name": "Twitch Tetris",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/twitch-tetris/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/twitch-tetris/splash.png"
   },
   {
-    "img": "roblox.png",
-    "link": "https://ngg.frogiee.one/?ng_ifp_partner=skool",
-    "name": "Roblox"
+    "id": "unfairmario",
+    "name": "Unfairmario",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/unfairmario/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/unfairmario/splash.png"
   },
   {
-    "img": "krunker.png",
-    "link": "https://krunker.io",
-    "name": "Krunker"
+    "id": "veloce",
+    "name": "Veloce",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/veloce/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/veloce/splash.png"
   },
   {
-    "img": "slope.png",
-    "link": "https://slopeio.org/game/slope/",
-    "name": "Slope"
+    "id": "vex2",
+    "name": "Vex2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex2/splash.png"
   },
   {
-    "img": "riddles.png",
-    "link": "https://riddle-school.github.io/file/",
-    "name": "Riddles"
+    "id": "vex3",
+    "name": "Vex3",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex3/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex3/splash.png"
   },
   {
-    "img": "riddles2.png",
-    "link": "https://grims.pro/_games/riddleschool2/",
-    "name": "Riddles 2"
+    "id": "vex4",
+    "name": "Vex4",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex4/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex4/splash.png"
   },
   {
-    "img": "riddles3.png",
-    "link": "https://grims.pro/_games/riddleschool3/",
-    "name": "Riddles 3"
+    "id": "vex5",
+    "name": "Vex5",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex5/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex5/splash.png"
   },
   {
-    "img": "riddles4.png",
-    "link": "https://grims.pro/_games/riddleschool4/",
-    "name": "Riddles 4"
+    "id": "vex6",
+    "name": "Vex6",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex6/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex6/splash.png"
   },
   {
-    "img": "riddles5.png",
-    "link": "https://grims.pro/_games/riddleschool5/",
-    "name": "Riddles 5"
+    "id": "vex7",
+    "name": "Vex7",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex7/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/vex7/splash.png"
   },
   {
-    "img": "riddlest.png",
-    "link": "https://grims.pro/_games/riddleschooltransfer/",
-    "name": "Riddlest"
+    "id": "volley-random",
+    "name": "Volley Random",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/volley-random/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/volley-random/splash.png"
   },
   {
-    "img": "riddlest2.png",
-    "link": "https://grims.pro/_games/riddleschooltransfer2/",
-    "name": "Riddlest 2"
+    "id": "wallsmash",
+    "name": "Wallsmash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wallsmash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wallsmash/splash.png"
   },
   {
-    "img": "bitlife.png",
-    "link": "https://bitlifeonline.github.io/class/index.html",
-    "name": "Bitlife"
+    "id": "waterworks",
+    "name": "Waterworks",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/waterworks/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/waterworks/splash.png"
   },
   {
-    "img": "flappy.png",
-    "link": "https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/ONc0qGvZ/index.html",
-    "name": "Flappy Bird"
+    "id": "weavesilk",
+    "name": "Weavesilk",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/weavesilk/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/weavesilk/splash.png"
   },
   {
-    "img": "skribbl.png",
-    "link": "https://skribbl.io",
-    "name": "Skribbl"
+    "id": "webcleaner",
+    "name": "Webcleaner",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webcleaner/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webcleaner/splash.png"
   },
   {
-    "img": "monkeymart.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/compiled/monkey-mart/",
-    "name": "Monkeymart"
+    "id": "webgl-fluid-simulation",
+    "name": "Webgl Fluid Simulation",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webgl-fluid-simulation/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webgl-fluid-simulation/splash.png"
   },
   {
-    "img": "eggy.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/compiled/eggycar/",
-    "name": "Eggy"
+    "id": "webretro",
+    "name": "Webretro",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webretro/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webretro/splash.png"
   },
   {
-    "img": "drivemad.png",
-    "link": "https://www.yoosfuhl.com/game/drivemad/index.html",
-    "name": "Drive Mad"
+    "id": "webxash",
+    "name": "Webxash",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webxash/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/webxash/splash.png"
   },
   {
-    "img": "geo.png",
-    "link": "https://szvy.website/gsrc/geodash/index.html",
-    "name": "Geo"
+    "id": "wiicraft",
+    "name": "Wiicraft",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wiicraft/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wiicraft/splash.png"
   },
   {
-    "img": "baldi.png",
-    "link": "https://grims.pro/_games/baldisbasics/",
-    "name": "Baldi"
+    "id": "win-the-whitehouse",
+    "name": "Win The Whitehouse",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/win-the-whitehouse/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/win-the-whitehouse/splash.png"
   },
   {
-    "img": "bblegend.png",
-    "link": "https://html5.gamedistribution.com/rvvASMiM/69d78d071f704fa183d75b4114ae40ec/index.html",
-    "name": "Bblegend"
+    "id": "wolf2d",
+    "name": "Wolf2d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wolf2d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wolf2d/splash.png"
   },
   {
-    "img": "fnaf.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/compiled/fnaf1/",
-    "name": "Fnaf"
+    "id": "wolf3d",
+    "name": "Wolf3d",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wolf3d/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wolf3d/splash.png"
   },
   {
-    "img": "fnaf2.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/compiled/fnaf2/",
-    "name": "Fnaf 2"
+    "id": "wordle",
+    "name": "Wordle",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wordle/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wordle/splash.png"
   },
   {
-    "img": "fnaf3.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/compiled/fnaf3/",
-    "name": "Fnaf 3"
+    "id": "worlds-hardest-game-2",
+    "name": "Worlds Hardest Game 2",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/worlds-hardest-game-2/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/worlds-hardest-game-2/splash.png"
   },
   {
-    "img": "fnaf4.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/compiled/fnaf4/",
-    "name": "Fnaf 4"
+    "id": "worlds-hardest-game",
+    "name": "Worlds Hardest Game",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/worlds-hardest-game/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/worlds-hardest-game/splash.png"
   },
   {
-    "img": "slowroads.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/compiled/slowroads/",
-    "name": "Slowroads"
+    "id": "wounded-summer-baby-edition",
+    "name": "Wounded Summer Baby Edition",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wounded-summer-baby-edition/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/wounded-summer-baby-edition/splash.png"
   },
   {
-    "img": "subway.png",
-    "link": "https://frogiee-is-so.skibidi.cfd/cdn/projects/subway-surfers/",
-    "name": "Subway Surfers"
+    "id": "x-trial-racing",
+    "name": "X Trial Racing",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/x-trial-racing/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/x-trial-racing/splash.png"
   },
   {
-    "img": "basketrandom.png",
-    "link": "https://html5.gamedistribution.com/rvvASMiM/bf1268dccb5d43e7970bb3edaa54afc8/index.html",
-    "name": "Basket Random"
+    "id": "xx142-b2exe",
+    "name": "Xx142 B2exe",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/xx142-b2exe/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/xx142-b2exe/splash.png"
   },
   {
-    "img": "polytrack.png",
-    "link": "https://www.kodub.com/apps/polytrack",
-    "name": "Polytrack"
+    "id": "yohoho",
+    "name": "Yohoho",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/yohoho/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/yohoho/splash.png"
   },
   {
-    "img": "cookie.png",
-    "link": "https://brunysixlwork.site/storage/load/cookieclicker/",
-    "name": "Cookie Clicker"
+    "id": "yoshifabrication",
+    "name": "Yoshifabrication",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/yoshifabrication/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/yoshifabrication/splash.png"
   },
   {
-    "img": "breakthebank.png",
-    "link": "https://brunysixlwork.site/storage/load/breakingthebank/",
-    "name": "Break The Bank"
+    "id": "you-are-bezos",
+    "name": "You Are Bezos",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/you-are-bezos/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/you-are-bezos/splash.png"
   },
   {
-    "img": "ucn.png",
-    "link": "https://frogiesarcade.win/compiled/ucn/index.html",
-    "name": "Ucn"
+    "id": "zigzag",
+    "name": "Zigzag",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/zigzag/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/zigzag/splash.png"
   },
   {
-    "img": "buckshot.png",
-    "link": "https://glcdn.githack.com/tf7software/LupineVault/-/raw/main/games/files/buckshot-roulette/index.html",
-    "name": "Buckshot"
-  },
-  {
-    "img": "osu.png",
-    "link": "https://selenite.cc/semag/osu/index.html",
-    "name": "Osu"
-  },
-  {
-    "img": "vex.png",
-    "link": "https://ixl.brunys.site/assets/games/vex/",
-    "name": "Vex"
-  },
-  {
-    "img": "vex2.png",
-    "link": "https://ixl.brunys.site/assets/games/vex2/",
-    "name": "Vex 2"
-  },
-  {
-    "img": "vex3.png",
-    "link": "https://ixl.brunys.site/assets/games/vex3/",
-    "name": "Vex 3"
-  },
-  {
-    "img": "vex4.png",
-    "link": "https://ixl.brunys.site/assets/games/vex4/",
-    "name": "Vex 4"
-  },
-  {
-    "img": "vex5.png",
-    "link": "https://ixl.brunys.site/assets/games/vex5/",
-    "name": "Vex 5"
-  },
-  {
-    "img": "vex6.png",
-    "link": "https://ixl.brunys.site/assets/games/vex6/",
-    "name": "Vex  6"
-  },
-  {
-    "img": "vex7.png",
-    "link": "https://ixl.brunys.site/assets/games/vex7/",
-    "name": "Vex 7"
-  },
-  {
-    "img": "vex8.png",
-    "link": "https://ixl.brunys.site/assets/games/vex/",
-    "name": "Vex 8"
-  },
-  {
-    "img": "skibiditoilet.png",
-    "link": "https://html5.gamedistribution.com/4d78b32a56d6422aa958e762e2fbec3e/?gd_sdk_referrer_url=https%3A%2F%2Fwww.1001games.com%2Faction%2Fyou-vs-100-skibidi-toilets",
-    "name": "Skibidi Toilet"
-  },
-  {
-    "img": "adanceoffire.png",
-    "link": "https://ixl.brunys.site/assets/games/adofai/",
-    "name": "A Dance Of Fire"
-  },
-  {
-    "img": "funnyshooter1.png",
-    "link": "https://selenite.cc/semag/funnyshooter/index.html",
-    "name": "Funny Shooter 1"
-  },
-  {
-    "img": "funnyshooter2.png",
-    "link": "https://selenite.cc/semag/funnyshooter2/index.html",
-    "name": "Funny Shooter 2"
-  },
-  {
-    "img": "gunmayhem.png",
-    "link": "https://selenite.cc/semag/gunmayhem/index.html",
-    "name": "Gun Mayhem"
-  },
-  {
-    "img": "gunmayhem2.png",
-    "link": "https://selenite.cc/semag/gunmayhem2/index.html",
-    "name": "Gun Mayhem 2"
-  },
-  {
-    "img": "slope2.png",
-    "link": "https://ixl.brunys.site/assets/games/slope2/",
-    "name": "Slope 2"
-  },
-  {
-    "img": "smash-karts.png",
-    "link": "https://smashkarts.io/index.html",
-    "name": "Smash Karts"
+    "id": "zombs-royale",
+    "name": "Zombs Royale",
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/zombs-royale/index.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/zombs-royale/splash.png"
   }
 ]

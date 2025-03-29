@@ -1,42 +1,68 @@
 [
   {
+    "id": "ubyis",
+    "name": "UBYIS",
+    "url": "https://ubyis.org/",
+    "img": "https://ubyis.org/img/logo.png"
+  },
+  {
+    "id": "ajh",
     "name": "AJH's Vault",
-    "link": "https://ajhmath.org/",
-    "image": "https://jobi.billigerhost.com/files/thumbs/vault.png"
+    "url": "https://edu.ajh.college/",
+    "img": "https://edu.ajh.college/icon.png"
   },
   {
-    "name": "Vortex",
-    "link": "https://vortexos.net/",
-    "image": "https://vortexos.net/img/vortex.png"
+    "id": "lupinevault",
+    "name": "LupineVault (down rn)",
+    "url": "https://lupinevault.com/",
+    "img": "https://i.ibb.co/nNbs5qBk/lupinepartner.png"
   },
   {
-    "name": "Unbore Yourself In School",
-    "link": "https://ubyis.github.io/V2",
-    "image": "https://i.ibb.co/yc0hPhxk/Screenshot-2024-11-25-185411.png"
-  },
-  {
-    "name": "LupineVault",
-    "link": "https://lupinevault.com/",
-    "image": "https://i.ibb.co/nNbs5qBk/lupinepartner.png"
-  },
-  {
-    "name": "Cosmic Network",
-    "link": "https://discord.gg/965A8QYa",
-    "image": "https://i.ibb.co/d0khtnk0/IMG-4053.webp"
-  },
-  {
+    "id": "sunnys",
     "name": "Sunny's Gym",
-    "link": "https://sunnys.pro",
-    "image": "https://benrogo.net/partners/logos/sunnys_gym_240x240.webp"
+    "url": "https://sunnysgym.shop/",
+    "img": "https://benrogo.net/partners/logos/sunnys_gym_240x240.webp"
   },
   {
+    "id": "vortex",
+    "name": "Vortex",
+    "url": "https://vortexos.net/",
+    "img": "https://vortexos.net/img/vortex.png"
+  },
+  {
+    "id": "catto",
     "name": "Catto's Bypassing",
-    "link": "https://discord.gg/AhuFX35mhd",
-    "image": "https://cdn.discordapp.com/icons/1329941054207561768/b34c4843580919c26c4fb0c1605e9f66.webp"
+    "url": "https://discord.gg/AhuFX35mhd",
+    "img": "https://cdn.discordapp.com/icons/1329941054207561768/b34c4843580919c26c4fb0c1605e9f66.webp"
   },
   {
-    "name": "ElectricalBypass",
-    "link": "https://discord.gg/U6mgzkDjbB",
-    "image": "https://chickennugget.global.ssl.fastly.net/assets/img/static.png"
+    "id": "cosmic",
+    "name": "Cosmic Network",
+    "url": "https://discord.gg/965A8QYa",
+    "img": "https://i.ibb.co/d0khtnk0/IMG-4053.webp"
+  },
+  {
+    "id": "uniub",
+    "name": "UniUB",
+    "url": "https://jobi.one",
+    "img": "https://jobi.one/images/logo/logo.png"
+  },
+  {
+    "id": "red",
+    "name": "RED By LupineVault",
+    "url": "https://lupine.red",
+    "img": "https://lupine.red/assets/img/favicon.ico"
+  },
+  {
+    "id": "obscura",
+    "name": "Obscura",
+    "url": "https://discord.com/invite/pYBmQTfbDh",
+    "img": "https://cdn.discordapp.com/icons/1322629666800140350/61c03135e41bcd641fc333b8fa70a076.webp"
+  },
+  {
+    "id": "electric",
+    "name": "Electric Network",
+    "url": "https://discord.com/invite/BJyUzhrbhw",
+    "img": "https://cdn.discordapp.com/icons/1353419057818374296/c0ce8580de05fef496124099da17a1a0.webp"
   }
 ]

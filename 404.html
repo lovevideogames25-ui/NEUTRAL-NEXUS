@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAPOR v2 ~ 404</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap" rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - VAPOR</title>
+    <link rel="stylesheet" href="/styles/defaults.css" />
     <style>
-        * {
-            margin: 0;
-        }
-        body {
-            background: #0a111d;
-            font-family: "Inter";
-            color: rgba(255, 255, 255, 0.9);
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        div {
-            width: 60%;
-            height: 60%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            position: relative;
-        }
-        h1 {
-            font-size: 50px;
-            font-weight: 1000;
-        }
-        p {
-            margin-top: 25px;
-            font-size: 20px;
-            font-weight: 500;
-        }
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .div {
+        width: 65%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        text-align: left;
+      }
+      h1 {
+        font-weight: 1000;
+        font-size: 5rem;
+      }
+      .body {
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+      small {
+        color: rgba(255, 255, 255, 0.5);
+      }
     </style>
-</head>
-
-<body>
-    <div>
-        <h1 id="error-code">Error 404</h1>
-        <p id="error-message">The page you were looking for wasn't found.<br>Maybe re-check the URL?</p>
+  </head>
+  <body>
+    <div class="div">
+      <div class="text-div">
+        <h1>Error 404</h1>
+        <div class="body">
+          That page does not exist.<br /><br />Using the proxy? Try again.<br />This
+          should only happen once.
+        </div>
+      </div>
+      <small><i>VAPOR v3 - technonyte</i></small>
     </div>
-
-    <script>
-        const parentPath = window.location.pathname;
-
-        const errorCode = document.getElementById('error-code');
-        const errorMessage = document.getElementById('error-message');
-
-        if (parentPath === '/') {
-            errorCode.textContent = "Activate VAProx";
-            errorMessage.innerHTML = "Do CTRL+SHIFT+R to activate. Games should work after.";
-        } else if (parentPath === '/brwsr') {
-            errorCode.textContent = "Activate VAProx";
-            errorMessage.innerHTML = "Please open a game and do CTRL+SHIFT+R to activate.<br>VAProx should work after.";
-        }
-    </script>
-</body>
-
+  </body>
 </html>

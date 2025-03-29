@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://vaporsite-assets.pages.dev/fontawesome/css/all.min.css");
+
+/* DEFAULT Theme */
+:root {
+  --bg: #0a111d;
+  --secondary-bg: #2b384d;
+  --third-bg: #444f60;
+  --fourth-bg: #232934;
+  --primary: #a4b8db;
+  --secondary: #7d93ba;
+  --text-color: #d5dce8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter";
+}
+
+body {
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}

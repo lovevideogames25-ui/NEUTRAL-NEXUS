@@ -1,122 +1,73 @@
 <!DOCTYPE html>
-<!--
-  ..................................................
-  ..................................................
-  ..................................................
-  ..................................................
-  ..................................................
-  ................:-+#@@@@@@@@@@@@@@@@@@@:..........
-  ..........:-+#%@@@@@@@@@@@@@@@@@@@@@@@@:..........
-  ..........#@@@@@@@@@@@@@@@@@@@@@@@@@@@@:..........
-  ..........#@@@@%#+:.=@@@@@@-......................
-  ..........===:......=@@@@@@-......................
-  ....................=@@@@@@-......................
-  ....................=@@@@@@-......................
-  ....................=@@@@@@-......................
-  ....................=@@@@@@-......................
-  ....................=@@@@@@-......................
-  ....................=@@@@@@@+.....................
-  ....................:#@@@@@@@@-...................
-  ......................-%@@@@@@@%-.................
-  ........................=%@@@@@@@#:...............
-  ..........................+@@@@@@@@%:.............
-  ...........................:*@@@@@@+..............
-  .............................:*@@*:...............
-  ..................................................
-  ..................................................
-  ..................................................
-  ..................................................
-  ..................................................
-  -->
-<!--
-  ☄ VAPOR v2
-  -------
-  400+ games, windows vm, movies, ai chat, all in one package
-  -------
-  created by technonyte
-  https://technonyte.pages.dev/
-  -------
-  IF YOU SKID THIS SHAME ON YOU
-  -------
-  DM @quartzz01 if you have any DMCA or copyright issues :)
--->
+<!------------------------------------------------------------------------------
+ ! Welcome to VAPOR v3 skids!
+ !
+ ! - technonyte0
+ !------------------------------------------------------------------------------>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VAPOR v2</title>
-    <link
-      rel="stylesheet"
-      href="./_a/fa/css/all.min.css"
-    />
-    <link rel="icon" type="image/png" href="/_a/logo-nobg.old.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nanum+Gothic&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="_css/main.css" />
-    <link rel="stylesheet" href="_css/nav-minimize.css" />
-    <meta property="og:title" content="☄️ VAPOR" />
+    <title>VAPOR v3</title>
+    <link href="/styles/defaults.css" rel="stylesheet" />
+    <link href="/styles/index.css" rel="stylesheet" />
+    <link href="/styles/sidebar.css" rel="stylesheet" />
+    <script src="/scripts/opt.js"></script>
+    <meta property="og:title" content="☄️ VAPOR v3" />
     <meta name="theme-color" content="#49517c" />
     <meta name="msapplication-TileColor" content="#49517c" />
-    <meta property="og:image" content="/_a/logo.old.png" />
+    <meta property="og:image" content="/_a/logo.png" />
     <meta
       property="og:description"
-      content="400+ games, windows vm, movies, ai chat, all in one package"
+      content="games, movies, vm. all in one."
     />
     <meta property="benrogo:index" content="index">
-    <meta property="benrogo:uvpath" content="/vap/cfg.js">
+    <meta property="benrogo:uvpath" content="/vpr/vpr.config.js">
   </head>
+
   <body>
-    <div id="loading">
-      <div class="spinner"></div>
-    </div>
+    <nav class="sidebar">
+      <div class="nav-top" id="nav-items"></div>
 
-    <div class="main-content">
-      <iframe src="pgs/homepage.html" id="iframe" sandbox="allow-same-origin allow-scripts" allow="fullscreen; autoplay; camera; microphone; encrypted-media; pointer-lock"></iframe>
-    </div>
-
-    <div class="nav">
-      <div class="nav-l" id="nav-left">
-        <!-- dynamic buttons: l -->
-      </div>
-
-      <div class="nav-center">
-        <div class="time-display" id="time-display">--:-- --</div>
-        <div class="vertical-divider"></div>
-        <div class="date-display" id="date">~ ~ ~ ~</div>
-        <div class="vertical-divider"></div>
-        <div class="battery-container">
-          <div class="battery-icon">
-            <div class="battery-level"></div>
-          </div>
-          <span id="battery-percent">--%</span>
+      <div class="nav-bottom">
+        <div class="quick-actions">
+          <a class="quick-action-btn">
+            <i class="fa-brands fa-discord"></i>
+          </a>
+          <a class="quick-action-btn">
+            <i class="fa-regular fa-expand"></i>
+          </a>
+          <a class="quick-action-btn">
+            <i class="fa-regular fa-handshake"></i>
+          </a>
+          <a class="quick-action-btn">
+            <i class="fa-regular fa-cog"></i>
+          </a>
         </div>
-        <div class="vertical-divider"></div>
-        <button id="fullscr">
-          <i class="fa-regular fa-expand"></i>
-        </button>
-        <button id="hideNavBtn">
-          <i class="fa-regular fa-chevron-down"></i>
-        </button>
+        <a class="nav-item">
+          <div class="icon-container">
+            <img
+              src="/_a/logo.new.png"
+              style="width: 30px; transform: translateY(-2px)"
+            />
+          </div>
+          <span class="nav-text" style="margin-left: 18px">
+            VAPOR v3&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;
+            <span id="commit-id">c0mm1t-</span>
+          </span>
+        </a>
       </div>
+    </nav>
 
-      <div class="nav-r" id="nav-right">
-        <!-- dynamic buttons: r -->
-      </div>
+    <div class="overlay"></div>
+    <div class="content">
+      <iframe id="frame" src="/page/home.html"></iframe>
     </div>
-    <button id="showNavBtn" class="hidden">
-      <i class="fa-regular fa-chevron-up"></i>
-    </button>
-    <!--UV Configuration-->
-    <script src="vap/main.js"></script>
-    <script src="vap/cfg.js"></script>
-    <script src="_scr/nav-btn.js"></script>
-    <script src="_scr/navigation.js"></script>
-    <script src="_scr/updates.js"></script>
-    <script src="_scr/load.js"></script>
-    <script src="_scr/extra.js"></script>
+
+    <script src="vpr/vpr.bundle.js"></script>
+    <script src="vpr/vpr.config.js"></script>
+    <script src="scripts/navi.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/commit.js"></script>
   </body>
 </html>
