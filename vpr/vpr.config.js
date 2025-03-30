@@ -1,5 +1,7 @@
 // this is vapor's ultr@v10l3t configuration.
 
+// L no bare for u
+
 self.__uv$config = {
   prefix: "/vpr/service/",
   encodeUrl: Ultraviolet.codec.xor.encode,

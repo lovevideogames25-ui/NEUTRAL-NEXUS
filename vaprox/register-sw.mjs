@@ -1,3 +1,5 @@
+// THIS FILE REGISTERS THE SW.
+
 "use strict";
 const stockSW = "/vpr/sw.js";
 

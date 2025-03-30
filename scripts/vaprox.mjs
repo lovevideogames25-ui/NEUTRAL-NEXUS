@@ -1,3 +1,102 @@
+// This is the pr0xy functionality for VAPOR.
+//
+// IF YOU SKID THIS PLEASE CREDIT ME!!!!!!!!!!!!
+// -technonyte0
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 import { registerSW } from "../vaprox/register-sw.mjs";
 import * as BareMux from "../vaprox/baremux/index.mjs";
 
@@ -27,24 +126,24 @@ export async function getUV(input) {
 
   let url = search(input, "https://duckduckgo.com/?q=%s");
 
-  let wispUrl = localStorage.getItem("proxServer") || "wss://aluu.xyz/wisp/";
+  let servUrl = localStorage.getItem("proxServer") || "wss://aluu.xyz/wisp/";
 
   if ((await connection.getTransport()) !== "/vaprox/epoxy/index.mjs") {
     await connection.setTransport("/vaprox/epoxy/index.mjs", [
-      { wisp: wispUrl },
+      { wisp: servUrl },
     ]);
   }
   if ((await connection.getTransport()) !== "/vaprox/libcurl/libcurl.mjs") {
     await connection.setTransport("/vaprox/libcurl/libcurl.mjs", [
-      { wisp: wispUrl },
+      { wisp: servUrl },
     ]);
   }
 
-  let viewUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
+  let encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
 
   console.log("VAProx: Obtained UV encoded URL. Returning...");
 
-  return viewUrl;
+  return encodedUrl;
 }
 
 // we love vaprox -everyone

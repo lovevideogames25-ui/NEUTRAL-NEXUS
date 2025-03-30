@@ -173,6 +173,7 @@
       .modal p {
         font-size: 18px;
         margin-top: 10px;
+        margin-left: 3px;
       }
 
       .modalOverlay {
@@ -205,21 +206,55 @@
       <img src="/_a/logo.png" alt="Logo" />
     </div>
     <div id="btm-container">
-      <div class="btm-div" id="changelogButton">
-        <span class="title">Changelog</span>
+      <div class="btm-div" id="infoButton">
+        <span class="title">Information</span>
       </div>
     </div>
 
     <div class="modalOverlay" id="modalOverlay"></div>
-    <div class="modal" id="changelogModal">
-      <div class="title">Changelog</div>
-      <p>- whole new (working) game list!<br>
-      - full CHROME VM<br>
-      - wisp support!<br>
-      - alot more im just too lazy to put it here</p>
+    <div class="modal" id="infoModal">
+      <div class="title">--</div>
+      <p>--</p>
     </div>
 
     <script>
+      const modalContent = {
+        title: "VAPOR v3.1",
+        text: "- Added this info modal.<br>- Set grid to rows of 3 (anti-cutoff)<br>- Added like a ton of comments<br>- Added more splash texts<br>- Stabilization changes<br>- Improved User Experience.",
+      };
+
+      function checkMod() {
+        const storedContent = localStorage.getItem("modalContent");
+        const currentContent = JSON.stringify(modalContent);
+
+        if (storedContent !== currentContent) {
+          localStorage.setItem("modalContent", currentContent);
+          showMod();
+        }
+      }
+
+      function showMod() {
+        const overlayBackground = document.getElementById("modalOverlay");
+        const infoModal = document.getElementById("infoModal");
+
+        infoModal.querySelector(".title").innerText = modalContent.title;
+        infoModal.querySelector("p").innerHTML = modalContent.text;
+        infoModal.classList.add("show");
+        overlayBackground.classList.add("show");
+
+        overlayBackground.addEventListener("click", () => {
+          infoModal.classList.remove("show");
+          overlayBackground.classList.remove("show");
+        });
+      }
+
+      document.getElementById("infoButton").addEventListener("click", checkMod);
+
+      window.onload = () => {
+        setRandomPlaceholder();
+        checkMod();
+      };
+
       const dictionary = {
         phrases: [
           "you just got doxxed: 0.0.0.0",
@@ -279,6 +314,10 @@
           "55th splash message :D",
           "welcome to the splash pad",
           "ts pmo icl sybau 💀🙏",
+          "why aren't you doing schoolwork?",
+          "wait what why are we here?",
+          "who what when where why how",
+          "xzu gwt mtb fwj dtz",
         ],
       };
 
@@ -297,25 +336,6 @@
         phraseText.innerText = randomPhrase;
       }
 
-      window.onload = setRandomPlaceholder;
-
-      const overlayBackground = document.getElementById("modalOverlay");
-      const changelogModal = document.getElementById("changelogModal");
-
-
-      document
-        .getElementById("changelogButton")
-        .addEventListener("click", () => {
-          changelogModal.classList.add("show");
-          overlayBackground.classList.add("show");
-        });
-
-      overlayBackground.addEventListener("click", () => {
-        changelogModal.classList.remove("show");
-        overlayBackground.classList.remove("show");
-      });
-    </script>
-    <script>
       particlesJS("particles-js", {
         particles: {
           number: {
