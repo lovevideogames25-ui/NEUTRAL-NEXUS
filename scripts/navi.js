@@ -7,7 +7,8 @@ const navItems = [
     icon: "fa-game-console-handheld",
     url: "page/emu.html",
   },
+  { title: "Music", icon: "fa-music", url: "page/music.html" },
   { title: "VM", icon: "fa-desktop", url: "page/vm.html" },
-  { title: "Media", icon: "fa-clapperboard", url: "page/mov.html" },
+  { title: "Movies", icon: "fa-clapperboard", url: "page/mov.html" },
   { title: "AI", icon: "fa-robot", url: "page/ai.html" },
 ];

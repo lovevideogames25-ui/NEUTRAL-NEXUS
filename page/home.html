@@ -42,7 +42,7 @@
         margin-right: 30px;
         opacity: 0;
         transform: translateX(50px);
-        animation: fadeInMoveLeft 1s forwards 0.2s;
+        animation: zoomL 1s forwards 0.2s;
       }
 
       h1 {
@@ -68,7 +68,7 @@
         margin-left: -10px;
         transform: translateY(-15px);
         opacity: 0;
-        animation: zoomInFromRight 1s forwards;
+        animation: zoomR 1s forwards;
       }
 
       #particles-js {
@@ -86,7 +86,7 @@
         }
       }
 
-      @keyframes zoomInFromRight {
+      @keyframes zoomR {
         0% {
           transform: translateX(500%) scale(1);
           opacity: 0;
@@ -97,7 +97,7 @@
         }
       }
 
-      @keyframes fadeInMoveLeft {
+      @keyframes zoomL {
         0% {
           opacity: 0;
           transform: translateX(50px);
@@ -201,26 +201,26 @@
     <div class="content-container">
       <div class="content">
         <h1>VAPOR <span>v3</span></h1>
-        <p class="phrase">loading cool phrase...</p>
+        <p class="phrase">picking a phrase...</p>
       </div>
       <img src="/_a/logo.png" alt="Logo" />
     </div>
     <div id="btm-container">
-      <div class="btm-div" id="infoButton">
+      <!--<div class="btm-div" id="infoButton">
         <span class="title">Information</span>
-      </div>
+      </div>-->
     </div>
 
     <div class="modalOverlay" id="modalOverlay"></div>
     <div class="modal" id="infoModal">
-      <div class="title">--</div>
-      <p>--</p>
+      <div class="title">...</div>
+      <p>...</p>
     </div>
 
     <script>
       const modalContent = {
-        title: "VAPOR v3.1",
-        text: "- Added this info modal.<br>- Set grid to rows of 3 (anti-cutoff)<br>- Added like a ton of comments<br>- Added more splash texts<br>- Stabilization changes<br>- Improved User Experience.",
+        title: "VAPOR v3.2",
+        text: "- Updated VM UI<br>- Added a new VM option<br>- Added Music<br>- Cleaned up code<br>- other stuff idk",
       };
 
       function checkMod() {

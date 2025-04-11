@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <!------------------------------------------------------------------------------
- ! Welcome to VAPOR v3 skids!
- !
+ ! Welcome to VAPOR v3!
  ! - technonyte0
  !------------------------------------------------------------------------------>
 <html lang="en">
   <head>
-    <!-- Basic HTML stuff -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VAPOR v3</title>
 
-    <!-- These are the main styles. -->
     <link href="/styles/defaults.css" rel="stylesheet" />
     <link href="/styles/index.css" rel="stylesheet" />
     <link href="/styles/sidebar.css" rel="stylesheet" />
 
-    <!-- This file runs all of the functions set in settings. -->
     <script src="/scripts/opt.js"></script>
 
-    <!-- These are meta tags, used mostly for Discord embeds. -->
+    <!-- discord embed meta -->
     <meta property="og:title" content="☄️ VAPOR v3" />
     <meta name="theme-color" content="#49517c" />
     <meta name="msapplication-TileColor" content="#49517c" />
@@ -28,7 +24,7 @@
       property="og:description"
       content="games, movies, vm. all in one."
     />
-    <!-- Benrogo UV paths (to show on leaderboard once wisp is set up) -->
+    <!-- benrogo meta -->
     <meta property="benrogo:index" content="index">
     <meta property="benrogo:uvpath" content="/vpr/vpr.config.js">
   </head>
@@ -36,11 +32,9 @@
   <body>
     <nav class="sidebar">
       <div class="nav-top" id="nav-items">
-        <!-- Navigation items are dynamically generated here. -->
       </div>
 
       <div class="nav-bottom">
-        <!-- These are the square icon buttons at the bottom of the navbar. -->
         <div class="quick-actions">
           <a class="quick-action-btn">
             <i class="fa-regular fa-expand"></i>
@@ -56,7 +50,6 @@
           </a>
         </div>
 
-        <!-- This is the "VAPOR v3" nav item at the bottom-->
         <a class="nav-item">
           <div class="icon-container">
             <img
@@ -72,11 +65,9 @@
       </div>
     </nav>
 
-    <!-- This is the darkened blurry overlay when hovering the navigation bar.-->
     <div class="overlay"></div>
 
     <div class="content">
-      <!-- This iframe houses all of the content for VAPOR. -->
       <iframe id="frame" src="/page/home.html"></iframe>
     </div>
 
@@ -84,12 +75,10 @@
     <!-- Ultr@v10l3t Files                -->
     <script src="vpr/vpr.bundle.js"></script>
     <script src="vpr/vpr.config.js"></script>
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <!-- Main Files                           -->
+    <!-- Main Files                     -->
     <script src="scripts/navi.js"></script>
     <script src="scripts/navigation.js"></script>
     <script src="scripts/commit.js"></script>
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
   </body>
 </html>
