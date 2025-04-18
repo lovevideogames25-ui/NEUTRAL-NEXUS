@@ -13,7 +13,7 @@
   },
   {
     "id": "lupinevault",
-    "name": "LupineVault (down rn)",
+    "name": "LupineVault",
     "url": "https://lupinevault.com/",
     "img": "https://i.ibb.co/nNbs5qBk/lupinepartner.png"
   },
@@ -64,5 +64,17 @@
     "name": "Electric Network",
     "url": "https://discord.com/invite/BJyUzhrbhw",
     "img": "https://cdn.discordapp.com/icons/1353419057818374296/c0ce8580de05fef496124099da17a1a0.webp"
+  },
+  {
+    "id": "unblockzone",
+    "name": "Unblockzone",
+    "url": "https://unblockzone.online",
+    "img": "https://files.catbox.moe/ao6qv3.png"
+  },
+  {
+    "id": "lunar",
+    "name": "Lunar",
+    "url": "https://lunaron.top",
+    "img": "https://cdn.discordapp.com/icons/1278563314804195390/ae281c0ea7af2bbaf352ed86f719e456.webp"
   }
 ]

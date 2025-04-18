@@ -1,106 +1,11 @@
-// This is the pr0xy functionality for VAPOR.
-//
-// IF YOU SKID THIS PLEASE CREDIT ME!!!!!!!!!!!!
-// -technonyte0
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/**
+ * this is the p.r.0.x.y functionality for vapor
+ * pls don't skid this took me quite a bit to make
+ */
 import { registerSW } from "../vaprox/register-sw.mjs";
 import * as BareMux from "../vaprox/baremux/index.mjs";
 
-console.log("VAProx: Imported modules");
+console.log("imported");
 
 const connection = new BareMux.BareMuxConnection("/vaprox/baremux/worker.js");
 

@@ -1,3 +1,8 @@
+/**
+ * this gets the current commit ID to display in the sidebar
+ * theres zero point in having this, but why not?
+ */
+
 const projectPath = "technonyte00/vapor";
 const glApi = `https://gitlab.com/api/v4/projects/${encodeURIComponent(
   projectPath

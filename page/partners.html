@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VAPOR</title>
     <style>
       body,
       html {
@@ -57,7 +56,7 @@
 
       .game-grid {
         display: grid;
-        grid-template-columns: repeat(4, 320px);
+        grid-template-columns: repeat(3, 320px);
         gap: 15px;
         justify-content: center;
         padding: 20px;
@@ -162,15 +161,11 @@
           disabled
         />
       </div>
-      <small
-        >Game images are being added.<br />All games should function
-        normally.</small
-      >
       <div class="progress-container" id="progressContainer">
         <div class="progress-bar">
           <div class="progress-bar-fill" id="progressBarFill"></div>
         </div>
-        <div class="progress-text" id="progressText">0/410</div>
+        <div class="progress-text" id="progressText">0</div>
       </div>
       <div class="game-grid" id="gameGrid" style="opacity: 0"></div>
     </div>
@@ -237,20 +232,7 @@
             gameDiv.style.backgroundImage = `url(${backgroundUrl})`;
 
             gameDiv.addEventListener("click", () => {
-              const proxGame = localStorage.getItem("proxGame") === "true";
-              const gameUrl = proxGame ? `/embed.html#${url}` : url;
-
-              fetch(gameUrl, { method: "HEAD" })
-                .then((response) => {
-                  if (response.ok) {
-                    window.location.href = gameUrl;
-                  } else {
-                    window.location.href = url;
-                  }
-                })
-                .catch(() => {
-                  window.location.href = url;
-                });
+              window.open(url, "_blank");
             });
 
             const overlay = document.createElement("div");

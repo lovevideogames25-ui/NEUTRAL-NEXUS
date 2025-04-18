@@ -133,16 +133,13 @@
         />
       </div>
       <small
-        >PSA: We don't have <i>every movie.</i><br />Search uses the TMDB API,
-        which includes some<br />movies that we don't have, or don't exist.<br />We
-        are currently making a custom search with movies we
-        <i>do have.</i></small
+        >I'm making a new movie page!<br>Don't worry, it will be much better.</small
       >
       <div class="game-grid" id="gameGrid"></div>
     </div>
-    <script src="/scripts/verySecretApiKeys.js"></script>
+    <script src="/scripts/secrets.js"></script>
     <script>
-      const searchInput=document.getElementById("searchInput"),gameGrid=document.getElementById("gameGrid");async function getPopularMov(){const e=await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${noBroNotYours}`);displayMov((await e.json()).results)}async function searchMov(e){const t=await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${noBroNotYours}&query=${encodeURIComponent(e)}`);displayMov((await t.json()).results)}function displayMov(e){gameGrid.innerHTML="",e.forEach((e=>{const t=document.createElement("div");t.classList.add("game"),t.style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${e.poster_path})`,t.innerHTML=`\n            <div class="overlay">\n              <div class="movie-title">${e.title}</div>\n            </div>\n          `,t.addEventListener("click",(()=>{window.location.href=`/_a/mov/api.html#${e.id}`})),gameGrid.appendChild(t)}))}searchInput.addEventListener("keypress",(function(e){if("Enter"===e.key){const e=searchInput.value;e?searchMov(e):getPopularMov()}})),getPopularMov();
+      const searchInput=document.getElementById("searchInput"),gameGrid=document.getElementById("gameGrid");async function getPopularMov(){const e=await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${movSec}`);displayMov((await e.json()).results)}async function searchMov(e){const t=await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${movSec}&query=${encodeURIComponent(e)}`);displayMov((await t.json()).results)}function displayMov(e){gameGrid.innerHTML="",e.forEach((e=>{const t=document.createElement("div");t.classList.add("game"),t.style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${e.poster_path})`,t.innerHTML=`\n            <div class="overlay">\n              <div class="movie-title">${e.title}</div>\n            </div>\n          `,t.addEventListener("click",(()=>{window.location.href=`/_a/mov/api.html#${e.id}`})),gameGrid.appendChild(t)}))}searchInput.addEventListener("keypress",(function(e){if("Enter"===e.key){const e=searchInput.value;e?searchMov(e):getPopularMov()}})),getPopularMov();
     </script>
   </body>
 </html>

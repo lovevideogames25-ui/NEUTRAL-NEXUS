@@ -1,4 +1,6 @@
-// THIS FILE REGISTERS THE SW.
+/**
+ * this registers the service worker for the p.r.0.x.y
+ */
 
 "use strict";
 const stockSW = "/vpr/sw.js";

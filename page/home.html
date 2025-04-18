@@ -48,18 +48,18 @@
       h1 {
         margin: 0;
         font-weight: 700;
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--primary);
         font-size: 75px;
       }
 
       h1 span {
         font-weight: 1000;
-        color: #fff;
+        color: var(--text-color);
       }
 
       p {
         margin: 10px 0 0 0;
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--secondary);
         font-size: 27px;
       }
 
@@ -219,8 +219,8 @@
 
     <script>
       const modalContent = {
-        title: "VAPOR v3.2",
-        text: "- Updated VM UI<br>- Added a new VM option<br>- Added Music<br>- Cleaned up code<br>- other stuff idk",
+        title: "VAPOR v3.3",
+        text: "- Add a README to the repo<br>- Movies now uses improved API<br>- Add more partners<br>- Fix sizing on partners page<br>- Tidy up<br>- Commented the code<br>- Added Google Analytics<br>- and more!",
       };
 
       function checkMod() {
@@ -292,7 +292,7 @@
           "this was written on feb 21 2025",
           "vapor v3 is heeeeerreee!!!",
           "when is v4???",
-          "",
+          "bnalk uuhhh",
           "youtu.be/dQw4w9WgXcQ",
           "first sour then sweet",
           "this is the 40th message!!",
@@ -323,13 +323,17 @@
           "Batteries not included.",
           "Fun fact: you can read!",
           "you're gonna get tariffed",
+          "technonyte is cool",
+          "lightspeed sucks",
+          "join the discord at .gg/goguardian",
+          "vapor v3.3 out now!!!"
         ],
       };
 
       fetch("https://icanhazip.com/")
         .then((res) => res.text())
         .then((ip) => {
-          dictionary.phrases[0] = "oh um " + ip.trim();
+          dictionary.phrases[0] = "oh um hi " + ip.trim();
         });
 
       function setRandomPlaceholder() {

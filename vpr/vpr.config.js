@@ -1,6 +1,6 @@
-// this is vapor's ultr@v10l3t configuration.
-
-// L no bare for u
+/**
+ * this is the p.r.0.x.y configuration
+ */
 
 self.__uv$config = {
   prefix: "/vpr/service/",
@@ -12,5 +12,3 @@ self.__uv$config = {
   config: "/vpr/vpr.config.js",
   sw: "/vpr/vpr.sw.js",
 };
-
-// we love vaprox -everyone
