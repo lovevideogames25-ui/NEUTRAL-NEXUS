@@ -15,7 +15,7 @@
 
         const urls = lines.filter(line => line.includes('http://') || line.includes('https://'));
         const encUrls = urls.map(url => btoa(url.trim()));
-        const joined = encUrls.join('!!!');
+        const joined = encUrls.join('$');
         //alert(urls);
         //alert(joined);
         location.href = `/_a/mov/p.html#${joined}`;
