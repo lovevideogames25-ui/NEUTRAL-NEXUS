@@ -100,12 +100,12 @@
       try {
         // Ensure the hash is not empty and decode the base64
         if (hash) {
-          servers = atob(hash).split("|||").filter((e) => e.trim() !== "");
+          servers = atob(hash).split("!!!").filter((e) => e.trim() !== "");
         } else {
           alert("Hash is missing from URL.");
         }
       } catch (e) {
-        alert("Error decoding hash:", e);
+        alert(`Error decoding hash: ${e}`);
       }
 
       function playVideo(url) {
