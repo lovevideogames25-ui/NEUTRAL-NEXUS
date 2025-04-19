@@ -31,7 +31,7 @@ export async function getUV(input) {
 
   let url = search(input, "https://duckduckgo.com/?q=%s");
 
-  let servUrl = localStorage.getItem("proxServer") || "wss://aluu.xyz/wisp/";
+  let servUrl = localStorage.getItem("proxServer") || "wss://byod.hollow.live.cdn.cloudflare.net/wisp/";
 
   if ((await connection.getTransport()) !== "/vaprox/epoxy/index.mjs") {
     await connection.setTransport("/vaprox/epoxy/index.mjs", [
