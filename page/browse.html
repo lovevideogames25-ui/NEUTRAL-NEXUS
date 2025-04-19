@@ -26,12 +26,15 @@
 
       #tab-bar {
         display: flex;
-        background: var(--fourth-bg);
-        height: 42px;
-        padding: 6px;
-        gap: 4px;
+        background: var(--bg);
+        height: 48px;
+        padding: 8px;
+        padding-top: 8px;
+        gap: 0px;
         overflow-x: scroll;
         overflow-y: hidden;
+        border-bottom: 1.5px solid var(--secondary-bg);
+        border-bottom-left-radius: 10px;
       }
 
       #tab-bar::-webkit-scrollbar {
@@ -42,28 +45,72 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        padding: 7.5px 10px;
-        padding-right: 7px;
-        background: var(--secondary-bg);
+        padding: 5.5px 8px;
+        padding-right: 2px;
+        background: transparent;
         border-bottom: none;
-        border-radius: 8px;
+        border-radius: 8px 8px 0px 0px;
         cursor: default;
-        width: 225px;
-        height: 35px;
-        transition: 0.1s ease;
-        animation: openTab 0.1s ease;
+        width: 245px;
+        height: 40px;
+        transition: all 0.25s ease;
         opacity: 1;
+        margin-right: 4px;
+        border-color: var(--secondary-bg);
       }
 
       @keyframes openTab {
         from {
-          width: 200px;
+          opacity: 0;
+          padding: 0;
+          width: 0px;
+          margin-right: 0px;
+          filter: blur(10px);
+        }
+        to {
+          width: 245px;
           opacity: 1;
+          padding: 9.5px 12px;
+          margin-right: 4px;
+          filter: blur(0px);
         }
       }
 
+      @keyframes closeTab {
+        from {
+          opacity: 1;
+          padding: 9.5px 14px;
+          padding-right: 7px;
+          width: 245px;
+          margin-right: 4px;
+          filter: blur(0px);
+        }
+        to {
+          opacity: 0;
+          padding: 0;
+          width: 0px;
+          margin-right: 0px;
+          filter: blur(10px);
+        }
+      }
+
+      .tab:not(.active):hover {
+        background: var(--secondary-bg);
+      }
+
       .tab.active {
-        background: var(--third-bg);
+        border-top: 1px solid var(--secondary-bg);
+        border-left: 1px solid var(--secondary-bg);
+        border-right: 1px solid var(--secondary-bg);
+        background: var(--fourth-bg);
+      }
+
+      .tab.active .tab-close {
+        opacity: 1;
+      }
+
+      .tab:hover .tab-close {
+        opacity: 1;
       }
 
       .tab img {
@@ -76,7 +123,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: 13px;
+        font-size: 16px;
       }
 
       .tab-close {
@@ -85,10 +132,12 @@
         background: none;
         color: var(--text-color);
         cursor: default;
-        padding: 2px;
+        padding: 4px;
         border-radius: 50px;
-        width: 22px;
-        height: 22px;
+        width: 26px;
+        height: 26px;
+        opacity: 0;
+        transition: 0.15s ease;
       }
 
       .tab-close:hover {
@@ -104,8 +153,8 @@
         cursor: pointer;
         opacity: 0.6;
         border-radius: 8px;
-        width: 35px;
-        height: 35px;
+        width: 36px;
+        height: 36px;
         transition: 0.15s ease;
       }
 
@@ -148,7 +197,7 @@
         flex: 1;
         padding: 7.5px 10px;
         height: 35px;
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(255, 255, 255, 0);
         border: none;
         border-radius: 8px;
         color: var(--text-color);
@@ -209,7 +258,12 @@
       >
         <i class="fa-regular fa-redo"></i>
       </button>
-      <input type="text" id="url-input" placeholder="Enter URL or search" />
+      <input
+        type="text"
+        id="url-input"
+        onfocus="this.select()"
+        placeholder="Enter URL or search"
+      />
     </div>
     <div id="frames-container"></div>
 
@@ -229,18 +283,21 @@
           this.container.id = this.id;
 
           this.iframe = document.createElement("iframe");
+          this.iframe.src = "/page/newtab.html";
           this.container.appendChild(this.iframe);
 
           this.element = this.createTabElement();
           this.updateTitle("New Tab");
-          this.updateFavicon(""); // Set default favicon for new tab
+          this.updateFavicon("");
 
           this.setupIframeEvents();
         }
 
         createTabElement() {
           const tab = document.createElement("div");
-          tab.className = "tab";
+          tab.classList.add("tab");
+          tab.style.animation = "openTab 0.2s ease forwards";
+
           tab.innerHTML = `
             <img src="" alt="">
             <span class="tab-title">New Tab</span>
@@ -274,31 +331,64 @@
         handleIframeUpdate() {
           try {
             const url = this.iframe.contentWindow.location.href;
-            if (url === "about:blank") return;
+            const urlInput = document.getElementById("url-input");
+
+            if (url === "/page/newtab.html") {
+              this.updateTitle("New Tab");
+              this.updateFavicon("");
+              if (this.element.classList.contains("active")) {
+                urlInput.value = "";
+              }
+              return;
+            }
+
             const finalPath = url.split("/").pop() || url;
-            const decodedUrl = __uv$config.decodeUrl(finalPath);
+            const decodedUrl =
+              window["__" + "u" + "v" + "$config"].decodeUrl(finalPath);
+
             this.updateTitle(this.iframe.contentWindow.document.title);
             this.updateFavicon(decodedUrl);
-            const urlInput = document.getElementById("url-input");
+
             if (this.element.classList.contains("active")) {
-              urlInput.value = decodedUrl;
+              const junkUrls = ["ngwva`.jtol", "a`owt8bnalk"];
+              urlInput.value = junkUrls.includes(decodedUrl) ? "" : decodedUrl;
             }
           } catch (e) {
             // should be no cross-origin restrictions
-            // as the iframe should always be same-origin
           }
         }
 
         updateTitle(title) {
-          this.element.querySelector(".tab-title").textContent =
-            title || "Untitled";
+          const fallbackElement = this.element.querySelector(".tab-title");
+
+          if (title) {
+            fallbackElement.textContent = title;
+            return;
+          }
+
+          try {
+            const url = this.iframe.contentWindow.location.href;
+
+            if (url === "/page/newtab.html") {
+              fallbackElement.textContent = "New Tab";
+              return;
+            }
+
+            const finalPath = url.split("/").pop() || url;
+            const decodedUrl =
+              window["__" + "u" + "v" + "$config"].decodeUrl(finalPath);
+            const hostname = new URL(decodedUrl).hostname;
+
+            fallbackElement.textContent = hostname;
+          } catch (e) {
+            fallbackElement.textContent = "Blank";
+          }
         }
 
         updateFavicon(url) {
           const faviconElement = this.element.querySelector("img");
 
-          // If no URL or it's "about:blank", set the default base64 image
-          if (!url || url === "about:blank") {
+          if (!url || url === "/page/newtab.html") {
             faviconElement.src = defaultFavicon;
           } else {
             const faviconUrl = `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(
@@ -319,7 +409,7 @@
           this.urlInput = document.getElementById("url-input");
 
           this.setupEventListeners();
-          this.createTab(); // Create initial tab
+          this.createTab();
         }
 
         setupEventListeners() {
@@ -393,14 +483,18 @@
 
           try {
             const url = tab.iframe.contentWindow.location.href;
-            if (url !== "about:blank") {
-              const finalPath = url.split("/").pop() || url;
-              this.urlInput.value = __uv$config.decodeUrl(finalPath);
-            } else {
+
+            if (url === "/page/newtab.html") {
               this.urlInput.value = "";
+            } else {
+              const finalPath = url.split("/").pop() || url;
+              const decodedUrl =
+                window["__" + "u" + "v" + "$config"].decodeUrl(finalPath);
+              const junkUrls = ["ngwva`.jtol", "a`owt8bnalk"];
+              urlInput.value = junkUrls.includes(decodedUrl) ? "" : decodedUrl;
             }
           } catch (e) {
-            // Handle cross-origin restrictions
+            this.urlInput.value = "";
           }
         }
 
@@ -409,8 +503,15 @@
           if (index === -1) return;
 
           this.tabs.splice(index, 1);
-          tab.element.remove();
-          tab.container.remove();
+          tab.element.style.animation = "closeTab 0.2s ease forwards";
+          tab.element.style.overflow = "hidden";
+          tab.element.style.padding = "0";
+          tab.element.style.margin = "0";
+
+          setTimeout(() => {
+            tab.element.remove();
+            tab.container.remove();
+          }, 200);
 
           if (this.activeTab === tab) {
             const newTab = this.tabs[index] || this.tabs[index - 1];
@@ -423,7 +524,7 @@
         }
       }
 
-      // Initialize the browser
+      // Initialize
       const browser = new Browser();
     </script>
   </body>
