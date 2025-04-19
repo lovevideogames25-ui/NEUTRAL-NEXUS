@@ -14,7 +14,12 @@
         const lines = text.split('\n');
 
         const urls = lines.filter(line => line.includes('http://') || line.includes('https://'));
-        const encUrls = urls.map(url => btoa(url.trim()));
+        const encUrls = urls.map(url => {
+          let base64 = btoa(url.trim());
+          base64 = base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+          return base64;
+        });
+
         const joined = encUrls.join('$');
         //alert(urls);
         //alert(joined);
