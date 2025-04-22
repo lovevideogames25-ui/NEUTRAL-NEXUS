@@ -190,9 +190,9 @@
           <i class="fa-regular fa-info-circle"></i>
           About VAPOR
         </div>
-        <div class="menu-item" data-target="proxy">
+        <div class="menu-item" data-target="prx">
           <i class="fa-regular fa-ghost"></i>
-          Proxy
+          Prøxy
         </div>
         <div class="menu-item" data-target="cloak">
           <i class="fa-regular fa-hood-cloak"></i>
@@ -216,7 +216,7 @@
         </div>
       </div>
 
-      <div class="content proxy">
+      <div class="content prx">
         <div class="card">
           <h2>Wisp Server</h2>
           <p>
@@ -224,29 +224,25 @@
             Switching servers may resolve issues with the default server being
             blocked. Also, if a server is down, choose another one from here.
           </p>
-          <div class="option" data-wisp="wss://byod.hollow.live.cdn.cloudflare.net/wisp/">
+          <div class="option" data-wisp="wss://aluu.xyz/wisp/">
             <i class="fa-regular fa-server"></i>
             Default Server
           </div>
-          <div class="option" data-wisp="wss://aluu.xyz/wisp/"></div>
+          <div class="option" data-wisp="wss://learn.latinliturgy.com/w/">
             <i class="fa-regular fa-server"></i>
             Alternate 1
           </div>
-          <div class="option" data-wisp="wss://learn.latinliturgy.com/w/">
+          <div class="option" data-wisp="wss://nauka.politechnika-nova.edu.pl/wisp/">
             <i class="fa-regular fa-server"></i>
             Alternate 2
           </div>
-          <div class="option" data-wisp="wss://nauka.politechnika-nova.edu.pl/wisp/">
-            <i class="fa-regular fa-server"></i>
-            Alternate 3
-          </div>
         </div>
         <div class="card">
-          <h2>Proxy Games</h2>
+          <h2>Prøxy Games</h2>
           <p>If certain games are blocked by your filter, try enabling this!</p>
-          <div class="dropdown" id="proxyGamesToggle">
-            <span id="proxyGamesStatus">Disabled</span>
-            <i class="fa-regular fa-times" id="proxyGamesIcon"></i>
+          <div class="dropdown" id="prxGamesToggle">
+            <span id="prxGamesStatus">Disabled</span>
+            <i class="fa-regular fa-times" id="prxGamesIcon"></i>
           </div>
         </div>
       </div>
@@ -299,24 +295,24 @@
       const cloakIcon = document.getElementById("cloakIcon");
       const cloakUrlInput = document.getElementById("cloakUrl");
       const saveCloakUrlButton = document.getElementById("saveCloakUrl");
-      const proxyGamesToggle = document.getElementById("proxyGamesToggle");
-      const proxyGamesStatus = document.getElementById("proxyGamesStatus");
-      const proxyGamesIcon = document.getElementById("proxyGamesIcon");
+      const prxGamesToggle = document.getElementById("prxGamesToggle");
+      const prxGamesStatus = document.getElementById("prxGamesStatus");
+      const prxGamesIcon = document.getElementById("prxGamesIcon");
 
       const closePreventToggle = document.getElementById("closePreventToggle");
       const closePreventStatus = document.getElementById("closePreventStatus");
       const closePreventIcon = document.getElementById("closePreventIcon");
 
       const proxGame = localStorage.getItem("proxGame");
-      proxyGamesStatus.textContent =
+      prxGamesStatus.textContent =
         proxGame === "true" ? "Enabled" : "Disabled";
-      proxyGamesIcon.className =
+      prxGamesIcon.className =
         proxGame === "true" ? "fa-regular fa-check" : "fa-regular fa-times";
 
-      proxyGamesToggle.addEventListener("click", () => {
-        const isEnabled = proxyGamesStatus.textContent === "Enabled";
-        proxyGamesStatus.textContent = isEnabled ? "Disabled" : "Enabled";
-        proxyGamesIcon.className = isEnabled
+      prxGamesToggle.addEventListener("click", () => {
+        const isEnabled = prxGamesStatus.textContent === "Enabled";
+        prxGamesStatus.textContent = isEnabled ? "Disabled" : "Enabled";
+        prxGamesIcon.className = isEnabled
           ? "fa-regular fa-times"
           : "fa-regular fa-check";
         localStorage.setItem("proxGame", !isEnabled);

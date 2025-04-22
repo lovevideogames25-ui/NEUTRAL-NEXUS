@@ -29,7 +29,7 @@ export async function getUV(input) {
     throw err;
   }
 
-  let url = search(input, "https://duckduckgo.com/?q=%s");
+  let url = search(input, "https://search.brave.com/?q=%s");
 
   let servUrl = localStorage.getItem("proxServer") || "wss://byod.hollow.live.cdn.cloudflare.net/wisp/";
 
