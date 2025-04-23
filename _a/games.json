@@ -33,7 +33,7 @@
     "id": "1",
     "name": "1",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/1/meta/og-image.ppg"
   },
   {
     "id": "10-minutes-till-dawn",
@@ -45,7 +45,7 @@
     "id": "100ng",
     "name": "100ng",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/100ng/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/100ng/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/100ng/100ng.jpg"
   },
   {
     "id": "1v1lol",
@@ -69,61 +69,61 @@
     "id": "2048",
     "name": "2048",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/2048/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/2048/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/2048/thumb.png"
   },
   {
     "id": "9007199254740992",
     "name": "9007199254740992",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/9007199254740992/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/9007199254740992/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/9007199254740992/logo-4.png"
   },
   {
     "id": "99balls",
     "name": "99balls",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/99balls/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/99balls/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/99balls/99-balls-evo.jpg"
   },
   {
     "id": "cmm-client",
     "name": "Cmm Client",
-    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cmm-client/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cmm-client/splash.png"
+    "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cmm-client/cmm.html",
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/cmm-client/EC4B216C-B637-41A3-A3D9-79D4048DD7A3.jpeg"
   },
   {
     "id": "doomori",
-    "name": "Doomori",
+    "name": "DOOMORI",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doomori/index.html",
     "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/doomori/splash.png"
   },
   {
     "id": "dogeminer",
-    "name": "Dogeminer",
+    "name": "DogeMiner",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer/favicon.ico"
   },
   {
     "id": "dogeminer2",
-    "name": "Dogeminer2",
+    "name": "DogeMiner 2",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer2/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer2/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/dogeminer2/thumb.jpg"
   },
   {
     "id": "hexgl",
-    "name": "Hexgl",
+    "name": "HexGL",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hexgl/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hexgl/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/hexgl/Hexgl-image-1.jpg"
   },
   {
     "id": "monkeymart",
     "name": "Monkeymart",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/monkeymart/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/monkeymart/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/monkeymart/bg_loading.png"
   },
   {
     "id": "offlineparadise",
     "name": "Offlineparadise",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/offlineparadise/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/offlineparadise/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/offlineparadise/assets/icon.jpeg"
   },
   {
     "id": "rocket-league",
@@ -135,25 +135,25 @@
     "id": "run-2",
     "name": "Run 2",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run-2/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run-2/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/run-2/run-2-logo.jpg"
   },
   {
     "id": "shapeshootout",
     "name": "Shapeshootout",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shapeshootout/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shapeshootout/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/shapeshootout/Icon.png"
   },
   {
     "id": "stickman-survival",
     "name": "Stickman Survival",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-survival/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-survival/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/stickman-survival/Icon.png"
   },
   {
     "id": "trimps",
     "name": "Trimps",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/trimps/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/trimps/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/trimps/trimp.jpg"
   },
   {
     "id": "a-dance-of-fire-and-ice",
@@ -165,7 +165,7 @@
     "id": "achievementunlocked",
     "name": "Achievementunlocked",
     "url": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/achievementunlocked/index.html",
-    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/achievementunlocked/splash.png"
+    "img": "https://glcdn.githack.com/technonyte00/vapor-game-assets/-/raw/main/achievementunlocked/achievementunlocked.png"
   },
   {
     "id": "adarkroom",
