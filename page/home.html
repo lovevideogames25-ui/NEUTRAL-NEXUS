@@ -30,6 +30,7 @@
             position: relative;
         }
 
+
         body {
             background: none;
             color: rgba(255, 255, 255, 0.8);
@@ -48,7 +49,7 @@
             margin: 0;
             font-weight: 700;
             color: var(--primary);
-            font-size: 75px;
+            font-size: 65px;
         }
 
         h1 span {
@@ -60,6 +61,8 @@
             margin: 10px 0 0 0;
             color: var(--secondary);
             font-size: 27px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
         }
 
         img {
@@ -207,7 +210,7 @@
             width: 400px;
             text-align: center;
             opacity: 0;
-            animation: upward 1s ease 0.5s forwards;
+            animation: upward 0.4s ease 1s forwards;
         }
 
         @keyframes upward {
@@ -221,6 +224,67 @@
                 opacity: 1;
             }
         }
+
+        .phrase {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 35px;
+            margin: 0;
+        }
+        
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0;
+            background-color: transparent;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 500px;
+            height: auto;
+            max-height: 60%;
+            overflow-y: auto;
+            transition: 0.22s;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .modal .title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            font-size: 18px;
+            margin-top: 10px;
+            margin-left: 3px;
+        }
+
+        .modalOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 17, 29, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.22s;
+            z-index: 999;
+            backdrop-filter: blur(15px);
+        }
+
+        .modalOverlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 
@@ -229,7 +293,7 @@
     <div class="content-container">
         <div class="content">
             <h1>VAPOR <span>v3</span></h1>
-            <p class="phrase">picking a phrase...</p>
+            <p class="phrase">is for NOTHING</p>
         </div>
         <img src="/_a/logo.png" alt="Logo" />
     </div>
@@ -246,11 +310,17 @@
     </div>
 
     <p class="extra-text">GoGuardian Users: If it gets blocked when searching, try cloaking with about:blank</p>
+    
+    <div class="modalOverlay" id="modalOverlay"></div>
+    <div class="modal" id="infoModal">
+        <div class="title">...</div>
+        <p>...</p>
+    </div>
 
     <script>
         const modalContent = {
-            title: "VAPOR v3.3.31",
-            text: "- Added some game images (not a lot)",
+            title: "VAPOR v3.3.4",
+            text: "- New homepage<br>- Updated Sidebar",
         };
 
         function checkMod() {
@@ -277,103 +347,55 @@
                 overlayBackground.classList.remove("show");
             });
         }
+        const phrases = [
+            "is for gaming",
+            "is for searching",
+            "is for music",
+            "is for emulators",
+            "is for VMs",
+            "is for AI",
+            "is for unbløcking",
+            "is for you"
+        ];
 
+        let currentIndex = 0;
+
+        function cyclePhrases() {
+            const phraseText = document.querySelector(".phrase");
+            const phrase = phrases[currentIndex];
+            const words = phrase.split(" ");
+            const lastWord = words[words.length - 1];
+            const phraseWithBoldLastWord = words.slice(0, -1).join(" ") + " <strong>" + lastWord + "</strong>";
+
+            phraseText.innerHTML = phraseWithBoldLastWord;
+            phraseText.style.opacity = 0;
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % phrases.length;
+
+                const nextPhrase = phrases[currentIndex];
+                const nextWords = nextPhrase.split(" ");
+                const nextLastWord = nextWords[nextWords.length - 1];
+                const nextPhraseWithBoldLastWord = nextWords.slice(0, -1).join(" ") + " <span style='font-weight:700;'>" + nextLastWord + "</strong>";
+
+                setTimeout(() => {
+                    phraseText.innerHTML = nextPhraseWithBoldLastWord;
+                    phraseText.style.opacity = 1;
+                }, 0);
+            }, 0);
+        }
+
+        setInterval(cyclePhrases, 4500);
 
         window.onload = () => {
-            setRandomPlaceholder();
+            const phraseText = document.querySelector(".phrase");
+
+            phraseText.style.opacity = 1;
+            cyclePhrases();
+            
             checkMod();
         };
 
-        const dictionary = {
-            phrases: [
-                "here ya go: 0.0.0.0",
-                "whatcha looking for ;)",
-                "age is just a number",
-                "OHHHH SNAP",
-                "discord.gg/goguardian",
-                "benrogo on top!",
-                "dont do drugs kids",
-                "Sponsored by Honey",
-                "london bridge is falling down",
-                "alskdjfhghfjdksla",
-                "rare splash text here",
-                "if you really think about it",
-                "I love piracy",
-                "vapor is the best",
-                "vapor is the best FRRR",
-                "vapor is the best FRRR definitely",
-                "Proudly created in the USA",
-                "technonyte is so cool",
-                "Lorem ipsum dolor sit amet",
-                "AAAAAAJAJJAJAJ",
-                "Now with games!",
-                "made with 99% code",
-                "created using html",
-                "this is spalsh text hi",
-                "Beep boop, boop beep?",
-                "im gonna find your address",
-                "Redbull gives you wiiings...",
-                "how to make proccyyy??",
-                "Hello world!",
-                "ITS BLOCKED HEALPPP!!",
-                "hauw to mak gaem sitee??",
-                "i wrote these in class btw",
-                "as a child, i yearned for the mines",
-                "this was written on feb 21 2025",
-                "vapor v3 is heeeeerreee!!!",
-                "when is v4???",
-                "bnalk uuhhh",
-                "youtu.be/dQw4w9WgXcQ",
-                "first sour then sweet",
-                "this is the 40th message!!",
-                "youtube.com/watch?v=dQw4w9WgXcQ",
-                "make sure to like and subscribe!",
-                "gitlab.com/technonyte00/vapor",
-                "100% coded on a chromebook!",
-                "99+ missing assignments",
-                "skibidi sigma rizz gyatt ohio",
-                "ding ding ding ding ding",
-                "gegagedigedagedago",
-                "abcdefghijklmnopqrstuvwxyz",
-                "qwertyuiopasdfghjklzxcvbnm",
-                "qazwsxedcrfvtgbyhnujmikolp",
-                "why aren't you doing schoolwork?",
-                "welcome to the splash pad",
-                "ts pmo icl",
-                "55th splash message :D",
-                "wait what why are we here?",
-                "who what when where why how",
-                "xzu gwt mtb fwj dtz",
-                "rest in peace, Jax's mom... 🕊",
-                "wuhts 9+10? twenty on-",
-                "APRIL FOOLS :DDDD",
-                "hi jayden how are you",
-                "Are you a robot?",
-                "11223344556677889900",
-                "Batteries not included.",
-                "Fun fact: you can read!",
-                "you're gonna get tariffed",
-                "technonyte is cool",
-                "lightspeed sucks",
-                "join the discord at .gg/goguardian",
-                "vapor v3.3 out now!!!"
-            ],
-        };
-
-        fetch("https://icanhazip.com/")
-            .then((res) => res.text())
-            .then((ip) => {
-                dictionary.phrases[0] = "oh um hi " + ip.trim();
-            });
-
-        function setRandomPlaceholder() {
-            const randomIndex = Math.floor(
-                Math.random() * dictionary.phrases.length
-            );
-            const randomPhrase = dictionary.phrases[randomIndex];
-            const phraseText = document.querySelector(".phrase");
-            phraseText.innerText = randomPhrase;
-        }
 
         particlesJS("particles-js", {
             particles: {
