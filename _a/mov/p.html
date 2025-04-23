@@ -1,172 +1,102 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!--
+  Hi skidders
+-->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/defaults.css" />
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        position: relative;
-        font-family: Inter, sans-serif;
-        background-color: #000;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://vaporon.top/styles/defaults.css" />
+  <style>
+      /**
+      * Hi skidders
+      */
+    body,       html {         margin: 0;         padding: 0;         width: 100%;         height: 100%;         overflow: hidden;         font-family: "Inter";       }       iframe {         width: 100%;         height: 100%;         border: 0;       }       .dropdown-container {         position: fixed;         top: 10px;         left: 10px;         z-index: 1000;       }       .dropdown {         background-color: var(--fourth-bg);         color: #fff;         padding: 12px 16px;         border: 0;         border-radius: 12px;         font-size: 14px;         cursor: pointer;         transition: 0.15s ease;         display: flex;         align-items: center;         gap: 8px;         opacity: 0.3;       }       .dropdown:hover {         background: var(--third-bg);         opacity: 1;       }       .dropdown-menu {         display: none;         position: absolute;         background-color: var(--fourth-bg);         min-width: 160px;         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);         z-index: 1001;         margin-top: 6px;         border-radius: 10px;         animation: showMenu 0.15s ease;       }       @keyframes showMenu {         from {           opacity: 0;           transform: scale(0.94);         }       }       .dropdown-menu div {         padding: 8px 16px;         cursor: pointer;         transition: 0.15s ease;         border-radius: 10px;       }       .dropdown-menu div:hover {         background: var(--third-bg);       }       .dropdown-menu .selected {         background: rgba(255, 255, 255, 0.1);         font-weight: bold;       }       .note {         font-size: 11px;         color: #aaa;         font-weight: normal;         display: block;       }
+  </style>
+</head>
 
-      video {
-        width: 100%;
-        height: 100%;
-      }
-
-      .selection {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 1000;
-        background: rgba(70, 102, 156, 0.7);
-        border-radius: 10px;
-        height: 35px;
-        user-select: none;
-        color: #fff;
-        border: 2px solid rgba(255, 255, 255, 0.25);
-        display: flex;
-        width: 75px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: 0.15s;
-      }
-
-      .selection:hover {
-        opacity: 0.85;
-      }
-
-      .options {
-        position: fixed;
-        top: 54px;
-        left: 10px;
-        display: none;
-        background: rgba(28, 28, 28, 0.9);
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        z-index: 999;
-        width: 85px;
-        opacity: 0;
-        transform: translateY(-5px);
-        transition: 0.15s;
-      }
-
-      .options.show {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .option {
-        padding: 10px;
-        color: rgba(255, 255, 255, 0.85);
-        border-radius: 10px;
-        cursor: pointer;
-        transition: 0.15s;
-      }
-
-      .option:hover {
-        background: rgba(70, 102, 156, 0.2);
-      }
-
-      i {
-        margin-right: 5px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="selection" id="selection">
-      <i class="fa-solid fa-cloud"></i> 1
+<body>
+  <div class="dropdown-container">
+    <button class="dropdown" data-player="default">
+      <i class="fas fa-cloud"></i>
+    </button>
+    <div class="dropdown-menu">
+      <div class="selected" data-player="default">
+        Default<br /><small class="note">Lots of Movies - No ads</small>
+      </div>
+      <div data-player="vidsrc">
+        Vidsrc<br /><small class="note">Less movies – No ads</small>
+      </div>
+      <div data-player="embednet">
+        123embed<br /><small class="note">Less movies – No ads</small>
+      </div>
+      <div data-player="moviesapiclub">
+        MoviesAPI<br /><small class="note">Less movies – Has ads</small>
+      </div>
     </div>
-    <div class="options" id="options"></div>
+  </div>
 
-    <video id="videoPlayer" controls autoplay muted playsinline></video>
+  <iframe id="player-iframe" src=""></iframe>
 
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script>
-      const hash = window.location.hash.slice(1),
-        selection = document.getElementById("selection"),
-        optionsContainer = document.getElementById("options"),
-        videoPlayer = document.getElementById("videoPlayer");
+  <script>
+    /**
+    * Hi skidders
+    */
 
-      let servers = [];
-      try {
-        if (hash) {
-          const safeHash = hash.replace(/-/g, '+').replace(/_/g, '/');
-          try {
-            servers = atob(safeHash).split("$").filter((e) => e.trim() !== "");
-          } catch (e) {
-            alert(`Error decoding hash: ${e}`);
-          }
-        }
+    const playerUrls = {
+      default:
+        "https://vidora.su/movie/TMDB_ID?colour=a4b8db&autoplay=true&autonextepisode=true&backbutton=https%3A%2F%2Fvaporon.top&pausescreen=true&logo=https%3A%2F%2Fvaporon.top%2F_a%2Flogo.new.png",
+      vidsrc: "https://vidsrc.su/embed/movie/TMDB_ID",
+      embednet: "https://play2.123embed.net/movie/TMDB_ID",
+      moviesapiclub: "https://moviesapi.club/movie/TMDB_ID",
+    };
 
-      } catch (e) {
-        alert(`Error decoding hash: ${e}`);
+    function gH() {
+      const e = window.location.hash.substring(1);
+      return e || null;
+    }
+    function uPS(e) {
+      const o = document
+        .querySelector(".dropdown")
+        .getAttribute("data-player");
+      const t = playerUrls[o];
+      if (t && e) {
+        const n = t.replace("TMDB_ID", e);
+        document.getElementById("player-iframe").src = n;
+      } else {
+        console.error("Invalid TMDB ID or player configuration.");
       }
-
-      function playVideo(url) {
-        if (Hls.isSupported()) {
-          const hls = new Hls();
-          hls.loadSource(url);
-          hls.attachMedia(videoPlayer);
-        } else if (videoPlayer.canPlayType("application/vnd.apple.mpegurl")) {
-          videoPlayer.src = url;
-        } else {
-          console.error("HLS not supported in this browser");
-        }
-        videoPlayer.play().catch((err) => {
-          console.error("Error attempting to play:", err);
+    }
+    document.querySelector(".dropdown").addEventListener("click", () => {
+      const e = document.querySelector(".dropdown-menu");
+      e.style.display = e.style.display === "block" ? "none" : "block";
+    });
+    document.querySelectorAll(".dropdown-menu div").forEach((t) => {
+      t.addEventListener("click", () => {
+        const e = t.getAttribute("data-player");
+        document.querySelector(".dropdown").setAttribute("data-player", e);
+        document.querySelectorAll(".dropdown-menu div").forEach((e) => {
+          e.classList.remove("selected");
         });
-      }
-
-      servers.forEach((e, i) => {
-        const option = document.createElement("div");
-        option.className = "option";
-        option.innerHTML = `<i class="fa-solid fa-cloud"></i> ${i + 1}`;
-        option.dataset.value = e;
-        option.addEventListener("click", function () {
-          playVideo(this.dataset.value);
-          selection.innerHTML =
-            '<i class="fa-solid fa-cloud"></i> ' + this.textContent;
-          optionsContainer.classList.remove("show");
-          optionsContainer.style.display = "none";
-        });
-        optionsContainer.appendChild(option);
-      });
-
-      selection.addEventListener("click", function () {
-        if (optionsContainer.classList.contains("show")) {
-          optionsContainer.classList.remove("show");
-          selection.classList.remove("hover");
-          setTimeout(() => (optionsContainer.style.display = "none"), 150);
-        } else {
-          optionsContainer.style.display = "block";
-          selection.classList.add("hover");
-          setTimeout(() => optionsContainer.classList.add("show"), 10);
+        t.classList.add("selected");
+        const o = gH();
+        if (o) {
+          uPS(o);
         }
+        document.querySelector(".dropdown-menu").style.display = "none";
       });
-
-      document.addEventListener("click", function (e) {
-        if (
-          !selection.contains(e.target) &&
-          !optionsContainer.contains(e.target)
-        ) {
-          optionsContainer.classList.remove("show");
-          optionsContainer.style.display = "none";
-        }
-      });
-
-      if (servers.length > 0) {
-        playVideo(servers[0]);
-        selection.innerHTML = '<i class="fa-solid fa-cloud"></i> 1';
+    });
+    window.addEventListener("hashchange", () => {
+      const e = gH();
+      if (e) {
+        uPS(e);
       }
-    </script>
-  </body>
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+      const e = gH();
+      if (e) {
+        uPS(e);
+      }
+    });
+  </script>
+</body>
 </html>
