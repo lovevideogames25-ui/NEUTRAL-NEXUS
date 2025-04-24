@@ -7,6 +7,7 @@ const navItems = [
   { title: "Games", icon: "fa-gamepad-modern", url: "page/games.html" },
   { title: "Browse", icon: "fa-search", url: "page/browse.html" },
   { title: "VM", icon: "fa-desktop", url: "page/vm.html" },
+  { title: "Chat [BETA]", icon: "fa-comments-alt", url: "page/chat.html" },
   { title: "Movies", icon: "fa-clapperboard", url: "page/mov.html" },
   { title: "Music", icon: "fa-music", url: "page/music.html" },
   {
