@@ -234,13 +234,13 @@
       }
       .room-selection {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 10px;
         margin-bottom: 20px;
       }
       .room-button {
-        width: 120px;
+        width: 50px;
         padding: 10px;
         border-radius: 14px;
         background-color: rgba(255, 255, 255, 0.3);
@@ -280,18 +280,9 @@
   <body>
     <div id="chat">
       <div id="roomSelection" class="room-selection">
-        <button class="room-button" onclick="joinRoom('room1')">Room 1</button>
-        <button class="room-button" onclick="joinRoom('room2')">Room 2</button>
-        <button class="room-button" onclick="joinRoom('room3')">Room 3</button>
-        <button class="room-button" onclick="joinRoom('room4')">Room 4</button>
-        <button class="room-button" onclick="joinRoom('room5')">Room 5</button>
-        <button class="room-button" onclick="joinRoom('room6')">Room 6</button>
-        <button class="room-button" onclick="joinRoom('room7')">Room 7</button>
-        <button class="room-button" onclick="joinRoom('room8')">Room 8</button>
-        <button class="room-button" onclick="joinRoom('room9')">Room 9</button>
-        <button class="room-button" onclick="joinRoom('room10')">
-          Room 10
-        </button>
+        <button class="room-button" onclick="joinRoom('r1')">1</button>
+        <button class="room-button" onclick="joinRoom('r2')">2</button>
+        <button class="room-button" onclick="joinRoom('r3')">3</button>
       </div>
 
       <div id="messages"></div>
