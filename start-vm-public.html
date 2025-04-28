@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VM Start Page</title>
+    <link rel="stylesheet" href="/styles/defaults.css" />
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .div {
+        width: 65%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        text-align: left;
+      }
+      h1 {
+        font-weight: 1000;
+        font-size: 5rem;
+      }
+      .body {
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+      a {
+          text-decoration: none;
+          color: rgba(255,255,255,0.6);
+          transition: 0.15s ease;
+      }
+      a:hover {
+          color: white;
+          font-weight: 600;
+          font-size: 17px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div">
+      <div class="text-div">
+        <h1>Public VM</h1>
+        <div class="body"><br>
+          Welcome to the public VM! You're the first one here.<br><br>This VM is <u>PUBLIC</u>, meaning others can control the session. Don't login to your account here.
+        </div>
+      </div>
+      <a href="/"><i>&lt;—— Head to VAPOR</i></a>
+    </div>
+  </body>
+</html>
