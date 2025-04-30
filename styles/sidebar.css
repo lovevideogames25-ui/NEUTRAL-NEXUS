@@ -11,16 +11,19 @@
   width: 65px;
   background: var(--fourth-bg);
   padding: 10px 0;
-  transition: width 0.22s ease;
+  transition: width 0.27s ease;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   z-index: 99;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 .sidebar:hover {
-  width: 265px;
+  width: 275px;
+  box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav-top,
@@ -33,13 +36,13 @@
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 7px 13px;
+  padding: 7.5px 13.5px;
   text-decoration: none;
   color: #fff;
   transition: 0.1s ease;
   white-space: nowrap;
   margin: 0 10px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .nav-item:hover {
@@ -72,16 +75,14 @@
 }
 
 .nav-text {
-  margin-left: 12px;
+  margin-left: 15px;
   opacity: 0;
-  transition: all 0.15s ease, filter 0.25s ease;
-  filter: blur(2px);
+  transition: all 0.27s ease, filter 0.27s ease;
 }
 
 .sidebar:hover .nav-text {
   opacity: 1;
   filter: blur(0px);
-  margin-left: 15px;
 }
 
 .sidebar:hover .icon-container {
@@ -98,23 +99,26 @@
 }
 
 .quick-action-btn {
-  width: 55px;
+  width: 58px;
   height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   transition: 0.2s ease;
   opacity: 0;
   visibility: hidden;
   flex-shrink: 0;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .quick-action-btn:hover {
   background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .sidebar:hover .quick-action-btn {
