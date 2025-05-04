@@ -6,6 +6,18 @@
     "img": "https://ubyis.org/img/logo.png"
   },
   {
+    "id": "gn-math",
+    "name": "gn-math",
+    "url": "https://gn-math.github.io/",
+    "img": "https://files.catbox.moe/6w9ild.png"
+  },
+  {
+    "id": "glseries",
+    "name": "GLSeriesDev",
+    "url": "https://glseries.net",
+    "img": "https://glseries.net/assets/img/essential/icon.ico"
+  },
+  {
     "id": "ajh",
     "name": "AJH's Vault",
     "url": "https://edu.ajh.college/",
