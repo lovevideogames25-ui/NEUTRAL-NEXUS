@@ -1,9 +1,33 @@
 <!DOCTYPE html>
-<!-----------------------
- ! Welcome to VAPOR v3!
- !----------------------->
+ <!----------------------------!
+ ! Heya! You should join the discord.
+ ! https://dsc.gg/vaporr
+ !----------------------------->
 <html lang="en">
   <head>
+    <script>
+      const splashTexts = [
+        "Loading things you can't see...",
+        "Starting up, almost there.",
+        "Don't check the VM.",
+        "This won't take long. Probably.",
+      ];
+
+      const randomIndex = Math.floor(Math.random() * splashTexts.length);
+      window.addEventListener("DOMContentLoaded", () => {
+        const textEl = document.getElementById("loader-text");
+        if (textEl) textEl.textContent = splashTexts[randomIndex];
+      });
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader-overlay");
+        if (loader) {
+          loader.style.opacity = "0";
+          loader.style.transition = "opacity 0.27s ease";
+          setTimeout(() => loader.remove(), 1500);
+        }
+      });
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VAPOR v3</title>
@@ -11,8 +35,10 @@
     <link href="/styles/defaults.css" rel="stylesheet" />
     <link href="/styles/index.css" rel="stylesheet" />
     <link href="/styles/sidebar.css" rel="stylesheet" />
-
-    <script src="/scripts/opt.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="icon" href="/_a/logo.new.png" type="image/x-icon" />
 
@@ -27,11 +53,10 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-TWLB9ZV0LR");
     </script>
 
-    <!-- search engine meta -->
+    <!-- SEO Meta -->
     <meta name="title" content="VAPOR v3" />
     <meta
       name="description"
@@ -47,41 +72,160 @@
     <meta name="revisit-after" content="7 days" />
     <meta name="author" content="technonyte" />
 
-    <!-- discord embed meta -->
+    <!-- Discord embed -->
     <meta property="og:title" content="☄️ VAPOR v3" />
     <meta name="theme-color" content="#49517c" />
     <meta name="msapplication-TileColor" content="#49517c" />
     <meta property="og:image" content="/_a/logo.png" />
-    <meta property="og:description" content="games, movies, vm. all in one." />
+    <meta
+      property="og:description"
+      content="Your #1 destination for unblocking."
+    />
 
-    <!-- benrogo meta -->
+    <!-- Benrogo meta -->
     <meta property="benrogo:index" content="index" />
     <meta property="benrogo:uvpath" content="/vpr/vpr.config.js" />
+
+    <style>
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        backdrop-filter: blur(12px);
+        background-color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.27s ease;
+        z-index: 999;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .main-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.92);
+        background: var(--fourth-bg);
+        padding: 1.1rem;
+        border-radius: 22px;
+        border: 2.2px solid rgba(255, 255, 255, 0.15);
+        opacity: 0;
+        transition: 0.27s ease;
+        z-index: 1000;
+        max-width: 90%;
+        width: 400px;
+        text-align: center;
+        pointer-events: none;
+      }
+
+      .main-modal.active {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+      }
+
+      .modal-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      .modal-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        color: white;
+        text-align: left;
+        width: 100%;
+      }
+
+      .modal-body {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.85);
+        text-align: left;
+        width: 100%;
+      }
+
+      .modal-button {
+        padding: 0.62rem 1.35rem;
+        border: none;
+        background-color: #49517c;
+        color: white;
+        font-weight: 600;
+        font-size: 1.15rem;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        align-self: flex-end;
+      }
+
+      .modal-button:hover {
+        background-color: #3d456b;
+      }
+    </style>
+    <style>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      #loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: var(--bg);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Inter",  sans-serif;
+        color: white;
+      }
+
+      .loader-spinner {
+        width: 24px;
+        height: 24px;
+        border: 3px solid rgba(255, 255, 255, 0.25);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+    </style>
   </head>
 
   <body>
-    <nav class="sidebar">
-      <div class="nav-top" id="nav-items">
-        <!-- auto generated -->
+    <div id="loader-overlay">
+      <div style="display: flex; align-items: center; gap: 0.75rem">
+        <div class="loader-spinner"></div>
+        <div id="loader-text" style="font-size: 0.9rem; opacity: 1">...</div>
       </div>
+    </div>
+
+    <nav class="sidebar">
+      <div class="nav-top" id="nav-items"></div>
 
       <div class="nav-bottom">
         <div class="quick-actions">
-          <a class="quick-action-btn">
-            <i class="fa-brands fa-discord"></i>
-          </a>
-          <a class="quick-action-btn">
-            <i class="fa-regular fa-rotate-right"></i>
-          </a>
-          <a class="quick-action-btn">
-            <i class="fa-regular fa-expand"></i>
-          </a>
-          <a class="quick-action-btn">
-            <i class="fa-regular fa-handshake"></i>
-          </a>
-          <a class="quick-action-btn">
-            <i class="fa-regular fa-cog"></i>
-          </a>
+          <a class="quick-action-btn"><i class="fa-brands fa-discord"></i></a>
+          <a class="quick-action-btn"
+            ><i class="fa-regular fa-rotate-right"></i
+          ></a>
+          <a class="quick-action-btn"><i class="fa-regular fa-expand"></i></a>
+          <a class="quick-action-btn"
+            ><i class="fa-regular fa-handshake"></i
+          ></a>
+          <a class="quick-action-btn"><i class="fa-regular fa-cog"></i></a>
         </div>
 
         <a class="nav-item">
@@ -92,8 +236,9 @@
             />
           </div>
           <span class="nav-text" style="margin-left: 18px">
-            VAPOR v3&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;
-            <span id="commit-id">c0mm1t-</span>
+            VAPOR v3&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<span id="commit-id"
+              >c0mm1t-</span
+            >
           </span>
         </a>
       </div>
@@ -105,11 +250,53 @@
       <iframe id="frame" src="/page/home.html"></iframe>
     </div>
 
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="main-modal" class="main-modal">
+      <div class="modal-content">
+        <h2 class="modal-title">VAPOR v3.9</h2>
+        <p class="modal-body">
+          Hey pookies, here's what's new:<br /><br />- Private VMs (yes
+          scream)<br />- This cool popup for updates and stuff<br />- AI Models
+          are updated<br />- AI has better markdown updating<br />- Random
+          patches and stuff
+        </p>
+        <button id="modal-close" class="modal-button">got it</button>
+      </div>
+    </div>
+
     <script src="vpr/vpr.bundle.js"></script>
     <script src="vpr/vpr.config.js"></script>
-
     <script src="scripts/navi.js"></script>
     <script src="scripts/navigation.js"></script>
     <script src="scripts/commit.js"></script>
+
+    <script>
+      const MODAL_VERSION = "v3.9";
+      const modal = document.getElementById("main-modal");
+      const overlay = document.getElementById("modal-overlay");
+      const closeBtn = document.getElementById("modal-close");
+
+      function showModal() {
+        modal.classList.add("active");
+        overlay.classList.add("active");
+      }
+
+      function hideModal() {
+        modal.classList.remove("active");
+        overlay.classList.remove("active");
+      }
+
+      closeBtn.addEventListener("click", () => {
+        localStorage.setItem("modalVersion", MODAL_VERSION);
+        hideModal();
+      });
+
+      window.addEventListener("load", () => {
+        const storedVersion = localStorage.getItem("modalVersion");
+        if (storedVersion !== MODAL_VERSION) {
+        showModal();
+        }
+      });
+    </script>
   </body>
 </html>

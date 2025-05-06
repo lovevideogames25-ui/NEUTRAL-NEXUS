@@ -145,59 +145,7 @@
             font-weight: 700;
         }
 
-        .modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            opacity: 0;
-            background-color: transparent;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            width: 500px;
-            height: auto;
-            max-height: 60%;
-            overflow-y: auto;
-            transition: 0.22s;
-            z-index: 1000;
-        }
-
-        .modal.show {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-
-        .modal .title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .modal p {
-            font-size: 18px;
-            margin-top: 10px;
-            margin-left: 3px;
-        }
-
-        .modalOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 17, 29, 0.8);
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.22s;
-            z-index: 999;
-            backdrop-filter: blur(15px);
-        }
-
-        .modalOverlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
+        
 
         .extra-text {
             position: fixed;
@@ -232,59 +180,7 @@
             margin: 0;
         }
         
-        .modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            opacity: 0;
-            background-color: transparent;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            width: 500px;
-            height: auto;
-            max-height: 60%;
-            overflow-y: auto;
-            transition: 0.22s;
-            z-index: 1000;
-        }
-
-        .modal.show {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-
-        .modal .title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .modal p {
-            font-size: 18px;
-            margin-top: 10px;
-            margin-left: 3px;
-        }
-
-        .modalOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 17, 29, 0.8);
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.22s;
-            z-index: 999;
-            backdrop-filter: blur(15px);
-        }
-
-        .modalOverlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
+        
     </style>
 </head>
 
@@ -303,50 +199,11 @@
       </div>-->
     </div>
 
-    <div class="modalOverlay" id="modalOverlay"></div>
-    <div class="modal" id="infoModal">
-        <div class="title">...</div>
-        <p>...</p>
-    </div>
-
     <p class="extra-text">GoGuardian: If the browser gets blocked<br>try about:blank cloak in Settings.</p>
     
-    <div class="modalOverlay" id="modalOverlay"></div>
-    <div class="modal" id="infoModal">
-        <div class="title">...</div>
-        <p>...</p>
-    </div>
 
     <script>
-        const modalContent = {
-            title: "VAPOR v3.7",
-            text: "Hi! Welcome to VAPOR v3.7. Here's what's new:<br><br>- New sidebar UI<br>- Overlay is blurrier yay<br>- New AI (should work now)<br>- Added particles to add better depth<br>- Updated transition speeds<br>- Improved user experience<br>- Maybe more, i forgot",
-        };
 
-        function checkMod() {
-            const storedContent = localStorage.getItem("modalContent");
-            const currentContent = JSON.stringify(modalContent);
-
-            if (storedContent !== currentContent) {
-                localStorage.setItem("modalContent", currentContent);
-                showMod();
-            }
-        }
-
-        function showMod() {
-            const overlayBackground = document.getElementById("modalOverlay");
-            const infoModal = document.getElementById("infoModal");
-
-            infoModal.querySelector(".title").innerText = modalContent.title;
-            infoModal.querySelector("p").innerHTML = modalContent.text;
-            infoModal.classList.add("show");
-            overlayBackground.classList.add("show");
-
-            overlayBackground.addEventListener("click", () => {
-                infoModal.classList.remove("show");
-                overlayBackground.classList.remove("show");
-            });
-        }
         const phrases = [
             "is for gaming",
             "is for searching",
