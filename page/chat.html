@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<!-------------------------
- ! Kid don't skid this, it took me a while
- !------------------------>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/defaults.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
       body {
         font-family: "Inter", sans-serif;
@@ -89,6 +86,12 @@
         text-align: left;
         margin-bottom: 2px;
         margin-top: 8px;
+        display: flex;
+        align-items: center;
+      }
+      .owner-icon {
+        color: gold;
+        margin-right: 5px;
       }
       .input-container {
         width: 100%;
@@ -194,6 +197,7 @@
     </style>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="/scripts/particle.js"></script>
+    <title>VAPORchat</title>
   </head>
   <body>
     <div id="particles-js"></div>
@@ -248,23 +252,27 @@
       let username = "";
       let currentRoom = "";
       let lastMessageAuthor = "";
+      
       function joinRoom(room) {
         currentRoom = room;
         document.getElementById("roomSelection").style.display = "none";
         document.getElementById("noti").style.display = "none";
         document.getElementById("usernameSection").style.display = "flex";
       }
+      
       document.getElementById("username").addEventListener("input", () => {
         const value = document.getElementById("username").value;
         document.getElementById(
           "usernameCounter"
         ).textContent = `${value.length}/16`;
       });
+      
       document.getElementById("username").addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
           document.getElementById("joinButton").click();
         }
       });
+      
       document.getElementById("joinButton").onclick = () => {
         username = document.getElementById("username").value.trim();
         if (username && currentRoom) {
@@ -277,15 +285,18 @@
           document.getElementById("messageInput").focus();
         }
       };
+      
       const emojiMap = {
         ":sob:": "😭",
         ":skull:": "💀",
-        ":thumbsup:": "👍",
+        ":thumbsup:": "👍", 
         ":wave:": "👋",
         ":laugh:": "😂",
         ":fire:": "🔥",
         ":smile:": "😃",
+        ":crown:": "👑"
       };
+      
       function replaceEmoji(inputElement) {
         let text = inputElement.value;
         for (const [shortcut, emoji] of Object.entries(emojiMap)) {
@@ -294,6 +305,7 @@
         }
         inputElement.value = text;
       }
+      
       document
         .getElementById("messageInput")
         .addEventListener("input", (event) => {
@@ -304,6 +316,7 @@
             "messageCounter"
           ).textContent = `${value.length}/250`;
         });
+      
       document
         .getElementById("messageInput")
         .addEventListener("keypress", (e) => {
@@ -314,6 +327,7 @@
             document.getElementById("sendButton").click();
           }
         });
+      
       document.getElementById("sendButton").onclick = () => {
         const message = document.getElementById("messageInput").value.trim();
         if (message) {
@@ -327,6 +341,7 @@
           startCountdown();
         }
       };
+      
       function startCountdown() {
         let countdown = 3;
         const countdownDisplay = document.getElementById("countdown");
@@ -342,44 +357,70 @@
             countdownDisplay.style.display = "none";
             sendButton.disabled = false;
           }
-        }, 1e3);
+        }, 1000);
       }
+      
       socket.on("chat-message", (data) => {
         const messagesBox = document.getElementById("messages");
         const messageContainer = document.createElement("div");
+        
         if (
-          data.message.includes(" joined the room.") ||
-          data.message.includes(" left the room.")
+          data.username === "SYSTEM" && 
+          (data.message.includes(" joined the room.") ||
+          data.message.includes(" left the room."))
         ) {
           messageContainer.classList.add("system-message");
           messageContainer.innerHTML = data.message;
         } else {
           const container = document.createElement("div");
           container.classList.add("message-container");
+          
           const isMyMessage = data.username === username;
+          
           const isSameAuthor =
             data.username === lastMessageAuthor &&
-            !data.message.includes(" joined the room.") &&
-            !data.message.includes(" left the room.");
+            data.username !== "SYSTEM";
+            
           if (!isSameAuthor && !isMyMessage) {
             const usernameLabel = document.createElement("div");
             usernameLabel.classList.add("message-username");
-            usernameLabel.textContent = data.username;
+            
+            // Add crown icon for owner messages
+            if (data.isOwner) {
+              const crownIcon = document.createElement("i");
+              crownIcon.className = "fas fa-crown owner-icon";
+              usernameLabel.appendChild(crownIcon);
+            }
+            
+            const usernameText = document.createTextNode(data.username);
+            usernameLabel.appendChild(usernameText);
             container.appendChild(usernameLabel);
           }
+          
           const messageBubble = document.createElement("div");
           messageBubble.textContent = data.message;
+          
           if (isMyMessage) {
             messageBubble.classList.add("my-message");
           } else {
             messageBubble.classList.add("message");
           }
+          
           container.appendChild(messageBubble);
           messageContainer.appendChild(container);
           lastMessageAuthor = data.username;
         }
+        
         messagesBox.appendChild(messageContainer);
         messagesBox.scrollTop = messagesBox.scrollHeight;
+      });
+      
+      socket.on("user-joined", (data) => {
+        console.log(`Joined room ${data.room} as ${data.username}`);
+      });
+      
+      socket.on("error", (message) => {
+        alert("Error: " + message);
       });
     </script>
   </body>
