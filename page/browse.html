@@ -265,6 +265,13 @@
         onfocus="this.select()"
         placeholder="Enter URL or search"
       />
+      <button
+        class="nav-button"
+        id="eruda-button"
+        title="Injects eruda into the current tab."
+      >
+        <i class="fa-regular fa-code"></i>
+      </button>
     </div>
     <div id="frames-container"></div>
 
@@ -284,7 +291,7 @@
           this.container.id = this.id;
 
           this.iframe = document.createElement("iframe");
-          this.iframe.src = "/page/newtab.html";
+          this.iframe.src = "/_a/newtab.html";
           this.container.appendChild(this.iframe);
 
           this.element = this.createTabElement();
@@ -334,7 +341,7 @@
             const url = this.iframe.contentWindow.location.href;
             const urlInput = document.getElementById("url-input");
 
-            if (url === "/page/newtab.html") {
+            if (url === "/_a/newtab.html") {
               this.updateTitle("New Tab");
               this.updateFavicon("");
               if (this.element.classList.contains("active")) {
@@ -370,7 +377,7 @@
           try {
             const url = this.iframe.contentWindow.location.href;
 
-            if (url === "/page/newtab.html") {
+            if (url === "/_a/newtab.html") {
               fallbackElement.textContent = "New Tab";
               return;
             }
@@ -389,7 +396,7 @@
         updateFavicon(url) {
           const faviconElement = this.element.querySelector("img");
 
-          if (!url || url === "/page/newtab.html") {
+          if (!url || url === "/_a/newtab.html") {
             faviconElement.src = defaultFavicon;
           } else {
             const faviconUrl = `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(
@@ -439,6 +446,15 @@
                 this.activeTab.iframe.contentWindow.location.reload();
             });
 
+          document
+            .getElementById("eruda-button")
+            .addEventListener("click", () => {
+              if (this.activeTab)
+                this.activeTab.iframe.contentWindow.eval(
+                  `var script = document.createElement('script'); script.src = "https://cdn.jsdelivr.net/npm/eruda"; document.body.appendChild(script); script.onload = function () { eruda.init() }`
+                );
+            });
+
           this.urlInput.addEventListener("keypress", async (e) => {
             if (e.key === "Enter" && this.activeTab) {
               try {
@@ -485,7 +501,7 @@
           try {
             const url = tab.iframe.contentWindow.location.href;
 
-            if (url === "/page/newtab.html") {
+            if (url === "/_a/newtab.html") {
               this.urlInput.value = "";
             } else {
               const finalPath = url.split("/").pop() || url;

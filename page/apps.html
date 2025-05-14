@@ -63,7 +63,7 @@
         opacity: 0;
       }
 
-      .game-grid {
+      .app-grid {
         display: grid;
         grid-template-columns: repeat(3, 320px);
         gap: 15px;
@@ -73,10 +73,10 @@
         transition: 0.15s ease;
       }
 
-      .game {
+      .app {
         position: relative;
         width: 320px;
-        aspect-ratio: 16 / 5;
+        aspect-ratio: 16 / 3.3;
         background-size: cover;
         background-position: center;
         border-radius: 20px;
@@ -86,16 +86,16 @@
         text-align: left;
       }
 
-      .game:hover {
+      .app:hover {
         transform: scale(1.03);
       }
 
-      .game:hover .overlay {
+      .app:hover .overlay {
         background: rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(0px);
       }
 
-      .game:hover h2 {
+      .app:hover h2 {
         font-size: 20px;
         filter: blur(10px);
         opacity: 0;
@@ -170,32 +170,28 @@
           disabled
         />
       </div>
-      <small
-        >Gầme images are being added.<br />All gầmes should function
-        normally.</small
-      >
       <div class="progress-container" id="progressContainer">
         <div class="progress-bar">
           <div class="progress-bar-fill" id="progressBarFill"></div>
         </div>
         <div class="progress-text" id="progressText">-/-</div>
       </div>
-      <div class="game-grid" id="gameGrid" style="opacity: 0"></div>
+      <div class="app-grid" id="appGrid" style="opacity: 0"></div>
     </div>
     <script>
-      let games = [];
+      let apps = [];
       let activeFilters = [];
       let searchInput = document.getElementById("searchInput");
       let progressBarFill = document.getElementById("progressBarFill");
       let progressText = document.getElementById("progressText");
       let progressContainer = document.getElementById("progressContainer");
-      let gameGrid = document.getElementById("gameGrid");
+      let appGrid = document.getElementById("appGrid");
 
       function encodeBase64(str) {
         return btoa(unescape(encodeURIComponent(str)));
       }
 
-      function formatGameTitle(title) {
+      function formatAppTitle(title) {
         return title
           .replace(/-/g, " ")
           .split(" ")
@@ -203,55 +199,53 @@
           .join(" ");
       }
 
-      async function loadGames() {
-        const response = await fetch("/_a/games.json");
+      async function loadApps() {
+        const response = await fetch("/_a/apps.json");
         const data = await response.json();
-        games = data.sort((a, b) => a.name.localeCompare(b.name)); // Sort games alphabetically
+        apps = data.sort((a, b) => a.name.localeCompare(b.name)); // Sort apps alphabetically
 
-        progressText.textContent = `0/${games.length}`;
+        progressText.textContent = `0/${apps.length}`;
 
-        for (let i = 0; i < games.length; i++) {
-          progressText.textContent = `${i + 1}/${games.length}`;
-          progressBarFill.style.width = `${((i + 1) / games.length) * 100}%`;
+        for (let i = 0; i < apps.length; i++) {
+          progressText.textContent = `${i + 1}/${apps.length}`;
+          progressBarFill.style.width = `${((i + 1) / apps.length) * 100}%`;
         }
 
         await new Promise((resolve) => setTimeout(resolve, 100));
 
-        searchInput.placeholder = `Search ${games.length} gầmes...`;
+        searchInput.placeholder = `Search ${apps.length} apps...`;
         searchInput.disabled = false;
 
         progressContainer.style.display = "none";
-        gameGrid.style.opacity = "1";
+        appGrid.style.opacity = "1";
 
-        renderGames();
+        renderApps();
       }
 
-      function renderGames() {
-        const grid = document.getElementById("gameGrid");
+      function renderApps() {
+        const grid = document.getElementById("appGrid");
         grid.innerHTML = "";
 
         const searchValue = document
           .getElementById("searchInput")
           .value.toLowerCase();
 
-        games.forEach((game) => {
-          const displayGame = game.name;
-          const backgroundUrl = game.img;
-          const url = game.url;
+        apps.forEach((app) => {
+          const displayApp = app.name;
+          const url = app.url;
 
-          if (displayGame.toLowerCase().includes(searchValue)) {
-            const gameDiv = document.createElement("div");
-            gameDiv.classList.add("game");
-            gameDiv.style.backgroundImage = `url(${backgroundUrl})`;
+          if (displayApp.toLowerCase().includes(searchValue)) {
+            const appDiv = document.createElement("div");
+            appDiv.classList.add("app");
 
-            gameDiv.addEventListener("click", () => {
-              const proxGame = localStorage.getItem("proxGame") === "true";
-              const gameUrl = proxGame ? `/embed.html#${url}` : url;
+            appDiv.addEventListener("click", () => {
+              const proxApp = localStorage.getItem("proxApp") === "true";
+              const appUrl = proxApp ? `/embed.html#${url}` : url;
 
-              fetch(gameUrl, { method: "HEAD" })
+              fetch(appUrl, { method: "HEAD" })
                 .then((response) => {
                   if (response.ok) {
-                    window.location.href = gameUrl;
+                    window.location.href = appUrl;
                   } else {
                     window.location.href = url;
                   }
@@ -265,30 +259,30 @@
             overlay.classList.add("overlay");
 
             const title = document.createElement("h2");
-            title.textContent = formatGameTitle(displayGame);
+            title.textContent = formatAppTitle(displayApp);
 
             overlay.appendChild(title);
-            gameDiv.appendChild(overlay);
-            grid.appendChild(gameDiv);
+            appDiv.appendChild(overlay);
+            grid.appendChild(appDiv);
           }
         });
       }
 
       document
         .getElementById("searchInput")
-        .addEventListener("input", renderGames);
+        .addEventListener("input", renderApps);
 
-      function filterGames(category) {
+      function filterApps(category) {
         const index = activeFilters.indexOf(category);
         if (index > -1) {
           activeFilters.splice(index, 1);
         } else {
           activeFilters.push(category);
         }
-        renderGames();
+        renderApps();
       }
 
-      loadGames();
+      loadApps();
     </script>
   </body>
 </html>
