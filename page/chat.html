@@ -368,7 +368,8 @@
         if (
           data.username === "SYSTEM" && 
           (data.message.includes(" joined the room.") ||
-          data.message.includes(" left the room."))
+          data.message.includes(" left the room.") ||
+          data.message.includes(" has been kicked from the room."))
         ) {
           messageContainer.classList.add("system-message");
           messageContainer.innerHTML = data.message;
