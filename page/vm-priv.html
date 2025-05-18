@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- <!---------------------!
+<!---------------------!
  !  Skidding this gives you no gain
  !  bye bye go away
  !---------------------->
@@ -13,15 +13,18 @@
       button {
         color: rgba(255, 255, 255, 0.95);
       }
+
       * {
         box-sizing: border-box;
         font-family: Inter;
       }
+
       body,
       html {
         height: 100%;
         overflow: hidden;
       }
+
       body {
         font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, sans-serif;
@@ -35,6 +38,7 @@
         align-items: center;
         justify-content: center;
       }
+
       .content-container {
         display: flex;
         justify-content: center;
@@ -44,11 +48,12 @@
         padding: 16px;
         gap: 25px;
       }
+
       .left-container,
       .right-container {
+        position: relative;
         display: flex;
         flex-direction: column;
-        align-items: center;
         background: rgba(255, 255, 255, 0.06);
         width: 35%;
         height: 500px;
@@ -56,31 +61,37 @@
         padding: 24px;
         text-align: left;
       }
+
       .button-container,
       .footer,
       .session-status,
       .status {
         text-align: center;
       }
+
       .title {
         font-size: 30px;
         margin-bottom: 10px;
         font-weight: 700;
       }
+
       .body-text {
         font-size: 16px;
         color: rgba(255, 255, 255, 0.7);
         margin-bottom: 20px;
       }
+
       .session-status {
         font-size: 18px;
         font-weight: 700;
         margin-bottom: 20px;
         color: rgba(255, 255, 255, 0.9);
       }
+
       .button-container {
         margin-top: 20px;
       }
+
       button {
         padding: 12px 24px;
         font-size: 16px;
@@ -89,25 +100,31 @@
         background-color: #4c75f2;
         border: none;
         border-radius: 10px;
-        transition: 0.3s;
+        transition: 0.2s;
       }
+
       button:hover {
         background-color: #3a5bc0;
       }
+
       button:disabled {
         background-color: rgba(255, 255, 255, 0.2);
         cursor: not-allowed;
         color: rgba(255, 255, 255, 0.5);
       }
+
       #createSession {
-        padding: 16px 32px;
-        font-size: 18px;
+        padding: 20px 36px;
+        font-size: 22px;
         font-weight: 600;
         background-color: rgba(255, 255, 255, 0.06);
       }
+
       #createSession:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: scale(1.02);
       }
+
       .iframe-container {
         width: 100%;
         height: calc(100vh - 100px);
@@ -118,18 +135,21 @@
         display: none;
         z-index: 1;
       }
+
       .footer,
       .status,
       .timer-controls,
       iframe {
         position: absolute;
       }
+
       .end-session-btn,
       .timer {
         color: rgba(255, 255, 255, 0.8);
         background-color: rgba(0, 0, 0, 0.4);
         padding: 8px 14px;
       }
+
       iframe {
         top: 0;
         left: 0;
@@ -137,6 +157,7 @@
         height: 100%;
         border: none;
       }
+
       .timer-controls {
         top: 12px;
         width: calc(100% - 24px);
@@ -144,6 +165,7 @@
         justify-content: space-between;
         z-index: 10;
       }
+
       .end-session-btn,
       .status,
       .timer {
@@ -152,17 +174,21 @@
         display: none;
         font-size: 14px;
       }
+
       .end-session-btn {
         cursor: pointer;
         transition: 0.2s;
       }
+
       .end-session-btn:hover {
         background-color: rgba(255, 107, 107, 0.2);
       }
+
       .countdown {
         font-weight: 700;
         color: #4c75f2;
       }
+
       .status {
         top: 50%;
         left: 50%;
@@ -173,23 +199,44 @@
         max-width: 320px;
         z-index: 100;
       }
+
       .footer {
         margin-top: 16px;
         font-size: 12px;
         color: rgba(255, 255, 255, 0.5);
         bottom: 8px;
       }
+
+      .footer-image {
+        margin-top: auto;
+        text-align: center;
+        padding-top: 20px;
+      }
+
+      .footer-image img {
+        width: 100%;
+        border-radius: 4px;
+        filter: brightness(0.9);
+      }
+
       .loading-icon {
         animation: 1s linear infinite spin;
         margin-right: 4px;
       }
+
       @keyframes spin {
         0% {
           transform: rotate(0);
         }
+
         100% {
           transform: rotate(360deg);
         }
+      }
+
+      .info-text {
+        margin-top: auto;
+        color: rgba(255, 255, 255, 0.5);
       }
     </style>
   </head>
@@ -199,22 +246,32 @@
       <div class="left-container">
         <div class="title">VAPOR Private VMs</div>
         <div class="body-text">
-          Tired of the chaos in the Public VM? Try VAPOR's new Private VM
-          option! Each session lasts 8 minutes, with unlimited session creations available. Perfect for quick tasks on your school device.<br /><br />
-          Occasionally, all sessions may be in use. This is rare, but if it
-          happens often, we'll increase capacity to meet demand.<br /><br />Private VMs are still in beta. Report bugs in the discord!!<br><br>
-          Note: Private VMs are not fully private. Please avoid entering
-          sensitive information such as bank details or crypto wallets (you know
-          who you are).
+          VAPOR Private VMs are isolated, personal browsers available in the
+          cloud.<br /><br />Need to search something? Need to test a sketchy
+          site? Try Private VMs.<br /><br />12 minutes of uninturrupted
+          browsing. Ran out of time? In a single click, create a new session
+          right away.
+        </div>
+        <div class="footer-image">
+          <img
+            src="/_a/img/priv-vm-snapshot.jpeg"
+            alt="Screenshot of the isolated browser."
+          />
         </div>
       </div>
 
       <div class="right-container">
         <div class="button-container">
           <button id="createSession">
-            <i class="fas fa-desktop"></i> Create a Session
+            <i class="fa-regular fa-desktop" style="margin-right: 5px"></i>
+            Start Session
           </button>
         </div>
+        <small class="info-text"
+          >If you recieve an error upon starting a session, too many people are
+          using Private VMs. If the error is consistent though, notify me on the
+          Discord server.</small
+        >
       </div>
     </div>
 
@@ -224,7 +281,7 @@
     </div>
     <div class="timer-controls">
       <button id="endSessionBtn" class="end-session-btn">
-        <i class="fas fa-stop-circle"></i> End Session
+        <i class="fa-regular fa-stop-circle"></i> End Session
       </button>
       <div id="timer" class="timer">
         <i class="fas fa-clock"></i> Time left:
@@ -243,6 +300,7 @@
         API_URL = "https://prv-vms-vapor.technonyte0.workers.dev";
       let countdownInterval,
         currentSessionId = null;
+
       function updateCountdownDisplay(e) {
         const n = Math.floor(e / 60),
           s = e % 60;
@@ -256,8 +314,12 @@
               (status.style.display = "block"),
               await fetch(`${API_URL}/terminate-session`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ sessionId: currentSessionId }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  sessionId: currentSessionId,
+                }),
               }),
               (status.innerHTML =
                 '<i class="fas fa-check-circle"></i> Session ended'),
@@ -292,14 +354,18 @@
         currentSessionId &&
           navigator.sendBeacon(
             `${API_URL}/terminate-session`,
-            JSON.stringify({ sessionId: currentSessionId })
+            JSON.stringify({
+              sessionId: currentSessionId,
+            })
           );
       }),
         window.addEventListener("unload", (e) => {
           currentSessionId &&
             (navigator.sendBeacon(
               `${API_URL}/terminate-session`,
-              JSON.stringify({ sessionId: currentSessionId })
+              JSON.stringify({
+                sessionId: currentSessionId,
+              })
             ),
             (currentSessionId = null));
         }),
