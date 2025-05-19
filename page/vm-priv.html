@@ -254,7 +254,7 @@
         </div>
         <div class="footer-image">
           <img
-            src="/_a/img/priv-vm-snapshot.jpeg"
+            src="/_a/img/priv-vm-snapshot.png"
             alt="Screenshot of the isolated browser."
           />
         </div>
@@ -297,7 +297,7 @@
         countdown = document.getElementById("countdown"),
         status = document.getElementById("status"),
         endSessionBtn = document.getElementById("endSessionBtn"),
-        API_URL = "https://prv-vms-vapor.technonyte0.workers.dev";
+        API_URL = window.location.origin;
       let countdownInterval,
         currentSessionId = null;
 
@@ -312,7 +312,7 @@
             (status.innerHTML =
               '<i class="fas fa-spinner loading-icon"></i> Ending session...'),
               (status.style.display = "block"),
-              await fetch(`${API_URL}/terminate-session`, {
+              await fetch(`${API_URL}/v0/vm/terminate`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -353,7 +353,7 @@
       window.addEventListener("beforeunload", (e) => {
         currentSessionId &&
           navigator.sendBeacon(
-            `${API_URL}/terminate-session`,
+            `${API_URL}/v0/vm/terminate`,
             JSON.stringify({
               sessionId: currentSessionId,
             })
@@ -362,7 +362,7 @@
         window.addEventListener("unload", (e) => {
           currentSessionId &&
             (navigator.sendBeacon(
-              `${API_URL}/terminate-session`,
+              `${API_URL}/v0/vm/terminate`,
               JSON.stringify({
                 sessionId: currentSessionId,
               })
@@ -379,7 +379,7 @@
             (status.style.display = "none"),
             (document.getElementById("introContainer").style.display = "none");
           try {
-            const e = await fetch(`${API_URL}/create-session`),
+            const e = await fetch(`${API_URL}/v0/vm/create`),
               n = await e.json();
             if (n.error)
               return (
@@ -395,9 +395,12 @@
                   status.style.display = "none";
                 }, 5e3)
               );
-            currentSessionId = n.session_id;
-            const s = n.embed_url;
-            (hyperFrame.src = s),
+            
+            const embedUrl = n.embed_url;
+            const urlParts = embedUrl.split('/');
+            currentSessionId = urlParts[urlParts.length - 1];
+            
+            (hyperFrame.src = embedUrl),
               (iframeContainer.style.display = "block"),
               (createSessionBtn.style.display = "none");
             let t = 720;
