@@ -379,7 +379,13 @@
             (status.style.display = "none"),
             (document.getElementById("introContainer").style.display = "none");
           try {
-            const e = await fetch(`${API_URL}/v0/vm/create`),
+            const e = await fetch(`${API_URL}/v0/vm/create`, {
+              method: "POST", // FIXED: Added the POST method
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({}) // Empty body, but necessary for a POST request
+            }),
               n = await e.json();
             if (n.error)
               return (
