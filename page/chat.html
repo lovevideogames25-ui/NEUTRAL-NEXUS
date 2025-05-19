@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/defaults.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: "Inter", sans-serif;
@@ -40,6 +41,7 @@
             flex-direction: column;
             gap: 2px;
             display: none;
+            position: relative;
         }
 
         .message-container {
@@ -209,6 +211,65 @@
         #usernameSection {
             display: none;
         }
+
+        #userCounter {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(255,255,255, 0.1);
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #userCounter i {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        #userTooltip {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            background-color: rgba(255,255,255, 0.1);
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 11px;
+            max-width: 200px;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 20;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-2px);
+            transition: 0.2s ease;
+        }
+
+        #userTooltip.visible {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #userTooltip ul {
+            margin: 0;
+            padding: 0 0 0 15px;
+            list-style-type: none;
+        }
+
+        #userTooltip li {
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        #userTooltip li:last-child {
+            border-bottom: none;
+        }
     </style>
     <style>
         #particles-js {
@@ -234,7 +295,14 @@
             <button class="room-button" onclick="joinRoom('r3')">3</button>
         </div>
 
-        <div id="messages"></div>
+        <div id="messages">
+            <div id="userCounter">
+                <i class="fas fa-users"></i> <span id="userCount">0</span>
+            </div>
+            <div id="userTooltip">
+                <ul id="userList"></ul>
+            </div>
+        </div>
 
         <div id="usernameSection">
             <div class="input-container">
@@ -360,8 +428,8 @@
         };
 
         function startCountdown() {
-            const cooldown = 1500; // 1.5 seconds
-            const intervalTime = 100; // Update every 100ms for decimal countdown
+            const cooldown = 1500;
+            const intervalTime = 100;
             let remaining = cooldown;
 
             const countdownDisplay = document.getElementById("countdown");
@@ -382,6 +450,29 @@
             }, intervalTime);
         }
 
+        const userCounter = document.getElementById("userCounter");
+        const userTooltip = document.getElementById("userTooltip");
+
+        userCounter.addEventListener("mouseenter", () => {
+            userTooltip.classList.add("visible");
+        });
+
+        userCounter.addEventListener("mouseleave", () => {
+            userTooltip.classList.remove("visible");
+        });
+
+        socket.on("user-list-update", (data) => {
+            document.getElementById("userCount").textContent = data.count;
+            
+            const userList = document.getElementById("userList");
+            userList.innerHTML = "";
+            
+            data.users.forEach(user => {
+                const li = document.createElement("li");
+                li.textContent = user;
+                userList.appendChild(li);
+            });
+        });
 
         socket.on("chat-message", (data) => {
             const messagesBox = document.getElementById("messages");
@@ -409,7 +500,6 @@
                     const usernameLabel = document.createElement("div");
                     usernameLabel.classList.add("message-username");
 
-                    // Add crown icon for owner messages
                     if (data.isOwner) {
                         const crownIcon = document.createElement("i");
                         crownIcon.className = "fas fa-crown owner-icon";
@@ -445,6 +535,11 @@
 
         socket.on("error", (message) => {
             alert("Error: " + message);
+        });
+
+        socket.on("kicked", () => {
+            alert("You have been kicked from the room.");
+            window.location.reload();
         });
     </script>
 </body>
