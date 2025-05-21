@@ -33,9 +33,8 @@ document.querySelector(".fa-discord").parentElement.onclick = () => {
   window.location.href = "https://dsc.gg/vaporr";
 };
 
-document.querySelector(".fa-rotate-right").parentElement.onclick = () => {
-  const frame = document.getElementById("frame");
-  frame.src = frame.src;
+document.querySelector(".fa-coins").parentElement.onclick = () => {
+  showDonateModal();
 };
 
 document.querySelector(".fa-handshake").parentElement.onclick = () => {

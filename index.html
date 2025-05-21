@@ -139,13 +139,29 @@
     <div id="modal-overlay" class="modal-overlay"></div>
     <div id="main-modal" class="main-modal">
       <div class="modal-content">
-        <h2 class="modal-title">VAPOR 3.11</h2>
+        <h2 class="modal-title">VAPOR 3.12</h2>
         <p class="modal-body">
-          hey, new update,<br>i'm gonna call it "Secret VM Refitted + Chat Kraken Tamed"<br><br>- Private VM time limit increased<br>- AI Chatbot should be fixed now<br>- Updated the Private VM start page
+          ahoy there<br><br>
+          - Ads are rolling out for VAPOR<br>
+          They won't be intrusive or inappropriate,<br>it's so we can pay for servers.<br><br>- Updated Minecraft 1.5 and 1.8 versions<br>- Added donation button in sidebar
         </p>
         <button id="modal-close" class="modal-button">aye aye, captain</button>
       </div>
     </div>
+
+    <div id="donate-modal" class="main-modal">
+      <div class="modal-content">
+        <h2 class="modal-title">💸 Support VAPOR</h2>
+        <p class="modal-body">
+          If you enjoy VAPOR, consider donating to help server costs and adding features!
+        </p>
+        <pre>
+          <code>bc1qxcuaahnaqgreahj0x42u29hcsuncgwaasvw94a</code>
+        </pre>
+        <button onclick="hideDonateModal()" class="modal-button">Alright</button>
+      </div>
+    </div>
+    
 
     <script src="vpr/vpr.bundle.js"></script>
     <script src="vpr/vpr.config.js"></script>
@@ -183,6 +199,20 @@
         }
       });
     </script>
+    <script>
+      const donateModal = document.getElementById("donate-modal");
+    
+      function showDonateModal() {
+        donateModal.classList.add("active");
+        document.getElementById("modal-overlay").classList.add("active");
+      }
+    
+      function hideDonateModal() {
+        donateModal.classList.remove("active");
+        document.getElementById("modal-overlay").classList.remove("active");
+      }
+    </script>
+    
     
   </body>
 </html>
