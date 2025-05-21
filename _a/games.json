@@ -12,6 +12,12 @@
     "img": "https://slopegame.io/upload/imgs/bonk.io-logo.jpg"
   },
   {
+    "id": "speed-stars",
+    "name": "Speed Stars",
+    "url": "https://1games.io/embed/speed-stars",
+    "img": "https://play-lh.googleusercontent.com/AIdar8HSSXg0NQ6BUR1mVt-uOudupELbjPkU_cgwo_7fP0tKT0R49dfFltYj-43u6A"
+  },
+  {
     "id": "territorial",
     "name": "Territorial Io",
     "url": "https://territorial.io/",
