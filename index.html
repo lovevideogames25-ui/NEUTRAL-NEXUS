@@ -158,28 +158,31 @@
       const modal = document.getElementById("main-modal");
       const overlay = document.getElementById("modal-overlay");
       const closeBtn = document.getElementById("modal-close");
-
+    
       function showModal() {
         modal.classList.add("active");
         overlay.classList.add("active");
       }
-
+    
       function hideModal() {
         modal.classList.remove("active");
         overlay.classList.remove("active");
       }
-
+    
+      window.showModal = showModal;
+    
       closeBtn.addEventListener("click", () => {
         localStorage.setItem("modalVersion", MODAL_VERSION);
         hideModal();
       });
-
+    
       window.addEventListener("load", () => {
         const storedVersion = localStorage.getItem("modalVersion");
         if (storedVersion !== MODAL_VERSION) {
-        showModal();
+          showModal();
         }
       });
     </script>
+    
   </body>
 </html>

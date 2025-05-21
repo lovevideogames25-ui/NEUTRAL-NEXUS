@@ -188,6 +188,31 @@
             z-index: 999;
             border-radius: 10px;
         }
+        #reopen-modal-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        #reopen-modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #49517c;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        #reopen-modal-btn:hover {
+            background-color: #5a6290;
+        }
+
     </style>
 </head>
 
@@ -208,8 +233,10 @@
       </div>-->
     </div>
 
-    <p class="extra-text">GoGuardian: If the browser gets blocked<br>try about:blank cloak in Settings.</p>
-    
+    <div id="reopen-modal-container">
+        <button id="reopen-modal-btn">📢 What's New</button>
+    </div>
+          
 
     <script>
 
@@ -369,6 +396,16 @@
             retina_detect: true,
         });
     </script>
+    <script>
+        document.getElementById("reopen-modal-btn").addEventListener("click", () => {
+          if (window.parent && typeof window.parent.showModal === "function") {
+            window.parent.showModal();
+          } else {
+            console.warn("Modal function not found in parent.");
+          }
+        });
+    </script>
+      
 </body>
 
 </html>
