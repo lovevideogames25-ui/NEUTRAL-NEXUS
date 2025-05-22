@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <style>
       body,
       html,
@@ -34,7 +34,7 @@
         height: 100vh;
         margin: 0;
         padding: 0;
-        background-color: #050505;
+        background-color: #0a111d;
         overflow: hidden;
       }
 
@@ -77,8 +77,8 @@
       }
 
       .browser-container h1 {
-        font-family: "Inter Tight", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-        sans-serif;
+        font-family: "Inter Tight", "Inter", system-ui, -apple-system,
+          BlinkMacSystemFont, sans-serif;
         margin-bottom: 0;
       }
 
@@ -100,7 +100,7 @@
         height: 1.5em;
         border-radius: 0.3em;
         flex: 1;
-        background-color: #121212;
+        background-color: #0a111d;
         border: 1px solid #313131;
       }
 
@@ -124,8 +124,8 @@
         color: #fff;
         outline: none;
         border: none;
-        border-radius: 0.30em;
-        background-color: #121212;
+        border-radius: 0.3em;
+        background-color: #0a111d;
         border: 1px solid #313131;
       }
 
@@ -134,17 +134,34 @@
         padding-bottom: 0.3em;
         gap: 0.2em;
         border-bottom: 1px solid #313131;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+      }
+
+      .tabs::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      .tabs::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .tabs::-webkit-scrollbar-thumb {
+        background: #313131;
+        border-radius: 2px;
       }
 
       .tab {
         color: #fff;
         outline: none;
         border: none;
-        border-radius: 0.30em;
-        background-color: #121212;
+        border-radius: 0.3em;
+        background-color: #0a111d;
         border: 1px solid #313131;
         padding: 0.1em 0.5em;
         width: 215px;
+        min-width: 215px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -152,11 +169,20 @@
         align-items: center;
         gap: 0.2em;
         cursor: pointer;
+        flex-shrink: 0;
+        transition: opacity 0.2s ease;
       }
 
       .tab.active {
-        background-color: #1e1e1e;
+        background-color: #16233b;
         border-color: #4c8bf5;
+      }
+
+      .tab-favicon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        border-radius: 2px;
       }
 
       .tab-title {
@@ -178,6 +204,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 2px;
+        flex-shrink: 0;
       }
 
       .tab-close:hover {
@@ -189,7 +216,7 @@
         color: #fff;
         outline: none;
         border: none;
-        border-radius: 0.30em;
+        border-radius: 0.3em;
         background-color: #121212;
         border: 1px solid #313131;
         padding: 0.3em;
@@ -199,6 +226,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
       }
 
       .new-tab:hover {
@@ -223,7 +251,7 @@
       }
 
       .cfg {
-        background-color: #121212;
+        background-color: #0a111d;
         color: white;
         border-radius: 8px;
         transition: opacity 0.4s ease;
@@ -270,6 +298,15 @@
       .centered {
         justify-content: center;
         align-items: center;
+      }
+
+      .sortable-ghost {
+        opacity: 0.5 !important;
+      }
+
+      .sortable-drag {
+        transform: rotate(5deg);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/dreamland"></script>
@@ -319,27 +356,45 @@
       let tabs = [];
       let activeTabId = 1;
       let nextTabId = 2;
+      let sortableInstance = null;
+
+      function getFaviconUrl(url) {
+        try {
+          const domain = new URL(url).origin;
+          return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(
+            domain
+          )}`;
+        } catch {
+          return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(
+            url
+          )}`;
+        }
+      }
 
       function createTab() {
         const frame = scramjet.createFrame();
         const tab = {
           id: nextTabId++,
           title: "New Tab",
-          url: "https://start.duckduckgo.com",
-          frame: frame
+          url: "https://start.duckduckgo.com/",
+          frame: frame,
+          favicon: getFaviconUrl("https://start.duckduckgo.com"),
         };
 
         frame.addEventListener("urlchange", (e) => {
           if (!e.url) return;
           tab.url = e.url;
-          
+          tab.favicon = getFaviconUrl(e.url);
+
           try {
-            const title = frame.frame.contentWindow?.document?.title || new URL(e.url).hostname;
-            tab.title = title || "Loading...";
+            const title =
+              frame.frame.contentWindow?.document?.title ||
+              new URL(e.url).hostname;
+            tab.title = title || "...";
           } catch (err) {
-            tab.title = new URL(e.url).hostname || "Loading...";
+            tab.title = new URL(e.url).hostname || "...";
           }
-          
+
           updateTabsUI();
           updateAddressBar();
         });
@@ -349,37 +404,37 @@
       }
 
       function getActiveTab() {
-        return tabs.find(tab => tab.id === activeTabId);
+        return tabs.find((tab) => tab.id === activeTabId);
       }
 
       function switchTab(tabId) {
-        tabs.forEach(tab => {
-          tab.frame.frame.classList.add('hidden');
+        tabs.forEach((tab) => {
+          tab.frame.frame.classList.add("hidden");
         });
-        
+
         activeTabId = tabId;
         const activeTab = getActiveTab();
         if (activeTab) {
-          activeTab.frame.frame.classList.remove('hidden');
+          activeTab.frame.frame.classList.remove("hidden");
         }
-        
+
         updateTabsUI();
         updateAddressBar();
       }
 
       function closeTab(tabId) {
         if (tabs.length === 1) return;
-        
-        const tabIndex = tabs.findIndex(tab => tab.id === tabId);
+
+        const tabIndex = tabs.findIndex((tab) => tab.id === tabId);
         if (tabIndex === -1) return;
-        
+
         const tab = tabs[tabIndex];
         if (tab.frame.frame.parentNode) {
           tab.frame.frame.parentNode.removeChild(tab.frame.frame);
         }
-        
+
         tabs.splice(tabIndex, 1);
-        
+
         if (activeTabId === tabId) {
           const newActiveIndex = Math.min(tabIndex, tabs.length - 1);
           activeTabId = tabs[newActiveIndex].id;
@@ -390,46 +445,89 @@
       }
 
       function updateTabsUI() {
-        const tabsContainer = document.getElementById('tabs-container');
+        const tabsContainer = document.getElementById("tabs-container");
         if (!tabsContainer) return;
-        
-        tabsContainer.innerHTML = '';
-        
-        tabs.forEach(tab => {
-          const tabElement = document.createElement('div');
-          tabElement.className = `tab ${tab.id === activeTabId ? 'active' : ''}`;
+
+        tabsContainer.innerHTML = "";
+
+        tabs.forEach((tab) => {
+          const tabElement = document.createElement("div");
+          tabElement.className = `tab ${
+            tab.id === activeTabId ? "active" : ""
+          }`;
+          tabElement.setAttribute("data-tab-id", tab.id);
           tabElement.onclick = () => switchTab(tab.id);
-          
-          const titleSpan = document.createElement('span');
-          titleSpan.className = 'tab-title';
+
+          const faviconImg = document.createElement("img");
+          faviconImg.className = "tab-favicon";
+          faviconImg.src = tab.favicon;
+          faviconImg.alt = "";
+          faviconImg.onerror = () => {
+            faviconImg.style.display = "none";
+          };
+
+          const titleSpan = document.createElement("span");
+          titleSpan.className = "tab-title";
           titleSpan.textContent = tab.title;
-          
-          const closeButton = document.createElement('button');
-          closeButton.className = 'tab-close';
-          closeButton.textContent = '×';
+
+          const closeButton = document.createElement("button");
+          closeButton.className = "tab-close";
+          closeButton.textContent = "×";
           closeButton.onclick = (e) => {
             e.stopPropagation();
             closeTab(tab.id);
           };
-          
+
+          tabElement.appendChild(faviconImg);
           tabElement.appendChild(titleSpan);
           tabElement.appendChild(closeButton);
           tabsContainer.appendChild(tabElement);
         });
-        
-        const newTabButton = document.createElement('button');
-        newTabButton.className = 'new-tab';
-        newTabButton.textContent = '+';
+
+        const newTabButton = document.createElement("button");
+        newTabButton.className = "new-tab";
+        newTabButton.textContent = "+";
         newTabButton.onclick = () => {
           const newTab = createTab();
-          document.getElementById('iframe-container').appendChild(newTab.frame.frame);
+          document
+            .getElementById("iframe-container")
+            .appendChild(newTab.frame.frame);
           switchTab(newTab.id);
         };
         tabsContainer.appendChild(newTabButton);
+
+        if (sortableInstance) {
+          sortableInstance.destroy();
+        }
+
+        sortableInstance = new Sortable(tabsContainer, {
+          animation: 200,
+          direction: "horizontal",
+          ghostClass: "sortable-ghost",
+          dragClass: "sortable-drag",
+          filter: ".new-tab",
+          onStart: () => {
+            tabsContainer
+              .querySelectorAll(".tab:not(.sortable-ghost)")
+              .forEach((t) => {
+                t.style.opacity = "0.5";
+              });
+          },
+          onEnd: (evt) => {
+            tabsContainer.querySelectorAll(".tab").forEach((t) => {
+              t.style.opacity = "1";
+            });
+
+            if (evt.oldIndex !== evt.newIndex) {
+              const movedTab = tabs.splice(evt.oldIndex, 1)[0];
+              tabs.splice(evt.newIndex, 0, movedTab);
+            }
+          },
+        });
       }
 
       function updateAddressBar() {
-        const addressBar = document.getElementById('address-bar');
+        const addressBar = document.getElementById("address-bar");
         const activeTab = getActiveTab();
         if (addressBar && activeTab) {
           addressBar.value = activeTab.url;
@@ -438,24 +536,25 @@
 
       function handleSubmit() {
         const activeTab = getActiveTab();
-        const addressBar = document.getElementById('address-bar');
+        const addressBar = document.getElementById("address-bar");
         if (!activeTab || !addressBar) return;
-        
+
         let url = addressBar.value.trim();
         if (!url.startsWith("http")) {
           url = "https://" + url;
         }
-        
+
         activeTab.url = url;
+        activeTab.favicon = getFaviconUrl(url);
         return activeTab.frame.go(url);
       }
 
       function showConfig() {
-        document.getElementById('config-modal').showModal();
+        document.getElementById("config-modal").showModal();
       }
 
       function closeConfig() {
-        const modal = document.getElementById('config-modal');
+        const modal = document.getElementById("config-modal");
         modal.style.opacity = 0;
         setTimeout(() => {
           modal.close();
@@ -465,7 +564,7 @@
 
       window.addEventListener("load", async () => {
         const root = document.getElementById("app");
-        
+
         root.innerHTML = `
           <div class="browser-container">
             <dialog id="config-modal" class="cfg">
@@ -493,7 +592,7 @@
             </div>
 
             <div class="flex nav">
-              <button onclick="showConfig()">cfg</button>
+              <button onclick="showConfig()">CONF</button>
               <button onclick="getActiveTab()?.frame.back()">&lt;-</button>
               <button onclick="getActiveTab()?.frame.forward()">-&gt;</button>
               <button onclick="getActiveTab()?.frame.reload()">&#x21bb;</button>
@@ -501,7 +600,7 @@
               <input class="bar" id="address-bar" autocomplete="off" autocapitalize="off" autocorrect="off" 
                 onkeyup="event.keyCode === 13 && handleSubmit()">
 
-              <button onclick="window.open(scramjet.encodeUrl(getActiveTab()?.url))">Open</button>
+              <button onclick="window.open(scramjet.encodeUrl(getActiveTab()?.url))">🡵</button>
 
               <p class="version">
                 <b>VSJ.1</b>
@@ -514,7 +613,9 @@
         `;
 
         const initialTab = createTab();
-        document.getElementById('iframe-container').appendChild(initialTab.frame.frame);
+        document
+          .getElementById("iframe-container")
+          .appendChild(initialTab.frame.frame);
         switchTab(initialTab.id);
         updateTabsUI();
 
@@ -528,7 +629,9 @@
             }
             return btoa(binary);
           }
-          const arraybuffer = await (await fetch("/assets/scramjet.png")).arrayBuffer();
+          const arraybuffer = await (
+            await fetch("/assets/scramjet.png")
+          ).arrayBuffer();
           console.log(
             "%cb",
             `
