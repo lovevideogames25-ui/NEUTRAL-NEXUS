@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Scramjet Embed</title>
+  <title>VAPOR Embed</title>
   <style>
     html, body {
       margin: 0;
@@ -17,33 +17,38 @@
       border: none;
     }
   </style>
+  <!-- Load Scramjet via classic scripts -->
+  <script src="/scram/scramjet.client.js"></script>
+  <script src="/scram/scramjet.shared.js"></script>
+  <script src="/scram/scramjet.sync.js"></script>
 </head>
 <body>
-  <script type="module">
-    import { ScramjetController } from "/scram/scramjet.client.js";
+  <script>
+    (async () => {
+      const scramjet = new window.ScramjetController({
+        files: {
+          wasm: "/scram/scramjet.wasm.wasm",
+          worker: "/scram/scramjet.worker.js",
+          client: "/scram/scramjet.client.js",
+          shared: "/scram/scramjet.shared.js",
+          sync: "/scram/scramjet.sync.js",
+        },
+      });
 
-    const scramjet = new ScramjetController({
-      files: {
-        wasm: "/scram/scramjet.wasm.wasm",
-        worker: "/scram/scramjet.worker.js",
-        client: "/scram/scramjet.client.js",
-        shared: "/scram/scramjet.shared.js",
-        sync: "/scram/scramjet.sync.js",
-      },
-    });
+      const url = decodeURIComponent(location.hash.slice(1));
+      if (!url || !url.startsWith("http")) {
+        document.body.innerHTML = "<h1 style='color:white;text-align:center;padding-top:2em;'>Missing or invalid URL in hash.</h1>";
+        return;
+      }
 
-    const url = decodeURIComponent(location.hash.slice(1));
-    if (!url || !url.startsWith("http")) {
-      document.body.innerHTML = "<h1 style='color:white;text-align:center;padding-top:2em;'>Missing or invalid URL in hash.</h1>";
-      throw new Error("Invalid or missing hash URL");
-    }
+      await scramjet.init();
+      await navigator.serviceWorker.register("/sw.js").catch(console.warn);
 
-    await scramjet.init();
-    await navigator.serviceWorker.register("/sw.js").catch(console.warn);
+      const frame = scramjet.createFrame();
+      await frame.go(url);
 
-    const frame = scramjet.createFrame();
-    await frame.go(url);
-    document.body.appendChild(frame.frame);
+      document.body.appendChild(frame.frame);
+    })();
   </script>
 </body>
 </html>
