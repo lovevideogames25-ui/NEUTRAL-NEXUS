@@ -46,490 +46,516 @@
           opacity: 1;
         }
       }
+
+      .flex {
+        display: flex;
+      }
+
+      .col {
+        flex-direction: column;
+      }
+
+      .browser-container {
+        width: 100%;
+        height: 100%;
+        color: #e0def4;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5em;
+        padding-top: 0;
+        box-sizing: border-box;
+      }
+
+      .browser-container a {
+        color: #e0def4;
+      }
+
+      .browser-container input,
+      .browser-container button {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+      }
+
+      .browser-container h1 {
+        font-family: "Inter Tight", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        sans-serif;
+        margin-bottom: 0;
+      }
+
+      .browser-container iframe {
+        background-color: #fff;
+        border: none;
+        border-radius: 0.3em;
+        flex: 1;
+        width: 100%;
+      }
+
+      input.bar {
+        font-family: "Inter";
+        padding: 0.1em;
+        padding-left: 0.3em;
+        border: none;
+        outline: none;
+        color: #fff;
+        height: 1.5em;
+        border-radius: 0.3em;
+        flex: 1;
+        background-color: #121212;
+        border: 1px solid #313131;
+      }
+
+      .input_row > label {
+        font-size: 0.7rem;
+        color: gray;
+      }
+
+      p {
+        margin: 0;
+        margin-top: 0.2em;
+      }
+
+      .nav {
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+        gap: 0.3em;
+      }
+
+      .nav button {
+        color: #fff;
+        outline: none;
+        border: none;
+        border-radius: 0.30em;
+        background-color: #121212;
+        border: 1px solid #313131;
+      }
+
+      .tabs {
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+        gap: 0.2em;
+        border-bottom: 1px solid #313131;
+      }
+
+      .tab {
+        color: #fff;
+        outline: none;
+        border: none;
+        border-radius: 0.30em;
+        background-color: #121212;
+        border: 1px solid #313131;
+        padding: 0.3em 0.6em;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 0.3em;
+        cursor: pointer;
+      }
+
+      .tab.active {
+        background-color: #1e1e1e;
+        border-color: #4c8bf5;
+      }
+
+      .tab-title {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .tab-close {
+        background: none;
+        border: none;
+        color: #999;
+        cursor: pointer;
+        padding: 0;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+      }
+
+      .tab-close:hover {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .new-tab {
+        color: #fff;
+        outline: none;
+        border: none;
+        border-radius: 0.30em;
+        background-color: #121212;
+        border: 1px solid #313131;
+        padding: 0.3em;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .new-tab:hover {
+        background-color: #1e1e1e;
+      }
+
+      .iframe-container {
+        flex: 1;
+        position: relative;
+      }
+
+      .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .iframe-container iframe.hidden {
+        display: none;
+      }
+
+      /* Config Modal Styles */
+      .cfg {
+        background-color: #121212;
+        color: white;
+        border-radius: 8px;
+        transition: opacity 0.4s ease;
+      }
+
+      .cfg[open] {
+        animation: fade 0.4s ease normal;
+      }
+
+      .cfg::backdrop {
+        backdrop-filter: blur(3px);
+      }
+
+      .buttons {
+        gap: 0.5em;
+      }
+
+      .buttons button {
+        border: 1px solid #4c8bf5;
+        background-color: #313131;
+        border-radius: 0.75em;
+        color: #fff;
+        padding: 0.45em;
+      }
+
+      .input_row input {
+        background-color: rgb(18, 18, 18);
+        border: 2px solid rgb(49, 49, 49);
+        border-radius: 0.75em;
+        color: #fff;
+        outline: none;
+        padding: 0.45em;
+      }
+
+      .input_row {
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+      }
+
+      .input_row input {
+        flex-grow: 1;
+      }
+
+      .centered {
+        justify-content: center;
+        align-items: center;
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/dreamland"></script>
     <script src="/baremux/index.js"></script>
     <script src="/scram/scramjet.controller.js"></script>
     <script src="config.js"></script>
+  </head>
 
   <body>
     <div id="app"></div>
     <script>
       const scramjet = new ScramjetController({
-  files: {
-    wasm: "/scram/scramjet.wasm.wasm",
-    worker: "/scram/scramjet.worker.js",
-    client: "/scram/scramjet.client.js",
-    shared: "/scram/scramjet.shared.js",
-    sync: "/scram/scramjet.sync.js",
-  },
-});
+        files: {
+          wasm: "/scram/scramjet.wasm.wasm",
+          worker: "/scram/scramjet.worker.js",
+          client: "/scram/scramjet.client.js",
+          shared: "/scram/scramjet.shared.js",
+          sync: "/scram/scramjet.sync.js",
+        },
+      });
 
-scramjet.init();
-navigator.serviceWorker.register("./sw.js");
+      scramjet.init();
+      navigator.serviceWorker.register("./sw.js");
 
-const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
-const flex = css`
-  display: flex;
-`;
-const col = css`
-  flex-direction: column;
-`;
+      const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
 
-const store = $store(
-  {
-    url: "https://",
-    wispurl:
-      _CONFIG?.wispurl ||
-      (location.protocol === "https:" ? "wss" : "ws") +
-        "://" +
-        location.host +
-        "/wisp/",
-    bareurl:
-      _CONFIG?.bareurl ||
-      (location.protocol === "https:" ? "https" : "http") +
-        "://" +
-        location.host +
-        "/bare/",
-    proxy: "",
-  },
-  { ident: "settings", backing: "localstorage", autosave: "auto" }
-);
-connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
+      // Simple store implementation
+      const store = {
+        url: "https://",
+        wispurl:
+          _CONFIG?.wispurl ||
+          (location.protocol === "https:" ? "wss" : "ws") +
+            "://" +
+            location.host +
+            "/wisp/",
+        bareurl:
+          _CONFIG?.bareurl ||
+          (location.protocol === "https:" ? "https" : "http") +
+            "://" +
+            location.host +
+            "/bare/",
+        proxy: "",
+      };
 
-function Config() {
-  this.css = `
-    transition: opacity 0.4s ease;
-    :modal[open] {
-        animation: fade 0.4s ease normal;
-    }
+      connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
 
-    :modal::backdrop {
-     backdrop-filter: blur(3px);
-    }
+      // Tab management
+      let tabs = [];
+      let activeTabId = 1;
+      let nextTabId = 2;
 
-    .buttons {
-      gap: 0.5em;
-    }
-    .buttons button {
-      border: 1px solid #4c8bf5;
-      background-color: #313131;
-      border-radius: 0.75em;
-      color: #fff;
-      padding: 0.45em;
-    }
-    .input_row input {
-      background-color: rgb(18, 18, 18);
-      border: 2px solid rgb(49, 49, 49);
-      border-radius: 0.75em;
-      color: #fff;
-      outline: none;
-      padding: 0.45em;
-    }
-    .input_row {
-      margin-bottom: 0.5em;
-      margin-top: 0.5em;
-    }
-    .input_row input {
-      flex-grow: 1;
-    }
-    .centered {
-      justify-content: center;
-      align-items: center;
-    }
-  `;
+      function createTab() {
+        const frame = scramjet.createFrame();
+        const tab = {
+          id: nextTabId++,
+          title: "New Tab",
+          url: "https://",
+          frame: frame
+        };
 
-  function handleModalClose(modal) {
-    modal.style.opacity = 0;
-    setTimeout(() => {
-      modal.close();
-      modal.style.opacity = 1;
-    }, 250);
-  }
+        frame.addEventListener("urlchange", (e) => {
+          if (!e.url) return;
+          tab.url = e.url;
+          
+          try {
+            const title = frame.frame.contentWindow?.document?.title || new URL(e.url).hostname;
+            tab.title = title || "Loading...";
+          } catch (err) {
+            tab.title = new URL(e.url).hostname || "Loading...";
+          }
+          
+          updateTabsUI();
+          updateAddressBar();
+        });
 
-  return html`
-      <dialog class="cfg" style="background-color: #121212; color: white; border-radius: 8px;">
-        <div style="align-self: end">
-          <div class=${[flex, "buttons"]}>
-            <button on:click=${() =>
-              connection.setTransport("/baremod/index.mjs", [
-                store.bareurl,
-              ])}>use bare server 3</button>
-            <button on:click=${() =>
-              connection.setTransport("/libcurl/index.mjs", [
-                { wisp: store.wispurl },
-              ])}>use libcurl.js</button>
-              <button on:click=${() =>
-                connection.setTransport("/epoxy/index.mjs", [
-                  { wisp: store.wispurl },
-                ])}>use epoxy</button>
-          </div>
-        </div>
-        <div class=${[flex, col, "input_row"]}>
-          <label for="wisp_url_input">Wisp URL:</label>
-          <input id="wisp_url_input" bind:value=${use(
-            store.wispurl
-          )} spellcheck="false"></input>
-        </div>
-        <div class=${[flex, col, "input_row"]}>
-          <label for="bare_url_input">Bare URL:</label>
-          <input id="bare_url_input" bind:value=${use(
-            store.bareurl
-          )} spellcheck="false"></input>
-        </div>
-            <div class=${[flex, "buttons", "centered"]}>
-              <button on:click=${() =>
-                handleModalClose(this.root)}>close</button>
+        tabs.push(tab);
+        return tab;
+      }
+
+      function getActiveTab() {
+        return tabs.find(tab => tab.id === activeTabId);
+      }
+
+      function switchTab(tabId) {
+        // Hide all iframes
+        tabs.forEach(tab => {
+          tab.frame.frame.classList.add('hidden');
+        });
+        
+        // Show active iframe
+        activeTabId = tabId;
+        const activeTab = getActiveTab();
+        if (activeTab) {
+          activeTab.frame.frame.classList.remove('hidden');
+        }
+        
+        updateTabsUI();
+        updateAddressBar();
+      }
+
+      function closeTab(tabId) {
+        if (tabs.length === 1) return;
+        
+        const tabIndex = tabs.findIndex(tab => tab.id === tabId);
+        if (tabIndex === -1) return;
+        
+        // Remove the frame from DOM
+        const tab = tabs[tabIndex];
+        if (tab.frame.frame.parentNode) {
+          tab.frame.frame.parentNode.removeChild(tab.frame.frame);
+        }
+        
+        tabs.splice(tabIndex, 1);
+        
+        if (activeTabId === tabId) {
+          const newActiveIndex = Math.min(tabIndex, tabs.length - 1);
+          activeTabId = tabs[newActiveIndex].id;
+          switchTab(activeTabId);
+        } else {
+          updateTabsUI();
+        }
+      }
+
+      function updateTabsUI() {
+        const tabsContainer = document.getElementById('tabs-container');
+        if (!tabsContainer) return;
+        
+        tabsContainer.innerHTML = '';
+        
+        tabs.forEach(tab => {
+          const tabElement = document.createElement('div');
+          tabElement.className = `tab ${tab.id === activeTabId ? 'active' : ''}`;
+          tabElement.onclick = () => switchTab(tab.id);
+          
+          const titleSpan = document.createElement('span');
+          titleSpan.className = 'tab-title';
+          titleSpan.textContent = tab.title;
+          
+          const closeButton = document.createElement('button');
+          closeButton.className = 'tab-close';
+          closeButton.textContent = '×';
+          closeButton.onclick = (e) => {
+            e.stopPropagation();
+            closeTab(tab.id);
+          };
+          
+          tabElement.appendChild(titleSpan);
+          tabElement.appendChild(closeButton);
+          tabsContainer.appendChild(tabElement);
+        });
+        
+        const newTabButton = document.createElement('button');
+        newTabButton.className = 'new-tab';
+        newTabButton.textContent = '+';
+        newTabButton.onclick = () => {
+          const newTab = createTab();
+          document.getElementById('iframe-container').appendChild(newTab.frame.frame);
+          switchTab(newTab.id);
+        };
+        tabsContainer.appendChild(newTabButton);
+      }
+
+      function updateAddressBar() {
+        const addressBar = document.getElementById('address-bar');
+        const activeTab = getActiveTab();
+        if (addressBar && activeTab) {
+          addressBar.value = activeTab.url;
+        }
+      }
+
+      function handleSubmit() {
+        const activeTab = getActiveTab();
+        const addressBar = document.getElementById('address-bar');
+        if (!activeTab || !addressBar) return;
+        
+        let url = addressBar.value.trim();
+        if (!url.startsWith("http")) {
+          url = "https://" + url;
+        }
+        
+        activeTab.url = url;
+        return activeTab.frame.go(url);
+      }
+
+      function showConfig() {
+        document.getElementById('config-modal').showModal();
+      }
+
+      function closeConfig() {
+        const modal = document.getElementById('config-modal');
+        modal.style.opacity = 0;
+        setTimeout(() => {
+          modal.close();
+          modal.style.opacity = 1;
+        }, 250);
+      }
+
+      window.addEventListener("load", async () => {
+        const root = document.getElementById("app");
+        
+        root.innerHTML = `
+          <div class="browser-container">
+            <!-- Config Modal -->
+            <dialog id="config-modal" class="cfg">
+              <div style="align-self: end">
+                <div class="flex buttons">
+                  <button onclick="connection.setTransport('/baremod/index.mjs', [store.bareurl])">use bare server 3</button>
+                  <button onclick="connection.setTransport('/libcurl/index.mjs', [{ wisp: store.wispurl }])">use libcurl.js</button>
+                  <button onclick="connection.setTransport('/epoxy/index.mjs', [{ wisp: store.wispurl }])">use epoxy</button>
+                </div>
+              </div>
+              <div class="flex col input_row">
+                <label for="wisp_url_input">Wisp URL:</label>
+                <input id="wisp_url_input" value="${store.wispurl}" spellcheck="false">
+              </div>
+              <div class="flex col input_row">
+                <label for="bare_url_input">Bare URL:</label>
+                <input id="bare_url_input" value="${store.bareurl}" spellcheck="false">
+              </div>
+              <div class="flex buttons centered">
+                <button onclick="closeConfig()">close</button>
+              </div>
+            </dialog>
+
+            <!-- Tabs Row -->
+            <div class="flex tabs" id="tabs-container">
             </div>
 
-      </dialog>
-  `;
-}
+            <!-- Navigation Row -->
+            <div class="flex nav">
+              <button onclick="showConfig()">Configuration</button>
+              <button onclick="getActiveTab()?.frame.back()">&lt;-</button>
+              <button onclick="getActiveTab()?.frame.forward()">-&gt;</button>
+              <button onclick="getActiveTab()?.frame.reload()">&#x21bb;</button>
 
-function BrowserApp() {
-  this.css = `
-    width: 100%;
-    height: 100%;
-    color: #e0def4;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5em;
-    padding-top: 0;
-    box-sizing: border-box;
+              <input class="bar" id="address-bar" autocomplete="off" autocapitalize="off" autocorrect="off" 
+                onkeyup="event.keyCode === 13 && handleSubmit()">
 
-    a {
-      color: #e0def4;
-    }
+              <button onclick="window.open(scramjet.encodeUrl(getActiveTab()?.url))">Open</button>
 
-    input,
-    button {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-        sans-serif;
-    }
-    .version {
-    }
-    h1 {
-      font-family: "Inter Tight", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
-      sans-serif;
-      margin-bottom: 0;
-    }
-    iframe {
-      background-color: #fff;
-      border: none;
-      border-radius: 0.3em;
-      flex: 1;
-      width: 100%;
-    }
+              <p class="version">
+                <b>VAPOR Scramjet build</b>
+              </p>
+            </div>
 
-    input.bar {
-      font-family: "Inter";
-      padding: 0.1em;
-      padding-left: 0.3em;
-      border: none;
-      outline: none;
-      color: #fff;
-      height: 1.5em;
-      border-radius: 0.3em;
-      flex: 1;
-
-      background-color: #121212;
-      border: 1px solid #313131;
-    }
-    .input_row > label {
-      font-size: 0.7rem;
-      color: gray;
-    }
-    p {
-      margin: 0;
-      margin-top: 0.2em;
-    }
-
-    .nav {
-      padding-top: 0.3em;
-      padding-bottom: 0.3em;
-      gap: 0.3em;
-    }
-    spacer {
-      margin-left: 10em;
-    }
-
-    .nav button {
-      color: #fff;
-      outline: none;
-      border: none;
-      border-radius: 0.30em;
-      background-color: #121212;
-      border: 1px solid #313131;
-    }
-
-    .tabs {
-      padding-top: 0.3em;
-      padding-bottom: 0.3em;
-      gap: 0.2em;
-      border-bottom: 1px solid #313131;
-    }
-
-    .tab {
-      color: #fff;
-      outline: none;
-      border: none;
-      border-radius: 0.30em;
-      background-color: #121212;
-      border: 1px solid #313131;
-      padding: 0.3em 0.6em;
-      max-width: 200px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 0.3em;
-      cursor: pointer;
-    }
-
-    .tab.active {
-      background-color: #1e1e1e;
-      border-color: #4c8bf5;
-    }
-
-    .tab-title {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .tab-close {
-      background: none;
-      border: none;
-      color: #999;
-      cursor: pointer;
-      padding: 0;
-      width: 16px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 2px;
-    }
-
-    .tab-close:hover {
-      background-color: #333;
-      color: #fff;
-    }
-
-    .new-tab {
-      color: #fff;
-      outline: none;
-      border: none;
-      border-radius: 0.30em;
-      background-color: #121212;
-      border: 1px solid #313131;
-      padding: 0.3em;
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .new-tab:hover {
-      background-color: #1e1e1e;
-    }
-
-    .iframe-container {
-      flex: 1;
-      position: relative;
-    }
-
-    .iframe-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .iframe-container iframe:not(.active) {
-      display: none;
-    }
-  `;
-
-  // Initialize tabs state
-  this.tabs = $store([
-    {
-      id: 1,
-      title: "New Tab",
-      url: "https://",
-      frame: null
-    }
-  ], { autosave: false });
-  
-  this.activeTabId = $store(1, { autosave: false });
-  this.nextTabId = 2;
-
-  // Create initial frame
-  const initialFrame = scramjet.createFrame();
-  this.tabs[0].frame = initialFrame;
-
-  // Set up frame event listener for title updates
-  const setupFrameListeners = (tab) => {
-    tab.frame.addEventListener("urlchange", (e) => {
-      if (!e.url) return;
-      tab.url = e.url;
-      
-      // Try to get title from iframe
-      try {
-        const title = tab.frame.frame.contentWindow?.document?.title || new URL(e.url).hostname;
-        tab.title = title || "Loading...";
-      } catch (err) {
-        tab.title = new URL(e.url).hostname || "Loading...";
-      }
-    });
-  };
-
-  setupFrameListeners(this.tabs[0]);
-
-  const getActiveTab = () => {
-    return this.tabs.find(tab => tab.id === this.activeTabId);
-  };
-
-  const createNewTab = () => {
-    const newTab = {
-      id: this.nextTabId++,
-      title: "New Tab",
-      url: "https://",
-      frame: scramjet.createFrame()
-    };
-    
-    setupFrameListeners(newTab);
-    this.tabs.push(newTab);
-    this.activeTabId = newTab.id;
-  };
-
-  const closeTab = (tabId) => {
-    const tabIndex = this.tabs.findIndex(tab => tab.id === tabId);
-    if (tabIndex === -1 || this.tabs.length === 1) return;
-    
-    this.tabs.splice(tabIndex, 1);
-    
-    if (this.activeTabId === tabId) {
-      const newActiveIndex = Math.min(tabIndex, this.tabs.length - 1);
-      this.activeTabId = this.tabs[newActiveIndex].id;
-    }
-  };
-
-  const switchTab = (tabId) => {
-    this.activeTabId = tabId;
-  };
-
-  const handleSubmit = () => {
-    const activeTab = getActiveTab();
-    if (!activeTab) return;
-    
-    activeTab.url = activeTab.url.trim();
-    if (!activeTab.url.startsWith("http")) {
-      activeTab.url = "https://" + activeTab.url;
-    }
-
-    return activeTab.frame.go(activeTab.url);
-  };
-
-  const cfg = h(Config);
-  document.body.appendChild(cfg);
-  this.githubURL = `https://github.com/MercuryWorkshop/scramjet/commit/${$scramjet.version.build}`;
-
-  return html`
-      <div>
-      <!-- Tabs Row -->
-      <div class=${[flex, "tabs"]}>
-        ${this.tabs.map(tab => html`
-          <div class=${["tab", tab.id === this.activeTabId ? "active" : ""]} 
-               on:click=${() => switchTab(tab.id)}>
-            <span class="tab-title">${tab.title}</span>
-            <button class="tab-close" on:click=${(e) => {
-              e.stopPropagation();
-              closeTab(tab.id);
-            }}>×</button>
+            <!-- Iframe Container -->
+            <div class="iframe-container" id="iframe-container">
+            </div>
           </div>
-        `)}
-        <button class="new-tab" on:click=${createNewTab}>+</button>
-      </div>
+        `;
 
-      <!-- Navigation Row -->
-      <div class=${[flex, "nav"]}>
-        <button on:click=${() => cfg.showModal()}>Configuration</button>
-        <button on:click=${() => getActiveTab()?.frame.back()}>&lt;-</button>
-        <button on:click=${() => getActiveTab()?.frame.forward()}>-&gt;</button>
-        <button on:click=${() => getActiveTab()?.frame.reload()}>&#x21bb;</button>
+        // Create initial tab
+        const initialTab = createTab();
+        document.getElementById('iframe-container').appendChild(initialTab.frame.frame);
+        switchTab(initialTab.id);
+        updateTabsUI();
 
-        <input class="bar" autocomplete="off" autocapitalize="off" autocorrect="off" 
-        bind:value=${use(() => getActiveTab()?.url || "")} 
-        on:input=${(e) => {
-          const activeTab = getActiveTab();
-          if (activeTab) {
-            activeTab.url = e.target.value;
+        // Load console image
+        try {
+          function b64(buffer) {
+            let binary = "";
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+              binary += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binary);
           }
-        }} 
-        on:keyup=${(e) => e.keyCode == 13 && handleSubmit()}></input>
-
-        <button on:click=${() => {
-          const activeTab = getActiveTab();
-          if (activeTab) {
-            window.open(scramjet.encodeUrl(activeTab.url));
-          }
-        }}>Open</button>
-
-        <p class="version">
-          <b>VAPOR Scramjet build</b>
-        </p>
-      </div>
-
-      <!-- Iframe Container -->
-      <div class="iframe-container">
-        ${this.tabs.map(tab => {
-          tab.frame.frame.className = tab.id === this.activeTabId ? "active" : "";
-          return tab.frame.frame;
-        })}
-      </div>
-    </div>
-    `;
-}
-
-window.addEventListener("load", async () => {
-  const root = document.getElementById("app");
-  try {
-    root.replaceWith(h(BrowserApp));
-  } catch (e) {
-    root.replaceWith(document.createTextNode("" + e));
-    throw e;
-  }
-  function b64(buffer) {
-    let binary = "";
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-
-    return btoa(binary);
-  }
-  const arraybuffer = await (await fetch("/assets/scramjet.png")).arrayBuffer();
-  console.log(
-    "%cb",
-    `
-      background-image: url(data:image/png;base64,${b64(arraybuffer)});
-      color: transparent;
-      padding-left: 200px;
-      padding-bottom: 100px;
-      background-size: contain;
-      background-position: center center;
-      background-repeat: no-repeat;
-  `
-  );
-});
-
+          const arraybuffer = await (await fetch("/assets/scramjet.png")).arrayBuffer();
+          console.log(
+            "%cb",
+            `
+              background-image: url(data:image/png;base64,${b64(arraybuffer)});
+              color: transparent;
+              padding-left: 200px;
+              padding-bottom: 100px;
+              background-size: contain;
+              background-position: center center;
+              background-repeat: no-repeat;
+          `
+          );
+        } catch (e) {
+          // Ignore image loading errors
+        }
+      });
     </script>
   </body>
 </html>
