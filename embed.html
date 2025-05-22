@@ -54,6 +54,26 @@
     navigator.serviceWorker.register("./sw.js");
 
     const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+    const store = $store(
+  {
+    url: "https://",
+    wispurl:
+      _CONFIG?.wispurl ||
+      (location.protocol === "https:" ? "wss" : "ws") +
+        "://" +
+        location.host +
+        "/wisp/",
+    bareurl:
+      _CONFIG?.bareurl ||
+      (location.protocol === "https:" ? "https" : "http") +
+        "://" +
+        location.host +
+        "/bare/",
+    proxy: "",
+  },
+  { ident: "settings", backing: "localstorage", autosave: "auto" }
+);
+connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
 
     const frame = scramjet.createFrame();
 
