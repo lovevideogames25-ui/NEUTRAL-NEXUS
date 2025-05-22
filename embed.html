@@ -2,52 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>VAPOR Embed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scramjet Proxy - Example</title>
   <style>
     html, body {
       margin: 0;
-      padding: 0;
-      width: 100%;
       height: 100%;
-      background: #121212;
+      background-color: #121212;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
     }
     iframe {
-      width: 100%;
-      height: 100%;
+      flex: 1;
       border: none;
+      border-radius: 0.4em;
+      background: white;
+    }
+    header {
+      padding: 0.5em;
+      background: #1e1e1e;
+      color: white;
+      text-align: center;
     }
   </style>
-  <script src="/scram/scramjet.client.js"></script>
-  <script src="/scram/scramjet.shared.js"></script>
-  <script src="/scram/scramjet.sync.js"></script>
 </head>
 <body>
-  <script>
-    (async () => {
-      const scramjet = new window.ScramjetController({
-        files: {
-          wasm: "/scram/scramjet.wasm.wasm",
-          worker: "/scram/scramjet.worker.js",
-          client: "/scram/scramjet.client.js",
-          shared: "/scram/scramjet.shared.js",
-          sync: "/scram/scramjet.sync.js",
-        },
-      });
+  <header>Scramjet Proxy → example.com</header>
+  <div id="app" style="flex:1;"></div>
 
-      const url = decodeURIComponent(location.hash.slice(1));
-      if (!url || !url.startsWith("http")) {
-        document.body.innerHTML = "<h1 style='color:white;text-align:center;padding-top:2em;'>Missing or invalid URL in hash.</h1>";
-        return;
+  <script type="module">
+    import { ScramjetController } from '/scram/scramjet.client.js';
+    import '/scram/scramjet.shared.js';
+
+    const scramjet = new ScramjetController({
+      files: {
+        wasm: "/scram/scramjet.wasm.wasm",
+        worker: "/scram/scramjet.worker.js",
+        client: "/scram/scramjet.client.js",
+        shared: "/scram/scramjet.shared.js",
+        sync: "/scram/scramjet.sync.js",
       }
+    });
 
-      await scramjet.init();
-      await navigator.serviceWorker.register("/sw.js").catch(console.warn);
-
-      const frame = scramjet.createFrame();
-      await frame.go(url);
-
-      document.body.appendChild(frame.frame);
-    })();
+    await scramjet.init();
+    const frame = scramjet.createFrame();
+    await frame.go("https://example.com");
+    document.getElementById("app").appendChild(frame.frame);
   </script>
 </body>
 </html>
