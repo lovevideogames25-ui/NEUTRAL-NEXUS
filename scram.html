@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -205,30 +206,19 @@ function BrowserApp() {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
         sans-serif;
     }
-    
+    .version {
+    }
     h1 {
       font-family: "Inter Tight", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
       sans-serif;
       margin-bottom: 0;
     }
-    
-    .iframe-container {
+    iframe {
       background-color: #fff;
       border: none;
       border-radius: 0.3em;
       flex: 1;
       width: 100%;
-      position: relative;
-    }
-    
-    .iframe-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 0.3em;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
 
     input.bar {
@@ -241,15 +231,14 @@ function BrowserApp() {
       height: 1.5em;
       border-radius: 0.3em;
       flex: 1;
+
       background-color: #121212;
       border: 1px solid #313131;
     }
-    
     .input_row > label {
       font-size: 0.7rem;
       color: gray;
     }
-    
     p {
       margin: 0;
       margin-top: 0.2em;
@@ -260,6 +249,9 @@ function BrowserApp() {
       padding-bottom: 0.3em;
       gap: 0.3em;
     }
+    spacer {
+      margin-left: 10em;
+    }
 
     .nav button {
       color: #fff;
@@ -268,264 +260,240 @@ function BrowserApp() {
       border-radius: 0.30em;
       background-color: #121212;
       border: 1px solid #313131;
-      padding: 0.4em;
     }
-    
-    .tabs-row {
+
+    .tabs {
+      padding-top: 0.3em;
       padding-bottom: 0.3em;
       gap: 0.2em;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      border-bottom: 1px solid #313131;
     }
-    
-    .tabs-row::-webkit-scrollbar {
-      display: none;
-    }
-    
+
     .tab {
+      color: #fff;
+      outline: none;
+      border: none;
+      border-radius: 0.30em;
+      background-color: #121212;
+      border: 1px solid #313131;
+      padding: 0.3em 0.6em;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       display: flex;
       align-items: center;
       gap: 0.3em;
-      padding: 0.2em 0.4em;
-      background-color: #121212;
-      border: 1px solid #313131;
-      border-radius: 0.3em;
-      color: #e0def4;
       cursor: pointer;
-      min-width: 60px;
-      max-width: 120px;
-      position: relative;
-      font-size: 0.75em;
-      height: 28px;
-      box-sizing: border-box;
     }
-    
+
     .tab.active {
-      background-color: #313131;
+      background-color: #1e1e1e;
       border-color: #4c8bf5;
     }
-    
-    .tab:hover {
-      background-color: #252525;
-    }
-    
-    .tab-icon {
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-    
+
     .tab-title {
       flex: 1;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size: 11px;
     }
-    
+
     .tab-close {
-      width: 14px;
-      height: 14px;
-      border-radius: 2px;
-      background-color: transparent;
+      background: none;
       border: none;
-      color: #888;
+      color: #999;
       cursor: pointer;
+      padding: 0;
+      width: 16px;
+      height: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
-      flex-shrink: 0;
+      border-radius: 2px;
     }
-    
+
     .tab-close:hover {
-      background-color: #ff4444;
-      color: white;
+      background-color: #333;
+      color: #fff;
     }
-    
-    .add-tab {
-      width: 28px;
-      height: 28px;
-      border-radius: 0.3em;
+
+    .new-tab {
+      color: #fff;
+      outline: none;
+      border: none;
+      border-radius: 0.30em;
       background-color: #121212;
       border: 1px solid #313131;
-      color: #e0def4;
+      padding: 0.3em;
       cursor: pointer;
+      width: 30px;
+      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
     }
-    
-    .add-tab:hover {
-      background-color: #252525;
+
+    .new-tab:hover {
+      background-color: #1e1e1e;
+    }
+
+    .iframe-container {
+      flex: 1;
+      position: relative;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .iframe-container iframe:not(.active) {
+      display: none;
     }
   `;
 
-  // Tab management - use reactive state
-  this.tabs = $state([]);
-  this.activeTabId = $state(0);
-  this.nextTabId = 1;
-
-  const cfg = h(Config);
-  document.body.appendChild(cfg);
-
-  // Create initial tab
-  this.createTab = (url = "https://") => {
-    const tabId = this.nextTabId++;
-    const frame = scramjet.createFrame();
-    
-    const tab = {
-      id: tabId,
-      url: url,
+  // Initialize tabs state
+  this.tabs = $store([
+    {
+      id: 1,
       title: "New Tab",
-      frame: frame
-    };
+      url: "https://",
+      frame: null
+    }
+  ], { autosave: false });
+  
+  this.activeTabId = $store(1, { autosave: false });
+  this.nextTabId = 2;
 
-    // Set up frame event listeners
-    frame.addEventListener("urlchange", (e) => {
+  // Create initial frame
+  const initialFrame = scramjet.createFrame();
+  this.tabs[0].frame = initialFrame;
+
+  // Set up frame event listener for title updates
+  const setupFrameListeners = (tab) => {
+    tab.frame.addEventListener("urlchange", (e) => {
       if (!e.url) return;
-      const currentTab = this.tabs.find(t => t.id === tabId);
-      if (currentTab) {
-        currentTab.url = e.url;
-        this.updateTabTitle(tabId, e.url);
-        if (tabId === this.activeTabId) {
-          this.url = e.url;
-        }
+      tab.url = e.url;
+      
+      // Try to get title from iframe
+      try {
+        const title = tab.frame.frame.contentWindow?.document?.title || new URL(e.url).hostname;
+        tab.title = title || "Loading...";
+      } catch (err) {
+        tab.title = new URL(e.url).hostname || "Loading...";
       }
     });
-
-    this.tabs.push(tab);
-    this.activeTabId = tabId;
-    this.url = url;
-    
-    // Navigate to URL if provided
-    if (url && url !== "https://") {
-      setTimeout(() => frame.go(url), 100);
-    }
-    
-    return tab;
   };
 
-  this.updateTabTitle = (tabId, url) => {
-    const tab = this.tabs.find(t => t.id === tabId);
-    if (tab) {
-      try {
-        const urlObj = new URL(url);
-        tab.title = urlObj.hostname || url;
-      } catch {
-        tab.title = url.length > 15 ? url.substring(0, 15) + "..." : url;
-      }
-    }
+  setupFrameListeners(this.tabs[0]);
+
+  const getActiveTab = () => {
+    return this.tabs.find(tab => tab.id === this.activeTabId);
   };
 
-  this.switchTab = (tabId) => {
-    this.activeTabId = tabId;
-    const activeTab = this.tabs.find(t => t.id === tabId);
-    if (activeTab) {
-      this.url = activeTab.url;
-    }
-  };
-
-  this.closeTab = (tabId) => {
-    const tabIndex = this.tabs.findIndex(t => t.id === tabId);
-    if (tabIndex === -1) return;
+  const createNewTab = () => {
+    const newTab = {
+      id: this.nextTabId++,
+      title: "New Tab",
+      url: "https://",
+      frame: scramjet.createFrame()
+    };
     
-    // Remove the tab's frame from DOM
-    const tab = this.tabs[tabIndex];
-    if (tab.frame && tab.frame.frame && tab.frame.frame.parentNode) {
-      tab.frame.frame.parentNode.removeChild(tab.frame.frame);
-    }
+    setupFrameListeners(newTab);
+    this.tabs.push(newTab);
+    this.activeTabId = newTab.id;
+  };
+
+  const closeTab = (tabId) => {
+    const tabIndex = this.tabs.findIndex(tab => tab.id === tabId);
+    if (tabIndex === -1 || this.tabs.length === 1) return;
     
     this.tabs.splice(tabIndex, 1);
     
-    if (this.tabs.length === 0) {
-      this.createTab();
-    } else if (this.activeTabId === tabId) {
-      // Switch to the previous tab or the first one
-      const newActiveIndex = Math.max(0, tabIndex - 1);
+    if (this.activeTabId === tabId) {
+      const newActiveIndex = Math.min(tabIndex, this.tabs.length - 1);
       this.activeTabId = this.tabs[newActiveIndex].id;
-      this.url = this.tabs[newActiveIndex].url;
     }
   };
 
-  this.getCurrentFrame = () => {
-    const activeTab = this.tabs.find(t => t.id === this.activeTabId);
-    return activeTab ? activeTab.frame : null;
+  const switchTab = (tabId) => {
+    this.activeTabId = tabId;
   };
-
-  // Initialize with first tab
-  this.url = $state(store.url);
-  this.createTab(store.url);
 
   const handleSubmit = () => {
-    this.url = this.url.trim();
-    if (!this.url.startsWith("http")) {
-      this.url = "https://" + this.url;
-    }
+    const activeTab = getActiveTab();
+    if (!activeTab) return;
     
-    const frame = this.getCurrentFrame();
-    if (frame) {
-      const activeTab = this.tabs.find(t => t.id === this.activeTabId);
-      if (activeTab) {
-        activeTab.url = this.url;
-      }
-      return frame.go(this.url);
+    activeTab.url = activeTab.url.trim();
+    if (!activeTab.url.startsWith("http")) {
+      activeTab.url = "https://" + activeTab.url;
     }
+
+    return activeTab.frame.go(activeTab.url);
   };
+
+  const cfg = h(Config);
+  document.body.appendChild(cfg);
+  this.githubURL = `https://github.com/MercuryWorkshop/scramjet/commit/${$scramjet.version.build}`;
 
   return html`
       <div>
-        <!-- Tabs Row -->
-        <div class=${[flex, "tabs-row"]}>
-          ${this.tabs.map(tab => html`
-            <div class=${["tab", tab.id === this.activeTabId ? "active" : ""]} 
-                 on:click=${() => this.switchTab(tab.id)}>
-              <span class="tab-icon">🌐</span>
-              <span class="tab-title">${tab.title}</span>
-              <button class="tab-close" on:click=${(e) => {
-                e.stopPropagation();
-                this.closeTab(tab.id);
-              }}>×</button>
-            </div>
-          `)}
-          <button class="add-tab" on:click=${() => this.createTab()}>+</button>
-        </div>
-
-        <!-- Navigation Row -->
-        <div class=${[flex, "nav"]}>
-          <button on:click=${() => cfg.showModal()}>⚙</button>
-          <button on:click=${() => {
-            const frame = this.getCurrentFrame();
-            if (frame) frame.back();
-          }}>←</button>
-          <button on:click=${() => {
-            const frame = this.getCurrentFrame();
-            if (frame) frame.forward();
-          }}>→</button>
-          <button on:click=${() => {
-            const frame = this.getCurrentFrame();
-            if (frame) frame.reload();
-          }}>↻</button>
-
-          <input class="bar" autocomplete="off" autocapitalize="off" autocorrect="off" 
-                 bind:value=${use(this.url)} 
-                 on:input=${(e) => { this.url = e.target.value; }}
-                 on:keyup=${(e) => e.keyCode == 13 && (store.url = this.url) && handleSubmit()}>
-
-          <button on:click=${() => window.open(scramjet.encodeUrl(this.url))}>↗</button>
-        </div>
-
-        <!-- Iframe Container -->
-        <div class="iframe-container">
-          ${this.tabs.map(tab => {
-            const frame = tab.frame.frame;
-            frame.style.display = tab.id === this.activeTabId ? 'block' : 'none';
-            return frame;
-          })}
-        </div>
+      <!-- Tabs Row -->
+      <div class=${[flex, "tabs"]}>
+        ${this.tabs.map(tab => html`
+          <div class=${["tab", tab.id === this.activeTabId ? "active" : ""]} 
+               on:click=${() => switchTab(tab.id)}>
+            <span class="tab-title">${tab.title}</span>
+            <button class="tab-close" on:click=${(e) => {
+              e.stopPropagation();
+              closeTab(tab.id);
+            }}>×</button>
+          </div>
+        `)}
+        <button class="new-tab" on:click=${createNewTab}>+</button>
       </div>
+
+      <!-- Navigation Row -->
+      <div class=${[flex, "nav"]}>
+        <button on:click=${() => cfg.showModal()}>Configuration</button>
+        <button on:click=${() => getActiveTab()?.frame.back()}>&lt;-</button>
+        <button on:click=${() => getActiveTab()?.frame.forward()}>-&gt;</button>
+        <button on:click=${() => getActiveTab()?.frame.reload()}>&#x21bb;</button>
+
+        <input class="bar" autocomplete="off" autocapitalize="off" autocorrect="off" 
+        bind:value=${use(() => getActiveTab()?.url || "")} 
+        on:input=${(e) => {
+          const activeTab = getActiveTab();
+          if (activeTab) {
+            activeTab.url = e.target.value;
+          }
+        }} 
+        on:keyup=${(e) => e.keyCode == 13 && handleSubmit()}></input>
+
+        <button on:click=${() => {
+          const activeTab = getActiveTab();
+          if (activeTab) {
+            window.open(scramjet.encodeUrl(activeTab.url));
+          }
+        }}>Open</button>
+
+        <p class="version">
+          <b>VAPOR Scramjet build</b>
+        </p>
+      </div>
+
+      <!-- Iframe Container -->
+      <div class="iframe-container">
+        ${this.tabs.map(tab => {
+          tab.frame.frame.className = tab.id === this.activeTabId ? "active" : "";
+          return tab.frame.frame;
+        })}
+      </div>
+    </div>
     `;
 }
 
@@ -537,7 +505,6 @@ window.addEventListener("load", async () => {
     root.replaceWith(document.createTextNode("" + e));
     throw e;
   }
-  
   function b64(buffer) {
     let binary = "";
     const bytes = new Uint8Array(buffer);
@@ -545,9 +512,9 @@ window.addEventListener("load", async () => {
     for (let i = 0; i < len; i++) {
       binary += String.fromCharCode(bytes[i]);
     }
+
     return btoa(binary);
   }
-  
   const arraybuffer = await (await fetch("/assets/scramjet.png")).arrayBuffer();
   console.log(
     "%cb",
