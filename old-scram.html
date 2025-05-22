@@ -205,30 +205,19 @@ function BrowserApp() {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
         sans-serif;
     }
-    
+    .version {
+    }
     h1 {
       font-family: "Inter Tight", "Inter", system-ui, -apple-system, BlinkMacSystemFont,
       sans-serif;
       margin-bottom: 0;
     }
-    
-    .iframe-container {
+    iframe {
       background-color: #fff;
       border: none;
       border-radius: 0.3em;
       flex: 1;
       width: 100%;
-      position: relative;
-    }
-    
-    .iframe-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 0.3em;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
 
     input.bar {
@@ -241,15 +230,14 @@ function BrowserApp() {
       height: 1.5em;
       border-radius: 0.3em;
       flex: 1;
+
       background-color: #121212;
       border: 1px solid #313131;
     }
-    
     .input_row > label {
       font-size: 0.7rem;
       color: gray;
     }
-    
     p {
       margin: 0;
       margin-top: 0.2em;
@@ -260,6 +248,9 @@ function BrowserApp() {
       padding-bottom: 0.3em;
       gap: 0.3em;
     }
+    spacer {
+      margin-left: 10em;
+    }
 
     .nav button {
       color: #fff;
@@ -268,261 +259,57 @@ function BrowserApp() {
       border-radius: 0.30em;
       background-color: #121212;
       border: 1px solid #313131;
-      padding: 0.4em;
-    }
-    
-    .tabs-row {
-      padding-bottom: 0.3em;
-      gap: 0.2em;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    
-    .tabs-row::-webkit-scrollbar {
-      display: none;
-    }
-    
-    .tab {
-      display: flex;
-      align-items: center;
-      gap: 0.4em;
-      padding: 0.3em 0.6em;
-      background-color: #1a1a1a;
-      border: 1px solid #313131;
-      border-radius: 0.3em;
-      color: #e0def4;
-      cursor: pointer;
-      min-width: 120px;
-      max-width: 200px;
-      position: relative;
-      font-size: 0.85em;
-    }
-    
-    .tab.active {
-      background-color: #313131;
-      border-color: #4c8bf5;
-    }
-    
-    .tab:hover {
-      background-color: #252525;
-    }
-    
-    .tab-favicon {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-    
-    .tab-title {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    
-    .tab-close {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background-color: transparent;
-      border: none;
-      color: #888;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-    
-    .tab-close:hover {
-      background-color: #ff4444;
-      color: white;
-    }
-    
-    .add-tab {
-      width: 32px;
-      height: 32px;
-      border-radius: 0.3em;
-      background-color: #121212;
-      border: 1px solid #313131;
-      color: #e0def4;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-    
-    .add-tab:hover {
-      background-color: #252525;
-    }
-    
-    .gear-icon {
-      font-size: 16px;
     }
   `;
-
-  // Tab management
-  this.tabs = [];
-  this.activeTabId = 0;
-  this.nextTabId = 1;
-
-  const cfg = h(Config);
-  document.body.appendChild(cfg);
-
-  // Create initial tab
-  this.createTab = (url = "https://") => {
-    const tabId = this.nextTabId++;
-    const frame = scramjet.createFrame();
-    
-    const tab = {
-      id: tabId,
-      url: url,
-      title: "New Tab",
-      favicon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/%3E%3C/svg%3E",
-      frame: frame
-    };
-
-    // Set up frame event listeners
-    frame.addEventListener("urlchange", (e) => {
-      if (!e.url) return;
-      const currentTab = this.tabs.find(t => t.id === tabId);
-      if (currentTab) {
-        currentTab.url = e.url;
-        this.updateTabTitle(tabId, e.url);
-        if (tabId === this.activeTabId) {
-          this.url = e.url;
-        }
-      }
-    });
-
-    this.tabs.push(tab);
-    this.activeTabId = tabId;
-    this.url = url;
-    
-    return tab;
-  };
-
-  this.updateTabTitle = (tabId, url) => {
-    const tab = this.tabs.find(t => t.id === tabId);
-    if (tab) {
-      try {
-        const urlObj = new URL(url);
-        tab.title = urlObj.hostname || url;
-        // Try to get favicon
-        tab.favicon = `https://www.google.com/s2/favicons?domain=${urlObj.hostname}&sz=16`;
-      } catch {
-        tab.title = url.length > 20 ? url.substring(0, 20) + "..." : url;
-      }
-    }
-  };
-
-  this.switchTab = (tabId) => {
-    this.activeTabId = tabId;
-    const activeTab = this.tabs.find(t => t.id === tabId);
-    if (activeTab) {
-      this.url = activeTab.url;
-    }
-  };
-
-  this.closeTab = (tabId) => {
-    const tabIndex = this.tabs.findIndex(t => t.id === tabId);
-    if (tabIndex === -1) return;
-    
-    this.tabs.splice(tabIndex, 1);
-    
-    if (this.tabs.length === 0) {
-      this.createTab();
-    } else if (this.activeTabId === tabId) {
-      // Switch to the previous tab or the first one
-      const newActiveIndex = Math.max(0, tabIndex - 1);
-      this.activeTabId = this.tabs[newActiveIndex].id;
-      this.url = this.tabs[newActiveIndex].url;
-    }
-  };
-
-  this.getCurrentFrame = () => {
-    const activeTab = this.tabs.find(t => t.id === this.activeTabId);
-    return activeTab ? activeTab.frame : null;
-  };
-
-  // Initialize with first tab
   this.url = store.url;
-  this.createTab(store.url);
+
+  const frame = scramjet.createFrame();
+
+  frame.addEventListener("urlchange", (e) => {
+    if (!e.url) return;
+    this.url = e.url;
+  });
 
   const handleSubmit = () => {
     this.url = this.url.trim();
+    //  frame.go(this.url)
     if (!this.url.startsWith("http")) {
       this.url = "https://" + this.url;
     }
-    
-    const frame = this.getCurrentFrame();
-    if (frame) {
-      const activeTab = this.tabs.find(t => t.id === this.activeTabId);
-      if (activeTab) {
-        activeTab.url = this.url;
-      }
-      return frame.go(this.url);
-    }
+
+    return frame.go(this.url);
   };
+
+  const cfg = h(Config);
+  document.body.appendChild(cfg);
+  this.githubURL = `https://github.com/MercuryWorkshop/scramjet/commit/${$scramjet.version.build}`;
 
   return html`
       <div>
-        <!-- Tabs Row -->
-        <div class=${[flex, "tabs-row"]}>
-          ${this.tabs.map(tab => html`
-            <div class=${["tab", tab.id === this.activeTabId ? "active" : ""]} 
-                 on:click=${() => this.switchTab(tab.id)}>
-              <img class="tab-favicon" src=${tab.favicon} alt="" onerror="this.style.display='none'">
-              <span class="tab-title">${tab.title}</span>
-              <button class="tab-close" on:click=${(e) => {
-                e.stopPropagation();
-                this.closeTab(tab.id);
-              }}>×</button>
-            </div>
-          `)}
-          <button class="add-tab" on:click=${() => this.createTab()}>+</button>
-        </div>
+      <div class=${[flex, "nav"]}>
 
-        <!-- Navigation Row -->
-        <div class=${[flex, "nav"]}>
-          <button class="gear-icon" on:click=${() => cfg.showModal()}>⚙️</button>
-          <button on:click=${() => {
-            const frame = this.getCurrentFrame();
-            if (frame) frame.back();
-          }}>&lt;-</button>
-          <button on:click=${() => {
-            const frame = this.getCurrentFrame();
-            if (frame) frame.forward();
-          }}>-&gt;</button>
-          <button on:click=${() => {
-            const frame = this.getCurrentFrame();
-            if (frame) frame.reload();
-          }}>&#x21bb;</button>
+        <button on:click=${() => cfg.showModal()}>Configuration</button>
+        <button on:click=${() => frame.back()}>&lt;-</button>
+        <button on:click=${() => frame.forward()}>-&gt;</button>
+        <button on:click=${() => frame.reload()}>&#x21bb;</button>
 
-          <input class="bar" autocomplete="off" autocapitalize="off" autocorrect="off" 
-                 bind:value=${use(this.url)} 
-                 on:input=${(e) => { this.url = e.target.value; }}
-                 on:keyup=${(e) => e.keyCode == 13 && (store.url = this.url) && handleSubmit()}>
+        <input class="bar" autocomplete="off" autocapitalize="off" autocorrect="off" 
+        bind:value=${use(this.url)} on:input=${(e) => {
+    this.url = e.target.value;
+  }} on:keyup=${(e) =>
+    e.keyCode == 13 && (store.url = this.url) && handleSubmit()}></input>
 
-          <button on:click=${() => window.open(scramjet.encodeUrl(this.url))}>Open</button>
-        </div>
+        <button on:click=${() =>
+          window.open(scramjet.encodeUrl(this.url))}>Open</button>
 
-        <!-- Iframe Container -->
-        <div class="iframe-container">
-          ${this.tabs.map(tab => {
-            const frame = tab.frame.frame;
-            frame.style.display = tab.id === this.activeTabId ? 'block' : 'none';
-            return frame;
-          })}
-        </div>
+        <p class="version">
+          <b>VAPOR Scramjet build</b>
+        </p>
       </div>
+      ${frame.frame}
+    </div>
     `;
 }
-
 window.addEventListener("load", async () => {
   const root = document.getElementById("app");
   try {
@@ -531,7 +318,6 @@ window.addEventListener("load", async () => {
     root.replaceWith(document.createTextNode("" + e));
     throw e;
   }
-  
   function b64(buffer) {
     let binary = "";
     const bytes = new Uint8Array(buffer);
@@ -539,9 +325,9 @@ window.addEventListener("load", async () => {
     for (let i = 0; i < len; i++) {
       binary += String.fromCharCode(bytes[i]);
     }
+
     return btoa(binary);
   }
-  
   const arraybuffer = await (await fetch("/assets/scramjet.png")).arrayBuffer();
   console.log(
     "%cb",
