@@ -143,14 +143,14 @@
         border-radius: 0.30em;
         background-color: #121212;
         border: 1px solid #313131;
-        padding: 0.3em 0.6em;
+        padding: 0.2em 0.6em;
         max-width: 200px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         display: flex;
         align-items: center;
-        gap: 0.3em;
+        gap: 0.2em;
         cursor: pointer;
       }
 
@@ -222,7 +222,6 @@
         display: none;
       }
 
-      /* Config Modal Styles */
       .cfg {
         background-color: #121212;
         color: white;
@@ -297,7 +296,6 @@
 
       const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
 
-      // Simple store implementation
       const store = {
         url: "https://",
         wispurl:
@@ -317,7 +315,7 @@
 
       connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
 
-      // Tab management
+      // tab management
       let tabs = [];
       let activeTabId = 1;
       let nextTabId = 2;
@@ -327,7 +325,7 @@
         const tab = {
           id: nextTabId++,
           title: "New Tab",
-          url: "https://",
+          url: "https://start.duckduckgo.com",
           frame: frame
         };
 
@@ -355,12 +353,10 @@
       }
 
       function switchTab(tabId) {
-        // Hide all iframes
         tabs.forEach(tab => {
           tab.frame.frame.classList.add('hidden');
         });
         
-        // Show active iframe
         activeTabId = tabId;
         const activeTab = getActiveTab();
         if (activeTab) {
@@ -377,7 +373,6 @@
         const tabIndex = tabs.findIndex(tab => tab.id === tabId);
         if (tabIndex === -1) return;
         
-        // Remove the frame from DOM
         const tab = tabs[tabIndex];
         if (tab.frame.frame.parentNode) {
           tab.frame.frame.parentNode.removeChild(tab.frame.frame);
@@ -473,35 +468,32 @@
         
         root.innerHTML = `
           <div class="browser-container">
-            <!-- Config Modal -->
             <dialog id="config-modal" class="cfg">
               <div style="align-self: end">
                 <div class="flex buttons">
-                  <button onclick="connection.setTransport('/baremod/index.mjs', [store.bareurl])">use bare server 3</button>
-                  <button onclick="connection.setTransport('/libcurl/index.mjs', [{ wisp: store.wispurl }])">use libcurl.js</button>
-                  <button onclick="connection.setTransport('/epoxy/index.mjs', [{ wisp: store.wispurl }])">use epoxy</button>
+                  <button style="display:none;" onclick="connection.setTransport('/baremod/index.mjs', [store.bareurl])">use bare server 3</button>
+                  <button style="display:none;" onclick="connection.setTransport('/libcurl/index.mjs', [{ wisp: store.wispurl }])">use libcurl.js</button>
+                  <button onclick="connection.setTransport('/epoxy/index.mjs', [{ wisp: store.wispurl }])">Use Epoxy</button>
                 </div>
               </div>
               <div class="flex col input_row">
-                <label for="wisp_url_input">Wisp URL:</label>
+                <label for="wisp_url_input">Wisp:</label>
                 <input id="wisp_url_input" value="${store.wispurl}" spellcheck="false">
               </div>
               <div class="flex col input_row">
-                <label for="bare_url_input">Bare URL:</label>
+                <label for="bare_url_input">Bare:</label>
                 <input id="bare_url_input" value="${store.bareurl}" spellcheck="false">
               </div>
               <div class="flex buttons centered">
-                <button onclick="closeConfig()">close</button>
+                <button onclick="closeConfig()">Close</button>
               </div>
             </dialog>
 
-            <!-- Tabs Row -->
             <div class="flex tabs" id="tabs-container">
             </div>
 
-            <!-- Navigation Row -->
             <div class="flex nav">
-              <button onclick="showConfig()">Configuration</button>
+              <button onclick="showConfig()">cfg</button>
               <button onclick="getActiveTab()?.frame.back()">&lt;-</button>
               <button onclick="getActiveTab()?.frame.forward()">-&gt;</button>
               <button onclick="getActiveTab()?.frame.reload()">&#x21bb;</button>
@@ -512,23 +504,20 @@
               <button onclick="window.open(scramjet.encodeUrl(getActiveTab()?.url))">Open</button>
 
               <p class="version">
-                <b>VAPOR Scramjet build</b>
+                <b>VSJ.1</b>
               </p>
             </div>
 
-            <!-- Iframe Container -->
             <div class="iframe-container" id="iframe-container">
             </div>
           </div>
         `;
 
-        // Create initial tab
         const initialTab = createTab();
         document.getElementById('iframe-container').appendChild(initialTab.frame.frame);
         switchTab(initialTab.id);
         updateTabsUI();
 
-        // Load console image
         try {
           function b64(buffer) {
             let binary = "";
@@ -553,7 +542,7 @@
           `
           );
         } catch (e) {
-          // Ignore image loading errors
+          // naw
         }
       });
     </script>
