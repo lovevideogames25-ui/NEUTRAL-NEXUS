@@ -53,6 +53,8 @@
     await scramjet.init();
     navigator.serviceWorker.register("./sw.js");
 
+    const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+
     const frame = scramjet.createFrame();
 
     let url = window.location.hash ? window.location.hash.substring(1) : "https://example.com";
