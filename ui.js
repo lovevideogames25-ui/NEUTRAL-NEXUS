@@ -21,7 +21,7 @@ const col = css`
 
 const store = $store(
   {
-    url: "https://google.com",
+    url: "https://",
     wispurl:
       _CONFIG?.wispurl ||
       (location.protocol === "https:" ? "wss" : "ws") +
@@ -232,7 +232,7 @@ function BrowserApp() {
       <div>
       <div class=${[flex, "nav"]}>
 
-        <button on:click=${() => cfg.showModal()}>config</button>
+        <button on:click=${() => cfg.showModal()}>Configuration</button>
         <button on:click=${() => frame.back()}>&lt;-</button>
         <button on:click=${() => frame.forward()}>-&gt;</button>
         <button on:click=${() => frame.reload()}>&#x21bb;</button>
@@ -244,12 +244,10 @@ function BrowserApp() {
     e.keyCode == 13 && (store.url = this.url) && handleSubmit()}></input>
 
         <button on:click=${() =>
-          window.open(scramjet.encodeUrl(this.url))}>open</button>
+          window.open(scramjet.encodeUrl(this.url))}>Open</button>
 
         <p class="version">
-          <b>scramjet</b> ${$scramjet.version.version} <a href=${use(
-    this.githubURL
-  )}>${$scramjet.version.build}</a>
+          <b>VAPOR Scramjet build</b>
         </p>
       </div>
       ${frame.frame}
