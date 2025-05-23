@@ -1,4 +1,6 @@
 let _CONFIG = {
-  wispurl: "wss://anura.pro/",
+  wispurl: localStorage.getItem("proxServer") || "wss://anura.pro/",
   bareurl: "https://aluu.xyz/bare/",
 };
+
+// Scramjet Configurationahahaajsasajsjsjdsjdj
