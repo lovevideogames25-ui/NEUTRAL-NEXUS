@@ -139,11 +139,14 @@
     <div id="modal-overlay" class="modal-overlay"></div>
     <div id="main-modal" class="main-modal">
       <div class="modal-content">
-        <h2 class="modal-title">VAPOR 3.13</h2>
+        <h2 class="modal-title">VAPOR 3.14</h2>
         <p class="modal-body">
-          Hi! Here's what's new:<br><br>
-          - New browser!<br>VAPOR's new browser feature draggable tabs and the Scramjet proxy. Expect faster speeds and a cleaner UI. Try it out by clicking "Browser" on the sidebar.<br><br>We've officially made $0.03 (3 cents) from ads! Yay!</p>
-        <button id="modal-close" class="modal-button">Aight</button>
+          What's new? Well here ya go:<br><br>
+          - We use Scramjet now! Expect faster speeds and more availability.<br>
+          - We've made 25 cents from ad revenue. In 3 DAYS?!<br>
+          - Fixed VM terminations. Before, it was keeping VMs running for 12 minutes constantly, which used up our VM spaces.
+        </p>
+        <button id="modal-close" class="modal-button">got it</button>
       </div>
     </div>
 
@@ -166,7 +169,7 @@
     <script src="scripts/commit.js"></script>
 
     <script>
-      const MODAL_VERSION = "v3.13";
+      const MODAL_VERSION = "v3.14";
       const modal = document.getElementById("main-modal");
       const overlay = document.getElementById("modal-overlay");
       const closeBtn = document.getElementById("modal-close");
