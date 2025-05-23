@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sigma embed</title>
+    <title>Scramjet Embed</title>
     <link rel="icon" href="favicon.webp" />
     <link rel="prefetch" href="/scram/scramjet.worker.js" />
     <link rel="prefetch" href="/scram/scramjet.shared.js" />
@@ -56,6 +56,7 @@
     <div id="iframe-container"></div>
 
     <script>
+      // Initialize Scramjet
       const scramjet = new ScramjetController({
         files: {
           wasm: "/scram/scramjet.wasm.wasm",
@@ -88,21 +89,7 @@
         proxy: "",
       };
 
-      try {
-        connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
-      } catch (e) {
-        try {
-          connection.setTransport("/baremod/index.mjs", [store.bareurl]);
-        } catch (e2) {
-          try {
-            connection.setTransport("/libcurl/index.mjs", [{ wisp: store.wispurl }]);
-          } catch (e3) {
-            console.error("Failed to set any transport:", e, e2, e3);
-          }
-        }
-      }
-
-      function loadFromHash() {
+      async function loadFromHash() {
         const hash = window.location.hash.substring(1);
         
         if (hash) {
@@ -112,25 +99,59 @@
             url = "https://" + url;
           }
           
+          await waitForTransport();
+          
           const frame = scramjet.createFrame();
           document.getElementById("iframe-container").appendChild(frame.frame);
           
           frame.go(url);
         } else {
+          await waitForTransport();
           const frame = scramjet.createFrame();
           document.getElementById("iframe-container").appendChild(frame.frame);
           frame.go("https://start.duckduckgo.com/");
         }
       }
 
-      window.addEventListener("hashchange", () => {
+      async function waitForTransport() {
+        let attempts = 0;
+        const maxAttempts = 10;
+        
+        while (attempts < maxAttempts) {
+          try {
+            await connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
+            return;
+          } catch (e) {
+            try {
+              await connection.setTransport("/baremod/index.mjs", [store.bareurl]);
+              return;
+            } catch (e2) {
+              try {
+                await connection.setTransport("/libcurl/index.mjs", [{ wisp: store.wispurl }]);
+                return;
+              } catch (e3) {
+                attempts++;
+                if (attempts >= maxAttempts) {
+                  console.error("Failed to set any transport after", maxAttempts, "attempts");
+                  throw new Error("No bare clients available");
+                }
+                await new Promise(resolve => setTimeout(resolve, 100));
+              }
+            }
+          }
+        }
+      }
+
+      window.addEventListener("hashchange", async () => {
         const container = document.getElementById("iframe-container");
         container.innerHTML = "";
         
-        loadFromHash();
+        await loadFromHash();
       });
 
-      window.addEventListener("load", loadFromHash);
+      window.addEventListener("load", async () => {
+        await loadFromHash();
+      });
     </script>
   </body>
 </html>
