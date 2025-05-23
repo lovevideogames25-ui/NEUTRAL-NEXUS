@@ -3,36 +3,122 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VAPOR Embed</title>
+    <title>sigma embed</title>
+    <link rel="icon" href="favicon.webp" />
+    <link rel="prefetch" href="/scram/scramjet.worker.js" />
+    <link rel="prefetch" href="/scram/scramjet.shared.js" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;family=Inter+Tight:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@100..900&amp;display=swap&amp;"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dreamland"></script>
     <style>
-      body { margin: 0; height: 100vh; overflow: hidden; }
-      iframe { width: 100%; height: 100%; border: none; }
-    </style>
-  </head>
-  <body>
-    <script src="vpr/vpr.bundle.js"></script>
-    <script src="vpr/vpr.config.js"></script>
-    <script type="module">
-      import { getUV } from "/scripts/vaprox.mjs";
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #000;
+      }
 
-      async function emb() {
+      #iframe-container {
+        width: 100%;
+        height: 100%;
+      }
+
+      #iframe-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: #fff;
+      }
+    </style>
+    <script src="/baremux/index.js"></script>
+    <script src="/scram/scramjet.controller.js"></script>
+    <script src="config.js"></script>
+  </head>
+
+  <body>
+    <div id="iframe-container"></div>
+
+    <script>
+      const scramjet = new ScramjetController({
+        files: {
+          wasm: "/scram/scramjet.wasm.wasm",
+          worker: "/scram/scramjet.worker.js",
+          client: "/scram/scramjet.client.js",
+          shared: "/scram/scramjet.shared.js",
+          sync: "/scram/scramjet.sync.js",
+        },
+      });
+
+      scramjet.init();
+      navigator.serviceWorker.register("./sw.js");
+
+      const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+      
+      const store = {
+        url: "https://",
+        wispurl:
+          _CONFIG?.wispurl ||
+          (location.protocol === "https:" ? "wss" : "ws") +
+            "://" +
+            location.host +
+            "/wisp/",
+        bareurl:
+          _CONFIG?.bareurl ||
+          (location.protocol === "https:" ? "https" : "http") +
+            "://" +
+            location.host +
+            "/bare/",
+        proxy: "",
+      };
+
+      connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
+
+      function loadFromHash() {
         const hash = window.location.hash.substring(1);
+        
         if (hash) {
-          try {
-            const result = await getUV(hash);
-            const iframe = document.createElement("iframe");
-            iframe.src = result;
-            document.body.appendChild(iframe);
-          } catch (error) {
-            console.error("error: ", error);
-            alert(error);
+          let url = hash;
+          
+          if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "https://" + url;
           }
+          
+          const frame = scramjet.createFrame();
+          document.getElementById("iframe-container").appendChild(frame.frame);
+          
+          frame.go(url);
         } else {
-          alert("No hash found.");
+          const frame = scramjet.createFrame();
+          document.getElementById("iframe-container").appendChild(frame.frame);
+          frame.go("https://start.duckduckgo.com/");
         }
       }
 
-      emb();
+      window.addEventListener("hashchange", () => {
+        const container = document.getElementById("iframe-container");
+        container.innerHTML = "";
+        
+        loadFromHash();
+      });
+
+      window.addEventListener("load", loadFromHash);
     </script>
   </body>
 </html>
