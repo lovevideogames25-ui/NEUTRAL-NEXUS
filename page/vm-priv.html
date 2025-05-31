@@ -122,57 +122,57 @@
         transform: scale(1.02);
       }
 
-      .iframe-container {
-        width: 100%;
-        height: calc(100vh - 100px);
-        position: relative;
-        background-color: none;
-        border-radius: 10px;
-        overflow: hidden;
+      .vm-session-container {
         display: none;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #0a111d;
         z-index: 1;
       }
 
-      .footer,
-      .status,
-      .timer-controls,
-      iframe {
-        position: absolute;
-      }
-
-      .end-session-btn,
-      .timer {
-        color: rgba(255, 255, 255, 0.8);
-        background-color: rgba(0, 0, 0, 0.4);
-        padding: 8px 14px;
-      }
-
-      iframe {
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-
-      .timer-controls {
-        top: 12px;
-        width: calc(100% - 24px);
+      .vm-controls-bar {
         display: flex;
         justify-content: space-between;
-        z-index: 10;
+        align-items: center;
+        padding: 12px 20px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        min-height: 60px;
+      }
+
+      .vm-left-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .vm-right-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .hyperbeam-container {
+        flex: 1;
+        width: 100%;
+        background-color: #1a1a1a;
+        overflow: hidden;
       }
 
       .end-session-btn,
-      .status,
+      .close-tabs-btn,
       .timer {
-        backdrop-filter: blur(4px);
-        border-radius: 10px;
-        display: none;
+        color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.08);
+        padding: 8px 16px;
+        border-radius: 8px;
         font-size: 14px;
-      }
-
-      .end-session-btn {
+        border: none;
+        font-family: inherit;
         cursor: pointer;
         transition: 0.2s;
       }
@@ -181,12 +181,22 @@
         background-color: rgba(255, 107, 107, 0.2);
       }
 
+      .close-tabs-btn:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .timer {
+        cursor: default;
+        font-weight: 500;
+      }
+
       .countdown {
         font-weight: 700;
         color: #4c75f2;
       }
 
       .status {
+        position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -195,6 +205,9 @@
         background-color: rgba(255, 255, 255, 0.08);
         max-width: 320px;
         z-index: 100;
+        border-radius: 10px;
+        backdrop-filter: blur(4px);
+        display: none;
       }
 
       .footer {
@@ -239,6 +252,35 @@
         position: absolute;
         bottom: 275px;
       }
+
+      .connection-status {
+        display: none !important;
+      }
+
+      .hyperbeam-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0a111d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        gap: 12px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .hyperbeam-overlay .loading-spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-top: 2px solid #4c75f2;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
     </style>
   </head>
 
@@ -256,7 +298,7 @@
         <div class="footer-image">
           <img
             src="/_a/img/priv-vm-snapshot.png"
-            alt="Screenshot of the isolated browser."
+            alt="Screenshot of the browser."
           />
         </div>
       </div>
@@ -268,49 +310,73 @@
             Start Session
           </button>
         </div>
-        <div class="ad-wrapper">
+        <!-- no ad ur welcome -->
+        <!-- <div class="ad-wrapper">
           <iframe
             id="ad"
             data-aa="2395464"
             src="//ad.a-ads.com/2395464?size=300x250"
             style="width:300px; height:250px; border:0; padding:0; overflow:hidden; background-color:transparent;"
           ></iframe>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- the sesh container  -->
+    <div id="vmSessionContainer" class="vm-session-container">
+      <div class="vm-controls-bar">
+        <div class="vm-left-controls">
+          <button id="endSessionBtn" class="end-session-btn">
+            <i class="fa-regular fa-stop-circle"></i> End Session
+          </button>
+          <button id="closeTabsBtn" class="close-tabs-btn">
+            <i class="fas fa-times"></i> Close All Tabs
+          </button>
+        </div>
+        <div class="vm-right-controls">
+          <div id="timer" class="timer">
+            <i class="fas fa-clock"></i> Time left:
+            <span id="countdown" class="countdown">30</span>s
+          </div>
         </div>
       </div>
+      <div id="hyperbeamContainer" class="hyperbeam-container"></div>
     </div>
 
     <div id="status" class="status"></div>
-    <div id="iframeContainer" class="iframe-container">
-      <iframe id="hyperFrame" allowfullscreen="true"></iframe>
-    </div>
-    <div class="timer-controls">
-      <button id="endSessionBtn" class="end-session-btn">
-        <i class="fa-regular fa-stop-circle"></i> End Session
-      </button>
-      <div id="timer" class="timer">
-        <i class="fas fa-clock"></i> Time left:
-        <span id="countdown" class="countdown">30</span>s
-      </div>
-    </div>
+    <div id="loadingOverlay" class="hyperbeam-overlay" style="display: none;"></div>
+    <div id="connectionStatus" class="connection-status"></div>
 
-    <script>
+    <script type="module">
+      // im sigma, this is almost ALL domain-side >:)
+      import Hyperbeam from "/v0/vm/index.js";
+
       const createSessionBtn = document.getElementById("createSession");
-      const iframeContainer = document.getElementById("iframeContainer");
-      const hyperFrame = document.getElementById("hyperFrame");
+      const vmSessionContainer = document.getElementById("vmSessionContainer");
+      const hyperbeamContainer = document.getElementById("hyperbeamContainer");
       const timer = document.getElementById("timer");
       const countdown = document.getElementById("countdown");
       const status = document.getElementById("status");
       const endSessionBtn = document.getElementById("endSessionBtn");
+      const closeTabsBtn = document.getElementById("closeTabsBtn");
+      const connectionStatus = document.getElementById("connectionStatus");
+      const loadingOverlay = document.getElementById("loadingOverlay");
       const API_URL = window.location.origin;
       
       let countdownInterval;
       let currentSessionId = null;
       let isTerminating = false;
+      let hyperbeamInstance = null;
+      let adminToken = null;
 
       function updateCountdownDisplay(seconds) {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = seconds % 60;
         countdown.textContent = `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+      }
+
+      function updateConnectionStatus(state) {
+        console.log('connection status:', state);
       }
 
       async function endSession(showUI = true) {
@@ -321,6 +387,16 @@
         if (showUI) {
           status.innerHTML = '<i class="fas fa-spinner loading-icon"></i> Ending session...';
           status.style.display = "block";
+        }
+
+
+        if (hyperbeamInstance) {
+          try {
+            await hyperbeamInstance.destroy();
+            hyperbeamInstance = null;
+          } catch (error) {
+            console.error("Error destroying Hyperbeam instance:", error);
+          }
         }
 
         try {
@@ -368,10 +444,8 @@
 
       function resetSessionUI() {
         currentSessionId = null;
-        hyperFrame.src = "";
-        iframeContainer.style.display = "none";
-        timer.style.display = "none";
-        endSessionBtn.style.display = "none";
+        hyperbeamContainer.innerHTML = '';
+        vmSessionContainer.style.display = "none";
         createSessionBtn.style.display = "block";
         createSessionBtn.disabled = false;
         createSessionBtn.innerHTML = '<i class="fas fa-desktop"></i> Start Session';
@@ -401,7 +475,6 @@
         }
       });
 
-      // Page visibility change handling (for tab switching/minimizing)
       document.addEventListener("visibilitychange", () => {
         if (document.hidden && currentSessionId && !isTerminating) {
           // endSession(false);
@@ -412,9 +485,29 @@
         endSession(true);
       });
 
+      closeTabsBtn.addEventListener("click", async () => {
+        if (hyperbeamInstance && adminToken) {
+          try {
+            // LETS FIND THE TABS
+            const tabs = await hyperbeamInstance.tabs.query({});
+            console.log("Found tabs:", tabs);
+            
+            // F$%# THE TABS, LETS DELETE THEM
+            const tabIds = tabs.map(tab => tab.id);
+            await hyperbeamInstance.tabs.remove(tabIds);
+            console.log("Closed all tabs:", tabIds);
+            
+          } catch (error) {
+            console.error("Error closing tabs:", error);
+          }
+        } else {
+          console.log("No hyperbeam instance or admin token available");
+        }
+      });
+
       createSessionBtn.addEventListener("click", async () => {
         createSessionBtn.disabled = true;
-        createSessionBtn.innerHTML = '<i class="fas fa-circle-notch loading-icon"></i> Creating session...';
+        createSessionBtn.innerHTML = '<i class="fas fa-circle-notch loading-icon"></i> Creating...';
         status.style.display = "none";
         document.getElementById("introContainer").style.display = "none";
 
@@ -443,29 +536,79 @@
           }
 
           const embedUrl = data.embed_url;
-          currentSessionId = data.session_id; // Use session_id from response if available
+          currentSessionId = data.session_id || embedUrl.split('/').pop();
           
-          // Fallback: extract session ID from URL if not provided
-          if (!currentSessionId) {
-            const urlParts = embedUrl.split('/');
-            currentSessionId = urlParts[urlParts.length - 1];
-          }
+          
+          // okay to the skids out there
+          // the admin token is NOT confidential
+          // its simply a "password" to control your vm's tabs
+          // since nobody can access your VM, it's not a "secret"
+          adminToken = data.admin_token;
 
-          hyperFrame.src = embedUrl;
-          iframeContainer.style.display = "block";
+          hyperbeamContainer.innerHTML = '';
+          vmSessionContainer.style.display = "flex";
+          
+          loadingOverlay.innerHTML = '<div class="loading-spinner"></div>One sec...';
+          loadingOverlay.style.display = "flex";
+          
           createSessionBtn.style.display = "none";
 
           let timeLeft = 720;
           updateCountdownDisplay(timeLeft);
-          timer.style.display = "block";
-          endSessionBtn.style.display = "block";
           
-          status.innerHTML = '<i class="fas fa-spinner loading-icon"></i> Loading browser...';
-          status.style.display = "block";
+          // yes ik its fake but who wants to see sum ugly a- screen
+          setTimeout(() => {
+            loadingOverlay.style.display = "none";
+          }, 800);
 
-          hyperFrame.onload = () => {
-            status.style.display = "none";
-          };
+          
+          try {
+            hyperbeamInstance = await Hyperbeam(hyperbeamContainer, embedUrl, {
+              timeout: 720,
+              volume: 0.8,
+              videoPaused: false,
+              delegateKeyboard: true,
+              adminToken: adminToken, 
+              
+              onConnectionStateChange: ({ state }) => {
+                console.log('Connection state:', state);
+                updateConnectionStatus(state);
+              },
+              
+              onDisconnect: ({ type }) => {
+                console.log('Disconnected:', type);
+                if (type !== 'request') {
+                  status.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Connection lost';
+                  status.style.display = "block";
+                  setTimeout(() => {
+                    endSession(false);
+                  }, 2000);
+                }
+              },
+              
+              onCloseWarning: ({ type, deadline }) => {
+                if (deadline) {
+                  console.log(`${type} timeout warning: ${deadline.delay}ms remaining`);
+                }
+              }
+            });
+
+            console.log('hb init successful :)');
+
+          } catch (hyperbeamError) {
+            console.error("hb init failed >:(", hyperbeamError);
+            status.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to connect to browser';
+            status.style.display = "block";
+            createSessionBtn.disabled = false;
+            createSessionBtn.innerHTML = '<i class="fas fa-desktop"></i> Start Session';
+            document.getElementById("introContainer").style.display = "flex";
+            vmSessionContainer.style.display = "none";
+            
+            setTimeout(() => {
+              status.style.display = "none";
+            }, 5000);
+            return;
+          }
 
           countdownInterval = setInterval(() => {
             timeLeft--;
