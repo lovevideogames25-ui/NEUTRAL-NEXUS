@@ -20,21 +20,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **🎨 Visual Enhancements** - Glass morphism effects, floating animations, and gradient glows
 - **✨ FIXED Stickers** - Visual indicators for working AI and Links features
 
-#### 🎨 **UI/UX Improvements**
-- **🌟 Animated Backgrounds** - Radial gradients with floating color effects
-- **💎 Glass Morphism** - Backdrop blur and transparency throughout
-- **🎭 Section Animations** - Smooth transitions with cubic-bezier easing
-- **🏷️ Enhanced Badges** - Gradient backgrounds with pulse animations
+#### UI/UX Improvements
+- Animated Backgrounds - Radial gradients with floating color effects
+- Glass Morphism - Backdrop blur and transparency throughout
+- Section Animations - Smooth transitions with cubic-bezier easing
+- Enhanced Badges - Gradient backgrounds with pulse animations
 
 ---
 
-## 🎉 **[0.7.0 DEVELOPMENT RELEASE] - 2026-03-29 - AI EVOLUTION**
+## [0.7.0 BETA] - 2026-03-29 - 0.7.0 DEVELOPMENT RELEASE
 
-### 🚀 **DEVELOPMENT MILESTONE**
+### DEVELOPMENT MILESTONE
 
-#### 🤖 **Major AI System Overhaul**
-- **🧠 AUTO Model Selection** - Intelligent auto-selection with GEMMA-3-27B priority
-- **🌟 GEMMA-3-27B Ultra Vision** - 27B parameter model with superior capabilities
+#### Major AI System Overhaul
+- AUTO Model Selection - Intelligent auto-selection with GEMMA-3-27B priority
+- GEMMA-3-27B Ultra Vision - 27B parameter model with superior capabilities
+- GEMMA-3-12B Advanced Vision - Enhanced reasoning with vision processing
+- GEMMA-3-4B Vision - Multimodal processing capabilities
+- GPT-OSS-120B Advanced - Complex reasoning and deep analysis
+- GPT-OSS-20B Fast - Lightning quick responses
 - **🔮 GEMMA-3-12B Advanced Vision** - Enhanced reasoning with vision processing
 - **👁️ GEMMA-3-4B Vision** - Multimodal processing capabilities
 - **🧠 GPT-OSS-120B Advanced** - Complex reasoning and deep analysis
