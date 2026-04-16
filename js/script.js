@@ -1861,7 +1861,8 @@ async function loadEnvFromServer() {
         const response = await fetch('/api/env')
         if (response.ok) {
           const envVars = await response.json()
-          console.log('✅ Vercel environment variables loaded:', envVars)
+          console.log('✅ Vercel environment variables loaded')
+          console.log('🔑 API keys configured:', envVars.HAS_API_KEYS ? 'Yes' : 'No')
           
           // Add API keys if they exist (they won't be exposed in the API response)
           // We need to check if they exist via the HAS_API_KEYS flag
