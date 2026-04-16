@@ -3,10 +3,10 @@
   "outputDirectory": ".",
   "functions": {
     "api/chat.js": {
-      "runtime": "nodejs18.x"
+      "runtime": "@vercel/node"
     },
     "api/env.js": {
-      "runtime": "nodejs18.x"
+      "runtime": "@vercel/node"
     }
   },
   "rewrites": [
