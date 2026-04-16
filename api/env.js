@@ -31,18 +31,16 @@ export default function handler(req, res) {
     ].filter(Boolean).length
   };
 
-  // In development mode, expose actual API keys for testing
-  if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
-    safeEnvVars.API = process.env.API || null;
-    safeEnvVars.API2 = process.env.API2 || null;
-    safeEnvVars.API3 = process.env.API3 || null;
-    safeEnvVars.API4 = process.env.API4 || null;
-    safeEnvVars.API5 = process.env.API5 || null;
-    safeEnvVars.API6 = process.env.API6 || null;
-    safeEnvVars.API7 = process.env.API7 || null;
-    safeEnvVars.CLOUDFLARE_ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID || null;
-    safeEnvVars.CLOUDFLARE_GATEWAY_ID = process.env.CLOUDFLARE_GATEWAY_ID || null;
-  }
+  // Expose actual API keys for frontend functionality
+  safeEnvVars.API = process.env.API || null;
+  safeEnvVars.API2 = process.env.API2 || null;
+  safeEnvVars.API3 = process.env.API3 || null;
+  safeEnvVars.API4 = process.env.API4 || null;
+  safeEnvVars.API5 = process.env.API5 || null;
+  safeEnvVars.API6 = process.env.API6 || null;
+  safeEnvVars.API7 = process.env.API7 || null;
+  safeEnvVars.CLOUDFLARE_ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID || null;
+  safeEnvVars.CLOUDFLARE_GATEWAY_ID = process.env.CLOUDFLARE_GATEWAY_ID || null;
 
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
