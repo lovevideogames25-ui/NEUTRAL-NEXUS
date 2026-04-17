@@ -1853,14 +1853,18 @@ async function loadEnvFromServer() {
   try {
     console.log('🔄 Attempting to load environment variables...')
 
+    // Check if we're on Firebase
+    const isFirebase = window.location.hostname.includes('firebaseapp.com') || window.location.hostname.includes('web.app') || window.location.hostname.includes('.firebaseapp.com') || window.location.hostname.includes('.web.app')
+
     // Check if we're on Netlify
     const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
 
     // Check if we're on Vercel
     const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
 
-    if (isNetlify || isVercel) {
-      console.log(`🌐 Detected ${isNetlify ? 'Netlify' : 'Vercel'} deployment, using API endpoint...`)
+    if (isFirebase || isNetlify || isVercel) {
+      const platform = isFirebase ? 'Firebase' : (isNetlify ? 'Netlify' : 'Vercel')
+      console.log(`🌐 Detected ${platform} deployment, using API endpoint...`)
       
       try {
         const response = await fetch('/api/env')

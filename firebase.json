@@ -8,8 +8,12 @@
     ],
     "rewrites": [
       {
-        "source": "/api/**",
-        "function": "api"
+        "source": "/api/env",
+        "function": "env"
+      },
+      {
+        "source": "/api/chat",
+        "function": "chat"
       }
     ],
     "headers": [
@@ -33,8 +37,6 @@
     ]
   },
   "functions": {
-    "api": {
-      "source": "api"
-    }
+    "source": "functions"
   }
 }
