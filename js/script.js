@@ -1852,10 +1852,15 @@ async function tryServerAPI(message) {
 async function loadEnvFromServer() {
   try {
     console.log('🔄 Attempting to load environment variables...')
-    
-    // Check if we're on Vercel and use Vercel API endpoint
-    if (window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')) {
-      console.log('🌐 Detected Vercel deployment, using API endpoint...')
+
+    // Check if we're on Netlify
+    const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
+
+    // Check if we're on Vercel
+    const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
+
+    if (isNetlify || isVercel) {
+      console.log(`🌐 Detected ${isNetlify ? 'Netlify' : 'Vercel'} deployment, using API endpoint...`)
       
       try {
         const response = await fetch('/api/env')
