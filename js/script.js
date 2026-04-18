@@ -1860,7 +1860,7 @@ async function loadEnvFromServer() {
     const isSurge = window.location.hostname.includes('surge.sh')
 
     // Check if we're on Cloudflare Pages
-    const isCloudflare = window.location.hostname.includes('pages.dev') || window.location.hostname.includes('.pages.dev')
+    const isCloudflare = window.location.hostname.includes('pages.dev') || window.location.hostname.includes('.pages.dev') || window.location.hostname.includes('cloudflare')
 
     // Check if we're on Netlify
     const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
