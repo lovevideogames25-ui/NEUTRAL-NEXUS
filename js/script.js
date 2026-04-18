@@ -1868,16 +1868,16 @@ async function loadEnvFromServer() {
     // Check if we're on Vercel
     const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
 
-    // Firebase and Surge static hosting don't support serverless functions, skip API endpoint
-    if (isFirebase || isSurge) {
-      const platform = isFirebase ? 'Firebase' : 'Surge'
+    // Firebase, Surge, and Cloudflare Pages static hosting don't support serverless functions by default
+    if (isFirebase || isSurge || isCloudflare) {
+      const platform = isFirebase ? 'Firebase' : (isSurge ? 'Surge' : 'Cloudflare')
       console.log(`🌐 Detected ${platform} static hosting - no serverless functions available`)
       console.log('⚠️ AI functionality requires Vercel deployment with serverless functions')
       return null
     }
 
-    if (isCloudflare || isNetlify || isVercel) {
-      const platform = isCloudflare ? 'Cloudflare' : (isNetlify ? 'Netlify' : 'Vercel')
+    if (isNetlify || isVercel) {
+      const platform = isNetlify ? 'Netlify' : 'Vercel'
       console.log(`🌐 Detected ${platform} deployment, using API endpoint...`)
       
       try {
