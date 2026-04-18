@@ -4,17 +4,8 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "/api/env",
-        "function": "env"
-      },
-      {
-        "source": "/api/chat",
-        "function": "chat"
-      }
+      "**/node_modules/**",
+      "functions/**"
     ],
     "headers": [
       {
@@ -35,8 +26,5 @@
         ]
       }
     ]
-  },
-  "functions": {
-    "source": "functions"
   }
 }
