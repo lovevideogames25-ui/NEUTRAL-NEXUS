@@ -1862,6 +1862,9 @@ async function loadEnvFromServer() {
     // Check if we're on Cloudflare Pages
     const isCloudflare = window.location.hostname.includes('pages.dev') || window.location.hostname.includes('.pages.dev') || window.location.hostname.includes('cloudflare')
 
+    // Check if we're on Render
+    const isRender = window.location.hostname.includes('onrender.com') || window.location.hostname.includes('.onrender.com')
+
     // Check if we're on Netlify
     const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
 
@@ -1876,8 +1879,8 @@ async function loadEnvFromServer() {
       return null
     }
 
-    if (isNetlify || isVercel) {
-      const platform = isNetlify ? 'Netlify' : 'Vercel'
+    if (isRender || isNetlify || isVercel) {
+      const platform = isRender ? 'Render' : (isNetlify ? 'Netlify' : 'Vercel')
       console.log(`🌐 Detected ${platform} deployment, using API endpoint...`)
       
       try {
