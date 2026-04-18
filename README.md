@@ -287,32 +287,8 @@ local_deployment.bat
 
 ## 🌟 **Quick Deploy - One Click & Experience Luxury!**
 
-### 🌟 **Static / Frontend hosts**
-
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Run on Google Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/official/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to AWS Amplify](https://binbashbanana.github.io/deploy-buttons/buttons/official/amplifyconsole.svg)](https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to Azure](https://binbashbanana.github.io/deploy-buttons/buttons/official/azure.svg)](https://deploy.azure.com/?repository=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to Oracle Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/official/oraclecloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER/archive/refs/heads/main.zip)
-
-### 🔥 **Dev / IDE / Playground Deploy**
-
-[![Run on Replit](https://binbashbanana.github.io/deploy-buttons/buttons/official/replit.svg)](https://replit.com/github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Remix on Glitch](https://binbashbanana.github.io/deploy-buttons/buttons/official/glitch.svg)](https://glitch.com/edit/#!/import/github/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to Heroku](https://binbashbanana.github.io/deploy-buttons/buttons/official/heroku.svg)](https://heroku.com/deploy/?template=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to IBM Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/official/ibmcloud.svg)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=lovevideogames25-ui/ULTIMATEUNBLOCKER)
-[![Deploy to Deno](https://deno.com/button)](https://console.deno.com/new?clone=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-
-### 🎮 **Extra Platforms (Less Common)**
-
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git&branch=main)
-[![Deploy to Cyclic](https://binbashbanana.github.io/deploy-buttons/buttons/official/cyclic.svg)](https://deploy.cyclic.sh/lovevideogames25-ui/ULTIMATEUNBLOCKER)
+[![Deploy to Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
+[![Deploy to Netlify](https://binbashbanana.github.io/deploy-buttons/buttons/remade/netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
 
 ---
 
