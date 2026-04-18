@@ -29,7 +29,7 @@ yarn.lock
 ai-model/
 
 # AI tester file
-ultimateaitester.html
+ultimateunblockeraitester.html
 
 .vercel
 .env*.local
