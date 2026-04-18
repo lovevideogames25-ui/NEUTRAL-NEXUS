@@ -1856,15 +1856,19 @@ async function loadEnvFromServer() {
     // Check if we're on Firebase (static hosting only, no serverless functions)
     const isFirebase = window.location.hostname.includes('firebaseapp.com') || window.location.hostname.includes('web.app') || window.location.hostname.includes('.firebaseapp.com') || window.location.hostname.includes('.web.app')
 
+    // Check if we're on Surge (static hosting only, no serverless functions)
+    const isSurge = window.location.hostname.includes('surge.sh')
+
     // Check if we're on Netlify
     const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
 
     // Check if we're on Vercel
     const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
 
-    // Firebase static hosting doesn't support serverless functions, skip API endpoint
-    if (isFirebase) {
-      console.log('🌐 Detected Firebase static hosting - no serverless functions available')
+    // Firebase and Surge static hosting don't support serverless functions, skip API endpoint
+    if (isFirebase || isSurge) {
+      const platform = isFirebase ? 'Firebase' : 'Surge'
+      console.log(`🌐 Detected ${platform} static hosting - no serverless functions available`)
       console.log('⚠️ AI functionality requires Vercel deployment with serverless functions')
       return null
     }
