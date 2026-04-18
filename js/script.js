@@ -1853,7 +1853,7 @@ async function loadEnvFromServer() {
   try {
     console.log('🔄 Attempting to load environment variables...')
 
-    // Check if we're on Firebase
+    // Check if we're on Firebase (static hosting only, no serverless functions)
     const isFirebase = window.location.hostname.includes('firebaseapp.com') || window.location.hostname.includes('web.app') || window.location.hostname.includes('.firebaseapp.com') || window.location.hostname.includes('.web.app')
 
     // Check if we're on Netlify
@@ -1862,8 +1862,15 @@ async function loadEnvFromServer() {
     // Check if we're on Vercel
     const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
 
-    if (isFirebase || isNetlify || isVercel) {
-      const platform = isFirebase ? 'Firebase' : (isNetlify ? 'Netlify' : 'Vercel')
+    // Firebase static hosting doesn't support serverless functions, skip API endpoint
+    if (isFirebase) {
+      console.log('🌐 Detected Firebase static hosting - no serverless functions available')
+      console.log('⚠️ AI functionality requires Vercel deployment with serverless functions')
+      return null
+    }
+
+    if (isNetlify || isVercel) {
+      const platform = isNetlify ? 'Netlify' : 'Vercel'
       console.log(`🌐 Detected ${platform} deployment, using API endpoint...`)
       
       try {
