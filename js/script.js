@@ -1859,6 +1859,9 @@ async function loadEnvFromServer() {
     // Check if we're on Surge (static hosting only, no serverless functions)
     const isSurge = window.location.hostname.includes('surge.sh')
 
+    // Check if we're on Cloudflare Pages
+    const isCloudflare = window.location.hostname.includes('pages.dev') || window.location.hostname.includes('.pages.dev')
+
     // Check if we're on Netlify
     const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
 
@@ -1873,8 +1876,8 @@ async function loadEnvFromServer() {
       return null
     }
 
-    if (isNetlify || isVercel) {
-      const platform = isNetlify ? 'Netlify' : 'Vercel'
+    if (isCloudflare || isNetlify || isVercel) {
+      const platform = isCloudflare ? 'Cloudflare' : (isNetlify ? 'Netlify' : 'Vercel')
       console.log(`🌐 Detected ${platform} deployment, using API endpoint...`)
       
       try {
