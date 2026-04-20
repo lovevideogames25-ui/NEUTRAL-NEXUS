@@ -171,6 +171,12 @@ class UltimateAI {
         description: 'Google\'s latest fast model with high-level thinking capabilities',
         api: 'googleai'
       },
+      'gpt-4o-mini': {
+        icon: 'G4',
+        name: 'GPT-4o-mini',
+        description: 'OpenAI\'s efficient model with GitHub AI inference',
+        api: 'github'
+      },
       'mistral-small-3-1': {
         icon: 'M',
         name: 'MISTRAL-SMALL-3.1',
@@ -268,6 +274,69 @@ class UltimateAI {
       };
     }
   }
+
+  async callGitHubAI(message) {
+    try {
+      // Check if API7 is available
+      if (!window.ENV || !window.ENV.API7) {
+        throw new Error('API7 (GitHub token) not found in environment variables. Please configure API7 in your .env file.');
+      }
+
+      const token = window.ENV.API7;
+      
+      console.log('Calling GitHub AI with token:', token.substring(0, 10) + '...');
+      console.log('Token length:', token.length);
+
+      // Use GitHub AI inference endpoint
+      const response = await fetch('https://models.github.ai/inference/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+          'X-GitHub-Api-Version': '2024-08-01'
+        },
+        body: JSON.stringify({
+          model: 'openai/gpt-4o-mini',
+          messages: [
+            { role: 'user', content: message }
+          ],
+          temperature: this.settings.temperature,
+          max_tokens: this.settings.maxTokens,
+          top_p: 1
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('GitHub AI API error response:', errorText);
+        
+        if (response.status === 401) {
+          throw new Error('401 Unauthorized - Your GitHub token (API7) may not have the correct permissions. Go to GitHub Settings > Developer Settings > Personal Access Tokens > Tokens (classic) and ensure the token has the "models" scope enabled for GitHub AI Models.');
+        }
+        
+        throw new Error(`GitHub AI API error: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+
+      const data = await response.json();
+      
+      return {
+        model: 'gpt-4o-mini',
+        response: data.choices[0].message.content,
+        timestamp: new Date().toISOString(),
+        status: 'success'
+      };
+      
+    } catch (error) {
+      console.error('Error calling GitHub AI:', error);
+      
+      return {
+        model: 'gpt-4o-mini',
+        response: `GitHub AI Error: ${error.message}`,
+        timestamp: new Date().toISOString(),
+        status: 'error'
+      };
+    }
+  }
   
   async sendMessage() {
     const input = document.getElementById('ultimateAIInput');
@@ -290,6 +359,9 @@ class UltimateAI {
       if (this.currentModel === 'ultimate-ai-v1' || this.currentModel === 'ultimate-ai-v1-alpha') {
         // Use local ULTIMATE-AI-V1 model
         response = await this.callLocalAI(message);
+      } else if (this.currentModel === 'gpt-4o-mini') {
+        // Use GitHub AI API exclusively for GPT-4o-mini (no fallback to other APIs)
+        response = await this.callGitHubAI(message);
       } else {
         // Use existing AI system with external APIs (OpenRouter, Replicate, etc.)
         window.selectedAIModel = this.currentModel;
@@ -621,7 +693,34 @@ class UltimateAI {
 }
 
 // Initialize Ultimate AI when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+  console.log('🤖 AI Script DOMContentLoaded fired');
+  console.log('🤖 window.ENV exists:', !!window.ENV);
+  console.log('🤖 window.ENV.API7 exists:', !!(window.ENV && window.ENV.API7));
+  console.log('🤖 window.ENV.API7 value:', window.ENV && window.ENV.API7 ? window.ENV.API7.substring(0, 10) + '...' : 'undefined');
+  
+  // Wait for environment variables to be loaded
+  let attempts = 0;
+  const maxAttempts = 50;
+  
+  while ((!window.ENV || !window.ENV.API7 || window.ENV.API7 === 'SEVENTH_API_KEY') && attempts < maxAttempts) {
+    console.log(`Waiting for environment variables... attempt ${attempts + 1}/${maxAttempts}`);
+    console.log('Current API7:', window.ENV && window.ENV.API7 ? window.ENV.API7.substring(0, 10) + '...' : 'undefined');
+    await new Promise(resolve => setTimeout(resolve, 100));
+    attempts++;
+  }
+  
+  console.log(`🤖 Wait loop completed after ${attempts} attempts`);
+  console.log('🤖 Final API7 value:', window.ENV && window.ENV.API7 ? window.ENV.API7.substring(0, 10) + '...' : 'undefined');
+  console.log('🤖 API7 length:', window.ENV && window.ENV.API7 ? window.ENV.API7.length : 0);
+  
+  if (!window.ENV || !window.ENV.API7 || window.ENV.API7 === 'SEVENTH_API_KEY') {
+    console.warn('⚠️ Environment variables not loaded after waiting, using defaults');
+  } else {
+    console.log('✅ Environment variables loaded, initializing AI');
+    console.log('API7 value (first 10 chars):', window.ENV.API7.substring(0, 10) + '...');
+  }
+  
   window.ultimateAI = new UltimateAI();
   console.log('Ultimate AI Assistant loaded successfully!');
 });

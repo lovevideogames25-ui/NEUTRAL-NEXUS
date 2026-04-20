@@ -4,23 +4,43 @@
 window.ENV = window.ENV || {
   API: 'MY_API',
   API2: 'SECOND_API_KEY', 
-  API3: 'THIRD_API_KEY'
+  API3: 'THIRD_API_KEY',
+  API4: 'FOURTH_API_KEY',
+  API5: 'FIFTH_API_KEY',
+  API6: 'SIXTH_API_KEY',
+  API7: 'SEVENTH_API_KEY'
 }
 
 // Simple API key setup for static sites
-function loadAPIKeys() {
+async function loadAPIKeys() {
   console.log('🔧 Neural Nexus AI - API Key Setup');
   console.log('⚠️ CORS restrictions prevent automatic .env loading');
   console.log('🔑 To set up API keys, run in browser console:');
   console.log('');
-  console.log('window.ENV = {');
-  console.log('  API: "sk-or-v1-your-openrouter-key",');
-  console.log('  API2: "hf-your-huggingface-key",');
-  console.log('  API3: "r8-your-replicate-key"');
-  console.log('};');
+  console.log('window.ENV.API7 = "your_github_pat_here";');
   console.log('');
-  console.log('🚀 Then refresh the page to start chatting!');
+  console.log('🚀 Then click send to use GPT-4o-mini!');
   console.log('📖 For more help, check AI README documentation');
+  
+  // Try to load from API endpoint
+  try {
+    console.log('🔍 Attempting to fetch /api/env...');
+    const response = await fetch('/api/env');
+    console.log('🔍 /api/env response status:', response.status);
+    const data = await response.json();
+    console.log('🔍 /api/env response data:', data);
+    console.log('🔍 data.API7 exists:', !!data.API7);
+    console.log('🔍 data.API7 value (first 10 chars):', data.API7 ? data.API7.substring(0, 10) + '...' : 'null');
+    
+    window.ENV = { ...window.ENV, ...data };
+    console.log('✅ Environment variables loaded from API');
+    console.log('API7 loaded:', !!window.ENV.API7);
+    console.log('API7 value (first 10 chars):', window.ENV.API7 ? window.ENV.API7.substring(0, 10) + '...' : 'null');
+    console.log('API7 length:', window.ENV.API7 ? window.ENV.API7.length : 0);
+  } catch (err) {
+    console.log('⚠️ Could not load env from API, using defaults');
+    console.log('Error:', err);
+  }
 }
 
 // Initialize everything when DOM is loaded
