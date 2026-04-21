@@ -1,9 +1,10 @@
 // Ultimate AI Section JavaScript
 class UltimateAI {
   constructor() {
-    this.currentModel = 'gpt-oss-20b';
+    this.currentModel = 'Gemini-2.5-Flash';
     this.chatHistory = [];
     this.isTyping = false;
+    this.attachedImages = [];
     this.settings = {
       temperature: 0.7,
       maxTokens: 1000,
@@ -33,9 +34,28 @@ class UltimateAI {
       aiCloseBtn.addEventListener('click', () => this.closeAI());
     }
     
+    // Model selection - new structure
+    document.querySelectorAll('.model-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        document.querySelectorAll('.model-item').forEach(i => i.classList.remove('selected'));
+        item.classList.add('selected');
+        this.currentModel = item.getAttribute('data-model');
+        console.log('Selected model:', this.currentModel);
+      });
+    });
+    
     // Category tabs
     document.querySelectorAll('.category-tab').forEach(tab => {
       tab.addEventListener('click', (e) => this.filterModels(e.target.dataset.category));
+    });
+
+    // Model tabs
+    document.querySelectorAll('.model-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        document.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        this.filterModelsByTab(e.target.dataset.tab);
+      });
     });
     
     // Quick action buttons
@@ -58,6 +78,10 @@ class UltimateAI {
     // Input field
     const input = document.getElementById('ultimateAIInput');
     if (input) {
+      input.addEventListener('input', () => {
+        sendBtn.disabled = input.value.trim() === '';
+      });
+      
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
           e.preventDefault();
@@ -73,6 +97,20 @@ class UltimateAI {
     document.getElementById('clearChatBtn')?.addEventListener('click', () => this.clearChat());
     document.getElementById('exportChatBtn')?.addEventListener('click', () => this.exportChat());
     document.getElementById('settingsBtn')?.addEventListener('click', () => this.loadChat());
+    
+    // Image upload
+    const cameraBtn = document.getElementById('ultimateAICameraBtn');
+    const imageUpload = document.getElementById('imageUpload');
+    if (cameraBtn && imageUpload) {
+      cameraBtn.addEventListener('click', () => {
+        if (this.currentModel === 'DeepSeek-V3.2') {
+          alert('MODEL NOT SUPPORTED FOR PICTURES');
+          return;
+        }
+        imageUpload.click();
+      });
+      imageUpload.addEventListener('change', (e) => this.handleImageUpload(e));
+    }
     
     // Settings
     document.getElementById('closeSettingsBtn')?.addEventListener('click', () => this.hideSettings());
@@ -124,6 +162,18 @@ class UltimateAI {
     const selectedCard = document.querySelector(`[data-model="${model}"]`);
     if (selectedCard) {
       selectedCard.classList.add('selected');
+    }
+
+    // Disable camera button for DeepSeek-V3.2
+    const cameraBtn = document.getElementById('ultimateAICameraBtn');
+    if (cameraBtn) {
+      if (model === 'DeepSeek-V3.2') {
+        cameraBtn.style.opacity = '0.5';
+        cameraBtn.style.pointerEvents = 'none';
+      } else {
+        cameraBtn.style.opacity = '1';
+        cameraBtn.style.pointerEvents = 'auto';
+      }
     }
     
     // Update current model display
@@ -179,9 +229,15 @@ class UltimateAI {
       },
       'mistral-small-3-1': {
         icon: 'M',
-        name: 'MISTRAL-SMALL-3.1',
-        description: 'Mistral\'s efficient model with strong performance for general tasks',
-        api: 'cloudflare'
+        name: 'Mistral-Small-3.1',
+        description: 'Mistral\'s efficient model with GitHub AI inference',
+        api: 'github'
+      },
+      'gemma-4': {
+        icon: 'G4',
+        name: 'Gemma-4',
+        description: 'Google\'s advanced model with HuggingFace inference',
+        api: 'huggingface'
       },
       'ultimate-ai-v1-alpha': { 
         icon: 'UA', 
@@ -224,13 +280,34 @@ class UltimateAI {
     document.querySelector(`[data-category="${category}"]`).classList.add('active');
     
     // Filter model cards
-    document.querySelectorAll('.model-card').forEach(card => {
-      if (category === 'all' || card.dataset.category.includes(category)) {
-        card.style.display = 'block';
+    const modelItems = document.querySelectorAll('.model-item');
+    modelItems.forEach(item => {
+      if (category === 'all' || item.dataset.category === category) {
+        item.style.display = 'block';
       } else {
-        card.style.display = 'none';
+        item.style.display = 'none';
       }
     });
+  }
+
+  filterModelsByTab(tab) {
+    const modelList = document.getElementById('modelList');
+    const modelItems = document.querySelectorAll('.model-item');
+
+    if (tab === 'popular') {
+      modelItems.forEach(item => {
+        const popularModels = ['Gemini-2.5-Flash', 'gpt-4o-mini', 'Qwen3.5-Plus'];
+        if (popularModels.includes(item.dataset.model)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    } else {
+      modelItems.forEach(item => {
+        item.style.display = 'block';
+      });
+    }
   }
   
   async callLocalAI(message) {
@@ -286,6 +363,32 @@ class UltimateAI {
       
       console.log('Calling GitHub AI with token:', token.substring(0, 10) + '...');
       console.log('Token length:', token.length);
+      console.log('Attached images:', this.attachedImages.length);
+
+      // Map selected model to GitHub AI model
+      const modelMap = {
+        'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+        'Mistral-Small-4': 'mistralai/mistral-small-2603',
+        'gemma-4-31b-it': 'google/gemma-4-31b-it',
+        'llama-4-scout': 'meta-llama/llama-4-scout',
+        'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+        'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+      };
+      const githubModel = modelMap[this.currentModel] || this.currentModel;
+      console.log('Using GitHub AI model:', githubModel);
+
+      // Build messages with vision support
+      let userContent = message;
+      
+      if (this.attachedImages.length > 0) {
+        userContent = [
+          { type: 'text', text: message },
+          ...this.attachedImages.map(img => ({
+            type: 'image_url',
+            image_url: { url: img.data }
+          }))
+        ];
+      }
 
       // Use GitHub AI inference endpoint
       const response = await fetch('https://models.github.ai/inference/chat/completions', {
@@ -296,9 +399,9 @@ class UltimateAI {
           'X-GitHub-Api-Version': '2024-08-01'
         },
         body: JSON.stringify({
-          model: 'openai/gpt-4o-mini',
+          model: githubModel,
           messages: [
-            { role: 'user', content: message }
+            { role: 'user', content: userContent }
           ],
           temperature: this.settings.temperature,
           max_tokens: this.settings.maxTokens,
@@ -320,7 +423,7 @@ class UltimateAI {
       const data = await response.json();
       
       return {
-        model: 'gpt-4o-mini',
+        model: this.currentModel,
         response: data.choices[0].message.content,
         timestamp: new Date().toISOString(),
         status: 'success'
@@ -328,10 +431,80 @@ class UltimateAI {
       
     } catch (error) {
       console.error('Error calling GitHub AI:', error);
+      throw error;
+    }
+  }
+
+  async callHuggingFaceAI(message) {
+    try {
+      // Check if API2 is available
+      if (!window.ENV || !window.ENV.API2) {
+        throw new Error('API2 (HuggingFace token) not found in environment variables. Please configure API2 in your .env file.');
+      }
+
+      const token = window.ENV.API2;
+      
+      console.log('Calling HuggingFace AI with token:', token.substring(0, 10) + '...');
+      console.log('Token length:', token.length);
+      console.log('Attached images:', this.attachedImages.length);
+
+      // Build messages with vision support
+      let userContent = message;
+      
+      if (this.attachedImages.length > 0) {
+        userContent = [
+          { type: 'text', text: message },
+          ...this.attachedImages.map(img => ({
+            type: 'image_url',
+            image_url: { url: img.data }
+          }))
+        ];
+      }
+
+      // Use HuggingFace inference endpoint
+      const response = await fetch('https://router.huggingface.co/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          model: 'google/gemma-4-31B-it:novita',
+          messages: [
+            { role: 'user', content: userContent }
+          ],
+          temperature: this.settings.temperature,
+          max_tokens: this.settings.maxTokens,
+          top_p: 1
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('HuggingFace AI API error response:', errorText);
+        
+        if (response.status === 401) {
+          throw new Error('401 Unauthorized - Your HuggingFace token (API2) may not be valid.');
+        }
+        
+        throw new Error(`HuggingFace AI API error: ${response.status} ${response.statusText} - ${errorText}`);
+      }
+
+      const data = await response.json();
       
       return {
-        model: 'gpt-4o-mini',
-        response: `GitHub AI Error: ${error.message}`,
+        model: this.currentModel,
+        response: data.choices[0].message.content,
+        timestamp: new Date().toISOString(),
+        status: 'success'
+      };
+      
+    } catch (error) {
+      console.error('Error calling HuggingFace AI:', error);
+      
+      return {
+        model: this.currentModel,
+        response: `HuggingFace AI Error: ${error.message}`,
         timestamp: new Date().toISOString(),
         status: 'error'
       };
@@ -344,8 +517,8 @@ class UltimateAI {
     
     if (!message || this.isTyping) return;
     
-    // Add user message
-    this.addMessage(message, 'user');
+    // Add user message with images
+    this.addMessage(message, 'user', this.attachedImages);
     input.value = '';
     this.updateCharCount();
     
@@ -354,34 +527,377 @@ class UltimateAI {
     this.isTyping = true;
     
     try {
-      let response;
-      
-      if (this.currentModel === 'ultimate-ai-v1' || this.currentModel === 'ultimate-ai-v1-alpha') {
-        // Use local ULTIMATE-AI-V1 model
-        response = await this.callLocalAI(message);
-      } else if (this.currentModel === 'gpt-4o-mini') {
-        // Use GitHub AI API exclusively for GPT-4o-mini (no fallback to other APIs)
-        response = await this.callGitHubAI(message);
-      } else {
-        // Use existing AI system with external APIs (OpenRouter, Replicate, etc.)
-        window.selectedAIModel = this.currentModel;
-        response = await window.tryDirectAPI(message, false, false);
-      }
-      
-      // Add AI response
+      const response = await this.callWithFallback(message);
       this.addMessage(response.response || response, 'ai');
-      
     } catch (error) {
       this.addMessage(`Error: ${error.message}`, 'error');
     } finally {
       this.hideTypingIndicator();
       this.isTyping = false;
       
+      // Clear attached images after sending
+      this.attachedImages = [];
+      this.clearImagePreviews();
+      
       // Auto-save if enabled
       if (this.settings.autoSave) {
         this.saveChat();
       }
     }
+  }
+
+  async callWithFallback(message) {
+    const apis = [
+      { name: 'API1', key: 'API', call: () => this.callAPI1(message) },
+      { name: 'API2', key: 'API2', call: () => this.callAPI2(message) },
+      { name: 'API3', key: 'API3', call: () => this.callAPI3(message) },
+      { name: 'API4', key: 'API4', call: () => this.callAPI4(message) },
+      { name: 'API5', key: 'API5', call: () => this.callAPI5(message) },
+      { name: 'API6', key: 'API6', call: () => this.callAPI6(message) },
+      { name: 'API7', key: 'API7', call: () => this.callAPI7(message) },
+      { name: 'API8', key: 'API8', call: () => this.callAPI8(message) }
+    ];
+
+    // Try all APIs in the fallback chain
+    for (const api of apis) {
+      try {
+        if (window.ENV && window.ENV[api.key]) {
+          console.log(`Trying ${api.name}...`);
+          const result = await api.call();
+          if (result && result.response) {
+            console.log(`Success with ${api.name}`);
+            return result;
+          }
+        }
+      } catch (error) {
+        console.log(`${api.name} failed: ${error.message}`);
+        continue;
+      }
+    }
+
+    // If all APIs failed, try the existing system
+    try {
+      window.selectedAIModel = this.currentModel;
+      return await window.tryDirectAPI(message, false, false);
+    } catch (error) {
+      console.log('All APIs failed');
+      return {
+        model: this.currentModel,
+        response: 'All APIs failed. Please check your API keys.',
+        timestamp: new Date().toISOString(),
+        status: 'error'
+      };
+    }
+  }
+
+  async callAPI1(message) {
+    // OpenRouter
+    const token = window.ENV.API;
+    
+    // Map selected model to OpenRouter model
+    const modelMap = {
+      'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+      'Mistral-Small-4': 'mistralai/mistral-small-2603',
+      'gemma-4-31b-it': 'google/gemma-4-31b-it',
+      'llama-4-scout': 'meta-llama/llama-4-scout',
+      'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+      'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+    };
+    const openRouterModel = modelMap[this.currentModel] || this.currentModel;
+    
+    // Build messages with vision support
+    let userContent = message;
+    if (this.attachedImages.length > 0) {
+      userContent = [
+        { type: 'text', text: message },
+        ...this.attachedImages.map(img => ({
+          type: 'image_url',
+          image_url: { url: img.data }
+        }))
+      ];
+    }
+    
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: openRouterModel,
+        messages: [{ role: 'user', content: userContent }],
+        temperature: this.settings.temperature,
+        max_tokens: this.settings.maxTokens
+      })
+    });
+    const data = await response.json();
+    return { model: this.currentModel, response: data.choices[0].message.content, status: 'success' };
+  }
+
+  async callAPI2(message) {
+    // HuggingFace
+    const token = window.ENV.API2;
+    
+    // Map selected model to HuggingFace model
+    const modelMap = {
+      'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+      'Mistral-Small-4': 'mistralai/mistral-small-2603',
+      'gemma-4-31b-it': 'google/gemma-4-31b-it',
+      'llama-4-scout': 'meta-llama/llama-4-scout',
+      'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+      'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+    };
+    const huggingFaceModel = modelMap[this.currentModel] || this.currentModel;
+    
+    // Build messages with vision support
+    let userContent = message;
+    if (this.attachedImages.length > 0) {
+      userContent = [
+        { type: 'text', text: message },
+        ...this.attachedImages.map(img => ({
+          type: 'image_url',
+          image_url: { url: img.data }
+        }))
+      ];
+    }
+    
+    const response = await fetch('https://router.huggingface.co/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: huggingFaceModel,
+        messages: [{ role: 'user', content: userContent }],
+        temperature: this.settings.temperature,
+        max_tokens: this.settings.maxTokens
+      })
+    });
+    const data = await response.json();
+    return { model: this.currentModel, response: data.choices[0].message.content, status: 'success' };
+  }
+
+  async callAPI3(message) {
+    // Replicate
+    const token = window.ENV.API3;
+    
+    // Map selected model to Replicate model
+    const modelMap = {
+      'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+      'Mistral-Small-4': 'mistralai/mistral-small-2603',
+      'gemma-4-31b-it': 'google/gemma-4-31b-it',
+      'llama-4-scout': 'meta-llama/llama-4-scout',
+      'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+      'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+    };
+    const replicateModel = modelMap[this.currentModel] || this.currentModel;
+    
+    // Build input with vision support
+    let input = { prompt: message };
+    if (this.attachedImages.length > 0) {
+      input.image = this.attachedImages[0].data;
+    }
+    
+    const response = await fetch('https://corsproxy.io/?' + encodeURIComponent('https://api.replicate.com/v1/predictions'), {
+      method: 'POST',
+      headers: {
+        'Authorization': `Token ${token}`,
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify({
+        version: replicateModel,
+        input: input
+      })
+    });
+    const data = await response.json();
+    return { model: this.currentModel, response: data.output, status: 'success' };
+  }
+
+  async callAPI4(message) {
+    // LockLLM
+    const token = window.ENV.API4;
+    
+    // Map selected model to LockLLM model
+    const modelMap = {
+      'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+      'Mistral-Small-4': 'mistralai/mistral-small-2603',
+      'gemma-4-31b-it': 'google/gemma-4-31b-it',
+      'llama-4-scout': 'meta-llama/llama-4-scout',
+      'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+      'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+    };
+    const lockLLMModel = modelMap[this.currentModel] || this.currentModel;
+    
+    // Build messages with vision support
+    let userContent = message;
+    if (this.attachedImages.length > 0) {
+      userContent = [
+        { type: 'text', text: message },
+        ...this.attachedImages.map(img => ({
+          type: 'image_url',
+          image_url: { url: img.data }
+        }))
+      ];
+    }
+    
+    const response = await fetch('https://corsproxy.io/?' + encodeURIComponent('https://api.lockllm.com/v1/proxy/chat/completions'), {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify({
+        model: lockLLMModel,
+        messages: [{ role: 'user', content: userContent }],
+        temperature: this.settings.temperature,
+        max_tokens: this.settings.maxTokens
+      })
+    });
+    const data = await response.json();
+    return { model: this.currentModel, response: data.choices[0].message.content, status: 'success' };
+  }
+
+  async callAPI5(message) {
+    // Groq
+    const token = window.ENV.API5;
+    
+    // Map selected model to Groq model
+    const modelMap = {
+      'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+      'Mistral-Small-4': 'mistralai/mistral-small-2603',
+      'gemma-4-31b-it': 'gemma-4-31b-it',
+      'llama-4-scout': 'llama-4-scout',
+      'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+      'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+    };
+    const groqModel = modelMap[this.currentModel] || this.currentModel;
+    
+    // Build messages with vision support
+    let userContent = message;
+    if (this.attachedImages.length > 0) {
+      userContent = [
+        { type: 'text', text: message },
+        ...this.attachedImages.map(img => ({
+          type: 'image_url',
+          image_url: { url: img.data }
+        }))
+      ];
+    }
+    
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: groqModel,
+        messages: [{ role: 'user', content: userContent }],
+        temperature: this.settings.temperature,
+        max_tokens: this.settings.maxTokens
+      })
+    });
+    const data = await response.json();
+    return { model: this.currentModel, response: data.choices[0].message.content, status: 'success' };
+  }
+
+  async callAPI6(message) {
+    // Google AI Studio
+    const token = window.ENV.API6;
+    
+    // Map selected model to Google AI Studio model
+    const modelMap = {
+      'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+      'Mistral-Small-4': 'mistralai/mistral-small-2603',
+      'gemma-4-31b-it': 'gemma-4-31b-it',
+      'llama-4-scout': 'llama-4-scout',
+      'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+      'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+    };
+    const googleModel = modelMap[this.currentModel] || this.currentModel;
+    
+    // Build contents with vision support
+    let parts = [{ text: message }];
+    if (this.attachedImages.length > 0) {
+      parts = [
+        { text: message },
+        ...this.attachedImages.map(img => ({
+          inline_data: {
+            mime_type: img.type || 'image/jpeg',
+            data: img.data.split(',')[1]
+          }
+        }))
+      ];
+    }
+    
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${googleModel}:generateContent?key=${token}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        contents: [{ parts: parts }]
+      })
+    });
+    const data = await response.json();
+    
+    if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts || !data.candidates[0].content.parts[0]) {
+      throw new Error('Invalid response structure from Google AI API');
+    }
+    
+    return { model: this.currentModel, response: data.candidates[0].content.parts[0].text, status: 'success' };
+  }
+
+  async callAPI7(message) {
+    // GitHub AI
+    return await this.callGitHubAI(message);
+  }
+
+  async callAPI8(message) {
+    // Emergent AI - OpenAI-compatible endpoint
+    const token = window.ENV.API8;
+    
+    // Map selected model to Emergent AI model
+    const modelMap = {
+      'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+      'Mistral-Small-4': 'mistralai/mistral-small-2603',
+      'gemma-4-31b-it': 'gemma-4-31b-it',
+      'llama-4-scout': 'llama-4-scout',
+      'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+      'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+    };
+    const emergentModel = modelMap[this.currentModel] || this.currentModel;
+    
+    // Build messages with vision support
+    let userContent = message;
+    if (this.attachedImages.length > 0) {
+      userContent = [
+        { type: 'text', text: message },
+        ...this.attachedImages.map(img => ({
+          type: 'image_url',
+          image_url: { url: img.data }
+        }))
+      ];
+    }
+    
+    const response = await fetch('https://api.emergent.sh/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: emergentModel,
+        messages: [{ role: 'user', content: userContent }],
+        temperature: this.settings.temperature,
+        max_tokens: this.settings.maxTokens
+      })
+    });
+    const data = await response.json();
+    return { model: this.currentModel, response: data.choices[0].message.content, status: 'success' };
   }
   
   async simulateAIResponse(message) {
@@ -400,28 +916,53 @@ class UltimateAI {
       "Excellent question! Let me elaborate on that topic."
     ];
     
-    return responses[Math.floor(Math.random() * responses.length)] + " (This is a simulated response. In production, this would connect to the actual AI API.)";
+    return responses[Math.floor(Math.random() * responses.length)];
   }
-  
-  addMessage(content, type) {
-    const container = document.getElementById('chatMessagesContainer');
+
+  addMessage(content, type, images = []) {
+    const container = document.getElementById('chatMessages');
+    
+    // Remove welcome message if it exists
+    const welcome = container.querySelector('.welcome-message');
+    if (welcome) welcome.remove();
+    
     const messageDiv = document.createElement('div');
-    messageDiv.className = `chat-message ${type}`;
+    messageDiv.className = `message ${type}`;
+    
+    const timestamp = new Date().toLocaleTimeString();
+    
+    let imagesHtml = '';
+    if (images.length > 0) {
+      imagesHtml = images.map(img => `
+        <div class="message-image">
+          <img src="${img.data}" alt="${img.name}" />
+        </div>
+      `).join('');
+    }
     
     if (type === 'user') {
       messageDiv.innerHTML = `
-        <div class="message-avatar">You</div>
-        <div class="message-content">${this.escapeHtml(content)}</div>
+        <div class="message-content">
+          <div class="message-images">${imagesHtml}</div>
+          <div class="message-text">${this.formatMessage(content)}</div>
+          <div class="message-time">${timestamp}</div>
+        </div>
+        <div class="message-avatar">U</div>
       `;
     } else if (type === 'ai') {
       messageDiv.innerHTML = `
-        <div class="message-avatar">${this.getModelDetails(this.currentModel).icon}</div>
-        <div class="message-content">${this.formatMessage(content)}</div>
+        <div class="message-avatar">AI</div>
+        <div class="message-content">
+          <div class="message-text">${this.formatMessage(content)}</div>
+          <div class="message-time">${timestamp}</div>
+        </div>
       `;
     } else if (type === 'error') {
       messageDiv.innerHTML = `
-        <div class="message-avatar">!</div>
-        <div class="message-content error">${this.escapeHtml(content)}</div>
+        <div class="message-content error">
+          <div class="message-text">${content}</div>
+          <div class="message-time">${timestamp}</div>
+        </div>
       `;
     }
     
@@ -429,19 +970,23 @@ class UltimateAI {
     container.scrollTop = container.scrollHeight;
     
     // Add to history
-    this.chatHistory.push({ content, type, timestamp: Date.now() });
+    this.chatHistory.push({
+      content,
+      type,
+      timestamp,
+      images: images.map(img => img.data)
+    });
   }
-  
+
   showTypingIndicator() {
-    const container = document.getElementById('chatMessagesContainer');
+    const container = document.getElementById('chatMessages');
     const typingDiv = document.createElement('div');
-    typingDiv.className = 'chat-message typing';
+    typingDiv.className = 'message ai typing';
+    typingDiv.id = 'typingIndicator';
     typingDiv.innerHTML = `
-      <div class="message-avatar">...</div>
-      <div class="message-content">
-        <div class="typing-dots">
-          <span></span><span></span><span></span>
-        </div>
+      <div class="message-avatar">AI</div>
+      <div class="message-bubble">
+        <div class="typing-dots"><span></span><span></span><span></span></div>
       </div>
     `;
     container.appendChild(typingDiv);
@@ -449,7 +994,7 @@ class UltimateAI {
   }
   
   hideTypingIndicator() {
-    const typingIndicator = document.querySelector('.chat-message.typing');
+    const typingIndicator = document.getElementById('typingIndicator');
     if (typingIndicator) {
       typingIndicator.remove();
     }
@@ -480,36 +1025,83 @@ class UltimateAI {
   updateCharCount() {
     const input = document.getElementById('ultimateAIInput');
     const charCount = document.getElementById('charCount');
-    const sendBtn = document.getElementById('ultimateAISendBtn');
-    
     if (input && charCount) {
       const count = input.value.length;
-      charCount.textContent = `${count} / 4000`;
-      
-      if (sendBtn) {
-        sendBtn.disabled = count === 0 || this.isTyping;
-      }
+      charCount.textContent = `${count} characters`;
     }
   }
+
+  handleImageUpload(event) {
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+
+    Array.from(files).forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.attachedImages.push({
+          data: e.target.result,
+          type: file.type,
+          name: file.name
+        });
+        this.displayImagePreviews();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Clear the input so the same file can be selected again
+    event.target.value = '';
+  }
+
+  displayImagePreviews() {
+    const previewsContainer = document.getElementById('imagePreviews');
+    if (!previewsContainer) return;
+
+    previewsContainer.innerHTML = '';
+
+    this.attachedImages.forEach((image, index) => {
+      const preview = document.createElement('div');
+      preview.className = 'image-preview';
+      preview.innerHTML = `
+        <img src="${image.data}" alt="Uploaded image">
+        <button class="remove-btn" data-index="${index}">×</button>
+      `;
+      preview.querySelector('.remove-btn').addEventListener('click', () => {
+        this.attachedImages.splice(index, 1);
+        this.displayImagePreviews();
+      });
+      previewsContainer.appendChild(preview);
+    });
+  }
+
+  clearImagePreviews() {
+    this.attachedImages = [];
+    const previewsContainer = document.getElementById('imagePreviews');
+    if (previewsContainer) {
+      previewsContainer.innerHTML = '';
+    }
+  }
+
   
   newChat() {
     this.chatHistory = [];
-    const container = document.getElementById('chatMessagesContainer');
+    const container = document.getElementById('chatMessages');
     container.innerHTML = `
-      <div class="chat-welcome">
+      <div class="welcome-message">
         <div class="welcome-icon">AI</div>
-        <h3>Welcome to Ultimate AI Assistant</h3>
-        <p>I can help you with coding, analysis, creative writing, and much more. Choose a model above and start chatting!</p>
+        <h3>Welcome to NEUTRAL NEXUS AI</h3>
+        <p>Experience the power of multiple AI models in one interface</p>
         <div class="quick-actions">
-          <button class="quick-action-btn" data-prompt="Help me write a Python function">Code Help</button>
-          <button class="quick-action-btn" data-prompt="Analyze this data and provide insights">Data Analysis</button>
-          <button class="quick-action-btn" data-prompt="Write a creative story">Creative Writing</button>
-          <button class="quick-action-btn" data-prompt="Explain quantum computing simply">Learning</button>
+          <button class="quick-action-btn" data-prompt="Help me write code">Code Help</button>
+          <button class="quick-action-btn" data-prompt="Analyze data">Data Analysis</button>
+          <button class="quick-action-btn" data-prompt="Creative writing">Creative</button>
+          <button class="quick-action-btn" data-prompt="Explain a topic">Learn</button>
         </div>
       </div>
     `;
     
-    // Re-attach quick action listeners
+    // Re-attach event listeners to quick action buttons
     container.querySelectorAll('.quick-action-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const prompt = e.target.dataset.prompt;
@@ -586,16 +1178,13 @@ class UltimateAI {
   }
   
   renderChatHistory() {
-    const container = document.getElementById('chatMessagesContainer');
+    const container = document.getElementById('chatMessages');
     if (!container) return;
     
     // Clear existing messages except welcome
-    const welcome = container.querySelector('.chat-welcome');
+    const welcome = container.querySelector('.welcome-message');
     container.innerHTML = '';
-    
-    if (welcome) {
-      container.appendChild(welcome);
-    }
+    if (welcome) container.appendChild(welcome);
     
     // Re-add all chat messages directly without adding to history again
     this.chatHistory.forEach(msg => {
@@ -668,8 +1257,55 @@ class UltimateAI {
   }
   
   attachFile() {
-    // File attachment functionality
-    console.log('File attachment not implemented yet');
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.multiple = true;
+    
+    input.onchange = (e) => {
+      const files = Array.from(e.target.files);
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const imageData = {
+            name: file.name,
+            type: file.type,
+            data: event.target.result,
+            base64: event.target.result.split(',')[1]
+          };
+          this.attachedImages.push(imageData);
+          this.showImagePreview(imageData);
+        };
+        reader.readAsDataURL(file);
+      });
+    };
+    
+    input.click();
+  }
+
+  showImagePreview(imageData) {
+    const container = document.getElementById('chatMessages');
+    const previewDiv = document.createElement('div');
+    previewDiv.className = 'image-preview';
+    previewDiv.innerHTML = `
+      <div class="image-preview-item">
+        <img src="${imageData.data}" alt="${imageData.name}" />
+        <button class="remove-image" data-index="${this.attachedImages.length - 1}">×</button>
+      </div>
+    `;
+    container.appendChild(previewDiv);
+    
+    // Add remove button functionality
+    previewDiv.querySelector('.remove-image').addEventListener('click', (e) => {
+      const index = parseInt(e.target.dataset.index);
+      this.attachedImages.splice(index, 1);
+      previewDiv.remove();
+    });
+  }
+
+  clearImagePreviews() {
+    const previews = document.querySelectorAll('.image-preview');
+    previews.forEach(preview => preview.remove());
   }
   
   startVoiceInput() {

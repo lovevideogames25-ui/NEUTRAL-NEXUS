@@ -91,6 +91,8 @@ app.get('/api/env', (req, res) => {
       safeEnvVars.API4 = envVars.API4 || null;
       safeEnvVars.API5 = envVars.API5 || null;
       safeEnvVars.API6 = envVars.API6 || null;
+      safeEnvVars.API7 = envVars.API7 || null;
+      safeEnvVars.API8 = envVars.API8 || null;
       safeEnvVars.MERRIAM_WEBSTER_API_KEY = envVars.MERRIAM_WEBSTER_API_KEY || null;
       safeEnvVars.CLOUDFLARE_ACCOUNT_ID = envVars.CLOUDFLARE_ACCOUNT_ID || null;
       safeEnvVars.CLOUDFLARE_GATEWAY_ID = envVars.CLOUDFLARE_GATEWAY_ID || null;
@@ -104,6 +106,8 @@ app.get('/api/env', (req, res) => {
       API4: safeEnvVars.API4 ? 'SET' : 'NOT SET',
       API5: safeEnvVars.API5 ? 'SET' : 'NOT SET',
       API6: safeEnvVars.API6 ? 'SET' : 'NOT SET',
+      API7: safeEnvVars.API7 ? 'SET' : 'NOT SET',
+      API8: safeEnvVars.API8 ? 'SET' : 'NOT SET',
       HAS_API_KEYS: safeEnvVars.HAS_API_KEYS,
       API_COUNT: safeEnvVars.API_COUNT
     });

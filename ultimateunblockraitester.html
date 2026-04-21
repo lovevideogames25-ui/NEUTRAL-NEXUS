@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Nexus AI Tester</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .response-area {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .model-info {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #0066cc;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Neural Nexus AI Tester</h1>
+
+        <div class="section">
+            <h2>ℹ️ Neural Nexus AI Information</h2>
+            <div class="model-info">
+                Neural Nexus AI (ULTIMATEUNBLOCKER-AI-V1-2-ALPHA): Custom AI model with comprehensive knowledge about ULTIMATEUNBLOCKER platform, features, categories, technical stack, and more.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💬 Test Neural Nexus AI</h2>
+            <div class="input-group">
+                <label for="user-message">Your Message</label>
+                <textarea id="user-message" placeholder="Type your message here..."></textarea>
+            </div>
+            <button onclick="testAI()" id="test-button">🚀 Test Neural Nexus AI</button>
+            <div id="status"></div>
+        </div>
+
+        <div class="section">
+            <h2>📝 AI Response</h2>
+            <div class="response-area" id="response-area">
+                Neural Nexus AI response will appear here...
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Additional Actions</h2>
+            <button onclick="getModelInfo()">📊 Get Model Info</button>
+            <button onclick="getKnowledge()">📚 Get Knowledge Base</button>
+            <button onclick="clearHistory()">🗑️ Clear History</button>
+            <button onclick="healthCheck()">❤️ Health Check</button>
+        </div>
+    </div>
+
+    <script>
+        // Show status message
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = message;
+        }
+
+        // Test Neural Nexus AI
+        async function testAI() {
+            const message = document.getElementById('user-message').value;
+
+            if (!message.trim()) {
+                showStatus('Please enter a message', 'error');
+                return;
+            }
+
+            const button = document.getElementById('test-button');
+            button.disabled = true;
+            button.innerHTML = '<span class="loading"></span> Testing...';
+            showStatus('Sending request to Neural Nexus AI...', 'info');
+            document.getElementById('response-area').textContent = 'Waiting for response...';
+
+            try {
+                const response = await fetch('http://localhost:5000/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.text();
+                    throw new Error(`Neural Nexus AI error: ${error}`);
+                }
+
+                const data = await response.json();
+                document.getElementById('response-area').textContent = data.response;
+                showStatus('Neural Nexus AI response received successfully!', 'success');
+            } catch (error) {
+                document.getElementById('response-area').textContent = `Error: ${error.message}`;
+                showStatus(`Error: ${error.message}`, 'error');
+            } finally {
+                button.disabled = false;
+                button.innerHTML = '🚀 Test Neural Nexus AI';
+            }
+        }
+
+        // Get model info
+        async function getModelInfo() {
+            try {
+                const response = await fetch('http://localhost:5000/info');
+                const data = await response.json();
+                document.getElementById('response-area').textContent = JSON.stringify(data, null, 2);
+                showStatus('Model info retrieved successfully!', 'success');
+            } catch (error) {
+                document.getElementById('response-area').textContent = `Error: ${error.message}`;
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Get knowledge base
+        async function getKnowledge() {
+            try {
+                const response = await fetch('http://localhost:5000/knowledge');
+                const data = await response.json();
+                document.getElementById('response-area').textContent = JSON.stringify(data, null, 2);
+                showStatus('Knowledge base retrieved successfully!', 'success');
+            } catch (error) {
+                document.getElementById('response-area').textContent = `Error: ${error.message}`;
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Clear history
+        async function clearHistory() {
+            try {
+                const response = await fetch('http://localhost:5000/clear', {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                document.getElementById('response-area').textContent = JSON.stringify(data, null, 2);
+                showStatus('Conversation history cleared!', 'success');
+            } catch (error) {
+                document.getElementById('response-area').textContent = `Error: ${error.message}`;
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Health check
+        async function healthCheck() {
+            try {
+                const response = await fetch('http://localhost:5000/health');
+                const data = await response.json();
+                document.getElementById('response-area').textContent = JSON.stringify(data, null, 2);
+                showStatus('Health check passed!', 'success');
+            } catch (error) {
+                document.getElementById('response-area').textContent = `Error: ${error.message}`;
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

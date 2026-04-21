@@ -176,8 +176,8 @@ function showMainContent() {
       console.log('✅ Main content animation complete')
     }, 50)
   } else {
-    console.error('❌ Main content element not found!')
-    return
+    console.warn('⚠️ Main content element not found - may be on AI page')
+    // Don't retry - this is expected on AI page
   }
   
   // Initialize the rest of the app
@@ -2749,8 +2749,8 @@ async function tryGoogleAIStudio(message, hasImages = false, isVisionModel = fal
   }
 
   const modelMap = {
-    'auto': 'gemini-2.0-flash-exp',
-    'gemini-3-flash': 'gemini-3-flash-preview',
+    'auto': 'google/gemini-2.5-flash',
+    'gemini-3-flash': 'google/gemini-2.5-flash',
     'gpt-oss-20b': 'gemini-1.5-flash',
     'gpt-oss-120b': 'gemini-2.0-flash-exp',
     'gemma-3-4b': 'gemini-1.5-flash',
@@ -2839,6 +2839,68 @@ async function tryGoogleAIStudio(message, hasImages = false, isVisionModel = fal
   } else {
     const errorData = await response.text()
     console.log('❌ Google AI Studio Error Response:', errorData)
+    throw new Error('ALL API\'S FAIL')
+  }
+}
+
+async function tryEmergentAI(message, hasImages = false, isVisionModel = false) {
+  const envVars = await loadEnvFromServer()
+  if (!envVars || !envVars.API8) {
+    throw new Error('Emergent AI API key not found. Please set up API8 in your .env file')
+  }
+
+  const selectedModel = window.selectedAIModel || 'auto'
+  const modelMap = {
+    'auto': 'google/gemini-2.5-flash',
+    'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
+    'gpt-4o-mini': 'gpt-4o-mini',
+    'mistral-small-3.1': 'mistral-small-3.1',
+    'gemma-4-31b-it': 'gemma-4-31b-it',
+    'claude-sonnet-4.5': 'claude-sonnet-4.5',
+    'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
+    'llama-4-scout': 'llama-4-scout'
+  }
+
+  const emergentModel = modelMap[selectedModel] || selectedModel
+
+  const response = await fetch('https://api.emergent.sh/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${envVars.API8}`
+    },
+    body: JSON.stringify({
+      model: emergentModel,
+      messages: [{ role: 'user', content: message }],
+      max_tokens: isVisionModel ? 2000 : 1000,
+      temperature: 0.7
+    })
+  })
+
+  console.log('🔍 Emergent AI Response Status:', response.status)
+
+  if (response.ok) {
+    const data = await response.json()
+    console.log('📋 Emergent AI Response Data:', data)
+
+    // Check for error in response
+    if (data.error) {
+      console.log('❌ Emergent AI Error in response data:', data.error)
+      throw new Error('ALL API\'S FAIL')
+    }
+
+    const aiMessage = data.choices?.[0]?.message?.content || ''
+
+    if (!aiMessage) {
+      console.log('❌ No AI message in Emergent AI response')
+      throw new Error('ALL API\'S FAIL')
+    }
+
+    console.log('✅ Emergent AI API successful - AI message received:', aiMessage.substring(0, 100) + '...')
+    return { success: true, response: aiMessage, api: 'EmergentAI' }
+  } else {
+    const errorData = await response.text()
+    console.log('❌ Emergent AI Error Response:', errorData)
     throw new Error('ALL API\'S FAIL')
   }
 }
@@ -3315,17 +3377,17 @@ async function tryDirectAPI(message, hasImages = false, isVisionModel = false) {
   
   // Define which APIs support which models
   const modelAPIs = {
-    'auto': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'gemini-3-flash': ['GoogleAIStudio'],
-    'gemma-3-4b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'gemma-3-4b-fast': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'gemma-3-12b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'gemma-3-12b-normal': ['OpenRouter', 'HuggingFace', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'gemma-3-27b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'mistral-small-3-1': ['Cloudflare'],
-    'gpt-oss-20b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'VercelAI', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'gpt-oss-120b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'VercelAI', 'Groq', 'Cloudflare', 'GoogleAIStudio'],
-    'llama-3.3-70b': ['OpenRouter', 'HuggingFace', 'LockLLM', 'VercelAI', 'Groq', 'Cloudflare', 'GoogleAIStudio']
+    'auto': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'gemini-3-flash': ['GoogleAIStudio', 'EmergentAI'],
+    'gemma-3-4b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'gemma-3-4b-fast': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'gemma-3-12b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'gemma-3-12b-normal': ['OpenRouter', 'HuggingFace', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'gemma-3-27b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'mistral-small-3-1': ['Cloudflare', 'EmergentAI'],
+    'gpt-oss-20b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'VercelAI', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'gpt-oss-120b': ['OpenRouter', 'HuggingFace', 'Replicate', 'LockLLM', 'VercelAI', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI'],
+    'llama-3.3-70b': ['OpenRouter', 'HuggingFace', 'LockLLM', 'VercelAI', 'Groq', 'Cloudflare', 'GoogleAIStudio', 'EmergentAI']
   }
   
   const availableAPIs = modelAPIs[selectedModel] || modelAPIs['auto']
@@ -3339,7 +3401,8 @@ async function tryDirectAPI(message, hasImages = false, isVisionModel = false) {
     'VercelAI': tryVercelAI,
     'Groq': tryGroq,
     'Cloudflare': tryCloudflare,
-    'GoogleAIStudio': tryGoogleAIStudio
+    'GoogleAIStudio': tryGoogleAIStudio,
+    'EmergentAI': tryEmergentAI
   }
   
   // Try APIs in order of preference for the selected model
