@@ -1,0 +1,99 @@
+// Netlify serverless function for YouTube Data API v3
+exports.handler = async (event, context) => {
+  // Only allow GET requests
+  if (event.httpMethod !== 'GET') {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
+
+  try {
+    const query = event.queryStringParameters.q || '';
+    const apiKey = process.env.YOUTUBE_API_KEY;
+    const apiKey2 = process.env.YOUTUBE_API_KEY_2;
+
+    if (!apiKey) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'YouTube API key not configured' })
+      };
+    }
+
+    let url;
+    if (query) {
+      // Search YouTube
+      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music')}&maxResults=12&key=${apiKey}`;
+    } else {
+      // Get popular music videos
+      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=12&key=${apiKey}`;
+    }
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.error) {
+      // Check if quota exceeded and try backup key
+      if (data.error.errors && data.error.errors[0].reason === 'quotaExceeded' && apiKey2) {
+        const backupUrl = query
+          ? `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music')}&maxResults=12&key=${apiKey2}`
+          : `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=12&key=${apiKey2}`;
+        
+        const backupResponse = await fetch(backupUrl);
+        const backupData = await backupResponse.json();
+        
+        if (backupData.error) {
+          return {
+            statusCode: 429,
+            body: JSON.stringify({ quotaExceeded: true, error: 'YouTube API quota exceeded' })
+          };
+        }
+        
+        // Return backup data
+        const tracks = backupData.items.map(item => ({
+          title: item.snippet.title,
+          artist: item.snippet.channelTitle,
+          imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
+          id: item.id.videoId
+        }));
+        
+        return {
+          statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          },
+          body: JSON.stringify({ tracks })
+        };
+      }
+      
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: data.error.message || 'YouTube API error' })
+      };
+    }
+
+    const tracks = data.items.map(item => ({
+      title: item.snippet.title,
+      artist: item.snippet.channelTitle,
+      imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
+      id: item.id.videoId
+    }));
+
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      },
+      body: JSON.stringify({ tracks })
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: error.message })
+    };
+  }
+};
