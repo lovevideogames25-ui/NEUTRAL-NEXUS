@@ -49,8 +49,12 @@ exports.handler = async (event, context) => {
           };
         }
         
-        // Return backup data
-        const tracks = backupData.items.map(item => ({
+        // Filter backup data to only include -Topic channels
+        const topicChannels = backupData.items.filter(item => 
+          item.snippet.channelTitle && item.snippet.channelTitle.endsWith('-Topic')
+        );
+
+        const tracks = topicChannels.map(item => ({
           title: item.snippet.title,
           artist: item.snippet.channelTitle,
           imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
@@ -74,7 +78,12 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const tracks = data.items.map(item => ({
+    // Filter to only include -Topic channels (official music distribution)
+    const topicChannels = data.items.filter(item => 
+      item.snippet.channelTitle && item.snippet.channelTitle.endsWith('-Topic')
+    );
+
+    const tracks = topicChannels.map(item => ({
       title: item.snippet.title,
       artist: item.snippet.channelTitle,
       imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
