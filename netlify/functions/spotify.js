@@ -54,7 +54,10 @@ exports.handler = async (event, context) => {
           item.snippet.channelTitle && item.snippet.channelTitle.endsWith('-Topic')
         );
 
-        const tracks = topicChannels.map(item => ({
+        // If no -Topic channels found, use all results as fallback
+        const channelsToUse = topicChannels.length > 0 ? topicChannels : backupData.items;
+
+        const tracks = channelsToUse.map(item => ({
           title: item.snippet.title,
           artist: item.snippet.channelTitle,
           imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
@@ -83,7 +86,10 @@ exports.handler = async (event, context) => {
       item.snippet.channelTitle && item.snippet.channelTitle.endsWith('-Topic')
     );
 
-    const tracks = topicChannels.map(item => ({
+    // If no -Topic channels found, use all results as fallback
+    const channelsToUse = topicChannels.length > 0 ? topicChannels : data.items;
+
+    const tracks = channelsToUse.map(item => ({
       title: item.snippet.title,
       artist: item.snippet.channelTitle,
       imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
