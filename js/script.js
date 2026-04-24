@@ -1950,11 +1950,10 @@ async function sendAIMessage() {
 
 async function tryServerAPI(message) {
   try {
-    // Check if we're on Vercel and use the Vercel API endpoint
-    const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
-    const apiUrl = isVercel ? '/api/chat' : 'http://localhost:3000/api/chat'
+    // Use the Vercel backend API endpoint
+    const apiUrl = 'https://ultimateunblocker-backend.vercel.app/api/chat'
     
-    console.log(`🔄 Using ${isVercel ? 'Vercel' : 'local'} API endpoint: ${apiUrl}`)
+    console.log(`🔄 Using Vercel backend API endpoint: ${apiUrl}`)
     
     const response = await fetch(apiUrl, {
       method: 'POST',
