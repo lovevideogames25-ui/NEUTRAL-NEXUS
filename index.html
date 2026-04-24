@@ -1200,10 +1200,10 @@
         <div class="nav-section">
             <div class="nav-section-title">Main</div>
             <button class="menu-item" id="homeMenuItem" data-item="home">🏠 Home</button>
-            <button class="menu-item" id="linksMenuItem" data-item="links">🔗 Links <span class="fixed-badge">FIXED</span></button>
+            <button class="menu-item" id="linksMenuItem" data-item="links">🔗 Links</button>
             <button class="menu-item" id="settingsMenuItem" data-item="settings">⚙️ Settings</button>
             <button class="menu-item" id="infoMenuItem" data-item="information">ℹ️ Information</button>
-            <button class="menu-item" id="toolsMenuItem" data-item="tools">🔧 Tools <span class="new-badge">NEW</span></button>
+            <button class="menu-item" id="toolsMenuItem" data-item="tools">🔧 Tools</button>
         </div>
         
         <div class="nav-divider"></div>
@@ -1219,8 +1219,8 @@
             <div class="nav-section-title">Entertainment</div>
             <button class="menu-item" id="gamesMenuItem" data-item="games">🎮 Games <span class="coming-soon-sticker">Coming Soon</span></button>
             <button class="menu-item" id="watchMenuItem" data-item="watch">📺 Watch <span class="coming-soon-sticker">Coming Soon</span></button>
-            <button class="menu-item" id="listenMenuItem" data-item="listen">🎵 Listen <span class="coming-soon-sticker">Coming Soon</span></button>
-            <a href="ai.html" class="menu-item" id="aiMenuItem">🤖AI <span class="fixed-badge">FIXED</span></a>
+            <button class="menu-item" id="listenMenuItem" data-item="listen">🎵 Listen <span class="new-badge">NEW</span></button>
+            <a href="ai.html" class="menu-item" id="aiMenuItem">🤖AI <span class="updated-badge">UPDATED</span></a>
             <button class="menu-item" id="proxyMenuItem" data-item="proxy_browser">🔒 Proxy Browser <span class="coming-soon-sticker">Coming Soon</span></button>
         </div>
         
@@ -2363,10 +2363,104 @@
 
     <!-- Categories Section -->
     <div class="categories-section" id="categoriesSection">
-        <h2 class="section-title">Categories</h2>
-        
-        <div class="categories-grid" id="categoriesGrid">
-            <!-- Categories will be dynamically loaded here -->
+        <div class="new-links-box" id="newLinksBox">
+            <div class="new-links-content">
+                <span class="new-links-icon">🔗</span>
+                <h2 class="new-links-title">7+ NEW LINKS</h2>
+                <p class="new-links-subtitle">Fresh content added recently</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Links Modal -->
+    <div id="newLinksModal" class="new-links-modal">
+        <div class="new-links-modal-content">
+            <div class="new-links-modal-header">
+                <h2>🔗 New Links</h2>
+                <button class="new-links-modal-close" id="closeNewLinksModal">&times;</button>
+            </div>
+            <div class="new-links-modal-body">
+                <div class="link-category">
+                    <h3>Fern</h3>
+                    <div class="link-grid">
+                        <div class="link-card">
+                            <a href="https://s3.amazonaws.com/ilovemaths/index.html" target="_blank">
+                                <div class="link-card-icon">📐</div>
+                                <div class="link-card-text">
+                                    <div>I Love Maths</div>
+                                    <div class="link-card-url">s3.amazonaws.com/ilovemaths</div>
+                                </div>
+                                <div class="link-card-arrow">→</div>
+                            </a>
+                        </div>
+                        <div class="link-card">
+                            <a href="https://s3.amazonaws.com/iloveliteratures/index.html" target="_blank">
+                                <div class="link-card-icon">📚</div>
+                                <div class="link-card-text">
+                                    <div>I Love Literatures</div>
+                                    <div class="link-card-url">s3.amazonaws.com/iloveliteratures</div>
+                                </div>
+                                <div class="link-card-arrow">→</div>
+                            </a>
+                        </div>
+                        <div class="link-card">
+                            <a href="https://s3.amazonaws.com/bullbestyoutuber/index.html" target="_blank">
+                                <div class="link-card-icon">🎬</div>
+                                <div class="link-card-text">
+                                    <div>Bull Best YouTuber</div>
+                                    <div class="link-card-url">s3.amazonaws.com/bullbestyoutuber</div>
+                                </div>
+                                <div class="link-card-arrow">→</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="link-category">
+                    <h3>Cherri</h3>
+                    <div class="link-grid">
+                        <div class="link-card">
+                            <a href="https://history.learn.alexanderthegreater.com" target="_blank">
+                                <div class="link-card-icon">🏛️</div>
+                                <div class="link-card-text">
+                                    <div>History Learn</div>
+                                    <div class="link-card-url">history.learn.alexanderthegreater.com</div>
+                                </div>
+                                <div class="link-card-arrow">→</div>
+                            </a>
+                        </div>
+                        <div class="link-card">
+                            <a href="https://content.secure.teaching.classyportal.com" target="_blank">
+                                <div class="link-card-icon">🎓</div>
+                                <div class="link-card-text">
+                                    <div>Classy Portal</div>
+                                    <div class="link-card-url">content.secure.teaching.classyportal.com</div>
+                                </div>
+                                <div class="link-card-arrow">→</div>
+                            </a>
+                        </div>
+                        <div class="link-card">
+                            <a href="https://lightbull.lervs.ro" target="_blank">
+                                <div class="link-card-icon">💡</div>
+                                <div class="link-card-text">
+                                    <div>Light Bull</div>
+                                    <div class="link-card-url">lightbull.lervs.ro</div>
+                                </div>
+                                <div class="link-card-arrow">→</div>
+                            </a>
+                        </div>
+                        <div class="link-card">
+                            <a href="https://hoot.hoot.hoot.hoot.yarnowl.com" target="_blank">
+                                <div class="link-card-icon">🦉</div>
+                                <div class="link-card-text">
+                                    <div>Yarn Owl</div>
+                                    <div class="link-card-url">hoot.hoot.hoot.hoot.yarnowl.com</div>
+                                </div>
+                                <div class="link-card-arrow">→</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2445,6 +2539,43 @@
         </div>
         <div class="links-container" id="linksContainer">
             <!-- Links will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <!-- v0.8.0 Beta Popup -->
+    <div id="versionPopup" class="version-popup">
+        <div class="version-popup-content">
+            <div class="version-popup-header">
+                <span class="version-badge">v0.8.0 BETA</span>
+                <button class="version-popup-close" id="closeVersionPopup">&times;</button>
+            </div>
+            <div class="version-popup-body">
+                <h2 class="version-popup-title">🎉 Major Update!</h2>
+                <div class="version-popup-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🤖</span>
+                        <div class="feature-text">
+                            <h3>AI Overhaul</h3>
+                            <p>Completely redesigned AI interface with premium glassmorphism design, new models (Gemini-2.5, Claude-Sonnet-4.5, DeepSeek-V3.2, Qwen3.5-Plus), and vision support for all models.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎵</span>
+                        <div class="feature-text">
+                            <h3>New: Music/Listen</h3>
+                            <p>Introducing a brand new music player! Search and play music from YouTube with official - Topic channels. Full playback with pause/resume controls.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔗</span>
+                        <div class="feature-text">
+                            <h3>Links Up to Date</h3>
+                            <p>All links have been updated and verified. Enjoy seamless access to your favorite sites with the latest working URLs.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="version-popup-button" id="dismissVersionPopup">Got it!</button>
+            </div>
         </div>
     </div>
 

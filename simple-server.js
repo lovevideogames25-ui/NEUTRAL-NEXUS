@@ -93,6 +93,10 @@ app.get('/api/env', (req, res) => {
       safeEnvVars.API6 = envVars.API6 || null;
       safeEnvVars.API7 = envVars.API7 || null;
       safeEnvVars.API8 = envVars.API8 || null;
+      safeEnvVars.SPOTIFY_CLIENT_ID = envVars.SPOTIFY_CLIENT_ID || null;
+      safeEnvVars.SPOTIFY_CLIENT_SECRET = envVars.SPOTIFY_CLIENT_SECRET || null;
+      safeEnvVars.JAMENDO_CLIENT_ID = envVars.JAMENDO_CLIENT_ID || null;
+      safeEnvVars.YOUTUBE_API_KEY = envVars.YOUTUBE_API_KEY || null;
       safeEnvVars.MERRIAM_WEBSTER_API_KEY = envVars.MERRIAM_WEBSTER_API_KEY || null;
       safeEnvVars.CLOUDFLARE_ACCOUNT_ID = envVars.CLOUDFLARE_ACCOUNT_ID || null;
       safeEnvVars.CLOUDFLARE_GATEWAY_ID = envVars.CLOUDFLARE_GATEWAY_ID || null;
@@ -681,6 +685,123 @@ app.post('/api/cloudflare', async (req, res) => {
     
   } catch (error) {
     console.error('🛑ERROR: Cloudflare Workers AI proxy error:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Spotify token endpoint
+app.post('/api/spotify/token', async (req, res) => {
+  try {
+    const envPath = path.join(__dirname, '.env');
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    const envVars = {};
+    
+    envContent.split('\n').forEach(line => {
+      const [key, ...valueParts] = line.split('=');
+      if (key && valueParts.length > 0) {
+        envVars[key.trim()] = valueParts.join('=').trim();
+      }
+    });
+    
+    const clientId = envVars.SPOTIFY_CLIENT_ID;
+    const clientSecret = envVars.SPOTIFY_CLIENT_SECRET;
+    
+    if (!clientId || !clientSecret) {
+      return res.status(400).json({ error: 'Spotify credentials not configured' });
+    }
+    
+    const authString = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+    
+    const response = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${authString}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'grant_type=client_credentials'
+    });
+    
+    const data = await response.json();
+    res.json(data);
+    
+  } catch (error) {
+    console.error('🛑ERROR: Spotify token error:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// YouTube Data API endpoint - free music with full playback via video embeds
+app.get('/api/spotify/tracks', async (req, res) => {
+  try {
+    const envPath = path.join(__dirname, '.env');
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    const envVars = {};
+    
+    envContent.split('\n').forEach(line => {
+      const [key, ...valueParts] = line.split('=');
+      if (key && valueParts.length > 0) {
+        envVars[key.trim()] = valueParts.join('=').trim();
+      }
+    });
+    
+    const apiKey = envVars.YOUTUBE_API_KEY;
+    const apiKey2 = envVars.YOUTUBE_API_KEY_2;
+    
+    if (!apiKey || apiKey === 'your_youtube_api_key_here') {
+      return res.status(400).json({ error: 'YouTube API key not configured' });
+    }
+    
+    // Get search query from request or use default
+    const searchQuery = req.query.q || 'popular music 2024';
+    
+    // Try first API key
+    let searchResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchQuery)}&type=video&videoCategoryId=10&maxResults=50&key=${apiKey}`);
+    let searchData = await searchResponse.json();
+    
+    // If first key has quota exceeded, try second key
+    if (searchData.error && searchData.error.code === 403 && apiKey2 && apiKey2 !== 'your_youtube_api_key_2_here') {
+      console.log('🔄 YouTube API key 1 quota exceeded, trying key 2...');
+      searchResponse = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchQuery)}&type=video&videoCategoryId=10&maxResults=50&key=${apiKey2}`);
+      searchData = await searchResponse.json();
+    }
+    
+    // Check if API returned an error (e.g., quota exceeded)
+    if (searchData.error) {
+      console.error('🛑ERROR: YouTube API error:', searchData.error);
+      if (searchData.error.code === 403) {
+        return res.status(429).json({ 
+          error: 'YouTube API quota exceeded. Please try again later or use a different API key.',
+          quotaExceeded: true
+        });
+      }
+      return res.status(500).json({ error: searchData.error.message || 'YouTube API error' });
+    }
+    
+    // Check if API returned valid data
+    if (!searchData.items || !Array.isArray(searchData.items)) {
+      console.error('🛑ERROR: YouTube API returned invalid response:', searchData);
+      return res.status(500).json({ error: 'Invalid API response from YouTube' });
+    }
+    
+    // Filter to only show - Topic channels (official music distribution)
+    const topicTracks = searchData.items.filter(item => 
+      item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
+    );
+    
+    const tracks = topicTracks.map(item => ({
+      id: item.id.videoId,
+      title: item.snippet.title,
+      artist: item.snippet.channelTitle.replace(' - Topic', ''),
+      album: 'Official Audio',
+      imageUrl: item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.default?.url,
+      previewUrl: null, // YouTube uses embeds, not audio URLs
+      spotifyUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`
+    }));
+    
+    res.json({ tracks });
+    
+  } catch (error) {
+    console.error('🛑ERROR: YouTube tracks error:', error.message);
     res.status(500).json({ error: error.message });
   }
 });

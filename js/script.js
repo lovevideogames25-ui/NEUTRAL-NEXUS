@@ -73,6 +73,89 @@ document.addEventListener('DOMContentLoaded', async function () {
   console.log('✅ ULTIMATEUNBLOCKER Premium UI initialized with enhanced effects')
 })
 
+// Version Popup Management
+function initializeVersionPopup() {
+  console.log('🔍 initializeVersionPopup called')
+  const versionPopup = document.getElementById('versionPopup')
+  const closeBtn = document.getElementById('closeVersionPopup')
+  const dismissBtn = document.getElementById('dismissVersionPopup')
+  
+  console.log('🔍 versionPopup element:', versionPopup ? 'FOUND' : 'NOT FOUND')
+  
+  // Clear dismissed version to show popup
+  localStorage.removeItem('dismissedVersion')
+  console.log('🗑️ Cleared dismissedVersion')
+  
+  // Check if user has already dismissed this version
+  const dismissedVersion = localStorage.getItem('dismissedVersion')
+  const currentVersion = '0.8.0'
+  
+  console.log('🔍 dismissedVersion:', dismissedVersion)
+  console.log('🔍 currentVersion:', currentVersion)
+  
+  if (dismissedVersion === currentVersion) {
+    // User already dismissed this version, don't show popup
+    console.log('⏭️ Version already dismissed, skipping popup')
+    if (versionPopup) {
+      versionPopup.style.display = 'none'
+    }
+    return
+  }
+  
+  // Show popup after a short delay
+  setTimeout(() => {
+    if (versionPopup) {
+      versionPopup.style.display = 'flex'
+      versionPopup.style.animation = 'fadeIn 0.3s ease'
+      console.log('🎉 Version popup displayed for v0.8.0')
+    } else {
+      console.error('❌ versionPopup element not found!')
+    }
+  }, 1500)
+  
+  // Close button handler
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      if (versionPopup) {
+        versionPopup.style.animation = 'fadeOut 0.3s ease'
+        setTimeout(() => {
+          versionPopup.style.display = 'none'
+          localStorage.setItem('dismissedVersion', currentVersion)
+          console.log('✅ Version popup dismissed')
+        }, 300)
+      }
+    })
+  }
+  
+  // Dismiss button handler
+  if (dismissBtn) {
+    dismissBtn.addEventListener('click', () => {
+      if (versionPopup) {
+        versionPopup.style.animation = 'fadeOut 0.3s ease'
+        setTimeout(() => {
+          versionPopup.style.display = 'none'
+          localStorage.setItem('dismissedVersion', currentVersion)
+          console.log('✅ Version popup dismissed')
+        }, 300)
+      }
+    })
+  }
+  
+  // Close on backdrop click
+  if (versionPopup) {
+    versionPopup.addEventListener('click', (e) => {
+      if (e.target === versionPopup) {
+        versionPopup.style.animation = 'fadeOut 0.3s ease'
+        setTimeout(() => {
+          versionPopup.style.display = 'none'
+          localStorage.setItem('dismissedVersion', currentVersion)
+          console.log('✅ Version popup dismissed (backdrop click)')
+        }, 300)
+      }
+    })
+  }
+}
+
 // Loading Screen Management
 function initializeLoadingScreen() {
   const loadingScreen = document.getElementById('loadingScreen')
@@ -185,6 +268,39 @@ function showMainContent() {
     console.log('🚀 Initializing app components...')
     initializeApp()
   }, 700)
+  
+  // Show version popup after loading completes
+  setTimeout(() => {
+    initializeVersionPopup()
+  }, 1000)
+  
+  // New links modal functionality
+  const newLinksBox = document.getElementById('newLinksBox')
+  const newLinksModal = document.getElementById('newLinksModal')
+  const closeNewLinksModal = document.getElementById('closeNewLinksModal')
+  
+  if (newLinksBox && newLinksModal) {
+    newLinksBox.addEventListener('click', () => {
+      newLinksModal.style.display = 'flex'
+      console.log('🔗 New links modal opened')
+    })
+  }
+  
+  if (closeNewLinksModal && newLinksModal) {
+    closeNewLinksModal.addEventListener('click', () => {
+      newLinksModal.style.display = 'none'
+      console.log('🔗 New links modal closed')
+    })
+  }
+  
+  if (newLinksModal) {
+    newLinksModal.addEventListener('click', (e) => {
+      if (e.target === newLinksModal) {
+        newLinksModal.style.display = 'none'
+        console.log('🔗 New links modal closed (backdrop click)')
+      }
+    })
+  }
 }
 
 // Initialize the main application
@@ -3692,7 +3808,8 @@ function initializeNavigation() {
   if (listenMenuItem) {
     listenMenuItem.addEventListener('click', function (e) {
       e.stopPropagation()
-      console.log('🎵 Listen menu clicked - coming soon')
+      console.log('🎵 Listen menu clicked - navigating to music')
+      window.location.href = 'music.html'
       // Close menu
       setTimeout(() => {
         closeMenu()
