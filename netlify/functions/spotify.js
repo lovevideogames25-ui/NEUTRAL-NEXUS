@@ -49,12 +49,12 @@ exports.handler = async (event, context) => {
           };
         }
         
-        // Filter backup data to only include -Topic channels
+        // Filter backup data to only include - Topic channels
         const topicChannels = backupData.items.filter(item => 
-          item.snippet.channelTitle && item.snippet.channelTitle.endsWith('-Topic')
+          item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
         );
 
-        // If no -Topic channels found, use all results as fallback
+        // If no - Topic channels found, use all results as fallback
         const channelsToUse = topicChannels.length > 0 ? topicChannels : backupData.items;
 
         const tracks = channelsToUse.map(item => ({
@@ -81,12 +81,12 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Filter to only include -Topic channels (official music distribution)
+    // Filter to only include - Topic channels (official music distribution)
     const topicChannels = data.items.filter(item => 
-      item.snippet.channelTitle && item.snippet.channelTitle.endsWith('-Topic')
+      item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
     );
 
-    // If no -Topic channels found, use all results as fallback
+    // If no - Topic channels found, use all results as fallback
     const channelsToUse = topicChannels.length > 0 ? topicChannels : data.items;
 
     const tracks = channelsToUse.map(item => ({
