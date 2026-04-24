@@ -818,10 +818,9 @@
         // Fetch tracks from Spotify API
         async function fetchSpotifyTracks(searchQuery = '') {
             try {
-                const baseUrl = 'https://ultimateunblocker-backend.vercel.app';
                 const url = searchQuery 
-                    ? `${baseUrl}/api/spotify/tracks?q=${encodeURIComponent(searchQuery)}`
-                    : `${baseUrl}/api/spotify/tracks`;
+                    ? `/api/spotify/tracks?q=${encodeURIComponent(searchQuery)}`
+                    : '/api/spotify/tracks';
                 const response = await fetch(url);
                 const data = await response.json();
                 
