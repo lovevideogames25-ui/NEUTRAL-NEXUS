@@ -6,7 +6,6 @@
 
 [build.environment]
   SECRETS_SCAN_ENABLED = "false"
-  status = 200
 
 [[redirects]]
   from = "/api/*"
