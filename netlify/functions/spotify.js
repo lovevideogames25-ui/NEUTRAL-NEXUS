@@ -22,11 +22,11 @@ exports.handler = async (event, context) => {
 
     let url;
     if (query) {
-      // Search YouTube with - Topic filter for official music channels
-      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music -Topic')}&maxResults=12&key=${apiKey}`;
+      // Search YouTube
+      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music')}&maxResults=50&key=${apiKey}`;
     } else {
-      // Get popular music videos with - Topic filter
-      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024 -Topic&maxResults=12&key=${apiKey}`;
+      // Get popular music videos
+      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=50&key=${apiKey}`;
     }
 
     const response = await fetch(url);
@@ -36,8 +36,8 @@ exports.handler = async (event, context) => {
       // Check if quota exceeded and try backup key
       if (data.error.errors && data.error.errors[0].reason === 'quotaExceeded' && apiKey2) {
         const backupUrl = query
-          ? `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music -Topic')}&maxResults=12&key=${apiKey2}`
-          : `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024 -Topic&maxResults=12&key=${apiKey2}`;
+          ? `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music')}&maxResults=50&key=${apiKey2}`
+          : `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=50&key=${apiKey2}`;
         
         const backupResponse = await fetch(backupUrl);
         const backupData = await backupResponse.json();
@@ -54,10 +54,7 @@ exports.handler = async (event, context) => {
           item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
         );
 
-        // If no - Topic channels found, use all results as fallback
-        const channelsToUse = topicChannels.length > 0 ? topicChannels : backupData.items;
-
-        const tracks = channelsToUse.map(item => ({
+        const tracks = topicChannels.map(item => ({
           title: item.snippet.title,
           artist: item.snippet.channelTitle,
           imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
@@ -86,10 +83,7 @@ exports.handler = async (event, context) => {
       item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
     );
 
-    // If no - Topic channels found, use all results as fallback
-    const channelsToUse = topicChannels.length > 0 ? topicChannels : data.items;
-
-    const tracks = channelsToUse.map(item => ({
+    const tracks = topicChannels.map(item => ({
       title: item.snippet.title,
       artist: item.snippet.channelTitle,
       imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
