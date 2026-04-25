@@ -88,7 +88,7 @@ function initializeVersionPopup() {
   
   // Check if user has already dismissed this version
   const dismissedVersion = localStorage.getItem('dismissedVersion')
-  const currentVersion = '0.8.0'
+  const currentVersion = '0.8.1'
   
   console.log('🔍 dismissedVersion:', dismissedVersion)
   console.log('🔍 currentVersion:', currentVersion)
@@ -107,7 +107,7 @@ function initializeVersionPopup() {
     if (versionPopup) {
       versionPopup.style.display = 'flex'
       versionPopup.style.animation = 'fadeIn 0.3s ease'
-      console.log('🎉 Version popup displayed for v0.8.0')
+      console.log('🎉 Version popup displayed for v0.8.1')
     } else {
       console.error('❌ versionPopup element not found!')
     }
@@ -274,7 +274,69 @@ function showMainContent() {
     initializeVersionPopup()
   }, 1000)
   
-  // New links modal functionality
+  // New links search functionality
+  const linksSearchInput = document.getElementById('linksSearchInput')
+  const newLinksDisplay = document.getElementById('newLinksDisplay')
+  
+  if (linksSearchInput && newLinksDisplay) {
+    linksSearchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase()
+      const linkCards = newLinksDisplay.querySelectorAll('.link-card')
+      const categories = newLinksDisplay.querySelectorAll('.link-category')
+      
+      // First, check if any category matches
+      let categoryMatch = false
+      categories.forEach(category => {
+        const categoryTitle = category.querySelector('h3')?.textContent.toLowerCase() || ''
+        if (categoryTitle.includes(searchTerm)) {
+          categoryMatch = true
+          // Show all cards in this category
+          category.querySelectorAll('.link-card').forEach(card => {
+            card.style.display = 'block'
+          })
+          category.style.display = 'block'
+        }
+      })
+      
+      // If no category match, search within individual cards
+      if (!categoryMatch) {
+        linkCards.forEach(card => {
+          const linkText = card.textContent.toLowerCase()
+          const linkUrl = card.querySelector('a')?.href.toLowerCase() || ''
+          
+          if (linkText.includes(searchTerm) || linkUrl.includes(searchTerm)) {
+            card.style.display = 'block'
+          } else {
+            card.style.display = 'none'
+          }
+        })
+        
+        // Hide empty categories
+        categories.forEach(category => {
+          const visibleCards = category.querySelectorAll('.link-card[style="display: block;"], .link-card:not([style*="display: none"])')
+          if (visibleCards.length === 0) {
+            category.style.display = 'none'
+          } else {
+            category.style.display = 'block'
+          }
+        })
+      }
+      
+      // If search is empty, show everything
+      if (searchTerm === '') {
+        linkCards.forEach(card => {
+          card.style.display = 'block'
+        })
+        categories.forEach(category => {
+          category.style.display = 'block'
+        })
+      }
+      
+      console.log('🔍 Search:', searchTerm)
+    })
+  }
+  
+  // New links modal functionality (legacy - modal is now hidden)
   const newLinksBox = document.getElementById('newLinksBox')
   const newLinksModal = document.getElementById('newLinksModal')
   const closeNewLinksModal = document.getElementById('closeNewLinksModal')
@@ -2105,7 +2167,8 @@ async function tryOpenRouter(message, hasImages = false, isVisionModel = false) 
     'gemma-3-12b': 'google/gemma-3-12b-it:free',
     'gemma-3-12b-normal': 'google/gemma-3-12b-it:free',
     'gemma-3-27b': 'google/gemma-3-27b-it:free',
-        'llama-3.3-70b': 'meta-llama/llama-3.3-70b-instruct:free'
+    'llama-3.3-70b': 'meta-llama/llama-3.3-70b-instruct:free',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   }
   
   const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
@@ -2277,7 +2340,8 @@ async function tryHuggingFace(message, hasImages = false, isVisionModel = false)
     'gemma-3-4b-fast': 'google/gemma-3-4b-it:featherlessai',
     'gemma-3-12b': 'google/gemma-3-12b-it',
     'gemma-3-12b-normal': 'google/gemma-3-12b-it:featherless-ai',
-    'gemma-3-27b': 'google/gemma-3-27b-it:featherless-ai'
+    'gemma-3-27b': 'google/gemma-3-27b-it:featherless-ai',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   }
   
   const hfModel = hfModelMap[selectedModel] || hfModelMap['auto']
@@ -2462,7 +2526,8 @@ async function tryVercelAI(message, hasImages = false, isVisionModel = false) {
     'auto': 'openai/gpt-oss-120b',
     'gpt-oss-20b': 'openai/gpt-oss-20b',
     'gpt-oss-120b': 'openai/gpt-oss-120b',
-        'llama-3.3-70b': 'meta/llama-3.3-70b'
+    'llama-3.3-70b': 'meta/llama-3.3-70b',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   }
   
   const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
@@ -2642,7 +2707,8 @@ async function tryGroq(message, hasImages = false, isVisionModel = false) {
     'gpt-oss-120b': 'openai/gpt-oss-120b',
     'gemma-3-12b-normal': 'google/gemma-3-12b-it',
     'gemma-3-27b': 'google/gemma-3-27b-it',
-    'llama-3.3-70b': 'llama-3.3-70b-versatile'
+    'llama-3.3-70b': 'llama-3.3-70b-versatile',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   }
   
   const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
@@ -2769,7 +2835,8 @@ async function tryCloudflare(message, hasImages = false, isVisionModel = false) 
     'gemma-3-12b-normal': '@cf/google/gemma-3-12b-it',
     'gemma-3-27b': '@cf/meta/llama-3.3-70b-instruct',
     'mistral-small-3-1': '@cf/mistralai/mistral-small-3.1-24b-instruct',
-    'llama-3.3-70b': '@cf/meta/llama-3.3-70b-instruct'
+    'llama-3.3-70b': '@cf/meta/llama-3.3-70b-instruct',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   }
 
   const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
@@ -2874,7 +2941,8 @@ async function tryGoogleAIStudio(message, hasImages = false, isVisionModel = fal
     'gemma-3-12b': 'gemini-1.5-pro',
     'gemma-3-12b-normal': 'gemini-1.5-pro',
     'gemma-3-27b': 'gemini-2.0-flash-exp',
-    'llama-3.3-70b': 'gemini-2.0-flash-exp'
+    'llama-3.3-70b': 'gemini-2.0-flash-exp',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   }
 
   const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
@@ -2972,6 +3040,7 @@ async function tryEmergentAI(message, hasImages = false, isVisionModel = false) 
     'gpt-4o-mini': 'gpt-4o-mini',
     'mistral-small-3.1': 'mistral-small-3.1',
     'gemma-4-31b-it': 'gemma-4-31b-it',
+    'claude-opus-4': 'claude-opus-4',
     'claude-sonnet-4.5': 'claude-sonnet-4.5',
     'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
     'llama-4-scout': 'llama-4-scout'
@@ -3199,7 +3268,8 @@ async function tryLockLLM(message, hasImages = false, isVisionModel = false) {
     'gemma-3-4b': 'google/gemma-3-4b-it:free',
     'gemma-3-12b': 'google/gemma-3-12b-it:free',
     'gemma-3-27b': 'google/gemma-3-27b-it:free',
-        'llama-3.3-70b': 'meta-llama/llama-3.3-70b-instruct:free'
+    'llama-3.3-70b': 'meta-llama/llama-3.3-70b-instruct:free',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   }
   
   const selectedModel = modelMap[window.selectedAIModel] || modelMap['gemma-3-12b'] || modelMap['auto']

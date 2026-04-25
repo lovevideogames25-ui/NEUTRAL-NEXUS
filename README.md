@@ -180,12 +180,25 @@
 
 ## 🔄 **Version History**
 
-### 🎉 **v0.8.0 BETA - MAJOR UPDATE** (Current)
+### 🎉 **v0.8.1 - LINK UPDATE** (Current)
+- **🔗 35+ NEW LINKS** - Added 35+ new unblocking links across 5 categories
+- **📂 FERN CATEGORY** - I Love Maths, I Love Literatures, Bull Best YouTuber (original links preserved)
+- **📂 MIST CATEGORY** - I Love Calc, Math Is Great AF, Reading Is Great AF, Bull33 Is Great AF
+- **⚡ LUCIDE CATEGORY** - 5 new Lucide proxy links with various subdomains
+- **💨 VAPOR CATEGORY** - Vapor Math, Math Is Cool Science, Vork Lionere, and more
+- **🐕 DODGEUB CATEGORY** - 15+ new Dodgeub links including CloudFront CDNs
+- **📄 MSIT COMPATIBILITY** - All Mist links include /index.html for MSIT compatibility
+- **🚀 VERCEL API SUPPORT** - Added Vercel API functions for music and AI endpoints
+- **🌐 DUAL DEPLOYMENT** - Now works seamlessly on both Netlify and Vercel
+- **🧠 CLAUDE-OPUS-4 MODEL** - Added Anthropic's most powerful AI model for advanced reasoning
+- **📱 WORKS ON EVERY SCREEN** - Fully responsive design that adapts to any screen size
+
+### 🎉 **v0.8.0 BETA - MAJOR UPDATE**
 - **🤖 AI SYSTEM OVERHAUL** - Completely redesigned AI interface with premium glassmorphism
 - **🧠 NEW AI MODELS** - Gemini-2.5-Flash, Gemini-2.5-Pro, Claude-Sonnet-4.5, DeepSeek-V3.2, Qwen3.5-Plus, Mistral-Small-4
 - **👁️ VISION SUPPORT** - All AI models now support image analysis and multimodal processing
 - **🎵 MUSIC/LISTEN FEATURE** - Brand new music player with YouTube integration
-- **� LINKS UP TO DATE** - All links verified with latest working URLs
+- **🔗 LINKS UP TO DATE** - All links verified with latest working URLs
 - **🔄 API FALLBACK CHAIN** - Full API1-8 fallback system for maximum reliability
 - **🎨 GLASSMORPHISM UI** - Premium glassmorphism design throughout the application
 - **📱 RESPONSIVE DESIGN** - Perfect mobile, tablet, and desktop compatibility

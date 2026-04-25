@@ -296,7 +296,7 @@ class UltimateAI {
 
     if (tab === 'popular') {
       modelItems.forEach(item => {
-        const popularModels = ['Gemini-2.5-Flash', 'gpt-4o-mini', 'Qwen3.5-Plus'];
+        const popularModels = ['Gemini-2.5-Flash', 'gpt-4o-mini', 'Qwen3.5-Plus', 'claude-opus-4'];
         if (popularModels.includes(item.dataset.model)) {
           item.style.display = 'block';
         } else {
@@ -372,7 +372,8 @@ class UltimateAI {
         'gemma-4-31b-it': 'google/gemma-4-31b-it',
         'llama-4-scout': 'meta-llama/llama-4-scout',
         'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
-        'DeepSeek-V3.2': 'deepseek/deepseek-v3.2'
+        'DeepSeek-V3.2': 'deepseek/deepseek-v3.2',
+        'claude-opus-4': 'anthropic/claude-opus-4'
       };
       const githubModel = modelMap[this.currentModel] || this.currentModel;
       console.log('Using GitHub AI model:', githubModel);

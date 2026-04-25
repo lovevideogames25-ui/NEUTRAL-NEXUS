@@ -98,7 +98,8 @@ async function callOpenRouter(message, model, apiKey) {
     'gpt-oss-120b': 'openai/gpt-oss-120b:groq',
     'gemma-3-4b': 'google/gemma-3-4b-it:free',
     'gemma-3-12b': 'google/gemma-3-12b-it:free',
-    'gemma-3-27b': 'google/gemma-3-27b-it:free'
+    'gemma-3-27b': 'google/gemma-3-27b-it:free',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   };
 
   const selectedModel = modelMap[model] || modelMap['auto'];
@@ -236,7 +237,8 @@ async function callLockLLM(message, model, apiKey) {
     'gpt-oss-120b': 'openai/gpt-oss-120b:groq',
     'gemma-3-4b': 'google/gemma-3-4b-it:free',
     'gemma-3-12b': 'google/gemma-3-12b-it:free',
-    'gemma-3-27b': 'google/gemma-3-27b-it:free'
+    'gemma-3-27b': 'google/gemma-3-27b-it:free',
+    'claude-opus-4': 'anthropic/claude-opus-4'
   };
 
   const selectedModel = modelMap[model] || modelMap['auto'];

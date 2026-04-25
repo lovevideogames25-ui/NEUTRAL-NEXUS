@@ -8,8 +8,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## 🎉 **[0.8.0 BETA] - 2026-04-23 - MAJOR UPDATE**
+## [0.8.1] - 2026-04-24 - LINK UPDATE
 
+### MASSIVE LINK EXPANSION
+
+#### New Features
+- **35+ New Links** - Added 35+ new unblocking links across 5 categories
+- **Fern Category** - I Love Maths, I Love Literatures, Bull Best YouTuber (original links preserved)
+- **Mist Category** - I Love Calc, Math Is Great AF, Reading Is Great AF, Bull33 Is Great AF
+- **Lucide Category** - 5 new Lucide proxy links with various subdomains
+- **Vapor Category** - Vapor Math, Math Is Cool Science, Vork Lionere, and more
+- **Dodgeub Category** - 15+ new Dodgeub links including CloudFront CDNs
+- **MSIT Compatibility** - All Mist links include /index.html for MSIT compatibility
+- **Vercel API Support** - Added Vercel API functions for music and AI endpoints
+- **Dual Deployment** - Now works seamlessly on both Netlify and Vercel
+- **Claude-Opus-4 Model** - Added Anthropic's most powerful AI model for advanced reasoning
+- **Responsive Design** - Fully responsive layout that adapts to any screen size
+
+#### Technical Enhancements
+- **Vercel API Functions** - api/spotify/tracks.js and api/chat.js for Vercel deployment
+- **Relative Path Support** - Frontend uses relative paths for both Netlify and Vercel
+- **Link Modal Update** - Updated 7+ NEW LINKS to 35+ NEW LINKS
+- **Modern Link Categories** - Organized links into Fern, Mist, Lucide, Vapor, and Dodgeub
+
+---
+
+## [0.8.0 BETA] - 2026-04-23 - MAJOR UPDATE
+
+### PRODUCTION RELEASE
 ### 🚀 **PRODUCTION RELEASE**
 
 #### 🎯 **Major Features**
