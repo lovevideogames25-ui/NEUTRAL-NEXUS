@@ -1,4 +1,4 @@
-// ULTIMATEUNBLOCKER - Premium UI JavaScript with Enhanced Interactions
+// NEUTRAL NEXUS - Premium UI JavaScript with Enhanced Interactions
 
 // Environment variables for browser
 window.ENV = window.ENV || {
@@ -45,7 +45,7 @@ async function loadAPIKeys() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async function () {
-  console.log('🚀 ULTIMATEUNBLOCKER Premium UI initializing...')
+  console.log('🚀 NEUTRAL NEXUS Premium UI initializing...')
   
   // Load API keys first
   await loadAPIKeys()
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
   }, 100);
   
-  console.log('✅ ULTIMATEUNBLOCKER Premium UI initialized with enhanced effects')
+  console.log('✅ NEUTRAL NEXUS Premium UI initialized with enhanced effects')
 })
 
 // Version Popup Management
@@ -107,7 +107,7 @@ function initializeVersionPopup() {
     if (versionPopup) {
       versionPopup.style.display = 'flex'
       versionPopup.style.animation = 'fadeIn 0.3s ease'
-      console.log('🎉 Version popup displayed for v0.8.1')
+      console.log('🎉 Version popup displayed for v0.9.0')
     } else {
       console.error('❌ versionPopup element not found!')
     }
@@ -411,7 +411,52 @@ function initializeRandomMessages() {
     "I'm not lazy, I'm on energy saving mode",
     "I would tell you a UDP joke but you might not get it",
     "Why do programmers prefer dark mode? Because light attracts bugs",
-    "Loading the loading"
+    "Loading the loading",
+    "Why did the developer go broke? Because he used up all his cache",
+    "A SQL query walks into a bar, walks up to two tables and asks... 'Can I join you?'",
+    "There are only 10 types of people in the world: those who understand binary and those who don't",
+    "Why do Java developers wear glasses? Because they don't C#",
+    "How many programmers does it take to change a light bulb? None, that's a hardware problem",
+    "Why was the JavaScript developer sad? Because he didn't Node how to Express himself",
+    "What's a programmer's favorite hangout place? Foo Bar",
+    "Why do programmers always mix up Halloween and Christmas? Because Oct 31 = Dec 25",
+    "A software engineer, a hardware engineer, and a departmental manager were on their way to a meeting",
+    "Why did the developer break up with his girlfriend? Because she had too many issues",
+    "What do you call a programmer from Finland? Nerdic",
+    "Why was the computer cold? It left its Windows open",
+    "What's an astronaut's favorite part of a computer? The space bar",
+    "Why did the PowerPoint presentation cross the road? To get to the other slide",
+    "I told my computer I needed a break, and now it won't stop sending me Kit-Kats",
+    "Why do programmers hate nature? It has too many bugs",
+    "What's the best thing about a UDP joke? You don't have to acknowledge it",
+    "Why was the math book sad? It had too many problems",
+    "I would tell you a chemistry joke but I know I wouldn't get a reaction",
+    "Why don't scientists trust atoms? Because they make up everything",
+    "What do you call a fake noodle? An impasta",
+    "Why did the scarecrow win an award? He was outstanding in his field",
+    "I'm reading a book about anti-gravity. It's impossible to put down",
+    "What do you call a bear with no teeth? A gummy bear",
+    "Why don't eggs tell jokes? They'd crack each other up",
+    "What did the ocean say to the beach? Nothing, it just waved",
+    "Why did the bicycle fall over? Because it was two-tired",
+    "What do you call a fish without eyes? A fsh",
+    "Why did the coffee file a police report? It got mugged",
+    "What do you call a dinosaur that crashes their car? Tyrannosaurus Wrecks",
+    "Why don't skeletons fight each other? They don't have the guts",
+    "What do you call a pony with a cough? A little horse",
+    "Why did the invisible man turn down the job offer? He couldn't see himself doing it",
+    "What do you call a lazy kangaroo? A pouch potato",
+    "Why did the tomato turn red? Because it saw the salad dressing",
+    "What do you call a fake noodle? An impasta",
+    "Why did the golfer bring two pairs of pants? In case he got a hole in one",
+    "What do you call a sleeping dinosaur? A dino-snore",
+    "Why don't scientists trust atoms? Because they make up everything",
+    "What did the fish say when he hit a concrete wall? Dam",
+    "Why did the cookie cry? Because his mom was a wafer so long",
+    "What do you call a dinosaur with an extensive vocabulary? A thesaurus",
+    "Why did the banana go to the doctor? Because it wasn't peeling well",
+    "I need a job",
+    "Loading Failed. Try again by punching your chromebook"
   ]
   
   const messageTextElement = document.querySelector('.message-text')
@@ -467,7 +512,7 @@ function initializeSettings() {
   
   if (githubBtn) {
     githubBtn.addEventListener('click', function () {
-      window.open('https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER', '_blank')
+      window.open('https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/', '_blank')
     })
   }
   
@@ -778,7 +823,7 @@ function triggerEventNotifications() {
   // Welcome notification
   setTimeout(() => {
     showDesktopNotification(
-      'Welcome to ULTIMATEUNBLOCKER!',
+      'Welcome to NEUTRAL NEXUS!',
       'Your gateway to unlimited access is ready.'
     )
   }, 5000)
@@ -3867,13 +3912,54 @@ function initializeNavigation() {
   if (watchMenuItem) {
     watchMenuItem.addEventListener('click', function (e) {
       e.stopPropagation()
-      console.log('📺 Watch menu clicked - coming soon')
+      console.log('📺 Watch menu clicked - toggling dropdown')
+      const watchDropdown = document.getElementById('watchDropdown')
+      if (watchDropdown) {
+        watchDropdown.classList.toggle('active')
+      }
+    })
+  }
+
+  // Watch dropdown item handlers
+  const watchDropdownItems = document.querySelectorAll('.watch-dropdown-item')
+  watchDropdownItems.forEach(item => {
+    item.addEventListener('click', function (e) {
+      e.stopPropagation()
+      const type = this.getAttribute('data-type')
+      console.log('📺 Watch dropdown item clicked:', type)
+      
+      if (type === 'movies') {
+        window.location.href = 'movie.html'
+      } else if (type === 'tv') {
+        window.location.href = 'tv-show.html'
+      } else if (type === 'youtube') {
+        // YouTube - coming soon
+        console.log('📺 YouTube coming soon')
+      } else if (type === 'twitch') {
+        // Twitch - coming soon
+        console.log('📺 Twitch coming soon')
+      }
+      
+      // Close dropdown
+      const watchDropdown = document.getElementById('watchDropdown')
+      if (watchDropdown) {
+        watchDropdown.classList.remove('active')
+      }
+      
       // Close menu
       setTimeout(() => {
         closeMenu()
       }, 100)
     })
-  }
+  })
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function () {
+    const watchDropdown = document.getElementById('watchDropdown')
+    if (watchDropdown) {
+      watchDropdown.classList.remove('active')
+    }
+  })
 
   if (listenMenuItem) {
     listenMenuItem.addEventListener('click', function (e) {
@@ -4052,7 +4138,7 @@ function createParticle () {
   }
 }
 
-// ULTIMATEUNBLOCKER - Categories and Links System
+// NEUTRAL NEXUS - Categories and Links System
 const categoriesData = {
     'PROXY SITES': [
         { name: 'TRUFFLED', url: 'https://staffhiring.metropolitanstaffingsolutions.com/', description: 'Fast and secure proxy', warning: null },
@@ -5662,10 +5748,16 @@ async function loadTabContent(tabName) {
         content = await loadMarkdownFile('ai/README.md');
         // Add GitHub repository link at the top
         content = `<div class="github-link">
-          <a href="https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER/" target="_blank" class="github-repo-link">
+          <a href="https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/" target="_blank" class="github-repo-link">
             🔗 Visit GitHub Repository
           </a>
         </div><br><br>${content}`;
+        break;
+      case 'credits':
+        content = await loadMarkdownFile('CREDITS.md');
+        break;
+      case 'plans':
+        content = await loadMarkdownFile('PLANS.md');
         break;
       case 'changelog':
         content = await loadMarkdownFile('CHANGELOG.md');

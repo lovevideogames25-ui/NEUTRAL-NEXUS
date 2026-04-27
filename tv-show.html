@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEUTRAL NEXUS TV Shows</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .tv-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 700px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: rgba(0, 0, 0, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-header h2 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .close-home-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-home-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .search-container {
+            padding: 20px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-bar:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .categories {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+        }
+
+        .tv-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .tv-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .tv-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .tv-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .tv-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tv-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tv-item.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .tv-poster {
+            width: 60px;
+            height: 90px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .tv-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tv-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tv-year {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .tv-rating {
+            color: #ffd700;
+            font-size: 12px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .featured-section {
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .featured-title {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .featured-tv {
+            display: flex;
+            gap: 20px;
+        }
+
+        .featured-poster {
+            width: 200px;
+            height: 300px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            flex-shrink: 0;
+        }
+
+        .featured-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-details h3 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .featured-details p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .featured-meta span {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+        }
+
+        .featured-rating {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .watch-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .watch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .season-episode-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .season-select, .episode-select {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .season-select:hover, .episode-select:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .season-select option, .episode-select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .video-player-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1000;
+        }
+
+        .video-player-container.active {
+            display: block;
+        }
+
+        .video-player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-player-title {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .close-player-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-player-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .video-iframe {
+            width: 100%;
+            height: calc(100% - 80px);
+            border: none;
+        }
+
+        .source-btn {
+            position: absolute;
+            top: 20px;
+            right: 100px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .source-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .source-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 100px;
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 150px;
+            display: none;
+            z-index: 1002;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .source-dropdown.active {
+            display: block;
+        }
+
+        .source-option {
+            padding: 12px 20px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .source-option:hover {
+            background: rgba(102, 126, 234, 0.3);
+        }
+
+        .source-option.selected {
+            background: rgba(102, 126, 234, 0.5);
+            font-weight: 600;
+        }
+
+        .tv-grid {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .tv-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .tv-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .tv-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .grid-title {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .grid-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .grid-poster {
+            width: 100%;
+            aspect-ratio: 2/3;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin-bottom: 12px;
+        }
+
+        .grid-info {
+            text-align: center;
+        }
+
+        .grid-title-text {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .grid-year {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading TV Shows...</div>
+        </div>
+    </div>
+
+    <div class="tv-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div>
+                    <h2>📺 TV Shows</h2>
+                    <p>Discover & Watch</p>
+                </div>
+                <button class="close-home-btn" id="close-home-btn">×</button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search TV shows...">
+            </div>
+
+            <div class="categories">
+                <button class="category-btn active">Popular</button>
+                <button class="category-btn">Top Rated</button>
+                <button class="category-btn">Airing Today</button>
+            </div>
+
+            <div class="tv-list">
+                <div class="tv-item active">
+                    <div class="tv-poster">📺</div>
+                    <div class="tv-info">
+                        <div class="tv-title">Featured Show</div>
+                        <div class="tv-year">2024</div>
+                        <div class="tv-rating">⭐ 8.5</div>
+                    </div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-poster">🎭</div>
+                    <div class="tv-info">
+                        <div class="tv-title">Drama Series</div>
+                        <div class="tv-year">2024</div>
+                        <div class="tv-rating">⭐ 7.8</div>
+                    </div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-poster">😱</div>
+                    <div class="tv-info">
+                        <div class="tv-title">Horror Series</div>
+                        <div class="tv-year">2023</div>
+                        <div class="tv-rating">⭐ 8.2</div>
+                    </div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-poster">🚀</div>
+                    <div class="tv-info">
+                        <div class="tv-title">Sci-Fi Series</div>
+                        <div class="tv-year">2024</div>
+                        <div class="tv-rating">⭐ 7.5</div>
+                    </div>
+                </div>
+                <div class="tv-item">
+                    <div class="tv-poster">😂</div>
+                    <div class="tv-info">
+                        <div class="tv-title">Comedy Series</div>
+                        <div class="tv-year">2024</div>
+                        <div class="tv-rating">⭐ 8.9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="featured-section">
+                <div class="featured-title">Featured</div>
+                <div class="featured-tv">
+                    <div class="featured-poster">📺</div>
+                    <div class="featured-details">
+                        <h3>Featured TV Show Title</h3>
+                        <div class="featured-meta">
+                            <span>2024</span>
+                            <span>•</span>
+                            <span>Drama</span>
+                        </div>
+                        <div class="featured-rating">⭐ 8.5/10</div>
+                        <div class="season-episode-selector">
+                            <select class="season-select" id="season-select">
+                                <option value="1">Season 1</option>
+                                <option value="2">Season 2</option>
+                                <option value="3">Season 3</option>
+                            </select>
+                            <select class="episode-select" id="episode-select">
+                                <option value="1">Episode 1</option>
+                                <option value="2">Episode 2</option>
+                                <option value="3">Episode 3</option>
+                            </select>
+                        </div>
+                        <p>An exciting drama series that takes you on a thrilling journey through stunning landscapes and epic stories.</p>
+                        <button class="watch-btn">▶ Watch Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tv-grid">
+                <div class="grid-title">Popular Now</div>
+                <div class="grid">
+                    <div class="grid-item">
+                        <div class="grid-poster">📺</div>
+                        <div class="grid-info">
+                            <div class="grid-title-text">Show 1</div>
+                            <div class="grid-year">2024</div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-poster">🎭</div>
+                        <div class="grid-info">
+                            <div class="grid-title-text">Show 2</div>
+                            <div class="grid-year">2024</div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-poster">😱</div>
+                        <div class="grid-info">
+                            <div class="grid-title-text">Show 3</div>
+                            <div class="grid-year">2023</div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-poster">🚀</div>
+                        <div class="grid-info">
+                            <div class="grid-title-text">Show 4</div>
+                            <div class="grid-year">2024</div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-poster">😂</div>
+                        <div class="grid-info">
+                            <div class="grid-title-text">Show 5</div>
+                            <div class="grid-year">2024</div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div class="grid-poster">💕</div>
+                        <div class="grid-info">
+                            <div class="grid-title-text">Show 6</div>
+                            <div class="grid-year">2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-player-container" id="video-player">
+        <div class="video-player-header">
+            <div class="video-player-title" id="video-player-title">TV Player</div>
+            <button class="close-player-btn" id="close-player">×</button>
+        </div>
+        <button class="source-btn" id="source-btn">Source</button>
+        <div class="source-dropdown" id="source-dropdown">
+            <div class="source-option selected" data-source="mappl">MappleTV</div>
+            <div class="source-option" data-source="vidfast">VidFast</div>
+            <div class="source-option" data-source="vidlink">VidLink</div>
+            <div class="source-option" data-source="videasy">VidEasy</div>
+            <div class="source-option" data-source="vidsrccc">VidSrcCC</div>
+        </div>
+        <iframe class="video-iframe" id="video-iframe" src="" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // Popular TV shows - will be fetched from TMDB API
+        let shows = [];
+        let currentShowIndex = 0;
+        let currentSource = 'mappl';
+        let currentShow = null;
+        let currentSeason = 1;
+        let currentEpisode = 1;
+        let showSeasons = [];
+
+        // Close home button handler
+        const closeHomeBtn = document.getElementById('close-home-btn');
+        if (closeHomeBtn) {
+            closeHomeBtn.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        }
+
+        // Hide loading overlay
+        setTimeout(() => {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            if (loadingOverlay) {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }
+        }, 1500);
+
+        // Season and episode selection handlers
+        const seasonSelect = document.getElementById('season-select');
+        const episodeSelect = document.getElementById('episode-select');
+
+        if (seasonSelect) {
+            seasonSelect.addEventListener('change', (e) => {
+                currentSeason = parseInt(e.target.value);
+                console.log('Season changed to:', currentSeason);
+                updateEpisodeOptions();
+            });
+        }
+
+        if (episodeSelect) {
+            episodeSelect.addEventListener('change', (e) => {
+                currentEpisode = parseInt(e.target.value);
+                console.log('Episode changed to:', currentEpisode);
+            });
+        }
+
+        // Fetch TV show details (seasons and episodes)
+        async function fetchTVDetails(tvId) {
+            try {
+                const response = await fetch(`/api/tmdb/tv/details?id=${tvId}`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    console.error('Error fetching TV details:', data.error);
+                    return;
+                }
+                
+                if (data.seasons) {
+                    showSeasons = data.seasons;
+                    updateSeasonOptions();
+                    updateEpisodeOptions();
+                }
+            } catch (error) {
+                console.error('Error fetching TV details:', error);
+            }
+        }
+
+        // Update season dropdown options
+        function updateSeasonOptions() {
+            if (!seasonSelect || !showSeasons.length) return;
+            
+            seasonSelect.innerHTML = '';
+            showSeasons.forEach(season => {
+                if (season.season_number > 0) { // Skip season 0 (specials)
+                    const option = document.createElement('option');
+                    option.value = season.season_number;
+                    option.textContent = season.name || `Season ${season.season_number}`;
+                    seasonSelect.appendChild(option);
+                }
+            });
+            
+            // Reset to first season
+            if (showSeasons.length > 0) {
+                currentSeason = showSeasons[0].season_number || 1;
+                seasonSelect.value = currentSeason;
+            }
+        }
+
+        // Update episode dropdown options based on selected season
+        function updateEpisodeOptions() {
+            if (!episodeSelect || !showSeasons.length) return;
+            
+            const season = showSeasons.find(s => s.season_number === currentSeason);
+            const episodeCount = season ? season.episode_count : 10;
+            
+            episodeSelect.innerHTML = '';
+            for (let i = 1; i <= episodeCount; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `Episode ${i}`;
+                episodeSelect.appendChild(option);
+            }
+            
+            // Reset to first episode
+            currentEpisode = 1;
+            episodeSelect.value = currentEpisode;
+        }
+
+        // Close video player button
+        const closePlayerBtn = document.getElementById('close-player');
+        if (closePlayerBtn) {
+            closePlayerBtn.addEventListener('click', () => {
+                const videoPlayer = document.getElementById('video-player');
+                if (videoPlayer) {
+                    videoPlayer.classList.remove('active');
+                    document.getElementById('video-iframe').src = '';
+                }
+            });
+        }
+
+        // Source button and dropdown
+        const sourceBtn = document.getElementById('source-btn');
+        const sourceDropdown = document.getElementById('source-dropdown');
+
+        if (sourceBtn) {
+            sourceBtn.addEventListener('click', () => {
+                sourceDropdown.classList.toggle('active');
+            });
+        }
+
+        // Source option selection
+        const sourceOptions = document.querySelectorAll('.source-option');
+        sourceOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                sourceOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                currentSource = option.getAttribute('data-source');
+                updateVideoSource();
+                sourceDropdown.classList.remove('active');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#source-btn') && !e.target.closest('#source-dropdown')) {
+                sourceDropdown.classList.remove('active');
+            }
+        });
+
+        // Fetch TV shows from TMDB API
+        async function fetchShows(type = 'popular', searchQuery = '') {
+            try {
+                const url = searchQuery 
+                    ? `/api/tmdb/tv?q=${encodeURIComponent(searchQuery)}`
+                    : `/api/tmdb/tv?type=${type}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.error) {
+                    console.error('API error:', data.error);
+                    document.querySelector('.grid-title').textContent = 'Error Loading TV Shows';
+                    document.querySelector('.grid').innerHTML = 
+                        '<div style="text-align: center; padding: 40px; color: #ff6b6b;">' +
+                        '<h3>⚠️ Error</h3>' +
+                        `<p>${data.error}</p>` +
+                        '</div>';
+                    return;
+                }
+                
+                if (data.shows) {
+                    shows = data.shows;
+                    renderTVList();
+                    renderTVGrid();
+                    updateFeaturedShow(shows[0]);
+                }
+            } catch (error) {
+                console.error('Error fetching TV shows:', error);
+                // Fallback to static shows if API fails
+                shows = [
+                    { title: 'Featured Show', releaseDate: '2024', rating: 8.5, posterPath: null, overview: 'An exciting drama series.' },
+                    { title: 'Drama Series', releaseDate: '2024', rating: 7.8, posterPath: null, overview: 'Thrilling drama sequences.' },
+                    { title: 'Comedy Series', releaseDate: '2023', rating: 8.2, posterPath: null, overview: 'Hilarious storytelling.' }
+                ];
+                renderTVList();
+                renderTVGrid();
+                updateFeaturedShow(shows[0]);
+            }
+        }
+
+        // Initialize
+        fetchShows();
+
+        // Search bar functionality
+        const searchBar = document.querySelector('.search-bar');
+        let searchTimeout;
+
+        searchBar.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            const query = e.target.value.trim();
+            
+            if (query.length > 2) {
+                searchTimeout = setTimeout(() => {
+                    performSearch(query);
+                }, 500);
+            } else if (query.length === 0) {
+                document.querySelector('.grid-title').textContent = 'Popular Now';
+                fetchShows('popular');
+            }
+        });
+
+        searchBar.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                clearTimeout(searchTimeout);
+                const query = e.target.value.trim();
+                if (query.length > 0) {
+                    performSearch(query);
+                }
+            }
+        });
+
+        async function performSearch(query) {
+            document.querySelector('.grid-title').textContent = 'Search Results';
+            await fetchShows('search', query);
+        }
+
+        // Category button functionality
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.textContent.toLowerCase();
+                document.querySelector('.grid-title').textContent = btn.textContent;
+                
+                if (category === 'popular') {
+                    fetchShows('popular');
+                } else if (category === 'top rated') {
+                    fetchShows('top_rated');
+                } else if (category === 'airing today') {
+                    fetchShows('airing_today');
+                }
+            });
+        });
+
+        function renderTVList() {
+            const tvList = document.querySelector('.tv-list');
+            tvList.innerHTML = '';
+            
+            shows.forEach((show, index) => {
+                const item = document.createElement('div');
+                item.className = `tv-item ${index === currentShowIndex ? 'active' : ''}`;
+                
+                const posterContent = show.posterPath 
+                    ? `<img src="${show.posterPath}" alt="${show.title}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">`
+                    : '📺';
+                
+                const year = show.releaseDate ? show.releaseDate.split('-')[0] : 'N/A';
+                const rating = show.rating ? show.rating.toFixed(1) : 'N/A';
+                
+                item.innerHTML = `
+                    <div class="tv-poster">${posterContent}</div>
+                    <div class="tv-info">
+                        <div class="tv-title">${show.title}</div>
+                        <div class="tv-year">${year}</div>
+                        <div class="tv-rating">⭐ ${rating}</div>
+                    </div>
+                `;
+                item.addEventListener('click', () => {
+                    currentShowIndex = index;
+                    updateFeaturedShow(show);
+                    document.querySelectorAll('.tv-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+                tvList.appendChild(item);
+            });
+        }
+
+        function renderTVGrid() {
+            const grid = document.querySelector('.grid');
+            grid.innerHTML = '';
+            
+            shows.forEach((show, index) => {
+                const item = document.createElement('div');
+                item.className = 'grid-item';
+                
+                const posterContent = show.posterPath 
+                    ? `<img src="${show.posterPath}" alt="${show.title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`
+                    : '📺';
+                
+                const year = show.releaseDate ? show.releaseDate.split('-')[0] : 'N/A';
+                
+                item.innerHTML = `
+                    <div class="grid-poster">${posterContent}</div>
+                    <div class="grid-info">
+                        <div class="grid-title-text">${show.title}</div>
+                        <div class="grid-year">${year}</div>
+                    </div>
+                `;
+                item.addEventListener('click', () => {
+                    currentShowIndex = index;
+                    updateFeaturedShow(show);
+                    document.querySelectorAll('.tv-item').forEach((i, idx) => {
+                        i.classList.toggle('active', idx === index);
+                    });
+                });
+                grid.appendChild(item);
+            });
+        }
+
+        function updateFeaturedShow(show) {
+            const featuredTitle = document.querySelector('.featured-details h3');
+            const featuredMeta = document.querySelector('.featured-meta');
+            const featuredRating = document.querySelector('.featured-rating');
+            const featuredDesc = document.querySelector('.featured-details p');
+            const featuredPoster = document.querySelector('.featured-poster');
+            const watchBtn = document.querySelector('.watch-btn');
+            
+            if (featuredTitle) featuredTitle.textContent = show.title;
+            
+            const year = show.releaseDate ? show.releaseDate.split('-')[0] : 'N/A';
+            const rating = show.rating ? show.rating.toFixed(1) : 'N/A';
+            
+            if (featuredMeta) {
+                featuredMeta.innerHTML = `
+                    <span>${year}</span>
+                    <span>•</span>
+                    <span>TV Show</span>
+                `;
+            }
+            
+            if (featuredRating) featuredRating.textContent = `⭐ ${rating}/10`;
+            
+            if (featuredDesc) featuredDesc.textContent = show.overview || 'No description available.';
+            
+            if (featuredPoster && show.posterPath) {
+                featuredPoster.innerHTML = `<img src="${show.posterPath}" alt="${show.title}" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">`;
+            }
+
+            // Fetch TV show details (seasons and episodes)
+            fetchTVDetails(show.id);
+
+            // Update watch button to play this TV show
+            if (watchBtn) {
+                watchBtn.onclick = () => playTV(show);
+            }
+        }
+
+        function playTV(show) {
+            const videoPlayer = document.getElementById('video-player');
+            const videoIframe = document.getElementById('video-iframe');
+            const videoPlayerTitle = document.getElementById('video-player-title');
+            
+            currentShow = show;
+            
+            if (videoPlayer && videoIframe && videoPlayerTitle) {
+                videoPlayerTitle.textContent = `${show.title} - S${currentSeason} E${currentEpisode}`;
+                updateVideoSource();
+                videoPlayer.classList.add('active');
+            }
+        }
+
+        function updateVideoSource() {
+            const videoIframe = document.getElementById('video-iframe');
+            if (!videoIframe || !currentShow) return;
+
+            let url;
+            if (currentSource === 'mappl') {
+                url = `https://mappl.tv/watch/tv/${currentShow.id}-${currentSeason}-${currentEpisode}`;
+            } else if (currentSource === 'vidfast') {
+                url = `https://www.vidfast.net/tv/${currentShow.id}/${currentSeason}/${currentEpisode}`;
+            } else if (currentSource === 'vidlink') {
+                url = `https://vidlink.pro/tv/${currentShow.id}/${currentSeason}/${currentEpisode}`;
+            } else if (currentSource === 'videasy') {
+                url = `https://player.videasy.net/tv/${currentShow.id}/${currentSeason}/${currentEpisode}`;
+            } else if (currentSource === 'vidsrccc') {
+                url = `https://vidsrc.cc/v3/embed/tv/${currentShow.id}/${currentSeason}/${currentEpisode}`;
+            }
+            videoIframe.src = url;
+        }
+    </script>
+</body>
+</html>

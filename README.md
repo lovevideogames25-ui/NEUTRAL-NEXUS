@@ -1,34 +1,49 @@
-# 🚀 ULTIMATEUNBLOCKER
+# 🚀 NEUTRAL NEXUS
 
 **Your Gateway to Unlimited Access** - Premium multi-page website with complete UI rebrand, luxurious navigation system, and cutting-edge design
 
 ---
 
-## 🎉 **Latest Release: 0.8.0 BETA - MAJOR UPDATE**
+## 🎉 **Latest Release: 0.9.0 - MAJOR UPDATE**
 
-### 🌟 **MAJOR ANNOUNCEMENT: COMPLETE SYSTEM TRANSFORMATION**
-**This is not just an update - this is a complete revolution!**
+### 🌟 **MAJOR ANNOUNCEMENT: NEUTRAL NEXUS IS HERE!**
+**Complete rebrand with major feature additions!**
 
-### 🤖 **AI System Overhaul**
-- **🧠 New AI Models** - Gemini-2.5-Flash, Gemini-2.5-Pro, Claude-Sonnet-4.5, DeepSeek-V3.2, Qwen3.5-Plus, Mistral-Small-4
-- **👁️ Vision Support** - All AI models now support image analysis and multimodal processing
-- **🎨 Premium Glassmorphism UI** - Completely redesigned AI interface with stunning design
-- **� API Fallback Chain** - Full API1-8 fallback system for maximum reliability
-- **🔐 GitHub AI Integration** - API7 with GitHub personal access token support
-- **🌐 Emergent AI Support** - API8 integration for additional model access
+### 🌐 **ADDED PROXY**
+- **🔍 Proxy Browser** - Brave search integration with multiple proxy site support
+- **� Speed Testing** - Proxy connection speed indicators
+- **📖 Proxy History** - Track your proxy usage
+- **⭐ Proxy Bookmarks** - Save favorite proxy sites
+- **🔄 Auto-Switching** - Automatic proxy switching for best performance
 
-### � **Music/Listen Feature**
-- **🎵 Brand New Music Player** - Search and play music from YouTube
-- **🎥 Official - Topic Channels** - Filtered results for official music distribution
-- **⏯️ Full Playback Controls** - Pause/resume with IFrame API integration
-- **� YouTube Search** - Real-time search with loading states
-- **📱 Mobile Optimized** - Perfect music experience on all devices
+### 🎬 **ADDED MOVIES**
+- **🎥 Full Movie Streaming** - Complete movie playback experience
+- **� TMDB API Integration** - Real-time movie data from The Movie Database
+- **� Movie Search** - Search for any movie instantly
+- **⭐ Ratings & Reviews** - View movie ratings and reviews
+- **🎨 Movie Posters** - High-quality movie poster display
+- **📺 Multiple Sources** - Multiple video streaming sources
 
-### � **Links Up to Date**
-- **🔗 All Links Updated** - All links verified with latest working URLs
-- **🎨 New Links Modal** - Modern card-based grid layout
-- **✨ Enhanced Animations** - Smooth transitions and micro-interactions
-- **� Responsive Design** - Perfect mobile, tablet, and desktop compatibility
+### 📺 **ADDED TV SHOWS**
+- **📺 TV Show Streaming** - Complete TV show playback experience
+- **🎬 Dynamic Season Selection** - Choose from all available seasons
+- **📝 Episode Selection** - Select specific episodes within seasons
+- **🔍 TMDB API Integration** - Real-time TV show data
+- **⭐ Show Information** - View show ratings, descriptions, and metadata
+- **🎭 Featured Shows** - Highlighted popular TV shows
+
+### ✨ **NEUTRAL NEXUS REBRAND**
+- **🎨 Complete Rebrand** - Renamed from ULTIMATEUNBLOCKER to NEUTRAL NEXUS
+- **📝 Updated Branding** - All files, interfaces, and documentation updated
+- **🔗 New Repository** - Updated GitHub repository URLs
+- **📦 Package Updates** - Package.json and dependencies updated
+- **🎯 Consistent Identity** - Unified branding across all platforms
+
+### 🙏 **Credits & Plans**
+- **📜 Comprehensive Credits** - Added CREDITS.md with all API, library, and service attributions
+- **🗺️ Version Plans** - Added PLANS.md with v0.9.1 roadmap
+- **ℹ️ Information Tab** - Added Credits and Plans tabs to Information section
+- **📊 Progress Tracking** - Track development progress for upcoming features
 
 ### 🎨 **Design Excellence:**
 - **🏛️ Luxury Box Design** - Multi-layered shadows with inset borders
@@ -41,26 +56,21 @@
 ### 📊 **Release Stats:**
 ```json
 {
-  "version": "0.8.0-beta",
-  "status": "MAJOR UPDATE BETA",
-  "ai_system": "COMPLETE OVERHAUL",
-  "new_models": "6 PREMIUM MODELS",
-  "vision_support": "ALL MODELS",
-  "music_player": "YOUTUBE INTEGRATION",
-  "links_updated": "VERIFIED LATEST",
-  "api_fallback": "API1-8 CHAIN",
-  "glassmorphism_ui": "PREMIUM DESIGN",
-  "mobile_ready": true,
-  "music_ready": true,
-  "links_ready": true
+  "version": "0.9.0",
+  "status": "MAJOR UPDATE",
+  "proxy_browser": "ADDED",
+  "movie_streaming": "ADDED",
+  "tv_shows": "ADDED",
+  "tmdb_integration": "COMPLETE",
+  "rebrand": "NEUTRAL NEXUS",
+  "credits": "COMPREHENSIVE",
+  "plans": "V0.9.1 ROADMAP"
 }
 ```
 
 ### 🌐 **Live Deployments:**
-- **🌐 Production Site** - [ultimateunblocker.pages.dev](https://ultimateunblocker.pages.dev)
-- **⚡ Surge.sh** - [ultimateunblocker.surge.sh](https://ultimateunblocker.surge.sh)
-- **🚫 PlsNoBlock** - [plsnoblockordeploymentpause.vercel.app](https://plsnoblockordeploymentpause.vercel.app)
-- **📚 Education** - [ultimateducation.surge.sh](https://ultimateducation.surge.sh)
+- **🌐 Production Site** - [neutral-nexus.pages.dev](https://neutral-nexus.pages.dev)
+- **⚡ Surge.sh** - [neutral-nexus.surge.sh](https://neutral-nexus.surge.sh)
 
 ---
 
@@ -226,7 +236,7 @@
 ### 🔧 **Option 2: Manual Deploy**
 1. **⚠️ IMPORTANT**: Create .env file first! Run `env_creator.bat` to set up API keys
 2. **Choose platform** (Vercel, Netlify, Render, etc.)
-3. **Connect repository**: `https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git` 
+3. **Connect repository**: `https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/` 
 4. **Deploy as static site**
 5. **Experience the AI system!**
 
@@ -257,7 +267,7 @@ The `env_creator.bat` script handles everything automatically - no manual setup 
 
 ## 🎯 **Repository Information**
 
-**🌐 GitHub**: https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git
+**🌐 GitHub**: https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/
 
 **📊 Statistics**: AI System Overhaul, Music Player, Links Updated, Premium Design
 
@@ -306,12 +316,12 @@ local_deployment.bat
 
 ## 🌟 **Quick Deploy - One Click & Experience Luxury!**
 
-[![Deploy to Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
-[![Deploy to Netlify](https://binbashbanana.github.io/deploy-buttons/buttons/remade/netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git)
+[![Deploy to Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/)
+[![Deploy to Netlify](https://binbashbanana.github.io/deploy-buttons/buttons/remade/netlify.svg)](https://app.netlify.com/start/deploy?repository-url=https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/)
 
 ---
 
-**ULTIMATEUNBLOCKER v0.8.0 - Major Update with AI Overhaul, Music Player, and Updated Links**
+**NEUTRAL NEXUS v0.8.0 - Major Update with AI Overhaul, Music Player, and Updated Links**
 
 Built with ❤️ and 🤖 for the ultimate user experience
 

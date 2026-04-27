@@ -2,7 +2,7 @@
   "watch": ["."],
   "ext": "js,json,html,css,md,env",
   "ignore": ["node_modules/", "*.log", ".git/", "ai-model/"],
-  "exec": "node simple-server.js",
+  "exec": "node proxy-server.js",
   "env": {
     "NODE_ENV": "development"
   },

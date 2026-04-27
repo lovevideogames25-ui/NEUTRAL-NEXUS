@@ -1,7 +1,7 @@
 {
-  "name": "ultimateunblocker",
-  "version": "0.7.1",
-  "description": "ULTIMATEUNBLOCKER - AI Assistant UI with Luxury Interface",
+  "name": "neutral-nexus",
+  "version": "0.9.0",
+  "description": "NEUTRAL NEXUS - AI Assistant UI with Luxury Interface",
   "main": "index.html",
   "scripts": {
     "start": "node simple-server.js",
@@ -13,28 +13,21 @@
     "server:install": "npm install express cors"
   },
   "dependencies": {
+    "axios": "^1.15.2",
+    "cheerio": "^1.2.0",
     "cors": "^2.8.6",
     "express": "^4.22.1",
-    "replicate": "^0.32.1"
+    "replicate": "^0.32.1",
+    "socks-proxy-agent": "^8.0.2",
+    "https-proxy-agent": "^7.0.2"
   },
   "keywords": [
-    "ultimateunblocker",
+    "neutral-nexus",
     "luxury-design",
     "premium-navigation",
-    "glass-morphism",
-    "ui-rebrand",
     "ai-assistant",
-    "gpt-oss",
-    "open-source-ai",
-    "ai-interface",
-    "ai-chat",
-    "artificial-intelligence",
-    "open-source",
-    "free-ai",
-    "community-ai",
-    "proxy",
-    "games",
-    "movies",
+    "tmdb-api",
+    "video-streaming",
     "ai-tools",
     "music",
     "streaming",
@@ -45,16 +38,16 @@
     "luxury",
     "premium"
   ],
-  "author": "alessthegreatestgamer",
-  "license": "MIT",
+  "author": "lovevideogames25-ui",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER.git"
+    "url": "https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/"
   },
   "bugs": {
-    "url": "https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER/issues"
+    "url": "https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/issues"
   },
-  "homepage": "https://github.com/lovevideogames25-ui/ULTIMATEUNBLOCKER",
+  "homepage": "https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/",
   "devDependencies": {
     "nodemon": "^3.1.14",
     "serve": "^14.0.0"
@@ -95,10 +88,10 @@
   },
   "version_info": {
     "major": 0,
-    "minor": 7,
-    "patch": 1,
-    "status": "STABLE - VERCEL FIXES",
-    "release_date": "2026-03-31",
+    "minor": 9,
+    "patch": 0,
+    "status": "STABLE - MAJOR UPDATE",
+    "release_date": "2026-04-26",
     "ui_redesign": "100%",
     "navigation_system": "LUXURY",
     "font_collection": "PREMIUM",
@@ -109,6 +102,11 @@
     "vercel_deployment": "FIXED",
     "environment_variables": "PROPERLY_HANDLED",
     "cors_issues": "RESOLVED",
-    "serverless_functions": "ACTIVE"
+    "serverless_functions": "ACTIVE",
+    "proxy_browser": "ADDED",
+    "movie_streaming": "ADDED",
+    "tv_shows": "ADDED",
+    "tmdb_integration": "COMPLETE",
+    "rebrand": "NEUTRAL NEXUS"
   }
 }

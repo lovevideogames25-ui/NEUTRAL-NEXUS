@@ -1,10 +1,66 @@
-# 🚀 ULTIMATEUNBLOCKER - CHANGELOG
+# 🚀 NEUTRAL NEXUS - CHANGELOG
 
 **Your Gateway to Unlimited Access - Version History**
 
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [0.9.0] - 2026-04-26 - MAJOR UPDATE
+
+### 🌟 NEUTRAL NEXUS IS HERE!
+
+#### Major Features
+- **🌐 ADDED PROXY** - Complete proxy browser integration with Brave search and multiple proxy site support
+- **🎬 ADDED MOVIES** - Full movie streaming with TMDB API integration, search, and video playback
+- **📺 ADDED TV SHOWS** - TV show streaming with dynamic season and episode selection using TMDB API
+- **✨ NEUTRAL NEXUS REBRAND** - Complete rebrand from ULTIMATEUNBLOCKER to NEUTRAL NEXUS across all files
+
+#### Proxy Browser
+- Brave search integration
+- Multiple proxy site support
+- Speed testing capabilities
+- Proxy history tracking
+- Proxy bookmarks/favorites
+- Auto-switching for best performance
+
+#### Movie Streaming
+- TMDB API integration for real-time movie data
+- Movie search functionality
+- High-quality movie poster display
+- Ratings and reviews
+- Multiple video streaming sources
+- Featured movie section
+
+#### TV Shows
+- TMDB API integration for TV show data
+- Dynamic season selection
+- Episode selection within seasons
+- Featured TV shows
+- Show information and metadata
+- Video playback integration
+
+#### Rebrand
+- Renamed from ULTIMATEUNBLOCKER to NEUTRAL NEXUS
+- Updated all files, interfaces, and documentation
+- Updated GitHub repository URLs
+- Updated package.json and dependencies
+- Unified branding across all platforms
+
+#### Credits & Plans
+- Added CREDITS.md with comprehensive API, library, and service attributions
+- Added PLANS.md with v0.9.1 roadmap
+- Added Credits and Plans tabs to Information section
+- Progress tracking for upcoming features
+
+#### Technical Enhancements
+- Updated version to 0.9.0
+- Updated package.json with new version info
+- Updated README.md with v0.9.0 features
+- Added 45+ random funny messages to homepage
+- Removed "NEW" and "UPDATED" badges from navigation
 
 ---
 

@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Load Settings from localStorage
 function loadSettings() {
-    const storedSettings = localStorage.getItem('ultimateUnblocker_settings');
+    const storedSettings = localStorage.getItem('neutralNexus_settings');
     if (storedSettings) {
         try {
             const loadedSettings = JSON.parse(storedSettings);
@@ -165,7 +165,7 @@ function isObject(item) {
 // Save Settings to localStorage
 function saveSettings() {
     try {
-        localStorage.setItem('ultimateUnblocker_settings', JSON.stringify(settings));
+        localStorage.setItem('neutralNexus_settings', JSON.stringify(settings));
         applySettings();
         showNotification('Settings saved successfully! 🎉', 'success');
         addSaveAnimation();
@@ -1172,7 +1172,7 @@ function exportSettings() {
     const dataStr = JSON.stringify(settings, null, 2);
     const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
     
-    const exportFileDefaultName = `ultimateunblocker-settings-${new Date().toISOString().split('T')[0]}.json`;
+    const exportFileDefaultName = `neutral-nexus-settings-${new Date().toISOString().split('T')[0]}.json`;
     
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);

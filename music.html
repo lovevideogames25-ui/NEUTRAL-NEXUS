@@ -815,12 +815,12 @@
             }
         }, 2500);
 
-        // Fetch tracks from Spotify API
+        // Fetch tracks from YouTube API
         async function fetchSpotifyTracks(searchQuery = '') {
             try {
                 const url = searchQuery 
-                    ? `/api/spotify/tracks?q=${encodeURIComponent(searchQuery)}`
-                    : '/api/spotify/tracks';
+                    ? `/api/youtube/tracks?q=${encodeURIComponent(searchQuery)}`
+                    : '/api/youtube/tracks';
                 const response = await fetch(url);
                 const data = await response.json();
                 
@@ -852,9 +852,7 @@
                         artist: track.artist,
                         thumbnail: '🎵',
                         imageUrl: track.imageUrl,
-                        previewUrl: track.previewUrl,
-                        spotifyUrl: track.spotifyUrl,
-                        id: track.id
+                        spotifyUrl: track.spotifyUrl
                     }));
                     renderPopularGrid();
                 }
@@ -862,9 +860,9 @@
                 console.error('Error fetching Spotify tracks:', error);
                 // Fallback to static tracks if API fails
                 tracks = [
-                    { title: 'Midnight City', artist: 'M83', thumbnail: '🌃', imageUrl: null },
-                    { title: 'Latch', artist: 'Disclosure', thumbnail: '🎹', imageUrl: null },
-                    { title: 'Animals', artist: 'Martin Garrix', thumbnail: '🦁', imageUrl: null }
+                    { title: 'Midnight City', artist: 'M83', thumbnail: '🌃', imageUrl: null, id: 'e60DnizpGpY', spotifyUrl: 'https://www.youtube.com/watch?v=e60DnizpGpY' },
+                    { title: 'Latch', artist: 'Disclosure', thumbnail: '🎹', imageUrl: null, id: '3aFWbKbDRtg', spotifyUrl: 'https://www.youtube.com/watch?v=3aFWbKbDRtg' },
+                    { title: 'Animals', artist: 'Martin Garrix', thumbnail: '🦁', imageUrl: null, id: 'gCYcHz2k5x0', spotifyUrl: 'https://www.youtube.com/watch?v=gCYcHz2k5x0' }
                 ];
                 renderPopularGrid();
             }

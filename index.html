@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Permissions-Policy" content="xr-spatial-tracking=()">
-    <title>ULTIMATEUNBLOCKER - Your Gateway to Unlimited Access</title>
+    <title>NEUTRAL NEXUS - Your Gateway to Unlimited Access</title>
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -29,7 +29,7 @@
     
     <!-- Coming Soon Script -->
     <script>
-        console.log('🚀 ULTIMATEUNBLOCKER loaded with Coming Soon AI');
+        console.log('🚀 NEUTRAL NEXUS loaded with Coming Soon AI');
     </script>
     
     <!-- Error handling for external scripts -->
@@ -1167,7 +1167,7 @@
         <div class="loading-container" id="loadingContainer">
             <div class="loading-logo">
                 <div class="logo-icon">🚀</div>
-                <h1 class="logo-text">ULTIMATEUNBLOCKER</h1>
+                <h1 class="logo-text">NEUTRAL NEXUS</h1>
             </div>
             <div class="loading-text">Loading...</div>
             <div class="loading-progress">
@@ -1180,7 +1180,7 @@
 
     <!-- Transition Overlay -->
     <div class="transition-overlay" id="transitionOverlay">
-        <div class="transition-text">Launching ULTIMATEUNBLOCKER...</div>
+        <div class="transition-text">Launching NEUTRAL NEXUS...</div>
     </div>
 
     <!-- Floating Particles -->
@@ -1218,10 +1218,18 @@
         <div class="nav-section">
             <div class="nav-section-title">Entertainment</div>
             <button class="menu-item" id="gamesMenuItem" data-item="games">🎮 Games <span class="coming-soon-sticker">Coming Soon</span></button>
-            <button class="menu-item" id="watchMenuItem" data-item="watch">📺 Watch <span class="coming-soon-sticker">Coming Soon</span></button>
-            <button class="menu-item" id="listenMenuItem" data-item="listen">🎵 Listen <span class="new-badge">NEW</span></button>
-            <a href="ai.html" class="menu-item" id="aiMenuItem">🤖AI <span class="updated-badge">UPDATED</span></a>
-            <button class="menu-item" id="proxyMenuItem" data-item="proxy_browser">🔒 Proxy Browser <span class="coming-soon-sticker">Coming Soon</span></button>
+            <div class="watch-dropdown-container">
+                <button class="menu-item" id="watchMenuItem" data-item="watch">📺 Watch</button>
+                <div class="watch-dropdown" id="watchDropdown">
+                    <div class="watch-dropdown-item" data-type="movies">🎬 Movies</div>
+                    <div class="watch-dropdown-item" data-type="tv">📺 TV Shows</div>
+                    <div class="watch-dropdown-item" data-type="youtube">▶️ YouTube <span class="coming-soon-sticker">Coming Soon</span></div>
+                    <div class="watch-dropdown-item" data-type="twitch">🎮 Twitch <span class="coming-soon-sticker">Coming Soon</span></div>
+                </div>
+            </div>
+            <button class="menu-item" id="listenMenuItem" data-item="listen">🎵 Listen</button>
+            <a href="ai.html" class="menu-item" id="aiMenuItem">🤖AI</a>
+            <a href="#" onclick="window.location.href = window.location.origin + '/proxy?url=https://search.brave.com'; return false;" class="menu-item" id="proxyMenuItem">🌐 Proxy Browser <span class="wip-sticker" style="padding: 3px 8px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: #fff;">WORK IN PROGRESS</span></a>
         </div>
         
         <div class="nav-divider"></div>
@@ -1233,8 +1241,8 @@
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
         <div class="hero-section" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
-            <img src="favicon.ico" alt="ULTIMATEUNBLOCKER Logo" class="logo">
-            <h1 class="hero-title">ULTIMATEUNBLOCKER</h1>
+            <img src="favicon.ico" alt="NEUTRAL NEXUS Logo" class="logo">
+            <h1 class="hero-title">NEUTRAL NEXUS</h1>
             <p class="hero-subtitle">Your Gateway to Unlimited Access</p>
             <div class="random-message" id="randomMessage">
                 <span class="message-text">Who remembers ULTIMATELINKS</span>
@@ -2151,7 +2159,7 @@
         <div class="settings-container">
             <div class="settings-header">
                 <h2>⚙️ Settings</h2>
-                <p>Customize your ULTIMATEUNBLOCKER experience</p>
+                <p>Customize your NEUTRAL NEXUS experience</p>
                 <button class="settings-close-btn" id="settingsCloseBtn">✕</button>
             </div>
             
@@ -2247,7 +2255,7 @@
                         <div class="setting-item">
                             <div class="setting-info">
                                 <label for="analyticsToggle">Analytics</label>
-                                <p>Help improve ULTIMATEUNBLOCKER with anonymous usage data</p>
+                                <p>Help improve NEUTRAL NEXUS with anonymous usage data</p>
                             </div>
                             <label class="toggle-switch">
                                 <input type="checkbox" id="analyticsToggle">
@@ -2284,7 +2292,7 @@
                         <div class="setting-item">
                             <div class="setting-info">
                                 <label>Version</label>
-                                <p>ULTIMATEUNBLOCKER 0.6.0 Beta</p>
+                                <p>NEUTRAL NEXUS 0.6.0 Beta</p>
                             </div>
                         </div>
                         <div class="setting-item">
@@ -2322,6 +2330,8 @@
             <div class="information-tabs">
                 <button class="tab-btn active" data-tab="about">📖 About</button>
                 <button class="tab-btn" data-tab="github-repository">🔗 GitHub Repository</button>
+                <button class="tab-btn" data-tab="credits">🙏 Credits</button>
+                <button class="tab-btn" data-tab="plans">🗺️ Plans</button>
                 <button class="tab-btn" data-tab="changelog">📋 Changelog</button>
                 <button class="tab-btn" data-tab="contributing">🤝 Contributing</button>
                 <button class="tab-btn" data-tab="license">⚖️ License</button>
@@ -2335,6 +2345,18 @@
                 </div>
                 
                 <div class="tab-content" id="github-repository-content">
+                    <div class="content-wrapper">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="credits-content">
+                    <div class="content-wrapper">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="plans-content">
                     <div class="content-wrapper">
                         <div class="loading-spinner"></div>
                     </div>
@@ -3264,38 +3286,38 @@
     <div id="versionPopup" class="version-popup">
         <div class="version-popup-content">
             <div class="version-popup-header">
-                <span class="version-badge">v0.8.1</span>
+                <span class="version-badge">v0.9.0</span>
                 <button class="version-popup-close" id="closeVersionPopup">&times;</button>
             </div>
             <div class="version-popup-body">
-                <h2 class="version-popup-title">🔗 35+ New Links!</h2>
+                <h2 class="version-popup-title">🚀 Major Features Added!</h2>
                 <div class="version-popup-features">
                     <div class="feature-item">
-                        <span class="feature-icon">🔗</span>
+                        <span class="feature-icon">🌐</span>
                         <div class="feature-text">
-                            <h3>Massive Link Update</h3>
-                            <p>Added 35+ new unblocking links across 5 categories: Fern, Mist, Lucide, Vapor, and Dodgeub. All with /index.html for MSIT compatibility.</p>
+                            <h3>ADDED PROXY</h3>
+                            <p>Proxy browser integration with Brave search and multiple proxy site support.</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon">🚀</span>
+                        <span class="feature-icon">🎬</span>
                         <div class="feature-text">
-                            <h3>Vercel API Support</h3>
-                            <p>Added Vercel API functions for music and AI. Now works seamlessly on both Netlify and Vercel deployments.</p>
+                            <h3>ADDED MOVIES</h3>
+                            <p>Full movie streaming with TMDB API integration, search, and video playback.</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon">🧠</span>
+                        <span class="feature-icon">📺</span>
                         <div class="feature-text">
-                            <h3>Claude-Opus-4 Model</h3>
-                            <p>Added Anthropic's most powerful AI model for advanced reasoning and complex tasks. Available in the popular tab.</p>
+                            <h3>ADDED TV SHOWS</h3>
+                            <p>TV show streaming with dynamic season and episode selection using TMDB API.</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon">📱</span>
+                        <span class="feature-icon">✨</span>
                         <div class="feature-text">
-                            <h3>Works on Every Screen</h3>
-                            <p>Fully responsive design that adapts to any screen size - desktop, laptop, tablet, and mobile.</p>
+                            <h3>NEUTRAL NEXUS REBRAND</h3>
+                            <p>Complete rebrand from ULTIMATEUNBLOCKER to NEUTRAL NEXUS across all files.</p>
                         </div>
                     </div>
                 </div>

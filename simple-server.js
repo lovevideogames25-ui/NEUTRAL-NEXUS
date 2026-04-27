@@ -66,7 +66,6 @@ app.get('/api/env', (req, res) => {
       NODE_ENV: envVars.NODE_ENV || 'development',
       DEBUG: envVars.DEBUG || 'false',
       ENABLE_AI: envVars.ENABLE_AI || 'true',
-      ENABLE_PROXY: envVars.ENABLE_PROXY || 'true',
       ENABLE_CHAT: envVars.ENABLE_CHAT || 'true',
       ENABLE_GAMING: envVars.ENABLE_GAMING || 'true',
       DISCORD_SERVER_ID: envVars.DISCORD_SERVER_ID || null,
@@ -731,7 +730,7 @@ app.post('/api/spotify/token', async (req, res) => {
 });
 
 // YouTube Data API endpoint - free music with full playback via video embeds
-app.get('/api/spotify/tracks', async (req, res) => {
+app.get('/api/youtube/tracks', async (req, res) => {
   try {
     const envPath = path.join(__dirname, '.env');
     const envContent = fs.readFileSync(envPath, 'utf8');
@@ -833,15 +832,6 @@ app.use('/ai', async (req, res, next) => {
   }
 });
 
-// Proxy status endpoint
-app.get('/api/proxy-status', (req, res) => {
-  res.json({ 
-    status: 'running',
-    timestamp: new Date().toISOString(),
-    endpoints: ['/api/replicate', '/api/lockllm', '/api/vercelai', '/api/groq', '/api/huggingface', '/api/cloudflare', '/ai/*'],
-    server: 'ULTIMATEUNBLOCKER All-in-One Server'
-  });
-});
 
 // Start AI server on port 5000
 let aiServerProcess = null;
@@ -904,7 +894,6 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`   - http://localhost:${PORT}/ai/* (local AI server on port 5000)`);
   console.log(`📊 Status endpoints:`);
   console.log(`   - http://localhost:${PORT}/api/health`);
-  console.log(`   - http://localhost:${PORT}/api/proxy-status`);
   console.log('✅ Ready for AI chat with secure API key loading!');
   console.log('🔄 API Fallback Chain: OpenRouter → Replicate → HuggingFace → LockLLM → VercelAI → Groq → Cloudflare → GoogleAIStudio');
   console.log('🤖 Local AI Server Proxy: Port 5000 proxied through /ai/*');
