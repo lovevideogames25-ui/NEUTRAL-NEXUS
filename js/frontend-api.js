@@ -179,3 +179,9 @@ if (typeof module !== 'undefined' && module.exports) {
         searchYouTube
     };
 }
+
+// Make functions globally available for browser
+window.fetchMovies = fetchMovies;
+window.fetchTVShows = fetchTVShows;
+window.fetchTVDetails = fetchTVDetails;
+window.searchYouTube = searchYouTube;
