@@ -773,10 +773,9 @@
         }
 
         // Fetch TV show details (seasons and episodes)
-        async function fetchTVDetails(tvId) {
+        async function loadTVDetails(tvId) {
             try {
-                const response = await fetch(`/api/tmdb/tv/details?id=${tvId}`);
-                const data = await response.json();
+                const data = await fetchTVDetails(tvId);
                 
                 if (data.error) {
                     console.error('Error fetching TV details:', data.error);
@@ -1062,7 +1061,7 @@
             }
 
             // Fetch TV show details (seasons and episodes)
-            fetchTVDetails(show.id);
+            loadTVDetails(show.id);
 
             // Update watch button to play this TV show
             if (watchBtn) {

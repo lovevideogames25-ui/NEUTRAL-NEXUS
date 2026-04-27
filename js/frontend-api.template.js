@@ -3,11 +3,11 @@
 // API keys are injected from .env during build process
 
 // TMDB API Configuration - INJECTED FROM .env
-const TMDB_API_KEY = 'ee4b8b7f5be1c41e074883981946aeff'; 
+const TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER'; 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
 // YouTube API Configuration - INJECTED FROM .env
-const YOUTUBE_API_KEY = 'AIzaSyCNom9G7eKqVVY3kuHLuqi00t-Yht0JyVk'; 
+const YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER'; 
 const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
 // TMDB API Functions

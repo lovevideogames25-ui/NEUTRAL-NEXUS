@@ -10,7 +10,8 @@
     "serve": "python -m http.server 8000",
     "server": "node simple-server.js",
     "server:8080": "node server-8080.js",
-    "server:install": "npm install express cors"
+    "server:install": "npm install express cors",
+    "build": "node build.js"
   },
   "dependencies": {
     "axios": "^1.15.2",
