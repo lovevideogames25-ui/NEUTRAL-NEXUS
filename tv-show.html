@@ -876,13 +876,9 @@
         });
 
         // Fetch TV shows from TMDB API
-        async function fetchShows(type = 'popular', searchQuery = '') {
+        async function loadShows(type = 'popular', searchQuery = '') {
             try {
-                const url = searchQuery 
-                    ? `/api/tmdb/tv?q=${encodeURIComponent(searchQuery)}`
-                    : `/api/tmdb/tv?type=${type}`;
-                const response = await fetch(url);
-                const data = await response.json();
+                const data = await fetchTVShows(type, searchQuery);
                 
                 if (data.error) {
                     console.error('API error:', data.error);
@@ -916,7 +912,7 @@
         }
 
         // Initialize
-        fetchShows();
+        loadShows();
 
         // Search bar functionality
         const searchBar = document.querySelector('.search-bar');
@@ -932,7 +928,7 @@
                 }, 500);
             } else if (query.length === 0) {
                 document.querySelector('.grid-title').textContent = 'Popular Now';
-                fetchShows('popular');
+                loadShows('popular');
             }
         });
 
@@ -948,7 +944,7 @@
 
         async function performSearch(query) {
             document.querySelector('.grid-title').textContent = 'Search Results';
-            await fetchShows('search', query);
+            await loadShows('search', query);
         }
 
         // Category button functionality
@@ -962,11 +958,11 @@
                 document.querySelector('.grid-title').textContent = btn.textContent;
                 
                 if (category === 'popular') {
-                    fetchShows('popular');
+                    loadShows('popular');
                 } else if (category === 'top rated') {
-                    fetchShows('top_rated');
+                    loadShows('top_rated');
                 } else if (category === 'airing today') {
-                    fetchShows('airing_today');
+                    loadShows('airing_today');
                 }
             });
         });
@@ -1107,5 +1103,8 @@
             videoIframe.src = url;
         }
     </script>
+    <!-- Load the API functionality -->
+    <script src="js/frontend-api.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

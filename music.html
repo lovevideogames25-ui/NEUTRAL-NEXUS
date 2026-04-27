@@ -6,6 +6,7 @@
     <title>NEUTRAL NEXUS Music</title>
     <script src="https://w.soundcloud.com/player/api.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="js/frontend-api.js"></script>
     <style>
         * {
             margin: 0;
@@ -818,11 +819,7 @@
         // Fetch tracks from YouTube API
         async function fetchSpotifyTracks(searchQuery = '') {
             try {
-                const url = searchQuery 
-                    ? `/api/youtube/tracks?q=${encodeURIComponent(searchQuery)}`
-                    : '/api/youtube/tracks';
-                const response = await fetch(url);
-                const data = await response.json();
+                const data = await searchYouTube(searchQuery || 'popular music', 10);
                 
                 if (data.quotaExceeded) {
                     // YouTube API quota exceeded - show error message
@@ -846,13 +843,14 @@
                     return;
                 }
                 
-                if (data.tracks) {
-                    tracks = data.tracks.map(track => ({
-                        title: track.title,
-                        artist: track.artist,
+                if (data.videos) {
+                    tracks = data.videos.map(video => ({
+                        title: video.title,
+                        artist: video.channelTitle,
                         thumbnail: '🎵',
-                        imageUrl: track.imageUrl,
-                        spotifyUrl: track.spotifyUrl
+                        imageUrl: video.thumbnail,
+                        id: video.id,
+                        spotifyUrl: `https://www.youtube.com/watch?v=${video.id}`
                     }));
                     renderPopularGrid();
                 }

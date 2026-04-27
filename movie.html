@@ -715,13 +715,9 @@
         }, 1500);
 
         // Fetch movies from TMDB API
-        async function fetchMovies(type = 'popular', searchQuery = '') {
+        async function loadMovies(type = 'popular', searchQuery = '') {
             try {
-                const url = searchQuery 
-                    ? `/api/tmdb/movies?q=${encodeURIComponent(searchQuery)}`
-                    : `/api/tmdb/movies?type=${type}`;
-                const response = await fetch(url);
-                const data = await response.json();
+                const data = await fetchMovies(type, searchQuery);
                 
                 if (data.error) {
                     console.error('API error:', data.error);
@@ -755,7 +751,7 @@
         }
 
         // Initialize
-        fetchMovies();
+        loadMovies();
 
         // Search bar functionality
         const searchBar = document.querySelector('.search-bar');
@@ -771,7 +767,7 @@
                 }, 500);
             } else if (query.length === 0) {
                 document.querySelector('.grid-title').textContent = 'Popular Now';
-                fetchMovies('popular');
+                loadMovies('popular');
             }
         });
 
@@ -787,7 +783,7 @@
 
         async function performSearch(query) {
             document.querySelector('.grid-title').textContent = 'Search Results';
-            await fetchMovies('search', query);
+            await loadMovies('search', query);
         }
 
         // Category button functionality
@@ -801,11 +797,11 @@
                 document.querySelector('.grid-title').textContent = btn.textContent;
                 
                 if (category === 'popular') {
-                    fetchMovies('popular');
+                    loadMovies('popular');
                 } else if (category === 'now playing') {
-                    fetchMovies('now_playing');
+                    loadMovies('now_playing');
                 } else if (category === 'top rated') {
-                    fetchMovies('top_rated');
+                    loadMovies('top_rated');
                 }
             });
         });
@@ -994,5 +990,8 @@
             });
         }
     </script>
+    <!-- Load the API functionality -->
+    <script src="js/frontend-api.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
