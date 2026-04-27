@@ -2,13 +2,36 @@
 // This file handles direct API calls to external services without a backend
 // API keys are injected from .env during build process
 
+// AI API Keys - INJECTED FROM .env
+const API = 'API_PLACEHOLDER';
+const API2 = 'API2_PLACEHOLDER';
+const API3 = 'API3_PLACEHOLDER';
+const API4 = 'API4_PLACEHOLDER';
+const API5 = 'API5_PLACEHOLDER';
+const API6 = 'API6_PLACEHOLDER';
+const API7 = 'API7_PLACEHOLDER';
+const API8 = 'API8_PLACEHOLDER';
+
+// Cloudflare Configuration - INJECTED FROM .env
+const CLOUDFLARE_ACCOUNT_ID = 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER';
+const CLOUDFLARE_GATEWAY_ID = 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER';
+
+// Music API Keys - INJECTED FROM .env
+const SPOTIFY_CLIENT_ID = 'SPOTIFY_CLIENT_ID_PLACEHOLDER';
+const SPOTIFY_CLIENT_SECRET = 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER';
+const JAMENDO_CLIENT_ID = 'JAMENDO_CLIENT_ID_PLACEHOLDER';
+
 // TMDB API Configuration - INJECTED FROM .env
-const TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER'; 
+const TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER';
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
 // YouTube API Configuration - INJECTED FROM .env
-const YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER'; 
+const YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER';
+const YOUTUBE_API_KEY_2 = 'YOUTUBE_API_KEY_2_PLACEHOLDER';
 const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3';
+
+// Merriam Webster API - INJECTED FROM .env
+const MERRIAM_WEBSTER_API_KEY = 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER';
 
 // TMDB API Functions
 async function fetchTMDB(endpoint, params = {}) {
@@ -185,3 +208,24 @@ window.fetchMovies = fetchMovies;
 window.fetchTVShows = fetchTVShows;
 window.fetchTVDetails = fetchTVDetails;
 window.searchYouTube = searchYouTube;
+
+// Make API keys globally available for browser
+window.ENV = {
+    API,
+    API2,
+    API3,
+    API4,
+    API5,
+    API6,
+    API7,
+    API8,
+    CLOUDFLARE_ACCOUNT_ID,
+    CLOUDFLARE_GATEWAY_ID,
+    SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET,
+    JAMENDO_CLIENT_ID,
+    TMDB_API_KEY,
+    YOUTUBE_API_KEY,
+    YOUTUBE_API_KEY_2,
+    MERRIAM_WEBSTER_API_KEY
+};
