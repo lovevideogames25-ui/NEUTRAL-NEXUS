@@ -18,9 +18,9 @@
     "cheerio": "^1.2.0",
     "cors": "^2.8.6",
     "express": "^4.22.1",
+    "https-proxy-agent": "^7.0.2",
     "replicate": "^0.32.1",
-    "socks-proxy-agent": "^8.0.2",
-    "https-proxy-agent": "^7.0.2"
+    "socks-proxy-agent": "^8.0.2"
   },
   "keywords": [
     "neutral-nexus",
@@ -51,7 +51,8 @@
   "homepage": "https://github.com/lovevideogames25-ui/NEUTRAL-NEXUS/",
   "devDependencies": {
     "nodemon": "^3.1.14",
-    "serve": "^14.0.0"
+    "serve": "^14.0.0",
+    "terser": "^5.46.2"
   },
   "browserslist": [
     "> 1%",
