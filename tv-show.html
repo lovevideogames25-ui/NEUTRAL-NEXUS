@@ -723,6 +723,9 @@
         <iframe class="video-iframe" id="video-iframe" src="" allowfullscreen></iframe>
     </div>
 
+    <!-- Load the API functionality FIRST -->
+    <script src="js/frontend-api.js"></script>
+
     <script>
         // Popular TV shows - will be fetched from TMDB API
         let shows = [];
@@ -1102,8 +1105,6 @@
             videoIframe.src = url;
         }
     </script>
-    <!-- Load the API functionality -->
-    <script src="js/frontend-api.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
