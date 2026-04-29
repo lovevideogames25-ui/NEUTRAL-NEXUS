@@ -12,6 +12,16 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
+[[redirects]]
+  from = "/proxy"
+  to = "/.netlify/functions/proxy"
+  status = 200
+
+[[redirects]]
+  from = "/proxy/*"
+  to = "/.netlify/functions/proxy?splat"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]
