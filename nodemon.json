@@ -1,8 +1,8 @@
 {
   "watch": ["."],
-  "ext": "js,json,html,css,md,env",
+  "ext": "js,json,html,css,md,env,py",
   "ignore": ["node_modules/", "*.log", ".git/", "ai-model/"],
-  "exec": "node proxy-server.js",
+  "exec": "python server.py",
   "env": {
     "NODE_ENV": "development"
   },

@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "node simple-server.js",
-    "dev": "nodemon simple-server.js",
+    "dev": "nodemon",
     "dev-api": "node local-dev-server.js",
     "serve": "python -m http.server 8000",
     "server": "node simple-server.js",
