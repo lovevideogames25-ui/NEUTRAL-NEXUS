@@ -38,15 +38,15 @@ async function fetchTMDB(endpoint, params = {}) {
     const url = new URL(`${TMDB_BASE_URL}${endpoint}`);
     url.searchParams.append('api_key', TMDB_API_KEY);
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-    
+
     try {
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (data.success === false) {
             throw new Error(data.status_message || 'TMDB API error');
         }
-        
+
         return data;
     } catch (error) {
         console.error('TMDB API error:', error);
@@ -169,14 +169,14 @@ async function searchYouTube(query, maxResults = 10) {
         url.searchParams.append('part', 'snippet');
         url.searchParams.append('maxResults', maxResults);
         url.searchParams.append('type', 'video');
-        
+
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (data.error) {
             throw new Error(data.error.message || 'YouTube API error');
         }
-        
+
         const videos = data.items.map(item => ({
             id: item.id.videoId,
             title: item.snippet.title,
@@ -185,7 +185,7 @@ async function searchYouTube(query, maxResults = 10) {
             channelId: item.snippet.channelId,
             channelTitle: item.snippet.channelTitle
         }));
-        
+
         return { videos };
     } catch (error) {
         console.error('Error searching YouTube:', error);
