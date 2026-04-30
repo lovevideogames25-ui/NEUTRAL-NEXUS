@@ -177,12 +177,15 @@ async function searchYouTube(query, maxResults = 10) {
             throw new Error(data.error.message || 'YouTube API error');
         }
 
-        // Filter to only show - Topic channels (official music distribution)
+        // Try to filter to - Topic channels first
         const topicVideos = data.items.filter(item =>
             item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
         );
 
-        const videos = topicVideos.map(item => ({
+        // If no - Topic channels found, use all results
+        const videosToUse = topicVideos.length > 0 ? topicVideos : data.items;
+
+        const videos = videosToUse.map(item => ({
             id: item.id.videoId,
             title: item.snippet.title,
             description: item.snippet.description,
