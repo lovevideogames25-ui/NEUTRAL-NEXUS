@@ -12,6 +12,9 @@
 js/env-config.js
 js/frontend-api.js
 
+# Cloud browser (development file)
+cloud-browser.html
+
 # Node.js
 node_modules/
 npm-debug.log*
