@@ -1,37 +1,70 @@
 // Frontend API handler for static deployment
 // This file handles direct API calls to external services without a backend
-// API keys are injected from .env during build process
+// API keys are loaded from /api/env endpoint at runtime or injected from .env during build process
 
-// AI API Keys - INJECTED FROM .env
-const API = 'API_PLACEHOLDER';
-const API2 = 'API2_PLACEHOLDER';
-const API3 = 'API3_PLACEHOLDER';
-const API4 = 'API4_PLACEHOLDER';
-const API5 = 'API5_PLACEHOLDER';
-const API6 = 'API6_PLACEHOLDER';
-const API7 = 'API7_PLACEHOLDER';
-const API8 = 'API8_PLACEHOLDER';
+// AI API Keys - INJECTED FROM .env (fallback)
+let API = 'API_PLACEHOLDER';
+let API2 = 'API2_PLACEHOLDER';
+let API3 = 'API3_PLACEHOLDER';
+let API4 = 'API4_PLACEHOLDER';
+let API5 = 'API5_PLACEHOLDER';
+let API6 = 'API6_PLACEHOLDER';
+let API7 = 'API7_PLACEHOLDER';
+let API8 = 'API8_PLACEHOLDER';
 
-// Cloudflare Configuration - INJECTED FROM .env
-const CLOUDFLARE_ACCOUNT_ID = 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER';
-const CLOUDFLARE_GATEWAY_ID = 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER';
+// Cloudflare Configuration - INJECTED FROM .env (fallback)
+let CLOUDFLARE_ACCOUNT_ID = 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER';
+let CLOUDFLARE_GATEWAY_ID = 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER';
 
-// Music API Keys - INJECTED FROM .env
-const SPOTIFY_CLIENT_ID = 'SPOTIFY_CLIENT_ID_PLACEHOLDER';
-const SPOTIFY_CLIENT_SECRET = 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER';
-const JAMENDO_CLIENT_ID = 'JAMENDO_CLIENT_ID_PLACEHOLDER';
+// Music API Keys - INJECTED FROM .env (fallback)
+let SPOTIFY_CLIENT_ID = 'SPOTIFY_CLIENT_ID_PLACEHOLDER';
+let SPOTIFY_CLIENT_SECRET = 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER';
+let JAMENDO_CLIENT_ID = 'JAMENDO_CLIENT_ID_PLACEHOLDER';
 
-// TMDB API Configuration - INJECTED FROM .env
-const TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER';
+// TMDB API Configuration - INJECTED FROM .env (fallback)
+let TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER';
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
-// YouTube API Configuration - INJECTED FROM .env
-const YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER';
-const YOUTUBE_API_KEY_2 = 'YOUTUBE_API_KEY_2_PLACEHOLDER';
+// YouTube API Configuration - INJECTED FROM .env (fallback)
+let YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER';
+let YOUTUBE_API_KEY_2 = 'YOUTUBE_API_KEY_2_PLACEHOLDER';
 const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
-// Merriam Webster API - INJECTED FROM .env
-const MERRIAM_WEBSTER_API_KEY = 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER';
+// Merriam Webster API - INJECTED FROM .env (fallback)
+let MERRIAM_WEBSTER_API_KEY = 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER';
+
+// Load API keys from /api/env endpoint at runtime
+async function loadAPIKeysFromEnv() {
+    try {
+        const response = await fetch('/api/env');
+        if (response.ok) {
+            const data = await response.json();
+            if (data.API) API = data.API;
+            if (data.API2) API2 = data.API2;
+            if (data.API3) API3 = data.API3;
+            if (data.API4) API4 = data.API4;
+            if (data.API5) API5 = data.API5;
+            if (data.API6) API6 = data.API6;
+            if (data.API7) API7 = data.API7;
+            if (data.API8) API8 = data.API8;
+            if (data.CLOUDFLARE_ACCOUNT_ID) CLOUDFLARE_ACCOUNT_ID = data.CLOUDFLARE_ACCOUNT_ID;
+            if (data.CLOUDFLARE_GATEWAY_ID) CLOUDFLARE_GATEWAY_ID = data.CLOUDFLARE_GATEWAY_ID;
+            if (data.SPOTIFY_CLIENT_ID) SPOTIFY_CLIENT_ID = data.SPOTIFY_CLIENT_ID;
+            if (data.SPOTIFY_CLIENT_SECRET) SPOTIFY_CLIENT_SECRET = data.SPOTIFY_CLIENT_SECRET;
+            if (data.JAMENDO_CLIENT_ID) JAMENDO_CLIENT_ID = data.JAMENDO_CLIENT_ID;
+            if (data.TMDB_API_KEY) TMDB_API_KEY = data.TMDB_API_KEY;
+            if (data.YOUTUBE_API_KEY) YOUTUBE_API_KEY = data.YOUTUBE_API_KEY;
+            if (data.YOUTUBE_API_KEY_2) YOUTUBE_API_KEY_2 = data.YOUTUBE_API_KEY_2;
+            if (data.MERRIAM_WEBSTER_API_KEY) MERRIAM_WEBSTER_API_KEY = data.MERRIAM_WEBSTER_API_KEY;
+            console.log('✅ API keys loaded from /api/env');
+        }
+    } catch (error) {
+        console.log('⚠️ Could not load API keys from /api/env, using fallback values');
+    }
+}
+
+// Load API keys immediately
+loadAPIKeysFromEnv();
 
 // TMDB API Functions
 async function fetchTMDB(endpoint, params = {}) {
