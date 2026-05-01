@@ -50,11 +50,17 @@ exports.handler = async (event, context) => {
         }
         
         // Filter backup data to only include - Topic channels
-        const topicChannels = backupData.items.filter(item => 
-          item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
+        const topicChannels = backupData.items.filter(item =>
+          item.snippet.channelTitle && (
+            item.snippet.channelTitle.includes('- Topic') ||
+            item.snippet.channelTitle.includes('Topic')
+          )
         );
 
-        const tracks = topicChannels.map(item => ({
+        // If no - Topic channels found, use all results
+        const itemsToUse = topicChannels.length > 0 ? topicChannels : backupData.items;
+
+        const tracks = itemsToUse.map(item => ({
           title: item.snippet.title,
           artist: item.snippet.channelTitle,
           imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
@@ -79,11 +85,17 @@ exports.handler = async (event, context) => {
     }
 
     // Filter to only include - Topic channels (official music distribution)
-    const topicChannels = data.items.filter(item => 
-      item.snippet.channelTitle && item.snippet.channelTitle.includes('- Topic')
+    const topicChannels = data.items.filter(item =>
+      item.snippet.channelTitle && (
+        item.snippet.channelTitle.includes('- Topic') ||
+        item.snippet.channelTitle.includes('Topic')
+      )
     );
 
-    const tracks = topicChannels.map(item => ({
+    // If no - Topic channels found, use all results
+    const itemsToUse = topicChannels.length > 0 ? topicChannels : data.items;
+
+    const tracks = itemsToUse.map(item => ({
       title: item.snippet.title,
       artist: item.snippet.channelTitle,
       imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
