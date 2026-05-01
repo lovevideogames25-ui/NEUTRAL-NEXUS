@@ -1,29 +1,85 @@
 // Frontend API handler for static deployment
 // This file handles direct API calls to external services without a backend
-// API keys are injected from .env during build process
+// API keys are loaded from /api/env endpoint at runtime or injected from .env during build process
 
-// TMDB API Configuration - INJECTED FROM .env
-const TMDB_API_KEY = 'ee4b8b7f5be1c41e074883981946aeff'; 
+// AI API Keys - INJECTED FROM .env (fallback)
+let API = 'API_PLACEHOLDER';
+let API2 = 'API2_PLACEHOLDER';
+let API3 = 'API3_PLACEHOLDER';
+let API4 = 'API4_PLACEHOLDER';
+let API5 = 'API5_PLACEHOLDER';
+let API6 = 'API6_PLACEHOLDER';
+let API7 = 'API7_PLACEHOLDER';
+let API8 = 'API8_PLACEHOLDER';
+
+// Cloudflare Configuration - INJECTED FROM .env (fallback)
+let CLOUDFLARE_ACCOUNT_ID = 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER';
+let CLOUDFLARE_GATEWAY_ID = 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER';
+
+// Music API Keys - INJECTED FROM .env (fallback)
+let SPOTIFY_CLIENT_ID = 'SPOTIFY_CLIENT_ID_PLACEHOLDER';
+let SPOTIFY_CLIENT_SECRET = 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER';
+let JAMENDO_CLIENT_ID = 'JAMENDO_CLIENT_ID_PLACEHOLDER';
+
+// TMDB API Configuration - INJECTED FROM .env (fallback)
+let TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER';
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
-// YouTube API Configuration - INJECTED FROM .env
-const YOUTUBE_API_KEY = 'AIzaSyCNom9G7eKqVVY3kuHLuqi00t-Yht0JyVk'; 
+// YouTube API Configuration - INJECTED FROM .env (fallback)
+let YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER';
+let YOUTUBE_API_KEY_2 = 'YOUTUBE_API_KEY_2_PLACEHOLDER';
 const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3';
+
+// Merriam Webster API - INJECTED FROM .env (fallback)
+let MERRIAM_WEBSTER_API_KEY = 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER';
+
+// Load API keys from /api/env endpoint at runtime
+async function loadAPIKeysFromEnv() {
+    try {
+        const response = await fetch('/api/env');
+        if (response.ok) {
+            const data = await response.json();
+            if (data.API) API = data.API;
+            if (data.API2) API2 = data.API2;
+            if (data.API3) API3 = data.API3;
+            if (data.API4) API4 = data.API4;
+            if (data.API5) API5 = data.API5;
+            if (data.API6) API6 = data.API6;
+            if (data.API7) API7 = data.API7;
+            if (data.API8) API8 = data.API8;
+            if (data.CLOUDFLARE_ACCOUNT_ID) CLOUDFLARE_ACCOUNT_ID = data.CLOUDFLARE_ACCOUNT_ID;
+            if (data.CLOUDFLARE_GATEWAY_ID) CLOUDFLARE_GATEWAY_ID = data.CLOUDFLARE_GATEWAY_ID;
+            if (data.SPOTIFY_CLIENT_ID) SPOTIFY_CLIENT_ID = data.SPOTIFY_CLIENT_ID;
+            if (data.SPOTIFY_CLIENT_SECRET) SPOTIFY_CLIENT_SECRET = data.SPOTIFY_CLIENT_SECRET;
+            if (data.JAMENDO_CLIENT_ID) JAMENDO_CLIENT_ID = data.JAMENDO_CLIENT_ID;
+            if (data.TMDB_API_KEY) TMDB_API_KEY = data.TMDB_API_KEY;
+            if (data.YOUTUBE_API_KEY) YOUTUBE_API_KEY = data.YOUTUBE_API_KEY;
+            if (data.YOUTUBE_API_KEY_2) YOUTUBE_API_KEY_2 = data.YOUTUBE_API_KEY_2;
+            if (data.MERRIAM_WEBSTER_API_KEY) MERRIAM_WEBSTER_API_KEY = data.MERRIAM_WEBSTER_API_KEY;
+            console.log('✅ API keys loaded from /api/env');
+        }
+    } catch (error) {
+        console.log('⚠️ Could not load API keys from /api/env, using fallback values');
+    }
+}
+
+// Load API keys immediately
+loadAPIKeysFromEnv();
 
 // TMDB API Functions
 async function fetchTMDB(endpoint, params = {}) {
     const url = new URL(`${TMDB_BASE_URL}${endpoint}`);
     url.searchParams.append('api_key', TMDB_API_KEY);
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-    
+
     try {
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (data.success === false) {
             throw new Error(data.status_message || 'TMDB API error');
         }
-        
+
         return data;
     } catch (error) {
         console.error('TMDB API error:', error);
@@ -142,19 +198,52 @@ async function searchYouTube(query, maxResults = 10) {
     try {
         const url = new URL(`${YOUTUBE_BASE_URL}/search`);
         url.searchParams.append('key', YOUTUBE_API_KEY);
-        url.searchParams.append('q', query);
+        url.searchParams.append('q', query + ' - Topic');
         url.searchParams.append('part', 'snippet');
         url.searchParams.append('maxResults', maxResults);
         url.searchParams.append('type', 'video');
-        
+
         const response = await fetch(url);
         const data = await response.json();
-        
+
         if (data.error) {
             throw new Error(data.error.message || 'YouTube API error');
         }
-        
-        const videos = data.items.map(item => ({
+
+        // Filter to - Topic channels (official music distribution)
+        const topicVideos = data.items.filter(item =>
+            item.snippet.channelTitle && (
+                item.snippet.channelTitle.includes('- Topic') ||
+                item.snippet.channelTitle.includes('Topic')
+            )
+        );
+
+        // If no - Topic channels found, try without - Topic in query
+        if (topicVideos.length === 0) {
+            const url2 = new URL(`${YOUTUBE_BASE_URL}/search`);
+            url2.searchParams.append('key', YOUTUBE_API_KEY);
+            url2.searchParams.append('q', query);
+            url2.searchParams.append('part', 'snippet');
+            url2.searchParams.append('maxResults', maxResults);
+            url2.searchParams.append('type', 'video');
+
+            const response2 = await fetch(url2);
+            const data2 = await response2.json();
+
+            if (!data2.error && data2.items) {
+                const videos = data2.items.map(item => ({
+                    id: item.id.videoId,
+                    title: item.snippet.title,
+                    description: item.snippet.description,
+                    thumbnail: item.snippet.thumbnails.default.url,
+                    channelId: item.snippet.channelId,
+                    channelTitle: item.snippet.channelTitle
+                }));
+                return { videos };
+            }
+        }
+
+        const videos = topicVideos.map(item => ({
             id: item.id.videoId,
             title: item.snippet.title,
             description: item.snippet.description,
@@ -162,7 +251,7 @@ async function searchYouTube(query, maxResults = 10) {
             channelId: item.snippet.channelId,
             channelTitle: item.snippet.channelTitle
         }));
-        
+
         return { videos };
     } catch (error) {
         console.error('Error searching YouTube:', error);
@@ -185,3 +274,24 @@ window.fetchMovies = fetchMovies;
 window.fetchTVShows = fetchTVShows;
 window.fetchTVDetails = fetchTVDetails;
 window.searchYouTube = searchYouTube;
+
+// Make API keys globally available for browser
+window.ENV = {
+    API,
+    API2,
+    API3,
+    API4,
+    API5,
+    API6,
+    API7,
+    API8,
+    CLOUDFLARE_ACCOUNT_ID,
+    CLOUDFLARE_GATEWAY_ID,
+    SPOTIFY_CLIENT_ID,
+    SPOTIFY_CLIENT_SECRET,
+    JAMENDO_CLIENT_ID,
+    TMDB_API_KEY,
+    YOUTUBE_API_KEY,
+    YOUTUBE_API_KEY_2,
+    MERRIAM_WEBSTER_API_KEY
+};
