@@ -40,23 +40,23 @@ const templatePath = path.join(__dirname, 'js', 'frontend-api.template.js');
 let apiContent = fs.readFileSync(templatePath, 'utf8');
 
 // Replace API keys with values from .env or environment variables
-apiContent = apiContent.replace(/const API = 'API_PLACEHOLDER';/, `const API = '${envVars.API || 'API_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const API2 = 'API2_PLACEHOLDER';/, `const API2 = '${envVars.API2 || 'API2_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const API3 = 'API3_PLACEHOLDER';/, `const API3 = '${envVars.API3 || 'API3_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const API4 = 'API4_PLACEHOLDER';/, `const API4 = '${envVars.API4 || 'API4_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const API5 = 'API5_PLACEHOLDER';/, `const API5 = '${envVars.API5 || 'API5_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const API6 = 'API6_PLACEHOLDER';/, `const API6 = '${envVars.API6 || 'API6_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const API7 = 'API7_PLACEHOLDER';/, `const API7 = '${envVars.API7 || 'API7_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const API8 = 'API8_PLACEHOLDER';/, `const API8 = '${envVars.API8 || 'API8_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const CLOUDFLARE_ACCOUNT_ID = 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER';/, `const CLOUDFLARE_ACCOUNT_ID = '${envVars.CLOUDFLARE_ACCOUNT_ID || 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const CLOUDFLARE_GATEWAY_ID = 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER';/, `const CLOUDFLARE_GATEWAY_ID = '${envVars.CLOUDFLARE_GATEWAY_ID || 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const SPOTIFY_CLIENT_ID = 'SPOTIFY_CLIENT_ID_PLACEHOLDER';/, `const SPOTIFY_CLIENT_ID = '${envVars.SPOTIFY_CLIENT_ID || 'SPOTIFY_CLIENT_ID_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const SPOTIFY_CLIENT_SECRET = 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER';/, `const SPOTIFY_CLIENT_SECRET = '${envVars.SPOTIFY_CLIENT_SECRET || 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const JAMENDO_CLIENT_ID = 'JAMENDO_CLIENT_ID_PLACEHOLDER';/, `const JAMENDO_CLIENT_ID = '${envVars.JAMENDO_CLIENT_ID || 'JAMENDO_CLIENT_ID_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER';/, `const TMDB_API_KEY = '${envVars.THE_MOVIE_DATABASE_API || 'TMDB_API_KEY_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER';/, `const YOUTUBE_API_KEY = '${envVars.YOUTUBE_API_KEY || 'YOUTUBE_API_KEY_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const YOUTUBE_API_KEY_2 = 'YOUTUBE_API_KEY_2_PLACEHOLDER';/, `const YOUTUBE_API_KEY_2 = '${envVars.YOUTUBE_API_KEY_2 || 'YOUTUBE_API_KEY_2_PLACEHOLDER'}';`);
-apiContent = apiContent.replace(/const MERRIAM_WEBSTER_API_KEY = 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER';/, `const MERRIAM_WEBSTER_API_KEY = '${envVars.MERRIAM_WEBSTER_API_KEY || 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API = 'API_PLACEHOLDER';/, `let API = '${envVars.API || 'API_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API2 = 'API2_PLACEHOLDER';/, `let API2 = '${envVars.API2 || 'API2_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API3 = 'API3_PLACEHOLDER';/, `let API3 = '${envVars.API3 || 'API3_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API4 = 'API4_PLACEHOLDER';/, `let API4 = '${envVars.API4 || 'API4_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API5 = 'API5_PLACEHOLDER';/, `let API5 = '${envVars.API5 || 'API5_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API6 = 'API6_PLACEHOLDER';/, `let API6 = '${envVars.API6 || 'API6_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API7 = 'API7_PLACEHOLDER';/, `let API7 = '${envVars.API7 || 'API7_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let API8 = 'API8_PLACEHOLDER';/, `let API8 = '${envVars.API8 || 'API8_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let CLOUDFLARE_ACCOUNT_ID = 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER';/, `let CLOUDFLARE_ACCOUNT_ID = '${envVars.CLOUDFLARE_ACCOUNT_ID || 'CLOUDFLARE_ACCOUNT_ID_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let CLOUDFLARE_GATEWAY_ID = 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER';/, `let CLOUDFLARE_GATEWAY_ID = '${envVars.CLOUDFLARE_GATEWAY_ID || 'CLOUDFLARE_GATEWAY_ID_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let SPOTIFY_CLIENT_ID = 'SPOTIFY_CLIENT_ID_PLACEHOLDER';/, `let SPOTIFY_CLIENT_ID = '${envVars.SPOTIFY_CLIENT_ID || 'SPOTIFY_CLIENT_ID_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let SPOTIFY_CLIENT_SECRET = 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER';/, `let SPOTIFY_CLIENT_SECRET = '${envVars.SPOTIFY_CLIENT_SECRET || 'SPOTIFY_CLIENT_SECRET_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let JAMENDO_CLIENT_ID = 'JAMENDO_CLIENT_ID_PLACEHOLDER';/, `let JAMENDO_CLIENT_ID = '${envVars.JAMENDO_CLIENT_ID || 'JAMENDO_CLIENT_ID_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let TMDB_API_KEY = 'TMDB_API_KEY_PLACEHOLDER';/, `let TMDB_API_KEY = '${envVars.THE_MOVIE_DATABASE_API || 'TMDB_API_KEY_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let YOUTUBE_API_KEY = 'YOUTUBE_API_KEY_PLACEHOLDER';/, `let YOUTUBE_API_KEY = '${envVars.YOUTUBE_API_KEY || 'YOUTUBE_API_KEY_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let YOUTUBE_API_KEY_2 = 'YOUTUBE_API_KEY_2_PLACEHOLDER';/, `let YOUTUBE_API_KEY_2 = '${envVars.YOUTUBE_API_KEY_2 || 'YOUTUBE_API_KEY_2_PLACEHOLDER'}';`);
+apiContent = apiContent.replace(/let MERRIAM_WEBSTER_API_KEY = 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER';/, `let MERRIAM_WEBSTER_API_KEY = '${envVars.MERRIAM_WEBSTER_API_KEY || 'MERRIAM_WEBSTER_API_KEY_PLACEHOLDER'}';`);
 
 // Write the generated file
 const outputPath = path.join(__dirname, 'js', 'frontend-api.js');

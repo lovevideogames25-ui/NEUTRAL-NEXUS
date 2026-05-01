@@ -10,6 +10,7 @@
 *.pem
 *.p12
 js/env-config.js
+js/frontend-api.js
 
 # Node.js
 node_modules/
