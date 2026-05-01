@@ -44,6 +44,9 @@ exports.handler = async (event, context) => {
   safeEnvVars.API7 = process.env.API7 || null;
   safeEnvVars.CLOUDFLARE_ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID || null;
   safeEnvVars.CLOUDFLARE_GATEWAY_ID = process.env.CLOUDFLARE_GATEWAY_ID || null;
+  safeEnvVars.TMDB_API_KEY = process.env.THE_MOVIE_DATABASE_API || null;
+  safeEnvVars.YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY || null;
+  safeEnvVars.YOUTUBE_API_KEY_2 = process.env.YOUTUBE_API_KEY_2 || null;
 
   return {
     statusCode: 200,
