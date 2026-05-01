@@ -177,7 +177,18 @@ async function searchYouTube(query, maxResults = 10) {
             throw new Error(data.error.message || 'YouTube API error');
         }
 
-        const videos = data.items.map(item => ({
+        // Filter to - Topic channels (official music distribution)
+        const topicVideos = data.items.filter(item =>
+            item.snippet.channelTitle && (
+                item.snippet.channelTitle.includes('- Topic') ||
+                item.snippet.channelTitle.includes('Topic')
+            )
+        );
+
+        // If no - Topic channels found, use all results
+        const videosToUse = topicVideos.length > 0 ? topicVideos : data.items;
+
+        const videos = videosToUse.map(item => ({
             id: item.id.videoId,
             title: item.snippet.title,
             description: item.snippet.description,
