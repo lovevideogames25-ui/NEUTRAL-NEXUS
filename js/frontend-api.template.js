@@ -165,7 +165,7 @@ async function searchYouTube(query, maxResults = 10) {
     try {
         const url = new URL(`${YOUTUBE_BASE_URL}/search`);
         url.searchParams.append('key', YOUTUBE_API_KEY);
-        url.searchParams.append('q', query);
+        url.searchParams.append('q', query + ' - Topic');
         url.searchParams.append('part', 'snippet');
         url.searchParams.append('maxResults', maxResults);
         url.searchParams.append('type', 'video');
@@ -185,10 +185,32 @@ async function searchYouTube(query, maxResults = 10) {
             )
         );
 
-        // If no - Topic channels found, use all results
-        const videosToUse = topicVideos.length > 0 ? topicVideos : data.items;
+        // If no - Topic channels found, try without - Topic in query
+        if (topicVideos.length === 0) {
+            const url2 = new URL(`${YOUTUBE_BASE_URL}/search`);
+            url2.searchParams.append('key', YOUTUBE_API_KEY);
+            url2.searchParams.append('q', query);
+            url2.searchParams.append('part', 'snippet');
+            url2.searchParams.append('maxResults', maxResults);
+            url2.searchParams.append('type', 'video');
 
-        const videos = videosToUse.map(item => ({
+            const response2 = await fetch(url2);
+            const data2 = await response2.json();
+
+            if (!data2.error && data2.items) {
+                const videos = data2.items.map(item => ({
+                    id: item.id.videoId,
+                    title: item.snippet.title,
+                    description: item.snippet.description,
+                    thumbnail: item.snippet.thumbnails.default.url,
+                    channelId: item.snippet.channelId,
+                    channelTitle: item.snippet.channelTitle
+                }));
+                return { videos };
+            }
+        }
+
+        const videos = topicVideos.map(item => ({
             id: item.id.videoId,
             title: item.snippet.title,
             description: item.snippet.description,

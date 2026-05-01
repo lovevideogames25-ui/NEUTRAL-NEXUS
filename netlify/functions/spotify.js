@@ -22,11 +22,11 @@ exports.handler = async (event, context) => {
 
     let url;
     if (query) {
-      // Search YouTube
-      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music')}&maxResults=50&key=${apiKey}`;
+      // Search YouTube with - Topic to find official music channels
+      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' - Topic')}&maxResults=50&key=${apiKey}`;
     } else {
       // Get popular music videos
-      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=50&key=${apiKey}`;
+      url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024 - Topic&maxResults=50&key=${apiKey}`;
     }
 
     const response = await fetch(url);
@@ -36,19 +36,19 @@ exports.handler = async (event, context) => {
       // Check if quota exceeded and try backup key
       if (data.error.errors && data.error.errors[0].reason === 'quotaExceeded' && apiKey2) {
         const backupUrl = query
-          ? `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' music')}&maxResults=50&key=${apiKey2}`
-          : `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=50&key=${apiKey2}`;
-        
+          ? `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query + ' - Topic')}&maxResults=50&key=${apiKey2}`
+          : `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024 - Topic&maxResults=50&key=${apiKey2}`;
+
         const backupResponse = await fetch(backupUrl);
         const backupData = await backupResponse.json();
-        
+
         if (backupData.error) {
           return {
             statusCode: 429,
             body: JSON.stringify({ quotaExceeded: true, error: 'YouTube API quota exceeded' })
           };
         }
-        
+
         // Filter backup data to only include - Topic channels
         const topicChannels = backupData.items.filter(item =>
           item.snippet.channelTitle && (
@@ -57,16 +57,42 @@ exports.handler = async (event, context) => {
           )
         );
 
-        // If no - Topic channels found, use all results
-        const itemsToUse = topicChannels.length > 0 ? topicChannels : backupData.items;
+        // If no - Topic channels found, try without - Topic
+        if (topicChannels.length === 0) {
+          const fallbackUrl = query
+            ? `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query)}&maxResults=50&key=${apiKey2}`
+            : `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=50&key=${apiKey2}`;
 
-        const tracks = itemsToUse.map(item => ({
+          const fallbackResponse = await fetch(fallbackUrl);
+          const fallbackData = await fallbackResponse.json();
+
+          if (!fallbackData.error && fallbackData.items) {
+            const tracks = fallbackData.items.map(item => ({
+              title: item.snippet.title,
+              artist: item.snippet.channelTitle,
+              imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
+              id: item.id.videoId
+            }));
+
+            return {
+              statusCode: 200,
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+              },
+              body: JSON.stringify({ tracks })
+            };
+          }
+        }
+
+        const tracks = topicChannels.map(item => ({
           title: item.snippet.title,
           artist: item.snippet.channelTitle,
           imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
           id: item.id.videoId
         }));
-        
+
         return {
           statusCode: 200,
           headers: {
@@ -77,7 +103,7 @@ exports.handler = async (event, context) => {
           body: JSON.stringify({ tracks })
         };
       }
-      
+
       return {
         statusCode: 500,
         body: JSON.stringify({ error: data.error.message || 'YouTube API error' })
@@ -92,10 +118,36 @@ exports.handler = async (event, context) => {
       )
     );
 
-    // If no - Topic channels found, use all results
-    const itemsToUse = topicChannels.length > 0 ? topicChannels : data.items;
+    // If no - Topic channels found, try without - Topic
+    if (topicChannels.length === 0) {
+      const fallbackUrl = query
+        ? `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query)}&maxResults=50&key=${apiKey}`
+        : `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=viewCount&q=popular music 2024&maxResults=50&key=${apiKey}`;
 
-    const tracks = itemsToUse.map(item => ({
+      const fallbackResponse = await fetch(fallbackUrl);
+      const fallbackData = await fallbackResponse.json();
+
+      if (!fallbackData.error && fallbackData.items) {
+        const tracks = fallbackData.items.map(item => ({
+          title: item.snippet.title,
+          artist: item.snippet.channelTitle,
+          imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
+          id: item.id.videoId
+        }));
+
+        return {
+          statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          },
+          body: JSON.stringify({ tracks })
+        };
+      }
+    }
+
+    const tracks = topicChannels.map(item => ({
       title: item.snippet.title,
       artist: item.snippet.channelTitle,
       imageUrl: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
