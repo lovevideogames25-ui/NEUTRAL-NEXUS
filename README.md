@@ -285,11 +285,9 @@ The `env_creator.bat` script handles everything automatically - no manual setup 
 
 ## 🤖 **MODELS USED TO CREATE THIS**
 
-**SWE-1.5**
-- V0.1.0-V0.7.0
-
-**SWE-1.6**
-- V0.7.0-PRESENT
+- SWE-1.5
+- SWE-1.6
+- Kimi K2.5
 
 ---
 

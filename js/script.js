@@ -1,45 +1,38 @@
 // NEUTRAL NEXUS - Premium UI JavaScript with Enhanced Interactions
 
 // Environment variables for browser
-window.ENV = window.ENV || {
-  API: 'MY_API',
-  API2: 'SECOND_API_KEY', 
-  API3: 'THIRD_API_KEY',
-  API4: 'FOURTH_API_KEY',
-  API5: 'FIFTH_API_KEY',
-  API6: 'SIXTH_API_KEY',
-  API7: 'SEVENTH_API_KEY'
-}
+// NOTE: API keys are now loaded from js/frontend-api.js
+// This file no longer needs to define default values or fetch from /api/env
+window.ENV = window.ENV || {};
 
 // Simple API key setup for static sites
 async function loadAPIKeys() {
   console.log('🔧 Neural Nexus AI - API Key Setup');
-  console.log('⚠️ CORS restrictions prevent automatic .env loading');
-  console.log('🔑 To set up API keys, run in browser console:');
-  console.log('');
-  console.log('window.ENV.API7 = "your_github_pat_here";');
-  console.log('');
-  console.log('🚀 Then click send to use GPT-4o-mini!');
-  console.log('📖 For more help, check AI README documentation');
   
-  // Try to load from API endpoint
-  try {
-    console.log('🔍 Attempting to fetch /api/env...');
-    const response = await fetch('/api/env');
-    console.log('🔍 /api/env response status:', response.status);
-    const data = await response.json();
-    console.log('🔍 /api/env response data:', data);
-    console.log('🔍 data.API7 exists:', !!data.API7);
-    console.log('🔍 data.API7 value (first 10 chars):', data.API7 ? data.API7.substring(0, 10) + '...' : 'null');
-    
-    window.ENV = { ...window.ENV, ...data };
-    console.log('✅ Environment variables loaded from API');
-    console.log('API7 loaded:', !!window.ENV.API7);
-    console.log('API7 value (first 10 chars):', window.ENV.API7 ? window.ENV.API7.substring(0, 10) + '...' : 'null');
-    console.log('API7 length:', window.ENV.API7 ? window.ENV.API7.length : 0);
-  } catch (err) {
-    console.log('⚠️ Could not load env from API, using defaults');
-    console.log('Error:', err);
+  // Check if frontend-api.js has already loaded the API keys
+  if (window.ENV && window.ENV.API) {
+    console.log('✅ API keys already loaded from frontend-api.js');
+    console.log('🔑 API key (first 10 chars):', window.ENV.API.substring(0, 10) + '...');
+    console.log('🔑 Total API keys loaded:', Object.keys(window.ENV).length);
+    return;
+  }
+  
+  // If frontend-api.js hasn't loaded yet, wait for it
+  console.log('⏳ Waiting for frontend-api.js to load API keys...');
+  
+  // Wait up to 2 seconds for frontend-api.js to load
+  let attempts = 0;
+  while (attempts < 20 && (!window.ENV || !window.ENV.API)) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    attempts++;
+  }
+  
+  if (window.ENV && window.ENV.API) {
+    console.log('✅ API keys loaded from frontend-api.js');
+    console.log('🔑 API key (first 10 chars):', window.ENV.API.substring(0, 10) + '...');
+  } else {
+    console.error('❌ Failed to load API keys from frontend-api.js');
+    console.log('📖 Make sure frontend-api.js is loaded before script.js');
   }
 }
 
@@ -50,11 +43,14 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Load API keys first
   await loadAPIKeys()
   
-  // Initialize loading screen
-  initializeLoadingScreen()
+  // Make loading screen last forever - never hide it
+  // initializeLoadingScreen()
   
   // Initialize categories system but don't show automatically
   initializeCategoriesSystem()
+  
+  // Initialize navigation
+  initializeNavigation()
   
   // Ensure categories section is hidden on load
   setTimeout(() => {
@@ -280,47 +276,9 @@ function showMainContent() {
   
   if (linksSearchInput && newLinksDisplay) {
     linksSearchInput.addEventListener('input', (e) => {
-      const searchTerm = e.target.value.toLowerCase()
+      const searchTerm = e.target.value.toLowerCase().trim()
       const linkCards = newLinksDisplay.querySelectorAll('.link-card')
       const categories = newLinksDisplay.querySelectorAll('.link-category')
-      
-      // First, check if any category matches
-      let categoryMatch = false
-      categories.forEach(category => {
-        const categoryTitle = category.querySelector('h3')?.textContent.toLowerCase() || ''
-        if (categoryTitle.includes(searchTerm)) {
-          categoryMatch = true
-          // Show all cards in this category
-          category.querySelectorAll('.link-card').forEach(card => {
-            card.style.display = 'block'
-          })
-          category.style.display = 'block'
-        }
-      })
-      
-      // If no category match, search within individual cards
-      if (!categoryMatch) {
-        linkCards.forEach(card => {
-          const linkText = card.textContent.toLowerCase()
-          const linkUrl = card.querySelector('a')?.href.toLowerCase() || ''
-          
-          if (linkText.includes(searchTerm) || linkUrl.includes(searchTerm)) {
-            card.style.display = 'block'
-          } else {
-            card.style.display = 'none'
-          }
-        })
-        
-        // Hide empty categories
-        categories.forEach(category => {
-          const visibleCards = category.querySelectorAll('.link-card[style="display: block;"], .link-card:not([style*="display: none"])')
-          if (visibleCards.length === 0) {
-            category.style.display = 'none'
-          } else {
-            category.style.display = 'block'
-          }
-        })
-      }
       
       // If search is empty, show everything
       if (searchTerm === '') {
@@ -330,9 +288,52 @@ function showMainContent() {
         categories.forEach(category => {
           category.style.display = 'block'
         })
+        console.log('🔍 Search cleared')
+        return
       }
       
-      console.log('🔍 Search:', searchTerm)
+      // First pass: Determine which categories match by name
+      const matchingCategories = new Set()
+      categories.forEach(category => {
+        const categoryTitle = category.querySelector('h3')?.textContent.toLowerCase() || ''
+        if (categoryTitle.includes(searchTerm)) {
+          matchingCategories.add(category)
+        }
+      })
+      
+      // Second pass: Show/hide individual cards based on link name/URL
+      linkCards.forEach(card => {
+        const linkText = card.textContent.toLowerCase()
+        const linkUrl = card.querySelector('a')?.href.toLowerCase() || ''
+        
+        if (linkText.includes(searchTerm) || linkUrl.includes(searchTerm)) {
+          card.style.display = 'block'
+        } else {
+          card.style.display = 'none'
+        }
+      })
+      
+      // Third pass: Show categories that either match by name OR have visible cards
+      categories.forEach(category => {
+        const visibleCards = category.querySelectorAll('.link-card[style="display: block;"], .link-card:not([style*="display: none"])')
+        const categoryMatches = matchingCategories.has(category)
+        
+        if (categoryMatches) {
+          // Category name matches - show all cards in this category
+          category.style.display = 'block'
+          category.querySelectorAll('.link-card').forEach(card => {
+            card.style.display = 'block'
+          })
+        } else if (visibleCards.length > 0) {
+          // Has matching cards - show category
+          category.style.display = 'block'
+        } else {
+          // No matches - hide category
+          category.style.display = 'none'
+        }
+      })
+      
+      console.log('🔍 Search:', searchTerm, '- Categories:', matchingCategories.size, 'matching by name')
     })
   }
   
@@ -1452,176 +1453,176 @@ function showAISettings() {
   }
 }
 
-// Initialize chatbox functionality
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('Initializing main chatbox...');
-  
-  const chatboxToggle = document.getElementById('chatboxToggle');
-  const mainChatbox = document.getElementById('mainChatbox');
-  const chatboxInput = document.getElementById('chatboxInput');
-  const chatboxSend = document.getElementById('chatboxSend');
-  const chatboxMessages = document.getElementById('chatboxMessages');
-  const aiRobotButton = document.getElementById('aiRobotButton');
-  const aiSection = document.getElementById('aiSection');
-  
-  if (!chatboxToggle || !mainChatbox || !chatboxInput || !chatboxSend || !chatboxMessages) {
-    console.error('Chatbox elements not found');
-    return;
-  }
-  
-  // Toggle minimize/maximize
-  chatboxToggle.addEventListener('click', function() {
-    // Add close animation
-    mainChatbox.classList.add('chatbox-close');
-    
-    // Hide after animation completes
-    setTimeout(() => {
-      mainChatbox.classList.remove('chatbox-close');
-      mainChatbox.classList.remove('chatbox-open');
-      mainChatbox.style.setProperty('display', 'none', 'important');
-      mainChatbox.style.setProperty('visibility', 'hidden', 'important');
-      mainChatbox.style.setProperty('opacity', '0', 'important');
-      
-      // Show AI robot button with animation
-      if (aiRobotButton) {
-        aiRobotButton.classList.remove('ai-button-hide');
-        aiRobotButton.classList.add('ai-button-show');
-        aiRobotButton.style.display = 'flex';
-        aiRobotButton.style.visibility = 'visible';
-        aiRobotButton.style.opacity = '1';
-        
-        console.log('Chatbox hidden with animation, AI robot button shown');
-      }
-    }, 300);
-  });
-  
-  // AI robot button click handler
-  if (aiRobotButton) {
-    console.log('AI robot button found during initialization');
-    
-    // Multiple event methods to ensure it works despite browser extensions
-    const handleAIButtonClick = function(e) {
-      console.log('AI robot button clicked!', e);
-      e.preventDefault();
-      e.stopPropagation();
-      
-      // Hide AI robot button with animation
-      aiRobotButton.classList.remove('ai-button-show');
-      aiRobotButton.classList.add('ai-button-hide');
-      
-      // Show chatbox after AI button starts hiding
-      setTimeout(() => {
-        // Get fresh reference to main chatbox
-        const chatboxElement = document.getElementById('mainChatbox');
-        console.log('Chatbox element found:', !!chatboxElement);
-        
-        if (chatboxElement) {
-          // Remove any existing classes
-          chatboxElement.classList.remove('chatbox-close');
-          
-          // Show chatbox with open animation
-          chatboxElement.style.setProperty('display', 'flex', 'important');
-          chatboxElement.style.setProperty('visibility', 'visible', 'important');
-          chatboxElement.style.setProperty('opacity', '1', 'important');
-          chatboxElement.classList.add('chatbox-open');
-          
-          // Hide AI button completely after animation
-          setTimeout(() => {
-            aiRobotButton.style.display = 'none';
-          }, 300);
-          
-          console.log('Quick chat restored with animation from AI robot button');
-        } else {
-          console.error('Could not find main chatbox element!');
-        }
-      }, 150);
-    };
-    
-    // Add multiple event listeners
-    aiRobotButton.addEventListener('click', handleAIButtonClick);
-    aiRobotButton.addEventListener('mousedown', handleAIButtonClick);
-    aiRobotButton.addEventListener('touchstart', handleAIButtonClick);
-    
-    // Test if button is clickable by adding a simple test
-    aiRobotButton.addEventListener('mouseover', function() {
-      console.log('Mouse over AI robot button - button is interactive');
-    });
-    
-    console.log('AI robot button event listeners attached');
-  } else {
-    console.error('AI robot button not found during initialization!');
-  }
-  
-  // Send message function
-  async function sendMessage() {
-    const message = chatboxInput.value.trim();
-    if (!message) return;
-    
-    // Add user message
-    const userMessageDiv = document.createElement('div');
-    userMessageDiv.className = 'chat-message user';
-    userMessageDiv.textContent = message;
-    chatboxMessages.appendChild(userMessageDiv);
-    
-    // Clear input
-    chatboxInput.value = '';
-    
-    // Scroll to bottom
-    chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
-    
-    // Add typing indicator
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'chat-message typing';
-    typingDiv.innerHTML = '<span>AI is thinking...</span>';
-    chatboxMessages.appendChild(typingDiv);
-    chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
-    
-    try {
-      // Use GEMINI-3-FLASH model for quick chat (best model)
-      window.selectedAIModel = 'gemini-3-flash';
-      
-      // Call the real AI system - let the API chain handle failures
-      const response = await tryDirectAPI(message, false, false);
-      
-      // Remove typing indicator
-      typingDiv.remove();
-      
-      // Add AI response
-      const aiMessageDiv = document.createElement('div');
-      aiMessageDiv.className = 'chat-message';
-      aiMessageDiv.textContent = response.response;
-      chatboxMessages.appendChild(aiMessageDiv);
-      chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
-      
-      console.log('Quick chat AI response received:', response.api);
-      
-    } catch (error) {
-      // Remove typing indicator
-      typingDiv.remove();
-      
-      // Add error message
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'chat-message error';
-      errorDiv.textContent = 'AI Error: ' + error.message + ' (Try the Official AI Chatbox for more options)';
-      chatboxMessages.appendChild(errorDiv);
-      chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
-      
-      console.log('Quick chat AI error:', error.message);
-    }
-  }
-  
-  // Send on button click
-  chatboxSend.addEventListener('click', sendMessage);
-  
-  // Send on Enter key
-  chatboxInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
-  });
-  
-  console.log('Main chatbox initialized successfully');
-});
+// Initialize chatbox functionality - DISABLED
+// document.addEventListener('DOMContentLoaded', function() {
+//   console.log('Initializing main chatbox...');
+//   
+//   const chatboxToggle = document.getElementById('chatboxToggle');
+//   const mainChatbox = document.getElementById('mainChatbox');
+//   const chatboxInput = document.getElementById('chatboxInput');
+//   const chatboxSend = document.getElementById('chatboxSend');
+//   const chatboxMessages = document.getElementById('chatboxMessages');
+//   const aiRobotButton = document.getElementById('aiRobotButton');
+//   const aiSection = document.getElementById('aiSection');
+//   
+//   if (!chatboxToggle || !mainChatbox || !chatboxInput || !chatboxSend || !chatboxMessages) {
+//     console.error('Chatbox elements not found');
+//     return;
+//   }
+//   
+//   // Toggle minimize/maximize
+//   chatboxToggle.addEventListener('click', function() {
+//     // Add close animation
+//     mainChatbox.classList.add('chatbox-close');
+//     
+//     // Hide after animation completes
+//     setTimeout(() => {
+//       mainChatbox.classList.remove('chatbox-close');
+//       mainChatbox.classList.remove('chatbox-open');
+//       mainChatbox.style.setProperty('display', 'none', 'important');
+//       mainChatbox.style.setProperty('visibility', 'hidden', 'important');
+//       mainChatbox.style.setProperty('opacity', '0', 'important');
+//       
+//       // Show AI robot button with animation
+//       if (aiRobotButton) {
+//         aiRobotButton.classList.remove('ai-button-hide');
+//         aiRobotButton.classList.add('ai-button-show');
+//         aiRobotButton.style.display = 'flex';
+//         aiRobotButton.style.visibility = 'visible';
+//         aiRobotButton.style.opacity = '1';
+//         
+//         console.log('Chatbox hidden with animation, AI robot button shown');
+//       }
+//     }, 300);
+//   });
+//   
+//   // AI robot button click handler
+//   if (aiRobotButton) {
+//     console.log('AI robot button found during initialization');
+//     
+//     // Multiple event methods to ensure it works despite browser extensions
+//     const handleAIButtonClick = function(e) {
+//       console.log('AI robot button clicked!', e);
+//       e.preventDefault();
+//       e.stopPropagation();
+//       
+//       // Hide AI robot button with animation
+//       aiRobotButton.classList.remove('ai-button-show');
+//       aiRobotButton.classList.add('ai-button-hide');
+//       
+//       // Show chatbox after AI button starts hiding
+//       setTimeout(() => {
+//         // Get fresh reference to main chatbox
+//         const chatboxElement = document.getElementById('mainChatbox');
+//         console.log('Chatbox element found:', !!chatboxElement);
+//         
+//         if (chatboxElement) {
+//           // Remove any existing classes
+//           chatboxElement.classList.remove('chatbox-close');
+//           
+//           // Show chatbox with open animation
+//           chatboxElement.style.setProperty('display', 'flex', 'important');
+//           chatboxElement.style.setProperty('visibility', 'visible', 'important');
+//           chatboxElement.style.setProperty('opacity', '1', 'important');
+//           chatboxElement.classList.add('chatbox-open');
+//           
+//           // Hide AI button completely after animation
+//           setTimeout(() => {
+//             aiRobotButton.style.display = 'none';
+//           }, 300);
+//           
+//           console.log('Quick chat restored with animation from AI robot button');
+//         } else {
+//           console.error('Could not find main chatbox element!');
+//         }
+//       }, 150);
+//     };
+//     
+//     // Add multiple event listeners
+//     aiRobotButton.addEventListener('click', handleAIButtonClick);
+//     aiRobotButton.addEventListener('mousedown', handleAIButtonClick);
+//     aiRobotButton.addEventListener('touchstart', handleAIButtonClick);
+//     
+//     // Test if button is clickable by adding a simple test
+//     aiRobotButton.addEventListener('mouseover', function() {
+//       console.log('Mouse over AI robot button - button is interactive');
+//     });
+//     
+//     console.log('AI robot button event listeners attached');
+//   } else {
+//     console.error('AI robot button not found during initialization!');
+//   }
+//   
+//   // Send message function
+//   async function sendMessage() {
+//     const message = chatboxInput.value.trim();
+//     if (!message) return;
+//     
+//     // Add user message
+//     const userMessageDiv = document.createElement('div');
+//     userMessageDiv.className = 'chat-message user';
+//     userMessageDiv.textContent = message;
+//     chatboxMessages.appendChild(userMessageDiv);
+//     
+//     // Clear input
+//     chatboxInput.value = '';
+//     
+//     // Scroll to bottom
+//     chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+//     
+//     // Add typing indicator
+//     const typingDiv = document.createElement('div');
+//     typingDiv.className = 'chat-message typing';
+//     typingDiv.innerHTML = '<span>AI is thinking...</span>';
+//     chatboxMessages.appendChild(typingDiv);
+//     chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+//     
+//     try {
+//       // Use GEMINI-3-FLASH model for quick chat (best model)
+//       window.selectedAIModel = 'gemini-3-flash';
+//       
+//       // Call the real AI system - let the API chain handle failures
+//       const response = await tryDirectAPI(message, false, false);
+//       
+//       // Remove typing indicator
+//       typingDiv.remove();
+//       
+//       // Add AI response
+//       const aiMessageDiv = document.createElement('div');
+//       aiMessageDiv.className = 'chat-message';
+//       aiMessageDiv.textContent = response.response;
+//       chatboxMessages.appendChild(aiMessageDiv);
+//       chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+//       
+//       console.log('Quick chat AI response received:', response.api);
+//       
+//     } catch (error) {
+//       // Remove typing indicator
+//       typingDiv.remove();
+//       
+//       // Add error message
+//       const errorDiv = document.createElement('div');
+//       errorDiv.className = 'chat-message error';
+//       errorDiv.textContent = 'AI Error: ' + error.message + ' (Try the Official AI Chatbox for more options)';
+//       chatboxMessages.appendChild(errorDiv);
+//       chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+//       
+//       console.log('Quick chat AI error:', error.message);
+//     }
+//   }
+//   
+//   // Send on button click
+//   chatboxSend.addEventListener('click', sendMessage);
+//   
+//   // Send on Enter key
+//   chatboxInput.addEventListener('keypress', function(e) {
+//     if (e.key === 'Enter') {
+//       sendMessage();
+//     }
+//   });
+//   
+//   console.log('Main chatbox initialized successfully');
+// });
 
 // Initialize AI Help and Settings buttons
 document.addEventListener('DOMContentLoaded', function() {
@@ -1856,116 +1857,12 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('🧮 Mathematical mastery initialized...')
   console.log('📊 Data analysis and table generation ready...')
   
-  // Fancy loading animation
-  const loadingScreen = document.createElement('div')
-  loadingScreen.id = 'ultimate-loading'
-  loadingScreen.innerHTML = `
-    <div style="
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
-    ">
-      <div style="
-        text-align: center;
-        padding: 40px;
-        animation: pulse 1.5s ease-in-out infinite alternate;
-      ">
-        <div style="
-          font-size: 3rem;
-          font-weight: bold;
-          margin-bottom: 20px;
-          text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        ">
-          LOADING MODELS
-        </div>
-        <div style="
-          font-size: 1.2rem;
-          opacity: 0.9;
-          color: rgba(255, 255, 255, 0.8);
-        ">
-          LOADING UI
-        </div>
-        <div style="
-          margin-top: 30px;
-          font-size: 1rem;
-          opacity: 0.7;
-        ">
-          <div style="
-            width: 60px;
-            height: 4px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 2px;
-            margin: 2px;
-            animation: loading 1.5s ease-in-out infinite;
-          "></div>
-          <div style="
-            width: 60px;
-            height: 4px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 2px;
-            margin: 2px;
-            animation: loading 1.5s ease-in-out infinite;
-            animation-delay: 0.5s;
-          "></div>
-          <div style="
-            width: 60px;
-            height: 4px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 2px;
-            margin: 2px;
-            animation: loading 1.5s ease-in-out infinite;
-            animation-delay: 1s;
-          "></div>
-        </div>
-      </div>
-    </div>
-    
-    <style>
-      @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-      }
-      
-      @keyframes loading {
-        0% { width: 0%; }
-        50% { width: 100%; }
-        100% { width: 0%; }
-      }
-    </style>
-  `
-  
-  document.body.appendChild(loadingScreen)
-  
-  // Remove loading screen after initialization
-  setTimeout(() => {
-    const loadingElement = document.getElementById('ultimate-loading')
-    if (loadingElement) {
-      loadingElement.style.transition = 'opacity 0.5s ease-out'
-      loadingElement.style.opacity = '0'
-      setTimeout(() => {
-        loadingElement.remove()
-        console.log('✅ **ULTIMATE AI SYSTEM READY** 🎯✨')
-        console.log('🔥 Enhanced code support activated for ALL languages!')
-        console.log('👁️ Vision analysis ready for ALL image types!')
-        console.log('🧮 Mathematical mastery initialized for complex problems!')
-        console.log('📊 Data analysis and table generation ready!')
-        console.log('🎯 Universal competence across ALL domains!')
-      }, 500)
-    }
-  }, 2000)
+  console.log('✅ **ULTIMATE AI SYSTEM READY** 🎯✨')
+  console.log('🔥 Enhanced code support activated for ALL languages!')
+  console.log('👁️ Vision analysis ready for ALL image types!')
+  console.log('🧮 Mathematical mastery initialized for complex problems!')
+  console.log('📊 Data analysis and table generation ready!')
+  console.log('🎯 Universal competence across ALL domains!')
   
   const aiInput = document.getElementById('aiInput')
   const aiMessages = document.getElementById('aiMessages')
@@ -2093,135 +1990,80 @@ async function tryServerAPI(message) {
 }
 
 async function loadEnvFromServer() {
-  try {
-    console.log('🔄 Attempting to load environment variables...')
+  console.log('🔄 Attempting to load environment variables...')
 
-    // Check if we're on Firebase (static hosting only, no serverless functions)
-    const isFirebase = window.location.hostname.includes('firebaseapp.com') || window.location.hostname.includes('web.app') || window.location.hostname.includes('.firebaseapp.com') || window.location.hostname.includes('.web.app')
+  // Check if we're on Firebase (static hosting only, no serverless functions)
+  const isFirebase = window.location.hostname.includes('firebaseapp.com') || window.location.hostname.includes('web.app') || window.location.hostname.includes('.firebaseapp.com') || window.location.hostname.includes('.web.app')
 
-    // Check if we're on Surge (static hosting only, no serverless functions)
-    const isSurge = window.location.hostname.includes('surge.sh')
+  // Check if we're on Surge (static hosting only, no serverless functions)
+  const isSurge = window.location.hostname.includes('surge.sh')
 
-    // Check if we're on Cloudflare Pages
-    const isCloudflare = window.location.hostname.includes('pages.dev') || window.location.hostname.includes('.pages.dev') || window.location.hostname.includes('cloudflare')
+  // Check if we're on Cloudflare Pages
+  const isCloudflare = window.location.hostname.includes('pages.dev') || window.location.hostname.includes('.pages.dev') || window.location.hostname.includes('cloudflare')
 
-    // Check if we're on Render
-    const isRender = window.location.hostname.includes('onrender.com') || window.location.hostname.includes('.onrender.com')
+  // Check if we're on Render
+  const isRender = window.location.hostname.includes('onrender.com') || window.location.hostname.includes('.onrender.com')
 
-    // Check if we're on Netlify
-    const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
+  // Check if we're on Netlify
+  const isNetlify = window.location.hostname.includes('netlify.app') || window.location.hostname.includes('.netlify.app')
 
-    // Check if we're on Vercel
-    const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
+  // Check if we're on Vercel
+  const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('.vercel.app')
 
-    // Firebase, Surge, and Cloudflare Pages static hosting don't support serverless functions by default
-    if (isFirebase || isSurge || isCloudflare) {
-      const platform = isFirebase ? 'Firebase' : (isSurge ? 'Surge' : 'Cloudflare')
-      console.log(`🌐 Detected ${platform} static hosting - no serverless functions available`)
-      console.log('⚠️ AI functionality requires Vercel deployment with serverless functions')
-      return null
-    }
+  // Firebase, Surge, and Cloudflare Pages static hosting don't support serverless functions by default
+  if (isFirebase || isSurge || isCloudflare) {
+    const platform = isFirebase ? 'Firebase' : (isSurge ? 'Surge' : 'Cloudflare')
+    console.log(`🌐 Detected ${platform} static hosting - no serverless functions available`)
+    console.log('⚠️ AI functionality requires Vercel deployment with serverless functions')
+    return null
+  }
 
-    if (isRender || isNetlify || isVercel) {
-      const platform = isRender ? 'Render' : (isNetlify ? 'Netlify' : 'Vercel')
-      console.log(`🌐 Detected ${platform} deployment, using API endpoint...`)
-      
-      try {
-        const response = await fetch('/api/env')
-        if (response.ok) {
-          const envVars = await response.json()
-          console.log('✅ Vercel environment variables loaded')
-          console.log('🔑 API keys configured:', envVars.HAS_API_KEYS ? 'Yes' : 'No')
-          
-          // Add API keys if they exist (they won't be exposed in the API response)
-          // We need to check if they exist via the HAS_API_KEYS flag
-          if (envVars.HAS_API_KEYS) {
-            console.log('🔐 API keys are configured on Vercel')
-            // For security, we don't expose actual keys, but we know they exist
-            // The actual API calls will happen server-side
-            return {
-              ...envVars,
-              API: 'VERCEL_CONFIGURED',
-              API2: 'VERCEL_CONFIGURED', 
-              API3: 'VERCEL_CONFIGURED',
-              API4: 'VERCEL_CONFIGURED'
-            }
-          } else {
-            console.log('⚠️ No API keys found in Vercel environment')
-            return null
-          }
-        } else {
-          console.log('❌ Failed to fetch Vercel environment variables')
-          return null
-        }
-      } catch (error) {
-        console.log('❌ Error fetching Vercel environment variables:', error.message)
-        return null
-      }
-    }
-    
-    // For local development, use the API endpoint
-    console.log('🔄 Local development detected, using API endpoint...')
-    try {
-      const response = await fetch('/api/env')
-      if (response.ok) {
-        const envVars = await response.json()
-        console.log('✅ Environment variables loaded from API:', {
-          API: envVars.API ? '[SET]' : '[NOT SET]',
-          API2: envVars.API2 ? '[SET]' : '[NOT SET]',
-          API3: envVars.API3 ? '[SET]' : '[NOT SET]',
-          API4: envVars.API4 ? '[SET]' : '[NOT SET]',
-          API5: envVars.API5 ? '[SET]' : '[NOT SET]',
-          PORT: envVars.PORT || '3000',
-          NODE_ENV: envVars.NODE_ENV || 'development',
-          DEBUG: envVars.DEBUG || 'false',
-          ENABLE_AI: envVars.ENABLE_AI || 'true',
-          ENABLE_PROXY: envVars.ENABLE_PROXY || 'true',
-          ENABLE_CHAT: envVars.ENABLE_CHAT || 'true',
-          ENABLE_GAMING: envVars.ENABLE_GAMING || 'true',
-          DISCORD_SERVER_ID: envVars.DISCORD_SERVER_ID ? '[SET]' : '[NOT SET]',
-          DISCORD_CHANNEL_ID: envVars.DISCORD_CHANNEL_ID ? '[SET]' : '[NOT SET]'
-        })
-        return envVars
-      } else {
-        console.log('❌ API endpoint not available')
-        return null
-      }
-    } catch (error) {
-      console.log('❌ Error loading environment variables from API:', error.message)
-      return null
-    }
-  } catch (error) {
-    console.log('❌ Error loading environment variables:', error.message)
+  // Use hardcoded API keys from frontend-api.js for all deployments
+  console.log('🔄 Using hardcoded API keys from frontend-api.js...')
+  
+  // Check if window.ENV is available (loaded from frontend-api.js)
+  if (window.ENV && window.ENV.API) {
+    console.log('✅ API keys loaded from frontend-api.js:', {
+      API: window.ENV.API ? '[SET]' : '[NOT SET]',
+      API2: window.ENV.API2 ? '[SET]' : '[NOT SET]',
+      API3: window.ENV.API3 ? '[SET]' : '[NOT SET]',
+      API4: window.ENV.API4 ? '[SET]' : '[NOT SET]',
+      API5: window.ENV.API5 ? '[SET]' : '[NOT SET]',
+      API6: window.ENV.API6 ? '[SET]' : '[NOT SET]',
+      API7: window.ENV.API7 ? '[SET]' : '[NOT SET]',
+      API8: window.ENV.API8 ? '[SET]' : '[NOT SET]',
+      PORT: window.ENV.PORT || '3000',
+      NODE_ENV: window.ENV.NODE_ENV || 'development',
+      DEBUG: window.ENV.DEBUG || 'false',
+      ENABLE_AI: window.ENV.ENABLE_AI || 'true',
+      ENABLE_PROXY: window.ENV.ENABLE_PROXY || 'true',
+      ENABLE_CHAT: window.ENV.ENABLE_CHAT || 'true',
+      ENABLE_GAMING: window.ENV.ENABLE_GAMING || 'true',
+      DISCORD_SERVER_ID: window.ENV.DISCORD_SERVER_ID ? '[SET]' : '[NOT SET]',
+      DISCORD_CHANNEL_ID: window.ENV.DISCORD_CHANNEL_ID ? '[SET]' : '[NOT SET]'
+    })
+    return window.ENV
+  } else {
+    console.log('❌ API keys not found in frontend-api.js')
     return null
   }
 }
 
 async function tryOpenRouter(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API) {
-    throw new Error('OpenRouter API key not found. Please set up your .env file or run env_creator.bat')
+    throw new Error('OpenRouter API key not found. Please check frontend-api.js')
   }
-  
-  const modelMap = {
-    'auto': 'openai/gpt-oss-20b:free',
-    'gpt-oss-20b': 'openai/gpt-oss-20b:free',
-    'gpt-oss-120b': 'openai/gpt-oss-120b:groq',
-    'gemma-3-4b': 'google/gemma-3-4b-it:free',
-    'gemma-3-4b-fast': 'google/gemma-3-4b-it:free',
-    'gemma-3-12b': 'google/gemma-3-12b-it:free',
-    'gemma-3-12b-normal': 'google/gemma-3-12b-it:free',
-    'gemma-3-27b': 'google/gemma-3-27b-it:free',
-    'llama-3.3-70b': 'meta-llama/llama-3.3-70b-instruct:free',
-    'claude-opus-4': 'anthropic/claude-opus-4'
-  }
-  
-  const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
+
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
   console.log('🤖 Using OpenRouter model:', selectedModel)
-  
+
   // Enhanced message processing
   let enhancedMessage = message
   const isCodeRequest = message.includes('```') || message.toLowerCase().includes('code') || message.toLowerCase().includes('function') || message.toLowerCase().includes('class') || message.toLowerCase().includes('import') || message.toLowerCase().includes('const') || message.toLowerCase().includes('let') || message.toLowerCase().includes('var')
+
   
   let detectedLanguage = 'General'
   if (message.toLowerCase().includes('python')) detectedLanguage = 'Python 🐍'
@@ -2371,26 +2213,15 @@ ${enhancedMessage}
 }
 
 async function tryHuggingFace(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API2) {
-    throw new Error('HuggingFace API key not found. Please set up your .env file or run env_creator.bat')
+    throw new Error('HuggingFace API key not found. Please check frontend-api.js')
   }
   
-  const selectedModel = window.selectedAIModel || 'auto'
-  const hfModelMap = {
-    'auto': 'google/gemma-3-27b-it',
-    'gpt-oss-20b': 'google/gemma-3-27b-it',
-    'gpt-oss-120b': 'openai/gpt-oss-120b:groq',
-    'gemma-3-4b': 'google/gemma-3-4b-it',
-    'gemma-3-4b-fast': 'google/gemma-3-4b-it:featherlessai',
-    'gemma-3-12b': 'google/gemma-3-12b-it',
-    'gemma-3-12b-normal': 'google/gemma-3-12b-it:featherless-ai',
-    'gemma-3-27b': 'google/gemma-3-27b-it:featherless-ai',
-    'claude-opus-4': 'anthropic/claude-opus-4'
-  }
-  
-  const hfModel = hfModelMap[selectedModel] || hfModelMap['auto']
-  console.log('Using HuggingFace model:', hfModel)
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
+  console.log('🤖 Using HuggingFace model:', selectedModel)
   
   // Enhanced message processing (same as OpenRouter)
   let enhancedMessage = message
@@ -2492,7 +2323,7 @@ ${enhancedMessage}
   const systemPrompt = `You are an expert AI assistant. You excel at coding, mathematics, data analysis, and problem-solving. Provide clear, accurate, and comprehensive answers with proper formatting and examples when relevant.`
   
   let messages = []
-  if (hfModel.includes('gemma')) {
+  if (selectedModel.includes('gemma')) {
     // GEMMA models don't support system messages, use user message instead
     messages = [
       {
@@ -2522,7 +2353,7 @@ ${enhancedMessage}
     },
     body: JSON.stringify({
       token: envVars.API2,
-      model: hfModel,
+      model: selectedModel,
       messages: messages,
       max_tokens: isVisionModel ? 2000 : 1000,
       temperature: 0.7
@@ -2562,20 +2393,14 @@ ${enhancedMessage}
 }
 
 async function tryVercelAI(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API5) {
-    throw new Error('Vercel AI Gateway API key not found. Please set up API5 in your .env file')
+    throw new Error('Vercel AI Gateway API key not found. Please check frontend-api.js')
   }
   
-  const modelMap = {
-    'auto': 'openai/gpt-oss-120b',
-    'gpt-oss-20b': 'openai/gpt-oss-20b',
-    'gpt-oss-120b': 'openai/gpt-oss-120b',
-    'llama-3.3-70b': 'meta/llama-3.3-70b',
-    'claude-opus-4': 'anthropic/claude-opus-4'
-  }
-  
-  const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
   console.log('🤖 Using Vercel AI Gateway model:', selectedModel)
   
   // Enhanced message processing (same as other APIs)
@@ -2741,22 +2566,14 @@ ${enhancedMessage}
 }
 
 async function tryGroq(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API4) {
-    throw new Error('Groq API key not found. Please set up API4 in your .env file')
+    throw new Error('Groq API key not found. Please check frontend-api.js')
   }
   
-  const modelMap = {
-    'auto': 'llama-3.3-70b-versatile',
-    'gpt-oss-20b': 'openai/gpt-oss-20b',
-    'gpt-oss-120b': 'openai/gpt-oss-120b',
-    'gemma-3-12b-normal': 'google/gemma-3-12b-it',
-    'gemma-3-27b': 'google/gemma-3-27b-it',
-    'llama-3.3-70b': 'llama-3.3-70b-versatile',
-    'claude-opus-4': 'anthropic/claude-opus-4'
-  }
-  
-  const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
   console.log('🤖 Using Groq model:', selectedModel)
   
   // Enhanced message processing (same as other APIs)
@@ -2865,26 +2682,14 @@ ${enhancedMessage}
 }
 
 async function tryCloudflare(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API5) {
-    throw new Error('Cloudflare Workers AI API key not found. Please set up API5 in your .env file')
+    throw new Error('Cloudflare Workers AI API key not found. Please check frontend-api.js')
   }
 
-  const modelMap = {
-    'auto': '@cf/meta/llama-3.3-70b-instruct',
-    'gpt-oss-20b': '@cf/openai/gpt-oss-20b',
-    'gpt-oss-120b': '@cf/meta/llama-3.1-70b-instruct',
-    'gemma-3-4b': '@cf/google/gemma-7b-it',
-    'gemma-3-4b-fast': '@cf/google/gemma-7b-it',
-    'gemma-3-12b': '@cf/google/gemma-7b-it',
-    'gemma-3-12b-normal': '@cf/google/gemma-3-12b-it',
-    'gemma-3-27b': '@cf/meta/llama-3.3-70b-instruct',
-    'mistral-small-3-1': '@cf/mistralai/mistral-small-3.1-24b-instruct',
-    'llama-3.3-70b': '@cf/meta/llama-3.3-70b-instruct',
-    'claude-opus-4': 'anthropic/claude-opus-4'
-  }
-
-  const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
   console.log('🤖 Using Cloudflare model:', selectedModel)
 
   // Enhanced message processing (same as other APIs)
@@ -2971,26 +2776,14 @@ async function tryCloudflare(message, hasImages = false, isVisionModel = false) 
 }
 
 async function tryGoogleAIStudio(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API6) {
-    throw new Error('Google AI Studio API key not found. Please set up API6 in your .env file')
+    throw new Error('Google AI Studio API key not found. Please check frontend-api.js')
   }
 
-  const modelMap = {
-    'auto': 'google/gemini-2.5-flash',
-    'gemini-3-flash': 'google/gemini-2.5-flash',
-    'gpt-oss-20b': 'gemini-1.5-flash',
-    'gpt-oss-120b': 'gemini-2.0-flash-exp',
-    'gemma-3-4b': 'gemini-1.5-flash',
-    'gemma-3-4b-fast': 'gemini-1.5-flash',
-    'gemma-3-12b': 'gemini-1.5-pro',
-    'gemma-3-12b-normal': 'gemini-1.5-pro',
-    'gemma-3-27b': 'gemini-2.0-flash-exp',
-    'llama-3.3-70b': 'gemini-2.0-flash-exp',
-    'claude-opus-4': 'anthropic/claude-opus-4'
-  }
-
-  const selectedModel = modelMap[window.selectedAIModel] || modelMap['auto']
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
   console.log('🤖 Using Google AI Studio model:', selectedModel)
 
   // Enhanced message processing (same as other APIs)
@@ -3073,25 +2866,15 @@ async function tryGoogleAIStudio(message, hasImages = false, isVisionModel = fal
 }
 
 async function tryEmergentAI(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API8) {
-    throw new Error('Emergent AI API key not found. Please set up API8 in your .env file')
+    throw new Error('Emergent AI API key not found. Please check frontend-api.js')
   }
 
-  const selectedModel = window.selectedAIModel || 'auto'
-  const modelMap = {
-    'auto': 'google/gemini-2.5-flash',
-    'Gemini-2.5-Flash': 'google/gemini-2.5-flash',
-    'gpt-4o-mini': 'gpt-4o-mini',
-    'mistral-small-3.1': 'mistral-small-3.1',
-    'gemma-4-31b-it': 'gemma-4-31b-it',
-    'claude-opus-4': 'claude-opus-4',
-    'claude-sonnet-4.5': 'claude-sonnet-4.5',
-    'Qwen3.5-Plus': 'qwen/qwen3.5-plus-02-15',
-    'llama-4-scout': 'llama-4-scout'
-  }
-
-  const emergentModel = modelMap[selectedModel] || selectedModel
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
+  console.log('🤖 Using Emergent AI model:', selectedModel)
 
   const response = await fetch('https://api.emergent.sh/v1/chat/completions', {
     method: 'POST',
@@ -3100,7 +2883,7 @@ async function tryEmergentAI(message, hasImages = false, isVisionModel = false) 
       'Authorization': `Bearer ${envVars.API8}`
     },
     body: JSON.stringify({
-      model: emergentModel,
+      model: selectedModel,
       messages: [{ role: 'user', content: message }],
       max_tokens: isVisionModel ? 2000 : 1000,
       temperature: 0.7
@@ -3136,22 +2919,15 @@ async function tryEmergentAI(message, hasImages = false, isVisionModel = false) 
 }
 
 async function tryReplicate(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API3) {
-    throw new Error('Replicate API key not found. Please set up your .env file or run env_creator.bat')
+    throw new Error('Replicate API key not found. Please check frontend-api.js')
   }
   
-  const replicateModelMap = {
-    'auto': 'google-deepmind/gemma-3-27b-it:c0f0aebe8e578c15a7531e08a62cf01206f5870e9d0a67804b8152822db58c54',
-    'gpt-oss-20b': 'openai/gpt-oss-20b',
-    'gpt-oss-120b': 'openai/gpt-oss-120b',
-    'gemma-3-4b': 'google-deepmind/gemma-3-4b-it:00139d2960396352b671f7b5c2ece5313bf6d45fe0a052efe14f023d2a81e196',
-    'gemma-3-12b': 'google-deepmind/gemma-3-12b-it:5a0df3fa58c87fbd925469a673fdb16f3dd08e6f4e2f1a010970f07b7067a81c',
-    'gemma-3-27b': 'google-deepmind/gemma-3-27b-it:c0f0aebe8e578c15a7531e08a62cf01206f5870e9d0a67804b8152822db58c54'
-  }
-  
-  const replicateModel = replicateModelMap[window.selectedAIModel] || replicateModelMap['auto']
-  console.log('🤖 Using Replicate model:', replicateModel)
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
+  console.log('🤖 Using Replicate model:', selectedModel)
   
   // Enhanced message processing (same as other APIs)
   let enhancedMessage = message
@@ -3264,7 +3040,7 @@ ${enhancedMessage}
       'Access-Control-Request-Headers': 'Content-Type,Authorization'
     },
     body: JSON.stringify({
-      version: replicateModel,
+      version: selectedModel,
       input: {
         prompt: `${systemPrompt}\n\n${enhancedMessage}`,
         max_tokens: isVisionModel ? 2000 : 1000,
@@ -3301,23 +3077,14 @@ ${enhancedMessage}
 }
 
 async function tryLockLLM(message, hasImages = false, isVisionModel = false) {
-  const envVars = await loadEnvFromServer()
+  // Use hardcoded API keys from frontend-api.js
+  const envVars = window.ENV;
   if (!envVars || !envVars.API3) {
-    throw new Error('LockLLM API key not found. Please set up API3 in your .env file')
+    throw new Error('LockLLM API key not found. Please check frontend-api.js')
   }
   
-  const modelMap = {
-    'auto': 'openai/gpt-oss-20b:free',
-    'gpt-oss-20b': 'openai/gpt-oss-20b:free',
-    'gpt-oss-120b': 'openai/gpt-oss-120b:groq',
-    'gemma-3-4b': 'google/gemma-3-4b-it:free',
-    'gemma-3-12b': 'google/gemma-3-12b-it:free',
-    'gemma-3-27b': 'google/gemma-3-27b-it:free',
-    'llama-3.3-70b': 'meta-llama/llama-3.3-70b-instruct:free',
-    'claude-opus-4': 'anthropic/claude-opus-4'
-  }
-  
-  const selectedModel = modelMap[window.selectedAIModel] || modelMap['gemma-3-12b'] || modelMap['auto']
+  // Use the actual selected model directly instead of mapping
+  const selectedModel = window.selectedAIModel || 'nousresearch/hermes-3-llama-3.1-405b:free'
   console.log('🤖 Using LockLLM model:', selectedModel)
   
   // Enhanced message processing (same as other APIs)
@@ -3489,23 +3256,18 @@ ${enhancedMessage}
 
 // Load error patterns for intelligent fallback decisions
 async function loadErrorPatterns() {
-  try {
-    const response = await fetch('./error-notes.json')
-    const errorData = await response.json()
-    console.log('📋 Error patterns loaded:', errorData)
-    return errorData
-  } catch (error) {
-    console.log('❌ Failed to load error patterns:', error)
-    return {
-      error_patterns: {
-        "default": {
-          "keywords": ["error"],
-          "should_continue": true,
-          "description": "Generic error, try next API"
-        }
-      }
-    }
+  // Skip loading error-notes.json file - use hardcoded patterns
+  console.log('📋 Using hardcoded error patterns')
+  
+  const errorData = {
+    "rate_limit": ["too many requests", "429", "rate limit"],
+    "auth_error": ["unauthorized", "401", "authentication"],
+    "not_found": ["404", "not found"],
+    "server_error": ["500", "internal server error"],
+    "invalid_key": ["invalid api key", "forbidden"]
   }
+  
+  return errorData
 }
 
 // Check if error matches known patterns that should continue to next API

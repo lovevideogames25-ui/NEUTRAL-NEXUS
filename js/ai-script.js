@@ -1,7 +1,7 @@
 // Ultimate AI Section JavaScript
 class UltimateAI {
   constructor() {
-    this.currentModel = 'Gemini-2.5-Flash';
+    this.currentModel = 'nousresearch/hermes-3-llama-3.1-405b:free';
     this.chatHistory = [];
     this.isTyping = false;
     this.attachedImages = [];
@@ -34,30 +34,13 @@ class UltimateAI {
       aiCloseBtn.addEventListener('click', () => this.closeAI());
     }
     
-    // Model selection - new structure
-    document.querySelectorAll('.model-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        document.querySelectorAll('.model-item').forEach(i => i.classList.remove('selected'));
-        item.classList.add('selected');
-        this.currentModel = item.getAttribute('data-model');
-        console.log('Selected model:', this.currentModel);
-      });
-    });
-    
+        
     // Category tabs
     document.querySelectorAll('.category-tab').forEach(tab => {
       tab.addEventListener('click', (e) => this.filterModels(e.target.dataset.category));
     });
 
-    // Model tabs
-    document.querySelectorAll('.model-tab').forEach(tab => {
-      tab.addEventListener('click', (e) => {
-        document.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        this.filterModelsByTab(e.target.dataset.tab);
-      });
-    });
-    
+        
     // Quick action buttons
     document.querySelectorAll('.quick-action-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -136,57 +119,176 @@ class UltimateAI {
   }
   
   setupModelSelection() {
-    // Model card clicks
-    document.querySelectorAll('.model-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const model = card.dataset.model;
-        this.selectModel(model);
-      });
-    });
+    console.log('🔧 Setting up model selection...');
     
-    // Auto-select featured model
-    const featuredModel = document.querySelector('.model-card.featured');
-    if (featuredModel) {
-      this.selectModel(featuredModel.dataset.model);
-    }
+    // Wait for DOM to be ready
+    setTimeout(() => {
+      const modelItems = document.querySelectorAll('.model-item');
+      console.log('📋 Found model items:', modelItems.length);
+      
+      if (modelItems.length === 0) {
+        console.error('❌ No model items found! Check if modelList element exists.');
+        return;
+      }
+      
+      // Clear any existing event listeners
+      modelItems.forEach(item => {
+        const newItem = item.cloneNode(true);
+        item.parentNode.replaceChild(newItem, item);
+      });
+      
+      // Add fresh event listeners
+      const freshModelItems = document.querySelectorAll('.model-item');
+      freshModelItems.forEach((item, index) => {
+        console.log(`🔗 Adding click listener to model ${index + 1}:`, item.dataset.model);
+        
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('🖱️ Model item clicked:', item.dataset.model);
+          const model = item.dataset.model;
+          if (model) {
+            this.selectModel(model);
+          } else {
+            console.error('❌ No data-model attribute found on clicked item');
+          }
+        });
+        
+        // Add hover effect for debugging
+        item.addEventListener('mouseenter', () => {
+          console.log('👆 Hovering over model:', item.dataset.model);
+        });
+      });
+      
+      // Auto-select first model (Hermes-3-405B)
+      const firstModel = document.querySelector('.model-item');
+      if (firstModel) {
+        console.log('🎯 Auto-selecting first model:', firstModel.dataset.model);
+        this.selectModel(firstModel.dataset.model);
+      }
+    }, 1000);
   }
   
   selectModel(model) {
+    if (!model) {
+      console.error('❌ No model provided to selectModel');
+      return;
+    }
+    
+    console.log('🎯 selectModel called with:', model);
     this.currentModel = model;
     
-    // Update UI
-    document.querySelectorAll('.model-card').forEach(card => {
-      card.classList.remove('selected');
+    // Update UI - remove selected from all items
+    const allItems = document.querySelectorAll('.model-item');
+    console.log('🔄 Removing selected from', allItems.length, 'items');
+    
+    allItems.forEach(item => {
+      item.classList.remove('selected');
+      console.log('🗑️ Removed selected from:', item.dataset.model);
     });
     
-    const selectedCard = document.querySelector(`[data-model="${model}"]`);
-    if (selectedCard) {
-      selectedCard.classList.add('selected');
+    // Add selected to the clicked model
+    const selectedItem = document.querySelector(`[data-model="${model}"]`);
+    console.log('🔍 Looking for selected item:', `[data-model="${model}"]`);
+    
+    if (selectedItem) {
+      selectedItem.classList.add('selected');
+      const modelName = selectedItem.querySelector('.model-name')?.textContent;
+      console.log('✅ UI updated - model item highlighted:', modelName);
+      
+      // Force a visual update by adding a temporary animation
+      selectedItem.style.transition = 'all 0.3s ease';
+      selectedItem.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        selectedItem.style.transform = 'scale(1)';
+      }, 200);
+      
+    } else {
+      console.error('❌ Could not find model item with data-model:', model);
+      console.log('🔍 Available models:');
+      document.querySelectorAll('.model-item').forEach(item => {
+        console.log('  -', item.dataset.model);
+      });
     }
+    
+    // Update any UI elements that show current model
+    this.updateCurrentModelDisplay();
 
-    // Disable camera button for DeepSeek-V3.2
+    // Show visual feedback
+    this.showModelSelectionFeedback(model);
+  }
+
+  updateCurrentModelDisplay() {
+    // Update any UI elements that should display the current model name
+    const currentModelElements = document.querySelectorAll('.current-model-display');
+    currentModelElements.forEach(element => {
+      const modelName = this.getModelDisplayName(this.currentModel);
+      element.textContent = modelName;
+    });
+  }
+
+  getModelDisplayName(modelId) {
+    // Extract readable name from model ID
+    const modelItem = document.querySelector(`[data-model="${modelId}"]`);
+    if (modelItem) {
+      return modelItem.querySelector('.model-name')?.textContent || modelId;
+    }
+    return modelId;
+  }
+
+  showModelSelectionFeedback(model) {
+    // Show temporary feedback when model is selected
+    const modelName = this.getModelDisplayName(model);
+    console.log(`🤖 Model switched to: ${modelName}`);
+    
+    // Show visual feedback in the chat area
+    const chatMessages = document.getElementById('chatMessages');
+    if (chatMessages) {
+      const feedbackDiv = document.createElement('div');
+      feedbackDiv.style.cssText = `
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 12px;
+        padding: 12px 16px;
+        margin: 10px 0;
+        color: #fff;
+        font-size: 14px;
+        animation: slideIn 0.3s ease;
+      `;
+      feedbackDiv.innerHTML = `🤖 Model switched to: <strong>${modelName}</strong>`;
+      
+      // Add to chat temporarily
+      chatMessages.appendChild(feedbackDiv);
+      
+      // Remove after 3 seconds
+      setTimeout(() => {
+        feedbackDiv.style.opacity = '0';
+        setTimeout(() => feedbackDiv.remove(), 300);
+      }, 3000);
+    }
+    
+    // Disable camera button for non-vision models
+    this.updateCameraButton(model);
+  }
+
+  updateCameraButton(model) {
     const cameraBtn = document.getElementById('ultimateAICameraBtn');
     if (cameraBtn) {
-      if (model === 'DeepSeek-V3.2') {
-        cameraBtn.style.opacity = '0.5';
-        cameraBtn.style.pointerEvents = 'none';
-      } else {
+      const visionModels = [
+        'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
+        'nvidia/nemotron-nano-12b-v2-vl:free'
+      ];
+      
+      if (visionModels.includes(model)) {
         cameraBtn.style.opacity = '1';
         cameraBtn.style.pointerEvents = 'auto';
+        console.log('📷 Camera enabled for vision model:', model);
+      } else {
+        cameraBtn.style.opacity = '0.5';
+        cameraBtn.style.pointerEvents = 'none';
+        console.log('📷 Camera disabled for non-vision model:', model);
       }
     }
-    
-    // Update current model display
-    const modelDetails = this.getModelDetails(model);
-    const modelAvatar = document.querySelector('.model-avatar');
-    const modelName = document.querySelector('.model-details h4');
-    const modelDesc = document.querySelector('.model-details p');
-    
-    if (modelAvatar) modelAvatar.textContent = modelDetails.icon;
-    if (modelName) modelName.textContent = modelDetails.name;
-    if (modelDesc) modelDesc.textContent = modelDetails.description;
-    
-    console.log(`Selected model: ${model}`);
   }
   
   getModelDetails(model) {
@@ -290,26 +392,7 @@ class UltimateAI {
     });
   }
 
-  filterModelsByTab(tab) {
-    const modelList = document.getElementById('modelList');
-    const modelItems = document.querySelectorAll('.model-item');
-
-    if (tab === 'popular') {
-      modelItems.forEach(item => {
-        const popularModels = ['Gemini-2.5-Flash', 'gpt-4o-mini', 'Qwen3.5-Plus', 'claude-opus-4'];
-        if (popularModels.includes(item.dataset.model)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    } else {
-      modelItems.forEach(item => {
-        item.style.display = 'block';
-      });
-    }
-  }
-  
+    
   async callLocalAI(message) {
     try {
       const response = await fetch('http://localhost:5000/chat', {
@@ -513,6 +596,8 @@ class UltimateAI {
   }
   
   async sendMessage() {
+    console.log('📤 sendMessage called, current model:', this.currentModel);
+    
     const input = document.getElementById('ultimateAIInput');
     const message = input.value.trim();
     

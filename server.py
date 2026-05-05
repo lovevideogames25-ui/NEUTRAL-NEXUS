@@ -93,7 +93,29 @@ class ProxyHTTPRequestHandler(SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_error(500, f'Proxy error: {str(e)}')
         else:
-            # Handle static files
+            # Handle static files and custom API routes
+            # Serve js/frontend-api.js for /api/env requests
+            if self.path.startswith('/api/env'):
+                try:
+                    # Resolve the frontend API file path relative to this script
+                    file_path = os.path.join(os.path.dirname(__file__), 'js', 'frontend-api.js')
+                    if os.path.exists(file_path):
+                        with open(file_path, 'rb') as f:
+                            content = f.read()
+                        self.send_response(200)
+                        self.send_header('Content-Type', 'application/javascript')
+                        self.send_header('Access-Control-Allow-Origin', '*')
+                        self.send_header('Cache-Control', 'public, max-age=300')
+                        self.end_headers()
+                        self.wfile.write(content)
+                        return
+                    else:
+                        self.send_error(404, 'frontend-api.js not found')
+                        return
+                except Exception as e:
+                    self.send_error(500, f'Error serving frontend-api.js: {str(e)}')
+                    return
+            # Default static file handling
             super().do_GET()
 
 if __name__ == '__main__':

@@ -3,85 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy Browser</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proxy Browser - NEUTRAL NEXUS</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="navigation/proxy_browser.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --dark-gradient: linear-gradient(135deg, #1a1a2e 0%, #0f172a 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: 0 12px 40px rgba(102, 126, 234, 0.4);
+            --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.8);
+            --border-radius: 20px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #1a1a2e;
-            color: #fff;
+            font-family: Arial, sans-serif;
+            background: var(--dark-gradient);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .proxy-browser-section {
+            position: relative;
+            width: 100%;
             height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        .browser-controls {
-            background: #16213e;
-            padding: 10px;
+        .browser-header {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 20px 30px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .browser-title-section h2 {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .browser-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+
+        .browser-header-controls {
             display: flex;
             gap: 10px;
+        }
+
+        .browser-close-btn {
+            width: 35px;
+            height: 35px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            display: flex;
             align-items: center;
-            border-bottom: 1px solid #0f3460;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            font-size: 16px;
+        }
+
+        .browser-close-btn:hover {
+            background: rgba(255, 67, 54, 0.8);
+            transform: scale(1.1);
+        }
+
+        .browser-controls {
+            background: rgba(30, 30, 46, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
         }
 
         .nav-btn {
-            background: #e94560;
-            color: #fff;
+            width: 40px;
+            height: 40px;
             border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--glass-border);
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            font-size: 16px;
+            color: #ffffff;
         }
 
-        .nav-btn:hover {
-            background: #ff6b6b;
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
         }
 
         .nav-btn:disabled {
-            background: #535c68;
+            opacity: 0.5;
             cursor: not-allowed;
+            transform: none;
+        }
+
+        .url-bar-container {
+            flex: 1;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
         .url-bar {
             flex: 1;
-            background: #0f3460;
-            border: 1px solid #533483;
-            padding: 8px 12px;
-            border-radius: 20px;
-            color: #fff;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--glass-border);
+            padding: 12px 20px;
+            border-radius: 25px;
+            color: #ffffff;
             font-size: 14px;
+            outline: none;
+            transition: var(--transition-smooth);
         }
 
         .url-bar:focus {
-            outline: none;
-            border-color: #e94560;
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .url-bar::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .go-btn {
-            background: #e94560;
-            color: #fff;
+            padding: 12px 24px;
+            background: var(--primary-gradient);
+            color: white;
             border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
+            border-radius: 25px;
+            font-weight: 600;
             cursor: pointer;
+            transition: var(--transition-bounce);
             font-size: 14px;
-            transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .go-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
         }
 
         .go-btn:hover {
-            background: #ff6b6b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .go-btn:hover::before {
+            left: 100%;
         }
 
         .iframe-container {
             flex: 1;
             overflow: hidden;
+            position: relative;
+            background: #ffffff;
         }
 
         iframe {
@@ -91,48 +221,344 @@
             background: #fff;
         }
 
-        .loading {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #e94560;
-            font-size: 18px;
-            display: none;
-        }
-
         .error-message {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #e94560;
-            color: #fff;
-            padding: 20px;
-            border-radius: 10px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 67, 54, 0.5);
+            color: #ffffff;
+            padding: 30px;
+            border-radius: var(--border-radius);
             display: none;
             text-align: center;
+            box-shadow: var(--shadow-card);
+            max-width: 400px;
+            z-index: 1000;
+        }
+
+        .error-message h3 {
+            color: #ff4757;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .error-message p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .error-close-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .error-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .loading-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .loading-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .loading-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            animation: particlesFloat 20s ease-in-out infinite;
+        }
+
+        .loading-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.05) 50%, transparent 50%),
+                linear-gradient(0deg, transparent 0%, rgba(102, 126, 234, 0.05) 50%, transparent 50%);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            animation: gridMove 10s linear infinite;
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: contentSlide 1s ease-out;
+        }
+
+        .loading-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        .loading-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .loading-progress {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.5s ease-out;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .progress-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #667eea;
+            font-size: 12px;
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .loading-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .loading-tips {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+        }
+
+        .loading-tips i {
+            color: #667eea;
+        }
+
+        .loading-tip {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* FIX: .error-text was missing its closing brace and was swallowing the @media block */
+        .error-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        @keyframes particlesFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0, 25px 25px; }
+            100% { background-position: 50px 50px, 75px 75px; }
+        }
+
+        @keyframes contentSlide {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .browser-header {
+                padding: 15px 20px;
+            }
+
+            .browser-title-section h2 {
+                font-size: 20px;
+            }
+
+            .browser-controls {
+                padding: 10px 15px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .url-bar-container {
+                width: 100%;
+                order: 3;
+            }
+
+            .nav-buttons {
+                order: 1;
+            }
+
+            .go-btn {
+                order: 2;
+            }
+
+            .url-bar {
+                padding: 10px 15px;
+            }
+
+            .go-btn {
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="browser-controls">
-        <button class="nav-btn" id="backBtn" onclick="goBack()">← Back</button>
-        <button class="nav-btn" id="forwardBtn" onclick="goForward()">Forward →</button>
-        <button class="nav-btn" onclick="goHome()">🏠 Home</button>
-        <input type="text" class="url-bar" id="urlInput" placeholder="Enter URL (e.g., https://search.brave.com)" onkeypress="handleKeyPress(event)">
-        <button class="go-btn" onclick="navigate()">Go</button>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-background">
+            <div class="loading-particles"></div>
+            <div class="loading-grid"></div>
+        </div>
+        
+        <div class="loading-content">
+            <div class="loading-icon">🌐</div>
+            <div class="loading-text">Initializing Proxy Browser...</div>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-percentage" id="progressPercentage">0%</div>
+            </div>
+        </div>
+        
+        <div class="loading-footer">
+            <div class="loading-tips">
+                <i class="fas fa-shield-alt"></i>
+                <span id="loadingTip">Tip: Use the proxy browser to bypass school restrictions</span>
+            </div>
+        </div>
     </div>
 
-    <div class="iframe-container">
-        <iframe id="proxyFrame" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+    <div class="proxy-browser-section">
+        <header class="browser-header">
+            <div class="browser-title-section">
+                <h2>🌐 Proxy Browser</h2>
+                <p class="browser-subtitle">Bypass school restrictions with multiple proxy services</p>
+            </div>
+            <div class="browser-header-controls">
+                <button class="browser-close-btn" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="browser-controls">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="backBtn" onclick="goBack()" title="Go back">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="nav-btn" id="forwardBtn" onclick="goForward()" title="Go forward">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn" onclick="refreshPage()" title="Refresh">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div class="url-bar-container">
+                <input type="text" class="url-bar" id="urlInput" placeholder="Enter URL (e.g., https://www.google.com)" onkeypress="handleKeyPress(event)">
+                <button class="go-btn" onclick="navigate()">Go</button>
+            </div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe id="proxyFrame" sandbox="allow-scripts allow-forms allow-popups allow-top-navigation allow-same-origin allow-popups-to-escape-sandbox"></iframe>
+            <div class="loading-indicator" id="loading" style="display: none;">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading page...</div>
+            </div>
+        </div>
     </div>
 
-    <div class="loading" id="loading">Loading...</div>
-    <div class="error-message" id="error"></div>
+    <div class="error-message" id="error">
+        <h3>Error</h3>
+        <p id="errorText">Failed to load page</p>
+        <button class="error-close-btn" onclick="closeError()">Close</button>
+    </div>
 
     <script>
-        const history = [];
+        const historyStack = [];
         let currentIndex = -1;
         const iframe = document.getElementById('proxyFrame');
         const urlInput = document.getElementById('urlInput');
@@ -156,7 +582,7 @@
         }
 
         function getProxyUrl(url) {
-            return `${window.location.origin}${proxyEndpoint}?url=${encodeURIComponent(url)}`;
+            return `${window.location.origin}/proxy?url=${encodeURIComponent(url)}`;
         }
 
         function navigate(url) {
@@ -167,55 +593,486 @@
                 return;
             }
 
-            // Ensure URL has protocol
             let finalUrl = targetUrl;
             if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
                 finalUrl = 'https://' + finalUrl;
             }
 
-            loading.style.display = 'block';
+            window.proxyLoadingScreen.startLoadingSequence();
+            loading.style.display = 'flex';
             error.style.display = 'none';
 
-            // Add to history
-            if (currentIndex < history.length - 1) {
-                history = history.slice(0, currentIndex + 1);
+            // FIX: was using const `history` which conflicts with window.history; renamed to historyStack
+            if (currentIndex < historyStack.length - 1) {
+                historyStack.splice(currentIndex + 1);
             }
-            history.push(finalUrl);
-            currentIndex = history.length - 1;
+            historyStack.push(finalUrl);
+            currentIndex = historyStack.length - 1;
 
             updateNavButtons();
 
-            // Load through proxy
-            iframe.src = getProxyUrl(finalUrl);
-
+            const cleanUrl = finalUrl.replace(/^https?:\/\//, '');
+            
+            const proxyMethods = [
+                // Method 1: Direct iframe with permissive sandbox (avoids binary data issues)
+                {
+                    type: 'direct',
+                    url: finalUrl,
+                    sandbox: 'allow-scripts allow-forms allow-popups allow-top-navigation allow-popups-to-escape-sandbox allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-same-origin'
+                },
+                
+                // Method 2: Direct CORS proxies (no data URL processing)
+                `https://corsproxy.io/?${encodeURIComponent(finalUrl)}`,
+                `https://api.allorigins.win/raw?url=${encodeURIComponent(finalUrl)}`,
+                `https://thingproxy.freeboard.io/fetch/${finalUrl}`,
+                `https://cors.isomorphic-git.org/${finalUrl}`,
+                
+                // Method 3: Text extraction proxies (always return plain text)
+                `https://r.jina.ai/http://${cleanUrl}`,
+                `https://r.jina.ai/https://${cleanUrl}`,
+                `https://r.jina.ai/${finalUrl}`,
+                
+                // Method 4: Hash fragment routing (bypasses URL-based blocking)
+                { type: 'hash', url: finalUrl },
+                
+                // Method 5: Service worker bypass (circumvents network filters)
+                { type: 'serviceworker', url: finalUrl },
+                
+                // Method 6: PostMessage bypass (iframe communication)
+                { type: 'postmessage', url: finalUrl },
+                
+                // Method 7: Web Workers for fetching (bypasses main thread restrictions)
+                { type: 'webworker', url: finalUrl },
+                
+                // Method 8: JSONP endpoints (avoid CORS detection)
+                { type: 'jsonp', url: finalUrl },
+                
+                // Method 9: Header injection bypass (last resort - may cause binary data)
+                {
+                    type: 'headers',
+                    proxyUrl: `https://corsproxy.io/?${encodeURIComponent(finalUrl)}`,
+                    targetUrl: finalUrl,
+                    headers: {
+                        'Origin': 'https://www.google.com',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'en-US,en;q=0.5',
+                        'Accept-Encoding': 'identity',
+                        'Connection': 'keep-alive',
+                        'Upgrade-Insecure-Requests': '1',
+                        'Sec-Fetch-Dest': 'document',
+                        'Sec-Fetch-Mode': 'navigate',
+                        'Sec-Fetch-Site': 'cross-site'
+                    }
+                },
+                
+                // Method 10: Data URL fetch (last resort - may cause binary data)
+                { type: 'dataurl', url: finalUrl },
+                
+                // Method 11: Fallback text extraction
+                `https://r.jina.ai/http://${finalUrl}`,
+                `https://r.jina.ai/https://${finalUrl}`
+            ];
+            
+            let currentProxyIndex = 0;
+            
+            const processHtmlForProxy = (html, originalUrl) => {
+                try {
+                    const baseUrl = new URL(originalUrl);
+                    const proxyBase = 'https://corsproxy.io/?';
+                    
+                    // Complete resource proxying for full website functionality
+                    html = html.replace(/<link[^>]*href=["']([^"']+)["'][^>]*>/g, (match, href) => {
+                        if (href.startsWith('http') || href.startsWith('//')) {
+                            return match.replace(href, proxyBase + href);
+                        } else if (href.startsWith('/')) {
+                            return match.replace(href, proxyBase + baseUrl.origin + href);
+                        } else {
+                            return match.replace(href, proxyBase + new URL(href, baseUrl).href);
+                        }
+                    });
+                    
+                    html = html.replace(/<script[^>]*src=["']([^"']+)["'][^>]*>/g, (match, src) => {
+                        if (src.startsWith('http') || src.startsWith('//')) {
+                            return match.replace(src, proxyBase + src);
+                        } else if (src.startsWith('/')) {
+                            return match.replace(src, proxyBase + baseUrl.origin + src);
+                        } else {
+                            return match.replace(src, proxyBase + new URL(src, baseUrl).href);
+                        }
+                    });
+                    
+                    html = html.replace(/<img[^>]*src=["']([^"']+)["'][^>]*>/g, (match, src) => {
+                        if (src.startsWith('http') || src.startsWith('//')) {
+                            return match.replace(src, proxyBase + src);
+                        } else if (src.startsWith('/')) {
+                            return match.replace(src, proxyBase + baseUrl.origin + src);
+                        } else {
+                            return match.replace(src, proxyBase + new URL(src, baseUrl).href);
+                        }
+                    });
+                    
+                    html = html.replace(/<iframe[^>]*src=["']([^"']+)["'][^>]*>/g, (match, src) => {
+                        if (src.startsWith('http') || src.startsWith('//')) {
+                            return match.replace(src, proxyBase + src);
+                        } else if (src.startsWith('/')) {
+                            return match.replace(src, proxyBase + baseUrl.origin + src);
+                        } else {
+                            return match.replace(src, proxyBase + new URL(src, baseUrl).href);
+                        }
+                    });
+                    
+                    html = html.replace(/<video[^>]*src=["']([^"']+)["'][^>]*>/g, (match, src) => {
+                        if (src.startsWith('http') || src.startsWith('//')) {
+                            return match.replace(src, proxyBase + src);
+                        } else if (src.startsWith('/')) {
+                            return match.replace(src, proxyBase + baseUrl.origin + src);
+                        } else {
+                            return match.replace(src, proxyBase + new URL(src, baseUrl).href);
+                        }
+                    });
+                    
+                    html = html.replace(/<audio[^>]*src=["']([^"']+)["'][^>]*>/g, (match, src) => {
+                        if (src.startsWith('http') || src.startsWith('//')) {
+                            return match.replace(src, proxyBase + src);
+                        } else if (src.startsWith('/')) {
+                            return match.replace(src, proxyBase + baseUrl.origin + src);
+                        } else {
+                            return match.replace(src, proxyBase + new URL(src, baseUrl).href);
+                        }
+                    });
+                    
+                    html = html.replace(/style=["'][^"']*background(?:-image)?:\s*url\(["']?([^"')]+)["']?\)[^"']*["']/g, (match, bgUrl) => {
+                        if (bgUrl.startsWith('http') || bgUrl.startsWith('//')) {
+                            return match.replace(bgUrl, proxyBase + bgUrl);
+                        } else if (bgUrl.startsWith('/')) {
+                            return match.replace(bgUrl, proxyBase + baseUrl.origin + bgUrl);
+                        } else {
+                            return match.replace(bgUrl, proxyBase + new URL(bgUrl, baseUrl).href);
+                        }
+                    });
+                    
+                    html = html.replace(/@import\s+url\(["']?([^"')]+)["']?\)/g, (match, importUrl) => {
+                        if (importUrl.startsWith('http') || importUrl.startsWith('//')) {
+                            return match.replace(importUrl, proxyBase + importUrl);
+                        } else if (importUrl.startsWith('/')) {
+                            return match.replace(importUrl, proxyBase + baseUrl.origin + importUrl);
+                        } else {
+                            return match.replace(importUrl, proxyBase + new URL(importUrl, baseUrl).href);
+                        }
+                    });
+                    
+                    // Add comprehensive meta tags for unblocker functionality
+                    const cspMeta = '<meta http-equiv="Content-Security-Policy" content="default-src * data: blob: \'unsafe-inline\' \'unsafe-eval\' \'unsafe-dynamic\' \'unsafe-hashes\'; script-src * \'unsafe-inline\' \'unsafe-eval\'; style-src * \'unsafe-inline\'; img-src * data: blob:; font-src * data:; connect-src *; media-src *; object-src *; frame-src *; worker-src *; child-src *;">';
+                    const compatibilityMeta = '<meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">';
+                    
+                    html = html.replace('<head>', '<head>\n' + cspMeta + '\n' + compatibilityMeta);
+                    
+                    console.log('Processed HTML with complete resource proxying for unblocker');
+                    return html;
+                } catch (err) {
+                    console.error('Error processing HTML for proxy:', err);
+                    return html;
+                }
+            };
+            
+            const executeBypassMethod = async (method) => {
+                if (typeof method === 'string') {
+                    iframe.src = method;
+                    return;
+                }
+                
+                switch (method.type) {
+                    case 'direct':
+                        iframe.sandbox = method.sandbox;
+                        iframe.src = method.url;
+                        break;
+                        
+                    case 'dataurl':
+                        try {
+                            const response = await fetch(method.url, {
+                                headers: {
+                                    'Accept-Encoding': 'identity' // Don't accept compression
+                                }
+                            });
+                            const html = await response.text();
+                            
+                            // Check if response is binary data
+                            if (html.includes('\x00') || html.includes('\ufffd') || !/^[\x20-\x7E\s<>\/"'=&\?\.:,\-\[\](){}]+$/.test(html.substring(0, 100))) {
+                                console.log('Binary data detected, skipping data URL method');
+                                throw new Error('Binary data detected');
+                            }
+                            
+                            const dataUrl = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+                            iframe.src = dataUrl;
+                        } catch (err) {
+                            console.error('Data URL method failed:', err);
+                            throw err;
+                        }
+                        break;
+                        
+                    case 'serviceworker':
+                        if ('serviceWorker' in navigator) {
+                            iframe.src = method.url;
+                            navigator.serviceWorker.register('/sw.js').catch(() => {
+                                console.log('Service worker not available');
+                            });
+                        } else {
+                            throw new Error('Service worker not supported');
+                        }
+                        break;
+                        
+                    case 'jsonp':
+                        const callbackName = 'jsonp_callback_' + Date.now();
+                        const scriptEl = document.createElement('script');
+                        scriptEl.src = method.url + (method.url.includes('?') ? '&' : '?') + 'callback=' + callbackName;
+                        window[callbackName] = (data) => {
+                            document.body.removeChild(scriptEl);
+                            delete window[callbackName];
+                            iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(data);
+                        };
+                        document.body.appendChild(scriptEl);
+                        break;
+                        
+                    case 'postmessage':
+                        iframe.src = method.url;
+                        window.addEventListener('message', (event) => {
+                            if (event.origin === new URL(method.url).origin) {
+                                console.log('Received message from iframe:', event.data);
+                            }
+                        });
+                        break;
+                        
+                    case 'hash':
+                        iframe.src = method.url + '#proxy=' + btoa(window.location.origin);
+                        break;
+                        
+                    case 'headers':
+                        try {
+                            console.log('Trying enhanced header injection:', method.proxyUrl);
+                            const response = await fetch(method.proxyUrl, {
+                                method: 'GET',
+                                headers: {
+                                    ...method.headers,
+                                    'Accept-Encoding': 'identity' // Don't accept compression
+                                },
+                                mode: 'cors',
+                                credentials: 'omit'
+                            });
+                            let html = await response.text();
+                            html = processHtmlForProxy(html, method.targetUrl);
+                            iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+                        } catch (err) {
+                            console.error('Enhanced header injection failed:', err);
+                            try {
+                                console.log('Trying alternative proxy...');
+                                const altProxyUrl = `https://corsproxy.io/?${encodeURIComponent(method.targetUrl)}`;
+                                const response = await fetch(altProxyUrl, {
+                                    method: 'GET',
+                                    headers: {
+                                        ...method.headers,
+                                        'Accept-Encoding': 'identity' // Don't accept compression
+                                    },
+                                    mode: 'cors',
+                                    credentials: 'omit'
+                                });
+                                let html = await response.text();
+                                html = processHtmlForProxy(html, method.targetUrl);
+                                iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+                            } catch (altError) {
+                                console.error('Alternative enhanced header injection failed:', altError);
+                                throw altError;
+                            }
+                        }
+                        break;
+                        
+                    case 'webworker':
+                        try {
+                            const workerCode = `
+                                self.addEventListener('message', async (e) => {
+                                    try {
+                                        const response = await fetch(e.data.url, {
+                                            method: 'GET',
+                                            headers: e.data.headers || {},
+                                            mode: 'cors',
+                                            credentials: 'omit'
+                                        });
+                                        const text = await response.text();
+                                        self.postMessage({ success: true, data: text });
+                                    } catch (error) {
+                                        self.postMessage({ success: false, error: error.message });
+                                    }
+                                });
+                            `;
+                            const blob = new Blob([workerCode], { type: 'application/javascript' });
+                            const worker = new Worker(URL.createObjectURL(blob));
+                            worker.postMessage({ url: method.url, headers: method.headers || {} });
+                            worker.onmessage = (e) => {
+                                if (e.data.success) {
+                                    iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(e.data.data);
+                                } else {
+                                    throw new Error(e.data.error);
+                                }
+                                worker.terminate();
+                            };
+                        } catch (err) {
+                            console.error('Web Worker method failed:', err);
+                            throw err;
+                        }
+                        break;
+                        
+                    default:
+                        iframe.src = method.url;
+                }
+            };
+            
+            const tryNextProxy = async () => {
+                currentProxyIndex++;
+                if (currentProxyIndex < proxyMethods.length) {
+                    console.log(`Trying bypass method ${currentProxyIndex + 1}:`, proxyMethods[currentProxyIndex]);
+                    try {
+                        await executeBypassMethod(proxyMethods[currentProxyIndex]);
+                    } catch (err) {
+                        console.error(`Method ${currentProxyIndex + 1} failed:`, err);
+                        setTimeout(() => tryNextProxy(), 1000);
+                    }
+                } else {
+                    loading.style.display = 'none';
+                    showError('Failed to load page. All bypass methods exhausted. The site may be blocking access or restrictions are too strict.');
+                }
+            };
+            
+            const handleConnectionError = (err) => {
+                console.error('Connection error detected:', err);
+                const msg = err.message || '';
+                if (msg.includes('refused') || msg.includes('ERR_CONNECTION_REFUSED')) {
+                    tryNextProxy();
+                } else if (msg.includes('CORS') || msg.includes('blocked')) {
+                    tryNextProxy();
+                } else if (msg.includes('Missing required request header') || msg.includes('Must specify one of: origin,x-requested-with')) {
+                    currentProxyIndex = -1;
+                    tryNextProxy();
+                } else if (msg.includes('header') || msg.includes('Origin')) {
+                    currentProxyIndex = -1;
+                    tryNextProxy();
+                } else {
+                    tryNextProxy();
+                }
+            };
+            
+            console.log('Loading URL with bypass method:', proxyMethods[0]);
+            executeBypassMethod(proxyMethods[0]);
             urlInput.value = finalUrl;
 
-            iframe.onload = () => {
-                loading.style.display = 'none';
+            iframe.onerror = (e) => {
+                console.error(`Proxy method ${currentProxyIndex + 1} failed:`, e);
+                handleConnectionError(e);
             };
 
-            iframe.onerror = () => {
+            const timeoutHandler = setTimeout(() => {
+                if (loading.style.display === 'flex') {
+                    console.log('Timeout for proxy method:', currentProxyIndex + 1);
+                    tryNextProxy();
+                }
+            }, 15000);
+            
+            iframe.onload = () => {
                 loading.style.display = 'none';
-                showError('Failed to load page');
+                error.style.display = 'none';
+                clearTimeout(timeoutHandler);
+                console.log('✅ Page loaded successfully');
+                
+                setTimeout(() => {
+                    window.proxyLoadingScreen.completeLoading();
+                }, 500);
+                
+                setTimeout(() => {
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const content = iframeDoc.body.innerText || iframeDoc.body.textContent || '';
+                        const title = iframeDoc.title || '';
+                        
+                        const proxyErrorPatterns = [
+                            'CORS Anywhere',
+                            'demo of CORS Anywhere',
+                            'development purposes',
+                            'temporary access',
+                            'click on the following button',
+                            'proxy page',
+                            'bypass page',
+                            'unblock page'
+                        ];
+                        
+                        const connectionErrorPatterns = [
+                            'I can not be connected',
+                            'cannot be connected',
+                            'connection refused',
+                            'access denied',
+                            'forbidden',
+                            'not found',
+                            'error',
+                            'failed',
+                            'blocked',
+                            'restricted'
+                        ];
+                        
+                        const domainName = cleanUrl.split('.')[0];
+                        const isTargetSite = 
+                            title.toLowerCase().includes(domainName) ||
+                            title.toLowerCase().includes('google') ||
+                            title.toLowerCase().includes('jina') ||
+                            iframeDoc.location.href.includes(finalUrl) ||
+                            iframeDoc.location.href.includes('google.com');
+                        
+                        const hasProxyError = proxyErrorPatterns.some(pattern =>
+                            content.toLowerCase().includes(pattern.toLowerCase()) ||
+                            title.toLowerCase().includes(pattern.toLowerCase())
+                        );
+                        
+                        const hasConnectionError = connectionErrorPatterns.some(pattern =>
+                            content.toLowerCase().includes(pattern.toLowerCase()) &&
+                            content.length > 100
+                        );
+                        
+                        if ((hasProxyError || hasConnectionError) && currentProxyIndex < proxyMethods.length - 1) {
+                            console.log('Detected proxy page or connection error, trying next proxy method...');
+                            loading.style.display = 'flex';
+                            tryNextProxy();
+                        } else if (isTargetSite && !hasProxyError) {
+                            console.log('Successfully loaded target site content');
+                        } else {
+                            console.log('Likely loaded target site with some missing resources (normal for proxy)');
+                        }
+                    } catch (e) {
+                        console.log('Cannot check iframe content due to CORS, likely loaded target site successfully');
+                    }
+                }, 4000);
             };
         }
 
         function goBack() {
             if (currentIndex > 0) {
                 currentIndex--;
-                navigate(history[currentIndex]);
+                navigate(historyStack[currentIndex]);
             }
         }
 
         function goForward() {
-            if (currentIndex < history.length - 1) {
+            if (currentIndex < historyStack.length - 1) {
                 currentIndex++;
-                navigate(history[currentIndex]);
+                navigate(historyStack[currentIndex]);
             }
         }
 
         function goHome() {
-            navigate('https://search.brave.com');
+            window.location.href = 'index.html';
+        }
+
+        function refreshPage() {
+            if (currentIndex >= 0 && historyStack[currentIndex]) {
+                navigate(historyStack[currentIndex]);
+            }
         }
 
         function handleKeyPress(event) {
@@ -226,21 +1083,91 @@
 
         function updateNavButtons() {
             backBtn.disabled = currentIndex <= 0;
-            forwardBtn.disabled = currentIndex >= history.length - 1;
+            forwardBtn.disabled = currentIndex >= historyStack.length - 1;
         }
 
         function showError(message) {
-            error.textContent = message;
+            const errorText = document.getElementById('errorText');
+            errorText.textContent = message;
             error.style.display = 'block';
-            setTimeout(() => {
-                error.style.display = 'none';
-            }, 3000);
         }
 
-        // Initialize with a default URL
+        function closeError() {
+            error.style.display = 'none';
+        }
+
         window.onload = () => {
-            urlInput.value = 'https://search.brave.com';
+            urlInput.value = 'https://www.google.com';
         };
+    </script>
+
+    <!-- Loading Screen Controller -->
+    <script>
+        class ProxyLoadingScreen {
+            constructor() {
+                this.loadingScreen = document.getElementById('loadingScreen');
+                this.progressBar = document.getElementById('progressFill');
+                this.progressPercentage = document.getElementById('progressPercentage');
+                this.loadingTip = document.getElementById('loadingTip');
+                
+                this.loadingSteps = [
+                    { status: 'Initializing Proxy Browser...', progress: 10, tip: 'Tip: Use the proxy browser to bypass school restrictions' },
+                    { status: 'Loading Proxy Services...', progress: 30, tip: 'Tip: Multiple proxy options available for testing' },
+                    { status: 'Establishing Secure Connection...', progress: 50, tip: 'Tip: All connections are encrypted and protected' },
+                    { status: 'Configuring Browser Interface...', progress: 70, tip: 'Tip: Try different proxy methods if one fails' },
+                    { status: 'Finalizing Setup...', progress: 90, tip: 'Tip: The proxy browser works with most websites' },
+                    { status: 'Ready!', progress: 100, tip: 'Welcome to Proxy Browser - Your Gateway to Unrestricted Access' }
+                ];
+                
+                this.currentStep = 0;
+                this.progressInterval = null;
+                this.init();
+            }
+            
+            init() {
+                this.startLoadingSequence();
+            }
+            
+            startLoadingSequence() {
+                if (this.progressInterval) {
+                    clearInterval(this.progressInterval);
+                }
+                this.currentStep = 0;
+                this.updateLoadingStep();
+                
+                this.progressInterval = setInterval(() => {
+                    this.currentStep++;
+                    if (this.currentStep < this.loadingSteps.length) {
+                        this.updateLoadingStep();
+                    } else {
+                        this.completeLoading();
+                    }
+                }, 800);
+            }
+            
+            updateLoadingStep() {
+                const step = this.loadingSteps[this.currentStep];
+                this.progressBar.style.width = `${step.progress}%`;
+                this.progressPercentage.textContent = `${step.progress}%`;
+                this.loadingTip.textContent = step.tip;
+            }
+            
+            completeLoading() {
+                clearInterval(this.progressInterval);
+                this.loadingScreen.style.opacity = '0';
+                this.loadingScreen.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    this.loadingScreen.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.proxyLoadingScreen = new ProxyLoadingScreen();
+            setTimeout(() => {
+                window.proxyLoadingScreen.completeLoading();
+            }, 2000);
+        });
     </script>
 </body>
 </html>

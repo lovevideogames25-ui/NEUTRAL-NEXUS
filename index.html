@@ -92,36 +92,8 @@
         })();
     </script>
     
-    <!-- Loading Screen Styles -->
+    <!-- Main Chatbox Styles -->
     <style>
-        /* Loading Screen Styles */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d2d2d 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            backdrop-filter: blur(20px);
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loading-container {
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            transition: all 0.8s ease;
-        }
-
         .loading-container.fade-out {
             opacity: 0;
             transform: scale(0.8);
@@ -201,7 +173,7 @@
         }
 
         .transition-overlay {
-            position: fixed;
+            position: fixed; display: none;
             top: 0;
             left: 0;
             width: 100%;
@@ -232,171 +204,6 @@
             0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
         }
-        
-        /* Main Chatbox Styles */
-        .main-chatbox {
-            position: fixed !important;
-            bottom: 20px !important;
-            right: 20px !important;
-            width: 350px !important;
-            height: 450px !important;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            z-index: 9999 !important;
-            display: flex !important;
-            flex-direction: column;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        .main-chatbox.minimized {
-            height: 50px;
-        }
-        
-        .chatbox-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 18px 18px 0 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .chatbox-title {
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .chatbox-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background 0.2s ease;
-        }
-        
-        .chatbox-toggle:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .chatbox-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        
-        .main-chatbox.minimized .chatbox-content {
-            display: none;
-        }
-        
-        .chatbox-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            color: white;
-            font-size: 14px;
-        }
-        
-        .welcome-message {
-            text-align: center;
-            opacity: 0.7;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        
-        .chat-message {
-            margin-bottom: 15px;
-            padding: 10px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            border-left: 3px solid #667eea;
-        }
-        
-        .chat-message.user {
-            border-left-color: #f093fb;
-            background: rgba(240,147,251,0.1);
-        }
-        
-        .chat-message.typing {
-            border-left-color: #ffa500;
-            background: rgba(255,165,0,0.1);
-            font-style: italic;
-            opacity: 0.8;
-        }
-        
-        .chat-message.error {
-            border-left-color: #ff4444;
-            background: rgba(255,68,68,0.1);
-            color: #ff6b6b;
-        }
-        
-        .chatbox-input-container {
-            display: flex;
-            padding: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            gap: 10px;
-        }
-        
-        #chatboxInput {
-            flex: 1;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 25px;
-            padding: 10px 15px;
-            color: white;
-            font-size: 14px;
-            outline: none;
-        }
-        
-        #chatboxInput::placeholder {
-            color: rgba(255,255,255,0.5);
-        }
-        
-        #chatboxInput:focus {
-            border-color: #667eea;
-            background: rgba(255,255,255,0.15);
-        }
-        
-        .chatbox-send-btn {
-            background: linear-gradient(135deg, #667eea, #f093fb);
-            border: none;
-            border-radius: 25px;
-            padding: 10px 20px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .chatbox-send-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
-        }
-        
-        .chatbox-send-btn:active {
-            transform: translateY(0);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-chatbox {
-                width: 300px;
-                height: 400px;
-                bottom: 10px;
-                right: 10px;
-            }
-        }
-        
         /* AI Chat Interface Fixes */
         .ai-main {
             display: flex !important;
@@ -508,7 +315,7 @@
             position: relative;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: none;
             overflow: hidden;
         }
         
@@ -1113,7 +920,7 @@
             background: rgba(102, 126, 234, 0.2);
             padding: 2px 6px;
             border-radius: 4px;
-            font-family: 'Courier New', monospace;
+            display: none;
             font-size: 0.9em;
         }
         
@@ -1159,27 +966,812 @@
                 min-width: 200px;
             }
         }
+
+        /* Enhanced Loading Screen Styles */
+        .enhanced-loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            overflow: hidden;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .enhanced-loading-screen.fade-out {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        .loading-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .loading-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(102, 126, 234, 0.05) 0%, transparent 50%);
+            animation: particlesFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes particlesFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        .loading-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 10s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 500px;
+            padding: 40px;
+        }
+
+        .loading-logo-container {
+            margin-bottom: 40px;
+        }
+
+        .loading-logo {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+        }
+
+        .logo-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-top: 3px solid #667eea;
+            border-right: 3px solid #764ba2;
+            border-radius: 50%;
+            animation: logoRingRotate 2s linear infinite;
+        }
+
+        @keyframes logoRingRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            animation: logoPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        .logo-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            animation: logoPulseRing 1.5s ease-out infinite;
+        }
+
+        @keyframes logoPulseRing {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        .loading-title {
+            position: relative;
+        }
+
+        .nexus-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        .title-underline {
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 15px auto 0;
+            animation: underlineExpand 2s ease-out forwards;
+        }
+
+        @keyframes underlineExpand {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        .loading-status {
+            margin-top: 40px;
+        }
+
+        .status-text-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .status-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .status-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .status-dots .dot {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: dotPulse 1.5s ease-in-out infinite;
+        }
+
+        .status-dots .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .status-dots .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .loading-progress-container {
+            margin-bottom: 30px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .progress-percentage {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .progress-status {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .progress-bar-container {
+            position: relative;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .progress-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .progress-bar-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+            animation: progressGlow 2s linear infinite;
+        }
+
+        @keyframes progressGlow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .loading-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item.loading {
+            animation: featurePulse 1.5s ease-in-out infinite;
+        }
+
+        .feature-item.loaded {
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-item i {
+            font-size: 1rem;
+            color: #667eea;
+        }
+
+        .feature-check {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: white;
+            opacity: 0;
+            transform: translateY(-50%) scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item.loaded .feature-check {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+        }
+
+        @keyframes featurePulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .loading-footer {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .loading-tips {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .loading-tips i {
+            color: #f39c12;
+        }
+
+        /* Menu Button Entrance Animation */
+        @keyframes menuButtonEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(10px);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1) translateY(-2px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .loading-content {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .loading-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .logo-core {
+                width: 70px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+
+            .nexus-title {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .loading-features {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .feature-item {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Changelog Popup Styles */
+        .changelog-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .changelog-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .changelog-content {
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f172a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(102, 126, 234, 0.1);
+            max-width: 600px;
+            max-height: 80vh;
+            width: 90%;
+            overflow: hidden;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        .changelog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .changelog-title h2 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0 0 5px 0;
+        }
+
+        .changelog-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        .changelog-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .changelog-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .changelog-body {
+            max-height: 50vh;
+            overflow-y: auto;
+            padding: 20px 30px;
+        }
+
+        .changelog-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .changelog-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .changelog-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .changelog-icon {
+            font-size: 32px;
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            margin-bottom: auto;
+        }
+
+        .changelog-text {
+            flex: 1;
+        }
+
+        .changelog-text h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #667eea;
+            margin: 0 0 8px 0;
+        }
+
+        .changelog-text p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .changelog-footer {
+            padding: 20px 30px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .changelog-action {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .changelog-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .changelog-content {
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .changelog-header {
+                padding: 20px;
+            }
+
+            .changelog-title h2 {
+                font-size: 20px;
+            }
+
+            .changelog-body {
+                padding: 15px 20px;
+            }
+
+            .changelog-item {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .changelog-icon {
+                min-width: 40px;
+                height: 40px;
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-container" id="loadingContainer">
-            <div class="loading-logo">
-                <div class="logo-icon">🚀</div>
-                <h1 class="logo-text">NEUTRAL NEXUS</h1>
-            </div>
-            <div class="loading-text">Loading...</div>
-            <div class="loading-progress">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+    
+    <!-- Enhanced Loading Screen -->
+    <div class="enhanced-loading-screen" id="enhancedLoadingScreen">
+        <div class="loading-background">
+            <div class="loading-particles"></div>
+            <div class="loading-grid"></div>
+        </div>
+        
+        <div class="loading-content">
+            <div class="loading-logo-container">
+                <div class="loading-logo">
+                    <div class="logo-ring"></div>
+                    <div class="logo-core">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <div class="logo-pulse"></div>
                 </div>
+                <div class="loading-title">
+                    <h1 class="nexus-title">NEUTRAL NEXUS</h1>
+                    <div class="title-underline"></div>
+                </div>
+            </div>
+            
+            <div class="loading-status">
+                <div class="status-text-container">
+                    <div class="status-text" id="statusText">Initializing Systems...</div>
+                    <div class="status-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                
+                <div class="loading-progress-container">
+                    <div class="progress-info">
+                        <span class="progress-percentage" id="progressPercentage">0%</span>
+                        <span class="progress-status" id="progressStatus">Loading Core Modules</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-bg"></div>
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                        <div class="progress-bar-glow"></div>
+                    </div>
+                </div>
+                
+                <div class="loading-features">
+                    <div class="feature-item loading">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security Shield</span>
+                        <div class="feature-check"></div>
+                    </div>
+                    <div class="feature-item loading">
+                        <i class="fas fa-rocket"></i>
+                        <span>Performance Boost</span>
+                        <div class="feature-check"></div>
+                    </div>
+                    <div class="feature-item loading">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Network Optimized</span>
+                        <div class="feature-check"></div>
+                    </div>
+                    <div class="feature-item loading">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Integration</span>
+                        <div class="feature-check"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="loading-footer">
+            <div class="loading-tips">
+                <i class="fas fa-lightbulb"></i>
+                <span id="loadingTip">Tip: Use the menu button to access all features</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Changelog Popup -->
+    <div class="changelog-popup" id="changelogPopup" style="display: none;">
+        <div class="changelog-backdrop" id="changelogBackdrop"></div>
+        <div class="changelog-content">
+            <div class="changelog-header">
+                <div class="changelog-title">
+                    <h2>🚀 Latest Updates</h2>
+                    <p class="changelog-subtitle">NEUTRAL NEXUS v2.0 - Major Improvements</p>
+                </div>
+                <button class="changelog-close" id="closeChangelog">
+                    <span>✕</span>
+                </button>
+            </div>
+            
+            <div class="changelog-body">
+                <div class="changelog-section">
+                    <div class="changelog-item">
+                        <div class="changelog-icon">🔧</div>
+                        <div class="changelog-text">
+                            <h3>Fixed Proxy Not Loading</h3>
+                            <p>Proxy is now loading properly, but proxy functionality will be further improved in the next update for better reliability.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-icon">🎵</div>
+                        <div class="changelog-text">
+                            <h3>Fixed Music Problem</h3>
+                            <p>Music loading is now working normally with all videos fixed and topic restrictions properly handled.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-icon">🎬</div>
+                        <div class="changelog-text">
+                            <h3>Fixed Movies and TV Shows</h3>
+                            <p>API Integration has been completely fixed, providing reliable access to movies and TV shows content.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-icon">🤖</div>
+                        <div class="changelog-text">
+                            <h3>Changed AI Models to Free Models</h3>
+                            <p>Previous models were expensive, so we switched to free AI models for better accessibility.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-icon">💬</div>
+                        <div class="changelog-text">
+                            <h3>Removed AI Quick Chat</h3>
+                            <p>Quick chat felt unnecessary for the user experience, so it has been removed for a cleaner interface.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-icon">☁️</div>
+                        <div class="changelog-text">
+                            <h3>Added Cloud Browser (Coming Soon)</h3>
+                            <p>Message to AI: Add cloud browser coming soon in navigation. Explore Windows 10 with multiple browsers without any risks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="changelog-item">
+                        <div class="changelog-icon">🔗</div>
+                        <div class="changelog-text">
+                            <h3>67 Links Added</h3>
+                            <p>67+ Proxy and Gaming Links have been added to our Neutral Nexus Database for enhanced browsing options.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="changelog-footer">
+                <button class="changelog-action" id="changelogAction">Got it, thanks!</button>
             </div>
         </div>
     </div>
 
     <!-- Transition Overlay -->
-    <div class="transition-overlay" id="transitionOverlay">
+    <div class="transition-overlay" id="transitionOverlay" style="display: none;">
         <div class="transition-text">Launching NEUTRAL NEXUS...</div>
     </div>
 
@@ -1187,7 +1779,7 @@
     <div class="floating-particles" id="particles"></div>
 
     <!-- Menu Button -->
-    <button class="menu-button" id="menuButton">
+    <button class="menu-button loaded" id="menuButton">
         <div class="hamburger">
             <span></span>
             <span></span>
@@ -1230,6 +1822,7 @@
             <button class="menu-item" id="listenMenuItem" data-item="listen">🎵 Listen</button>
             <a href="ai.html" class="menu-item" id="aiMenuItem">🤖AI</a>
             <a href="proxy-browser.html" class="menu-item" id="proxyMenuItem">🌐 Proxy Browser</a>
+            <button class="menu-item" id="cloudBrowserMenuItem">☁️ Cloud Browser <span class="coming-soon-sticker">Coming Soon</span></button>
         </div>
         
         <div class="nav-divider"></div>
@@ -1252,7 +1845,7 @@
     </div>
     
     <!-- Ultimate AI Section (Overlay) -->
-    <div class="ultimate-ai-section" id="ultimateAISection" style="display: none;">
+    <div id="ultimateAISection" style="display: none;">
         <!-- AI Header -->
         <div class="ai-header">
             <div class="ai-title-section">
@@ -1435,30 +2028,8 @@
         </div>
     </div>
     
-    <!-- Visible Chatbox (moved outside main content) -->
-    <div class="main-chatbox" id="mainChatbox" style="display: none !important; visibility: hidden !important; opacity: 0 !important;">
-        <div class="chatbox-header">
-            <div class="chatbox-title">Quick Chat</div>
-            <button class="chatbox-toggle" id="chatboxToggle">_</button>
-        </div>
-        <div class="chatbox-content" id="chatboxContent">
-            <div class="chatbox-messages" id="chatboxMessages">
-                <div class="welcome-message">
-                    <span>Start chatting! Type your message below.</span>
-                </div>
-            </div>
-            <div class="chatbox-input-container">
-                <input type="text" id="chatboxInput" placeholder="Type your message..." maxlength="200">
-                <button id="chatboxSend" class="chatbox-send-btn">Send</button>
-            </div>
-        </div>
-    </div>
     
-    <!-- AI Robot Button (shows by default) -->
-    <div class="ai-robot-button" id="aiRobotButton" style="display: flex; position: fixed; bottom: 20px; right: 20px; width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #f093fb); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 9999; box-shadow: 0 10px 30px rgba(102,126,234,0.4); transition: all 0.3s ease; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; animation: pulse-ai-button 2s infinite;">
-        <span style="font-size: 28px; color: white; font-weight: bold; pointer-events: none;">AI</span>
-    </div>
-    
+        
     <style>
         @keyframes pulse-ai-button {
             0% { transform: scale(1); box-shadow: 0 10px 30px rgba(102,126,234,0.4); }
@@ -1557,12 +2128,12 @@
         
         /* Ultimate AI Section Styles */
         .ultimate-ai-section {
-            position: fixed;
+            position: fixed; display: none;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: none;
             border-radius: 0;
             box-shadow: none;
             z-index: 10000;
@@ -2134,8 +2705,8 @@
     <div class="chat-section" id="chatSection" style="display: none;">
         <div class="chat-container">
             <div class="chat-header">
-                <h2>💬 CHAT</h2>
-                <a href="https://discord.gg/PpbddfffVT" class="discord-join-btn" target="_blank">JOIN DISCORD SERVER</a>
+                <h2> CHAT</h2>
+                <a href="https://discord.gg/PpbddfffVT" class="discord-join-btn" target="_blank">JSCORD SERVER</a>
             </div>
             
             <!-- Discord Widget -->
@@ -2422,6 +2993,66 @@
                             <div class="link-card-arrow">→</div>
                         </a>
                     </div>
+                    <div class="link-card">
+                        <a href="https://s3.amazonaws.com/mathvc/index.html" target="_blank">
+                            <div class="link-card-icon">📊</div>
+                            <div class="link-card-text">
+                                <div>Math VC</div>
+                                <div class="link-card-url">s3.amazonaws.com/mathvc</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://s3.amazonaws.com/readvc/index.html" target="_blank">
+                            <div class="link-card-icon">📖</div>
+                            <div class="link-card-text">
+                                <div>Read VC</div>
+                                <div class="link-card-url">s3.amazonaws.com/readvc</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://s3.amazonaws.com/writevc/index.html" target="_blank">
+                            <div class="link-card-icon">✏️</div>
+                            <div class="link-card-text">
+                                <div>Write VC</div>
+                                <div class="link-card-url">s3.amazonaws.com/writevc</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://mathvc.s3.amazonaws.com/index.html" target="_blank">
+                            <div class="link-card-icon">🔢</div>
+                            <div class="link-card-text">
+                                <div>Math VC Alt</div>
+                                <div class="link-card-url">mathvc.s3.amazonaws.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://readvc.s3.amazonaws.com/index.html" target="_blank">
+                            <div class="link-card-icon">📚</div>
+                            <div class="link-card-text">
+                                <div>Read VC Alt</div>
+                                <div class="link-card-url">readvc.s3.amazonaws.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://writevc.s3.amazonaws.com/index.html" target="_blank">
+                            <div class="link-card-icon">📝</div>
+                            <div class="link-card-text">
+                                <div>Write VC Alt</div>
+                                <div class="link-card-url">writevc.s3.amazonaws.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="link-category">
@@ -2573,6 +3204,46 @@
                             <div class="link-card-text">
                                 <div>Albany Fund Education</div>
                                 <div class="link-card-url">thealbanyfundforeducation.org</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://mededucation.org/" target="_blank">
+                            <div class="link-card-icon">💨</div>
+                            <div class="link-card-text">
+                                <div>Med Education</div>
+                                <div class="link-card-url">mededucation.org</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://sciences.global.ssl.fastly.net/" target="_blank">
+                            <div class="link-card-icon">🔬</div>
+                            <div class="link-card-text">
+                                <div>Sciences Fastly</div>
+                                <div class="link-card-url">sciences.global.ssl.fastly.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://dictionary.global.ssl.fastly.net/" target="_blank">
+                            <div class="link-card-icon">📖</div>
+                            <div class="link-card-text">
+                                <div>Dictionary Fastly</div>
+                                <div class="link-card-url">dictionary.global.ssl.fastly.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://ela.global.ssl.fastly.net/" target="_blank">
+                            <div class="link-card-icon">✍️</div>
+                            <div class="link-card-text">
+                                <div>ELA Fastly</div>
+                                <div class="link-card-url">ela.global.ssl.fastly.net</div>
                             </div>
                             <div class="link-card-arrow">→</div>
                         </a>
@@ -2783,6 +3454,626 @@
                             <div class="link-card-text">
                                 <div>Yarn Owl</div>
                                 <div class="link-card-url">hoot.hoot.hoot.hoot.yarnowl.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>🍓 Strawberry</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://mathew.notariamelipilla.cl/" target="_blank">
+                            <div class="link-card-icon">🍓</div>
+                            <div class="link-card-text">
+                                <div>Mathew Notaria</div>
+                                <div class="link-card-url">mathew.notariamelipilla.cl</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://school.notariamelipilla.cl/" target="_blank">
+                            <div class="link-card-icon">🏫</div>
+                            <div class="link-card-text">
+                                <div>School Notaria</div>
+                                <div class="link-card-url">school.notariamelipilla.cl</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://strawberry.notariamelipilla.cl/" target="_blank">
+                            <div class="link-card-icon">🍓</div>
+                            <div class="link-card-text">
+                                <div>Strawberry Notaria</div>
+                                <div class="link-card-url">strawberry.notariamelipilla.cl</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://chromebookguru.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">💻</div>
+                            <div class="link-card-text">
+                                <div>Chromebook Guru</div>
+                                <div class="link-card-url">chromebookguru.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://strawberryontop.renaca.com/" target="_blank">
+                            <div class="link-card-icon">🌟</div>
+                            <div class="link-card-text">
+                                <div>Strawberry On Top</div>
+                                <div class="link-card-url">strawberryontop.renaca.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://vcsaontop.renaca.com/" target="_blank">
+                            <div class="link-card-icon">🎯</div>
+                            <div class="link-card-text">
+                                <div>VCSA On Top</div>
+                                <div class="link-card-url">vcsaontop.renaca.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://strawberry.ldeazevedo.com/" target="_blank">
+                            <div class="link-card-icon">🍓</div>
+                            <div class="link-card-text">
+                                <div>Strawberry Ldeazevedo</div>
+                                <div class="link-card-url">strawberry.ldeazevedo.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learning.vta-international.com/" target="_blank">
+                            <div class="link-card-icon">📚</div>
+                            <div class="link-card-text">
+                                <div>Learning VTA</div>
+                                <div class="link-card-url">learning.vta-international.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://schoollife.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🎒</div>
+                            <div class="link-card-text">
+                                <div>School Life</div>
+                                <div class="link-card-url">schoollife.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://vcsaontop.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🚀</div>
+                            <div class="link-card-text">
+                                <div>VCSA On Top CDN</div>
+                                <div class="link-card-url">vcsaontop.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://highschools.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🏫</div>
+                            <div class="link-card-text">
+                                <div>High Schools</div>
+                                <div class="link-card-url">highschools.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://cbguru.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🖥️</div>
+                            <div class="link-card-text">
+                                <div>CB Guru</div>
+                                <div class="link-card-url">cbguru.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://info.grahammurryinsuranceagency.com" target="_blank">
+                            <div class="link-card-icon">ℹ️</div>
+                            <div class="link-card-text">
+                                <div>Info Graham Murry</div>
+                                <div class="link-card-url">info.grahammurryinsuranceagency.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://info.srivaishnavam.org.au" target="_blank">
+                            <div class="link-card-icon">📋</div>
+                            <div class="link-card-text">
+                                <div>Info Srivaishnavam</div>
+                                <div class="link-card-url">info.srivaishnavam.org.au</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>📚 StudyHub</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://vcsa.srivaishnavam.org.au" target="_blank">
+                            <div class="link-card-icon">🎓</div>
+                            <div class="link-card-text">
+                                <div>VCSA Srivaishnavam</div>
+                                <div class="link-card-url">vcsa.srivaishnavam.org.au</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://vcsa.grahammurryinsuranceagency.com" target="_blank">
+                            <div class="link-card-icon">📖</div>
+                            <div class="link-card-text">
+                                <div>VCSA Graham Murry</div>
+                                <div class="link-card-url">vcsa.grahammurryinsuranceagency.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://vcsa.babypos.hk/" target="_blank">
+                            <div class="link-card-icon">👶</div>
+                            <div class="link-card-text">
+                                <div>VCSA Babypos</div>
+                                <div class="link-card-url">vcsa.babypos.hk</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://studying.beltfrog.com/" target="_blank">
+                            <div class="link-card-icon">📚</div>
+                            <div class="link-card-text">
+                                <div>Studying Beltfrog</div>
+                                <div class="link-card-url">studying.beltfrog.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://greater.cravat-club.com/" target="_blank">
+                            <div class="link-card-icon">🎯</div>
+                            <div class="link-card-text">
+                                <div>Greater Cravat</div>
+                                <div class="link-card-url">greater.cravat-club.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://cipher.renaca.com/" target="_blank">
+                            <div class="link-card-icon">🔐</div>
+                            <div class="link-card-text">
+                                <div>Cipher Renaca</div>
+                                <div class="link-card-url">cipher.renaca.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://great.renaca.com/" target="_blank">
+                            <div class="link-card-icon">⭐</div>
+                            <div class="link-card-text">
+                                <div>Great Renaca</div>
+                                <div class="link-card-url">great.renaca.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://vcsagoat.notariamelipilla.cl/" target="_blank">
+                            <div class="link-card-icon">🐐</div>
+                            <div class="link-card-text">
+                                <div>VCSA GOAT Notaria</div>
+                                <div class="link-card-url">vcsagoat.notariamelipilla.cl</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://smart.vta-international.com/" target="_blank">
+                            <div class="link-card-icon">🧠</div>
+                            <div class="link-card-text">
+                                <div>Smart VTA</div>
+                                <div class="link-card-url">smart.vta-international.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://dreaming.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">💭</div>
+                            <div class="link-card-text">
+                                <div>Dreaming CDN</div>
+                                <div class="link-card-url">dreaming.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://vcsagoat.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🚀</div>
+                            <div class="link-card-text">
+                                <div>VCSA GOAT CDN</div>
+                                <div class="link-card-url">vcsagoat.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://vibecoding.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🎵</div>
+                            <div class="link-card-text">
+                                <div>Vibe Coding</div>
+                                <div class="link-card-url">vibecoding.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://palmbeachschools.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🏖️</div>
+                            <div class="link-card-text">
+                                <div>Palm Beach Schools</div>
+                                <div class="link-card-url">palmbeachschools.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>✨ Xylora</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://xylora.on.top.overlijdenscentrum.com/" target="_blank">
+                            <div class="link-card-icon">✨</div>
+                            <div class="link-card-text">
+                                <div>Xylora On Top</div>
+                                <div class="link-card-url">xylora.on.top.overlijdenscentrum.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://xylora.vta-international.com/" target="_blank">
+                            <div class="link-card-icon">🌟</div>
+                            <div class="link-card-text">
+                                <div>Xylora VTA</div>
+                                <div class="link-card-url">xylora.vta-international.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://xyloramath.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🔢</div>
+                            <div class="link-card-text">
+                                <div>Xylora Math</div>
+                                <div class="link-card-url">xyloramath.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://sub.to.playernation.xylora.renaca.com/" target="_blank">
+                            <div class="link-card-icon">🎮</div>
+                            <div class="link-card-text">
+                                <div>Player Nation Xylora</div>
+                                <div class="link-card-url">sub.to.playernation.xylora.renaca.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://play.nation.xylora.beltfrog.com/" target="_blank">
+                            <div class="link-card-icon">🏆</div>
+                            <div class="link-card-text">
+                                <div>Play Nation Xylora</div>
+                                <div class="link-card-url">play.nation.xylora.beltfrog.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://playnation.xylora.cravat-club.com/" target="_blank">
+                            <div class="link-card-icon">🎯</div>
+                            <div class="link-card-text">
+                                <div>Play Nation Cravat</div>
+                                <div class="link-card-url">playnation.xylora.cravat-club.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>🌙 Lunar</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://learning.notariamelipilla.cl/" target="_blank">
+                            <div class="link-card-icon">🌙</div>
+                            <div class="link-card-text">
+                                <div>Learning Notaria</div>
+                                <div class="link-card-url">learning.notariamelipilla.cl</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://lectures.renaca.com/" target="_blank">
+                            <div class="link-card-icon">🎓</div>
+                            <div class="link-card-text">
+                                <div>Lectures Renaca</div>
+                                <div class="link-card-url">lectures.renaca.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://lectures.vta-international.com/" target="_blank">
+                            <div class="link-card-icon">📚</div>
+                            <div class="link-card-text">
+                                <div>Lectures VTA</div>
+                                <div class="link-card-url">lectures.vta-international.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://physics.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">⚛️</div>
+                            <div class="link-card-text">
+                                <div>Physics CDN</div>
+                                <div class="link-card-url">physics.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://goated.b-cdn.net/" target="_blank">
+                            <div class="link-card-icon">🐐</div>
+                            <div class="link-card-text">
+                                <div>Goated CDN</div>
+                                <div class="link-card-url">goated.b-cdn.net</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://lunar.grahammurryinsuranceagency.com" target="_blank">
+                            <div class="link-card-icon">🌙</div>
+                            <div class="link-card-text">
+                                <div>Lunar Graham Murry</div>
+                                <div class="link-card-url">lunar.grahammurryinsuranceagency.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://math.babypos.hk/" target="_blank">
+                            <div class="link-card-icon">🔢</div>
+                            <div class="link-card-text">
+                                <div>Math Babypos</div>
+                                <div class="link-card-url">math.babypos.hk</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://frogs.beltfrog.com" target="_blank">
+                            <div class="link-card-icon">🐸</div>
+                            <div class="link-card-text">
+                                <div>Frogs Beltfrog</div>
+                                <div class="link-card-url">frogs.beltfrog.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://science.haasencloud.de" target="_blank">
+                            <div class="link-card-icon">🔬</div>
+                            <div class="link-card-text">
+                                <div>Science Haasen</div>
+                                <div class="link-card-url">science.haasencloud.de</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://greater.triatlonpacense.es" target="_blank">
+                            <div class="link-card-icon">🏃</div>
+                            <div class="link-card-text">
+                                <div>Greater Triatlon</div>
+                                <div class="link-card-url">greater.triatlonpacense.es</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>💭 DayDreamX</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://learnmore.687518.xyz/" target="_blank">
+                            <div class="link-card-icon">💭</div>
+                            <div class="link-card-text">
+                                <div>Learn More 687518</div>
+                                <div class="link-card-url">learnmore.687518.xyz</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learnmore.fxgaming.eu/" target="_blank">
+                            <div class="link-card-icon">🎮</div>
+                            <div class="link-card-text">
+                                <div>Learn More FX Gaming</div>
+                                <div class="link-card-url">learnmore.fxgaming.eu</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learnmore.quickaminos.com/" target="_blank">
+                            <div class="link-card-icon">⚡</div>
+                            <div class="link-card-text">
+                                <div>Learn More Quickaminos</div>
+                                <div class="link-card-url">learnmore.quickaminos.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learnmore.shure-affiliate.com/" target="_blank">
+                            <div class="link-card-icon">🎧</div>
+                            <div class="link-card-text">
+                                <div>Learn More Shure</div>
+                                <div class="link-card-url">learnmore.shure-affiliate.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>🚀 Space</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://learnmore.funvenet.org.ve/" target="_blank">
+                            <div class="link-card-icon">🚀</div>
+                            <div class="link-card-text">
+                                <div>Learn More Funvenet</div>
+                                <div class="link-card-url">learnmore.funvenet.org.ve</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learnmore.haasencloud.de/" target="_blank">
+                            <div class="link-card-icon">☁️</div>
+                            <div class="link-card-text">
+                                <div>Learn More Haasen</div>
+                                <div class="link-card-url">learnmore.haasencloud.de</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learnmorestuff.quickaminos.com/" target="_blank">
+                            <div class="link-card-icon">📦</div>
+                            <div class="link-card-text">
+                                <div>Learn More Stuff</div>
+                                <div class="link-card-url">learnmorestuff.quickaminos.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learnmore.schoolforlife.online/" target="_blank">
+                            <div class="link-card-icon">🏫</div>
+                            <div class="link-card-text">
+                                <div>Learn More School</div>
+                                <div class="link-card-url">learnmore.schoolforlife.online</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://learnmore.neeb.wtf/" target="_blank">
+                            <div class="link-card-icon">❓</div>
+                            <div class="link-card-text">
+                                <div>Learn More Neeb</div>
+                                <div class="link-card-url">learnmore.neeb.wtf</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>🐸 Frogie Arcade</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://sciencehelpforchildren.mindboggle.us/" target="_blank">
+                            <div class="link-card-icon">🔬</div>
+                            <div class="link-card-text">
+                                <div>Science Help Mindboggle</div>
+                                <div class="link-card-url">sciencehelpforchildren.mindboggle.us</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://sonic-burger.nexus-computing.com/" target="_blank">
+                            <div class="link-card-icon">🍔</div>
+                            <div class="link-card-text">
+                                <div>Sonic Burger Nexus</div>
+                                <div class="link-card-url">sonic-burger.nexus-computing.com</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="link-category">
+                <h3>👻 Shadow</h3>
+                <div class="link-grid">
+                    <div class="link-card">
+                        <a href="https://neatreading.babypos.hk/" target="_blank">
+                            <div class="link-card-icon">👻</div>
+                            <div class="link-card-text">
+                                <div>Neat Reading</div>
+                                <div class="link-card-url">neatreading.babypos.hk</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://easygrammar.haasencloud.de" target="_blank">
+                            <div class="link-card-icon">📝</div>
+                            <div class="link-card-text">
+                                <div>Easy Grammar</div>
+                                <div class="link-card-url">easygrammar.haasencloud.de</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://hyperhistory.pjfox.xyz" target="_blank">
+                            <div class="link-card-icon">📜</div>
+                            <div class="link-card-text">
+                                <div>Hyper History</div>
+                                <div class="link-card-url">hyperhistory.pjfox.xyz</div>
+                            </div>
+                            <div class="link-card-arrow">→</div>
+                        </a>
+                    </div>
+                    <div class="link-card">
+                        <a href="https://coolus.prs7.org" target="_blank">
+                            <div class="link-card-icon">😎</div>
+                            <div class="link-card-text">
+                                <div>Cool US</div>
+                                <div class="link-card-url">coolus.prs7.org</div>
                             </div>
                             <div class="link-card-arrow">→</div>
                         </a>
@@ -3325,6 +4616,277 @@
             </div>
         </div>
     </div>
+
+    <!-- Enhanced Loading Screen Script -->
+    <script>
+        // Enhanced Loading Screen Controller
+        class EnhancedLoadingScreen {
+            constructor() {
+                this.loadingScreen = document.getElementById('enhancedLoadingScreen');
+                this.progressBar = document.getElementById('progressBarFill');
+                this.progressPercentage = document.getElementById('progressPercentage');
+                this.progressStatus = document.getElementById('progressStatus');
+                this.statusText = document.getElementById('statusText');
+                this.loadingTip = document.getElementById('loadingTip');
+                this.featureItems = document.querySelectorAll('.feature-item');
+                this.menuButton = document.getElementById('menuButton');
+                
+                this.loadingSteps = [
+                    { status: 'Initializing Systems...', progress: 10, tip: 'Tip: Use the menu button to access all features' },
+                    { status: 'Loading Core Modules...', progress: 25, tip: 'Tip: Press Ctrl+K to quickly access the search function' },
+                    { status: 'Establishing Secure Connection...', progress: 40, tip: 'Tip: All your data is encrypted and protected' },
+                    { status: 'Optimizing Performance...', progress: 55, tip: 'Tip: The app works offline for basic features' },
+                    { status: 'Loading AI Components...', progress: 70, tip: 'Tip: Try the AI chat for intelligent assistance' },
+                    { status: 'Configuring Network...', progress: 85, tip: 'Tip: Multiple proxy options available for browsing' },
+                    { status: 'Finalizing Setup...', progress: 95, tip: 'Tip: Customize your experience in the settings menu' },
+                    { status: 'Ready!', progress: 100, tip: 'Welcome to NEUTRAL NEXUS - Your Gateway to Unlimited Access' }
+                ];
+                
+                this.currentStep = 0;
+                this.init();
+            }
+            
+            init() {
+                // Hide menu button during loading
+                this.hideMenuButton();
+                
+                // Start the loading sequence
+                this.startLoadingSequence();
+                
+                // Add hover effects to feature items
+                this.addFeatureInteractions();
+            }
+            
+            startLoadingSequence() {
+                this.updateLoadingStep();
+                
+                // Progress through loading steps
+                this.progressInterval = setInterval(() => {
+                    this.currentStep++;
+                    if (this.currentStep < this.loadingSteps.length) {
+                        this.updateLoadingStep();
+                    } else {
+                        this.completeLoading();
+                    }
+                }, 800);
+            }
+            
+            updateLoadingStep() {
+                const step = this.loadingSteps[this.currentStep];
+                
+                // Update progress bar
+                this.progressBar.style.width = `${step.progress}%`;
+                this.progressPercentage.textContent = `${step.progress}%`;
+                
+                // Update status text
+                this.progressStatus.textContent = step.status;
+                this.statusText.textContent = step.status;
+                
+                // Update tip
+                this.loadingTip.textContent = step.tip;
+                
+                // Update feature items based on progress
+                this.updateFeatureItems(step.progress);
+                
+                // Add pulse effect to status text
+                this.statusText.style.animation = 'none';
+                setTimeout(() => {
+                    this.statusText.style.animation = 'textPulse 1.5s ease-in-out infinite';
+                }, 10);
+            }
+            
+            updateFeatureItems(progress) {
+                const featuresToLoad = Math.floor((progress / 100) * this.featureItems.length);
+                
+                this.featureItems.forEach((item, index) => {
+                    if (index < featuresToLoad) {
+                        setTimeout(() => {
+                            item.classList.remove('loading');
+                            item.classList.add('loaded');
+                            const check = item.querySelector('.feature-check');
+                            if (check) {
+                                check.textContent = '✓';
+                            }
+                        }, index * 100);
+                    }
+                });
+            }
+            
+            addFeatureInteractions() {
+                this.featureItems.forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        if (item.classList.contains('loaded')) {
+                            item.style.transform = 'translateY(-2px)';
+                            item.style.boxShadow = '0 5px 15px rgba(102, 126, 234, 0.3)';
+                        }
+                    });
+                    
+                    item.addEventListener('mouseleave', () => {
+                        item.style.transform = 'translateY(0)';
+                        item.style.boxShadow = 'none';
+                    });
+                });
+            }
+            
+            completeLoading() {
+                clearInterval(this.progressInterval);
+                
+                // Add completion effects
+                this.loadingScreen.classList.add('fade-out');
+                
+                // Redirect to changelog popup in same tab after loading completes
+                setTimeout(() => {
+                    window.location.href = 'updates/changelog-popup.html';
+                }, 1000);
+                
+                // Remove loading screen after animation
+                setTimeout(() => {
+                    this.loadingScreen.style.display = 'none';
+                    
+                    // Trigger any post-load events
+                    this.onLoadComplete();
+                }, 800);
+            }
+            
+            onLoadComplete() {
+                // Dispatch custom event for other scripts to listen to
+                const event = new CustomEvent('enhancedLoadingComplete', {
+                    detail: { loadTime: Date.now() }
+                });
+                document.dispatchEvent(event);
+                
+                console.log('🚀 NEUTRAL NEXUS Enhanced Loading Complete');
+            }
+            
+            // Method to manually show loading screen
+            show() {
+                this.loadingScreen.style.display = 'flex';
+                this.loadingScreen.classList.remove('fade-out');
+                this.currentStep = 0;
+                this.startLoadingSequence();
+            }
+            
+            // Method to manually hide loading screen
+            hide() {
+                this.completeLoading();
+            }
+            
+            // Method to hide menu button
+            hideMenuButton() {
+                if (this.menuButton) {
+                    this.menuButton.style.opacity = '0';
+                    this.menuButton.style.transform = 'scale(0.8)';
+                    this.menuButton.style.pointerEvents = 'none';
+                    this.menuButton.style.transition = 'all 0.3s ease';
+                }
+            }
+            
+            // Method to show menu button
+            showMenuButton() {
+                if (this.menuButton) {
+                    this.menuButton.style.opacity = '1';
+                    this.menuButton.style.transform = 'scale(1)';
+                    this.menuButton.style.pointerEvents = 'auto';
+                    
+                    // Add a subtle entrance animation
+                    this.menuButton.style.animation = 'menuButtonEntrance 0.5s ease-out';
+                    
+                    setTimeout(() => {
+                        this.menuButton.style.animation = '';
+                    }, 500);
+                }
+            }
+        }
+        
+        // Initialize enhanced loading screen when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if loading should be skipped
+            const skipLoading = sessionStorage.getItem('skipLoading');
+            
+            if (!skipLoading) {
+                // Create loading screen instance
+                window.enhancedLoadingScreen = new EnhancedLoadingScreen();
+            } else {
+                // Clear the flag for next visit
+                sessionStorage.removeItem('skipLoading');
+                
+                // Hide loading screen immediately if skip flag is set
+                const loadingScreen = document.getElementById('enhancedLoadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.display = 'none';
+                }
+            }
+            
+            // Listen for loading complete event
+            document.addEventListener('enhancedLoadingComplete', (e) => {
+                // Any post-load initialization can go here
+                console.log('Enhanced loading completed at:', new Date(e.detail.loadTime));
+                
+                // Redirect to changelog popup in same tab after loading completes
+                setTimeout(() => {
+                    window.location.href = 'updates/changelog-popup.html';
+                }, 1000);
+            });
+        });
+
+        // Changelog Popup Controller
+        function showChangelog() {
+            const changelogPopup = document.getElementById('changelogPopup');
+            const changelogBackdrop = document.getElementById('changelogBackdrop');
+            
+            if (changelogPopup) {
+                changelogPopup.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                // Add entrance animation
+                setTimeout(() => {
+                    changelogPopup.classList.add('active');
+                }, 10);
+            }
+        }
+
+        function hideChangelog() {
+            const changelogPopup = document.getElementById('changelogPopup');
+            const changelogBackdrop = document.getElementById('changelogBackdrop');
+            
+            if (changelogPopup) {
+                changelogPopup.classList.remove('active');
+                
+                setTimeout(() => {
+                    changelogPopup.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+
+        // Initialize changelog event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Close button
+            const closeBtn = document.getElementById('closeChangelog');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', hideChangelog);
+            }
+
+            // Backdrop click
+            const backdrop = document.getElementById('changelogBackdrop');
+            if (backdrop) {
+                backdrop.addEventListener('click', hideChangelog);
+            }
+
+            // Action button
+            const actionBtn = document.getElementById('changelogAction');
+            if (actionBtn) {
+                actionBtn.addEventListener('click', hideChangelog);
+            }
+
+            // ESC key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    hideChangelog();
+                }
+            });
+        });
+    </script>
 
     <!-- Load the AI functionality -->
     <script src="js/ai-script.js"></script>

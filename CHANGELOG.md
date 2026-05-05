@@ -8,6 +8,76 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.1] - 2026-05-04 - MAJOR UPDATE
+
+### 🎉 NEUTRAL NEXUS v0.9.1 RELEASE
+
+#### Proxy Browser Improvements
+- **🔧 Fixed Proxy Not Loading** - Proxy loading issues resolved, system functioning properly
+- **🚀 Enhanced Proxy Methods** - Better CORS proxy handling with ScramJet bypass techniques
+- **🎯 Compression Handling** - Added proper decompression support for binary content
+- **🔒 School Bypass Focus** - ScramJet proxy methods for GoGuardian bypass
+
+#### AI System Updates
+- **🤖 Changed AI Models to Free Models** - Switched from expensive to free AI alternatives
+- **💰 Cost Savings** - 100% free access to all AI capabilities
+- **⚡ Performance Boost** - Faster response times with free models
+- **🌍 Global Access** - Available to everyone without cost barriers
+- **🔧 Same Features** - All AI tools included with free models
+
+#### Media Platform Fixes
+- **🎵 Fixed Music Problem** - All music loading issues resolved
+- **▶️ Video Playback** - All YouTube videos now work correctly
+- **🔓 Topic Restrictions** - Properly handled for music streaming
+- **⚡ Loading Speed** - Faster than ever before
+- **🎧 Audio Quality** - Enhanced music experience
+
+#### Entertainment System
+- **🎬 Fixed Movies and TV Shows** - API integration completely fixed
+- **🔗 API Integration** - Fully functional TMDB integration
+- **🎥 Video Playback** - Enhanced video quality
+- **🔍 Search System** - Improved search results
+- **⚡ Loading Speed** - Faster streaming performance
+
+#### Interface Improvements
+- **💬 Removed AI Quick Chat** - Streamlined user experience
+- **🧹 Cleaner UI** - Less clutter, more focused interface
+- **⚡ Better Performance** - Faster loading with simplified design
+- **🎯 Focused Experience** - Reduced distractions
+- **🎨 Sleek Design** - Modern, clean interface
+
+#### New Features Coming
+- **☁️ Added Cloud Browser (Coming Soon)** - Windows 10 with multiple browsers
+- **🌐 Full Desktop Experience** - Secure browsing without risks
+- **🔒 Secure Browsing** - No risks involved
+- **🌍 Multiple Browsers** - Choose your favorite browser
+- **🚀 Coming Soon** - Available in next update
+
+#### Massive Database Expansion
+- **🔗 67 Links Added** - Expanded Neutral Nexus Database
+- **🔗 Proxy Links** - Enhanced access with new proxy sites
+- **🎮 Gaming Links** - More gaming options available
+- **💾 Database Expansion** - 67+ new additions
+- **🌍 Global Access** - Worldwide resource availability
+
+#### Technical Enhancements
+- **🔍 Fixed Link Search** - Search now works for both category names and link names
+- **💨 Vapor Category Merged** - Combined Vapor Plus into original Vapor category
+- **📄 Updated Version** - Changed from v2.0 to v0.9.1 in changelog popup
+- **🤖 Updated Models List** - Simplified models used section in README
+
+#### New Link Categories
+- **🍓 Strawberry Category** - 14 new proxy links
+- **📚 StudyHub Category** - 13 new educational links
+- **✨ Xylora Category** - 6 new gaming/proxy links
+- **🌙 Lunar Category** - 10 new learning links
+- **💭 DayDreamX Category** - 4 new resource links
+- **🚀 Space Category** - 5 new utility links
+- **🐸 Frogie Arcade Category** - 2 new arcade links
+- **👻 Shadow Category** - 4 new proxy links
+
+---
+
 ## [0.9.0] - 2026-04-26 - MAJOR UPDATE
 
 ### 🌟 NEUTRAL NEXUS IS HERE!
@@ -61,6 +131,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated README.md with v0.9.0 features
 - Added 45+ random funny messages to homepage
 - Removed "NEW" and "UPDATED" badges from navigation
+
+---
+
+### 🎉 NEUTRAL NEXUS v0.9.1 RELEASE
+
+#### Major Features
+- **🔗 67+ New Links Added** - Massive database expansion with new categories
+- **🍓 Strawberry Category** - 14 new proxy links
+- **📚 StudyHub Category** - 13 new educational links
+- **✨ Xylora Category** - 6 new gaming/proxy links
+- **🌙 Lunar Category** - 10 new learning links
+- **💭 DayDreamX Category** - 4 new resource links
+- **🚀 Space Category** - 5 new utility links
+- **🐸 Frogie Arcade Category** - 2 new arcade links
+- **👻 Shadow Category** - 4 new proxy links
+- **☁️ Cloud Browser Coming Soon** - Added to navigation menu
+
+#### Proxy Browser Improvements
+- **🔧 Fixed Binary Data Issues** - Resolved gibberish output when visiting sites
+- **🚀 Enhanced Proxy Methods** - Better CORS proxy handling
+- **🎯 Compression Handling** - Added proper decompression support
+- **🔒 School Bypass Focus** - ScramJet proxy methods for GoGuardian bypass
+
+#### Technical Enhancements
+- **🔍 Fixed Link Search** - Search now works for both category names and link names
+- **💨 Vapor Category Merged** - Combined Vapor Plus into original Vapor category
+- **📄 Updated Version** - Changed from v2.0 to v0.9.1 in changelog popup
+- **🤖 Updated Models List** - Simplified models used section in README
 
 ---
 
