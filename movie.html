@@ -895,83 +895,54 @@
         let currentMovieIndex = 0;
         let currentVideoSource = 'MappleTV';
 
-        // Fetch movies from TMDB API directly (client-side)
+        // Fetch movies using fallback data for static hosting
         async function fetchMovies(type, searchQuery = '') {
             try {
-                // TMDB API configuration - using a public demo key for client-side
-                const TMDB_API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNTZhZjFlNzY5NzY4ODM2YjA4NzY5NzY4ODM2YjA4NzY5Iiwic3ViIjoiNjQzZmE4ZmQzZjQ4YmMwMDA3NjY5NzY5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOiIxLjAifQ.abc123def456ghi789jkl012mno345pqr678stu901';
-                const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+                console.log('Loading movies from fallback data for static hosting...');
                 
-                let apiUrl;
+                // Get all fallback movies
+                let allMovies = getFallbackMovies();
                 
+                // Filter based on search query if provided
                 if (searchQuery && searchQuery.trim() !== '') {
-                    // Search movies
-                    apiUrl = `${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(searchQuery)}&language=en-US&page=1&include_adult=false`;
-                } else {
-                    // Get movies by category
-                    switch(type) {
-                        case 'now_playing':
-                            apiUrl = `${TMDB_BASE_URL}/movie/now_playing?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                        case 'top_rated':
-                            apiUrl = `${TMDB_BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                        case 'upcoming':
-                            apiUrl = `${TMDB_BASE_URL}/movie/upcoming?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                        case 'popular':
-                        default:
-                            apiUrl = `${TMDB_BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                    }
-                }
-
-                // Try direct TMDB API call with CORS proxy
-                let response;
-                const corsProxies = [
-                    `https://corsproxy.io/?`,
-                    `https://api.allorigins.win/raw?url=`,
-                    `https://cors-anywhere.herokuapp.com/`
-                ];
-                
-                for (const proxy of corsProxies) {
-                    try {
-                        const proxyUrl = proxy + encodeURIComponent(apiUrl);
-                        response = await fetch(proxyUrl);
-                        if (response.ok) {
-                            break;
-                        }
-                    } catch (e) {
-                        continue;
-                    }
+                    const query = searchQuery.toLowerCase();
+                    allMovies = allMovies.filter(movie => 
+                        movie.title.toLowerCase().includes(query) || 
+                        movie.overview.toLowerCase().includes(query)
+                    );
                 }
                 
-                if (!response || !response.ok) {
-                    throw new Error('TMDB API not available');
+                // Sort based on category
+                switch(type) {
+                    case 'top_rated':
+                        allMovies.sort((a, b) => b.rating - a.rating);
+                        break;
+                    case 'now_playing':
+                    case 'upcoming':
+                        // Sort by release date (newest first)
+                        allMovies.sort((a, b) => b.releaseDate - a.releaseDate);
+                        break;
+                    case 'popular':
+                    default:
+                        // Sort by rating for popular
+                        allMovies.sort((a, b) => b.rating - a.rating);
+                        break;
                 }
                 
-                const data = await response.json();
+                movies = allMovies;
+                renderMovieGrid();
+                updateMovieCount();
                 
-                if (data.results) {
-                    movies = data.results.map(movie => ({
-                        title: movie.title,
-                        releaseDate: movie.release_date,
-                        rating: movie.vote_average,
-                        posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null,
-                        overview: movie.overview,
-                        id: movie.id
-                    }));
-                    renderMovieGrid();
-                } else {
-                    throw new Error('No movies data received');
-                }
+                // Show notification for static hosting
+                showNotification('Using offline movie database', 'info');
                 
             } catch (error) {
-                console.error('Error fetching movies:', error);
+                console.error('Error loading movies:', error);
                 // Use fallback data
                 movies = getFallbackMovies();
                 renderMovieGrid();
                 updateMovieCount();
+                showNotification('Using offline movie data', 'info');
             }
         }
 

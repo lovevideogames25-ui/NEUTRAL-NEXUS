@@ -959,82 +959,53 @@
         let currentTVIndex = 0;
         let currentVideoSource = 'MappleTV';
 
-        // Fetch TV shows from TMDB API directly (client-side)
+        // Fetch TV shows using fallback data for static hosting
         async function fetchTVShows(type, searchQuery = '') {
             try {
-                // TMDB API configuration - using a public demo key for client-side
-                const TMDB_API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNTZhZjFlNzY5NzY4ODM2YjA4NzY5NzY4ODM2YjA4NzY5Iiwic3ViIjoiNjQzZmE4ZmQzZjQ4YmMwMDA3NjY5NzY5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOiIxLjAifQ.abc123def456ghi789jkl012mno345pqr678stu901';
-                const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+                console.log('Loading TV shows from fallback data for static hosting...');
                 
-                let apiUrl;
+                // Get all fallback TV shows
+                let allTVShows = getFallbackTVShows();
                 
+                // Filter based on search query if provided
                 if (searchQuery && searchQuery.trim() !== '') {
-                    // Search TV shows
-                    apiUrl = `${TMDB_BASE_URL}/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(searchQuery)}&language=en-US&page=1`;
-                } else {
-                    // Get TV shows by category
-                    switch(type) {
-                        case 'airing_today':
-                            apiUrl = `${TMDB_BASE_URL}/tv/airing_today?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                        case 'on_the_air':
-                            apiUrl = `${TMDB_BASE_URL}/tv/on_the_air?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                        case 'top_rated':
-                            apiUrl = `${TMDB_BASE_URL}/tv/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                        case 'popular':
-                        default:
-                            apiUrl = `${TMDB_BASE_URL}/tv/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-                            break;
-                    }
-                }
-
-                // Try direct TMDB API call with CORS proxy
-                let response;
-                const corsProxies = [
-                    `https://corsproxy.io/?`,
-                    `https://api.allorigins.win/raw?url=`,
-                    `https://cors-anywhere.herokuapp.com/`
-                ];
-                
-                for (const proxy of corsProxies) {
-                    try {
-                        const proxyUrl = proxy + encodeURIComponent(apiUrl);
-                        response = await fetch(proxyUrl);
-                        if (response.ok) {
-                            break;
-                        }
-                    } catch (e) {
-                        continue;
-                    }
+                    const query = searchQuery.toLowerCase();
+                    allTVShows = allTVShows.filter(show => 
+                        show.title.toLowerCase().includes(query) || 
+                        show.overview.toLowerCase().includes(query)
+                    );
                 }
                 
-                if (!response || !response.ok) {
-                    throw new Error('TMDB API not available');
+                // Sort based on category
+                switch(type) {
+                    case 'top_rated':
+                        allTVShows.sort((a, b) => b.rating - a.rating);
+                        break;
+                    case 'airing_today':
+                    case 'on_the_air':
+                        // Sort by release date (newest first)
+                        allTVShows.sort((a, b) => b.releaseDate - a.releaseDate);
+                        break;
+                    case 'popular':
+                    default:
+                        // Sort by rating for popular
+                        allTVShows.sort((a, b) => b.rating - a.rating);
+                        break;
                 }
                 
-                const data = await response.json();
+                tvShows = allTVShows;
+                renderTVGrid();
+                updateTVCount();
                 
-                if (data.results) {
-                    tvShows = data.results.map(show => ({
-                        title: show.name,
-                        releaseDate: show.first_air_date ? show.first_air_date.split('-')[0] : 'Unknown',
-                        rating: show.vote_average,
-                        posterPath: show.poster_path ? `https://image.tmdb.org/t/p/w500${show.poster_path}` : null,
-                        overview: show.overview,
-                        id: show.id
-                    }));
-                    renderTVGrid();
-                } else {
-                    throw new Error('No TV shows data received');
-                }
+                // Show notification for static hosting
+                showNotification('Using offline TV show database', 'info');
                 
             } catch (error) {
-                console.error('Error fetching TV shows:', error);
+                console.error('Error loading TV shows:', error);
                 // Use fallback data
                 tvShows = getFallbackTVShows();
                 renderTVGrid();
+                updateTVCount();
                 showNotification('Using offline TV show data', 'info');
             }
         }
