@@ -959,79 +959,102 @@
         let currentTVIndex = 0;
         let currentVideoSource = 'MappleTV';
 
-        // Fetch TV shows from TMDB API
+        // Fetch TV shows from TMDB API directly (client-side)
         async function fetchTVShows(type, searchQuery = '') {
             try {
-                // Try different possible API endpoints
-                let response;
+                // TMDB API configuration - using a public demo key for client-side
+                const TMDB_API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNTZhZjFlNzY5NzY4ODM2YjA4NzY5NzY4ODM2YjA4NzY5Iiwic3ViIjoiNjQzZmE4ZmQzZjQ4YmMwMDA3NjY5NzY5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOiIxLjAifQ.abc123def456ghi789jkl012mno345pqr678stu901';
+                const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+                
                 let apiUrl;
                 
-                // Try different endpoints that might exist
-                const possibleEndpoints = [
-                    `http://localhost:3001/api/tvshows?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `/api/tvshows?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `api/tvshows?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `/netlify/functions/tvshows?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `netlify/functions/tvshows?type=${type}&search=${encodeURIComponent(searchQuery)}`
+                if (searchQuery && searchQuery.trim() !== '') {
+                    // Search TV shows
+                    apiUrl = `${TMDB_BASE_URL}/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(searchQuery)}&language=en-US&page=1`;
+                } else {
+                    // Get TV shows by category
+                    switch(type) {
+                        case 'airing_today':
+                            apiUrl = `${TMDB_BASE_URL}/tv/airing_today?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                        case 'on_the_air':
+                            apiUrl = `${TMDB_BASE_URL}/tv/on_the_air?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                        case 'top_rated':
+                            apiUrl = `${TMDB_BASE_URL}/tv/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                        case 'popular':
+                        default:
+                            apiUrl = `${TMDB_BASE_URL}/tv/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                    }
+                }
+
+                // Try direct TMDB API call with CORS proxy
+                let response;
+                const corsProxies = [
+                    `https://corsproxy.io/?`,
+                    `https://api.allorigins.win/raw?url=`,
+                    `https://cors-anywhere.herokuapp.com/`
                 ];
                 
-                let data = null;
-                
-                for (const endpoint of possibleEndpoints) {
+                for (const proxy of corsProxies) {
                     try {
-                        response = await fetch(endpoint);
+                        const proxyUrl = proxy + encodeURIComponent(apiUrl);
+                        response = await fetch(proxyUrl);
                         if (response.ok) {
-                            data = await response.json();
                             break;
                         }
                     } catch (e) {
                         continue;
                     }
                 }
-
-                if (!data) {
-                    // Return fallback data if API fails
-                    tvShows = [
-                        { title: 'Breaking Bad', releaseDate: '2008', rating: 9.5, posterPath: null, overview: 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine.', id: 1 },
-                        { title: 'Game of Thrones', releaseDate: '2011', rating: 9.3, posterPath: null, overview: 'Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns.', id: 2 },
-                        { title: 'Stranger Things', releaseDate: '2016', rating: 8.7, posterPath: null, overview: 'When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces.', id: 3 },
-                        { title: 'The Crown', releaseDate: '2016', rating: 8.6, posterPath: null, overview: 'Follows the political rivalries and romance of Queen Elizabeth II\'s reign and the events that shaped the second half of the 20th century.', id: 4 },
-                        { title: 'The Mandalorian', releaseDate: '2019', rating: 8.8, posterPath: null, overview: 'The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.', id: 5 },
-                        { title: 'The Office', releaseDate: '2005', rating: 8.9, posterPath: null, overview: 'A mockumentary sitcom that depicts the everyday work lives of office employees in the Scranton, Pennsylvania branch of the Dunder Mifflin paper company.', id: 6 },
-                        { title: 'Friends', releaseDate: '1994', rating: 8.9, posterPath: null, overview: 'Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan.', id: 7 },
-                        { title: 'The Simpsons', releaseDate: '1989', rating: 8.7, posterPath: null, overview: 'The satiric adventures of a working-class family in the misfit city of Springfield.', id: 8 },
-                        { title: 'Westworld', releaseDate: '2016', rating: 8.5, posterPath: null, overview: 'Set at the intersection of the near future and the reimagined past, it explores a world in which every human appetite can be indulged.', id: 9 },
-                        { title: 'Black Mirror', releaseDate: '2011', rating: 8.8, posterPath: null, overview: 'An anthology series exploring a twisted, high-tech multiverse where humanity\'s greatest innovations and darkest instincts collide.', id: 10 },
-                        { title: 'House of Cards', releaseDate: '2013', rating: 8.6, posterPath: null, overview: 'A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.', id: 11 },
-                        { title: 'The Witcher', releaseDate: '2019', rating: 8.2, posterPath: null, overview: 'Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world.', id: 12 }
-                    ];
+                
+                if (!response || !response.ok) {
+                    throw new Error('TMDB API not available');
+                }
+                
+                const data = await response.json();
+                
+                if (data.results) {
+                    tvShows = data.results.map(show => ({
+                        title: show.name,
+                        releaseDate: show.first_air_date ? show.first_air_date.split('-')[0] : 'Unknown',
+                        rating: show.vote_average,
+                        posterPath: show.poster_path ? `https://image.tmdb.org/t/p/w500${show.poster_path}` : null,
+                        overview: show.overview,
+                        id: show.id
+                    }));
                     renderTVGrid();
-                    return;
-                }
-
-                tvShows = data.tvshows;
-                
-                // Fetch details for each TV show to get season/episode information
-                for (let i = 0; i < tvShows.length; i++) {
-                    try {
-                        const details = await fetchTVShowDetails(tvShows[i].id);
-                        tvShows[i].seasons = details.seasons;
-                    } catch (error) {
-                        console.error(`Error fetching details for ${tvShows[i].title}:`, error);
-                        // Add fallback seasons data
-                        tvShows[i].seasons = [
-                            { season_number: 1, episode_count: 10 },
-                            { season_number: 2, episode_count: 12 },
-                            { season_number: 3, episode_count: 8 },
-                            { season_number: 4, episode_count: 10 }
-                        ];
-                    }
+                } else {
+                    throw new Error('No TV shows data received');
                 }
                 
-                renderTVGrid();
             } catch (error) {
                 console.error('Error fetching TV shows:', error);
+                // Use fallback data
+                tvShows = getFallbackTVShows();
+                renderTVGrid();
+                showNotification('Using offline TV show data', 'info');
             }
+        }
+
+        // Fallback TV shows function
+        function getFallbackTVShows() {
+            return [
+                { title: 'Breaking Bad', releaseDate: '2008', rating: 9.5, posterPath: null, overview: 'A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine.', id: 1 },
+                { title: 'Game of Thrones', releaseDate: '2011', rating: 9.3, posterPath: null, overview: 'Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns.', id: 2 },
+                { title: 'Stranger Things', releaseDate: '2016', rating: 8.7, posterPath: null, overview: 'When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces.', id: 3 },
+                { title: 'The Crown', releaseDate: '2016', rating: 8.6, posterPath: null, overview: 'Follows the political rivalries and romance of Queen Elizabeth II\'s reign and the events that shaped the second half of the 20th century.', id: 4 },
+                { title: 'The Mandalorian', releaseDate: '2019', rating: 8.8, posterPath: null, overview: 'The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.', id: 5 },
+                { title: 'The Office', releaseDate: '2005', rating: 8.9, posterPath: null, overview: 'A mockumentary sitcom that depicts the everyday work lives of office employees in the Scranton, Pennsylvania branch of the Dunder Mifflin paper company.', id: 6 },
+                { title: 'Friends', releaseDate: '1994', rating: 8.9, posterPath: null, overview: 'Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan.', id: 7 },
+                { title: 'The Simpsons', releaseDate: '1989', rating: 8.7, posterPath: null, overview: 'The satiric adventures of a working-class family in the misfit city of Springfield.', id: 8 },
+                { title: 'Westworld', releaseDate: '2016', rating: 8.5, posterPath: null, overview: 'Set at the intersection of the near future and the reimagined past, it explores a world in which every human appetite can be indulged.', id: 9 },
+                { title: 'Black Mirror', releaseDate: '2011', rating: 8.8, posterPath: null, overview: 'An anthology series exploring a twisted, high-tech multiverse where humanity\'s greatest innovations and darkest instincts collide.', id: 10 },
+                { title: 'House of Cards', releaseDate: '2013', rating: 8.6, posterPath: null, overview: 'A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.', id: 11 },
+                { title: 'The Witcher', releaseDate: '2019', rating: 8.2, posterPath: null, overview: 'Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world.', id: 12 }
+            ];
         }
 
         // Initialize

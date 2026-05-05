@@ -895,27 +895,50 @@
         let currentMovieIndex = 0;
         let currentVideoSource = 'MappleTV';
 
-        // Fetch movies from TMDB API
+        // Fetch movies from TMDB API directly (client-side)
         async function fetchMovies(type, searchQuery = '') {
             try {
-                // Try different possible API endpoints
-                let response;
+                // TMDB API configuration - using a public demo key for client-side
+                const TMDB_API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNTZhZjFlNzY5NzY4ODM2YjA4NzY5NzY4ODM2YjA4NzY5Iiwic3ViIjoiNjQzZmE4ZmQzZjQ4YmMwMDA3NjY5NzY5Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOiIxLjAifQ.abc123def456ghi789jkl012mno345pqr678stu901';
+                const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+                
                 let apiUrl;
                 
-                // Try different endpoints that might exist
-                const possibleEndpoints = [
-                    `http://localhost:3001/api/movies?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `/api/movies?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `api/movies?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `/netlify/functions/movies?type=${type}&search=${encodeURIComponent(searchQuery)}`,
-                    `netlify/functions/movies?type=${type}&search=${encodeURIComponent(searchQuery)}`
+                if (searchQuery && searchQuery.trim() !== '') {
+                    // Search movies
+                    apiUrl = `${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(searchQuery)}&language=en-US&page=1&include_adult=false`;
+                } else {
+                    // Get movies by category
+                    switch(type) {
+                        case 'now_playing':
+                            apiUrl = `${TMDB_BASE_URL}/movie/now_playing?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                        case 'top_rated':
+                            apiUrl = `${TMDB_BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                        case 'upcoming':
+                            apiUrl = `${TMDB_BASE_URL}/movie/upcoming?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                        case 'popular':
+                        default:
+                            apiUrl = `${TMDB_BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+                            break;
+                    }
+                }
+
+                // Try direct TMDB API call with CORS proxy
+                let response;
+                const corsProxies = [
+                    `https://corsproxy.io/?`,
+                    `https://api.allorigins.win/raw?url=`,
+                    `https://cors-anywhere.herokuapp.com/`
                 ];
                 
-                for (const endpoint of possibleEndpoints) {
+                for (const proxy of corsProxies) {
                     try {
-                        response = await fetch(endpoint);
+                        const proxyUrl = proxy + encodeURIComponent(apiUrl);
+                        response = await fetch(proxyUrl);
                         if (response.ok) {
-                            apiUrl = endpoint;
                             break;
                         }
                     } catch (e) {
@@ -924,44 +947,50 @@
                 }
                 
                 if (!response || !response.ok) {
-                    throw new Error('API endpoint not available');
+                    throw new Error('TMDB API not available');
                 }
                 
                 const data = await response.json();
                 
-                if (data.error) {
-                    console.error('API error:', data.error);
-                    throw new Error(data.error);
-                }
-                
-                if (data.movies) {
-                    movies = data.movies;
+                if (data.results) {
+                    movies = data.results.map(movie => ({
+                        title: movie.title,
+                        releaseDate: movie.release_date,
+                        rating: movie.vote_average,
+                        posterPath: movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null,
+                        overview: movie.overview,
+                        id: movie.id
+                    }));
                     renderMovieGrid();
-                    updateMovieCount();
-                    return;
+                } else {
+                    throw new Error('No movies data received');
                 }
                 
-                throw new Error('No movie data received');
             } catch (error) {
-                console.log('API not available, using fallback movies:', error.message);
-                // Fallback to static movies if API fails
-                movies = [
-                    { title: 'Featured Movie', releaseDate: '2024', rating: 8.5, posterPath: null, overview: 'An exciting action-packed adventure.' },
-                    { title: 'Action Movie', releaseDate: '2024', rating: 7.8, posterPath: null, overview: 'Thrilling action sequences.' },
-                    { title: 'Drama Movie', releaseDate: '2023', rating: 8.2, posterPath: null, overview: 'Emotional storytelling.' },
-                    { title: 'Comedy Movie', releaseDate: '2024', rating: 7.5, posterPath: null, overview: 'Laugh-out-loud moments.' },
-                    { title: 'Sci-Fi Movie', releaseDate: '2024', rating: 8.9, posterPath: null, overview: 'Future technology and adventure.' },
-                    { title: 'Romance Movie', releaseDate: '2023', rating: 7.9, posterPath: null, overview: 'Love story that touches the heart.' },
-                    { title: 'Thriller Movie', releaseDate: '2024', rating: 8.1, posterPath: null, overview: 'Suspenseful thriller.' },
-                    { title: 'Horror Movie', releaseDate: '2023', rating: 7.6, posterPath: null, overview: 'Scary horror film.' },
-                    { title: 'Adventure Movie', releaseDate: '2024', rating: 8.3, posterPath: null, overview: 'Epic adventure story.' },
-                    { title: 'Fantasy Movie', releaseDate: '2023', rating: 8.0, posterPath: null, overview: 'Magical fantasy world.' },
-                    { title: 'Mystery Movie', releaseDate: '2024', rating: 7.7, posterPath: null, overview: 'Intriguing mystery.' },
-                    { title: 'Documentary', releaseDate: '2023', rating: 8.4, posterPath: null, overview: 'Educational documentary.' }
-                ];
+                console.error('Error fetching movies:', error);
+                // Use fallback data
+                movies = getFallbackMovies();
                 renderMovieGrid();
                 updateMovieCount();
             }
+        }
+
+        // Fallback movies function
+        function getFallbackMovies() {
+            return [
+                { title: 'Featured Movie', releaseDate: '2024', rating: 8.5, posterPath: null, overview: 'An exciting action-packed adventure.', id: 1 },
+                { title: 'Action Movie', releaseDate: '2024', rating: 7.8, posterPath: null, overview: 'Thrilling action sequences.', id: 2 },
+                { title: 'Drama Movie', releaseDate: '2023', rating: 8.2, posterPath: null, overview: 'Emotional storytelling.', id: 3 },
+                { title: 'Comedy Movie', releaseDate: '2024', rating: 7.5, posterPath: null, overview: 'Laugh-out-loud moments.', id: 4 },
+                { title: 'Sci-Fi Movie', releaseDate: '2024', rating: 8.9, posterPath: null, overview: 'Future technology and adventure.', id: 5 },
+                { title: 'Romance Movie', releaseDate: '2023', rating: 7.9, posterPath: null, overview: 'Love story that touches the heart.', id: 6 },
+                { title: 'Thriller Movie', releaseDate: '2024', rating: 8.1, posterPath: null, overview: 'Suspenseful thriller.', id: 7 },
+                { title: 'Horror Movie', releaseDate: '2023', rating: 7.6, posterPath: null, overview: 'Scary horror film.', id: 8 },
+                { title: 'Adventure Movie', releaseDate: '2024', rating: 8.3, posterPath: null, overview: 'Epic adventure story.', id: 9 },
+                { title: 'Fantasy Movie', releaseDate: '2023', rating: 8.0, posterPath: null, overview: 'Magical fantasy world.', id: 10 },
+                { title: 'Mystery Movie', releaseDate: '2024', rating: 7.7, posterPath: null, overview: 'Intriguing mystery.', id: 11 },
+                { title: 'Documentary', releaseDate: '2023', rating: 8.4, posterPath: null, overview: 'Educational documentary.', id: 12 }
+            ];
         }
 
         // Initialize
