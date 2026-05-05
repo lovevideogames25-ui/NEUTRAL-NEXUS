@@ -895,50 +895,30 @@
         let currentMovieIndex = 0;
         let currentVideoSource = 'MappleTV';
 
-        // Fetch movies using fallback data for static hosting
+        // Fetch movies using frontend-api.js for real TMDB API calls
         async function fetchMovies(type, searchQuery = '') {
             try {
-                console.log('Loading movies from fallback data for static hosting...');
+                console.log('Loading movies from TMDB API via frontend-api.js...');
                 
-                // Get all fallback movies
-                let allMovies = getFallbackMovies();
+                // Use the frontend-api.js function
+                const result = await window.fetchMovies(type, searchQuery);
                 
-                // Filter based on search query if provided
-                if (searchQuery && searchQuery.trim() !== '') {
-                    const query = searchQuery.toLowerCase();
-                    allMovies = allMovies.filter(movie => 
-                        movie.title.toLowerCase().includes(query) || 
-                        movie.overview.toLowerCase().includes(query)
-                    );
+                if (result.error) {
+                    throw new Error(result.error);
                 }
                 
-                // Sort based on category
-                switch(type) {
-                    case 'top_rated':
-                        allMovies.sort((a, b) => b.rating - a.rating);
-                        break;
-                    case 'now_playing':
-                    case 'upcoming':
-                        // Sort by release date (newest first)
-                        allMovies.sort((a, b) => b.releaseDate - a.releaseDate);
-                        break;
-                    case 'popular':
-                    default:
-                        // Sort by rating for popular
-                        allMovies.sort((a, b) => b.rating - a.rating);
-                        break;
+                if (result.movies && result.movies.length > 0) {
+                    movies = result.movies;
+                    renderMovieGrid();
+                    updateMovieCount();
+                    showNotification('Loaded from TMDB API', 'success');
+                } else {
+                    throw new Error('No movies data received');
                 }
-                
-                movies = allMovies;
-                renderMovieGrid();
-                updateMovieCount();
-                
-                // Show notification for static hosting
-                showNotification('Using offline movie database', 'info');
                 
             } catch (error) {
-                console.error('Error loading movies:', error);
-                // Use fallback data
+                console.error('Error fetching movies from API:', error);
+                // Use fallback data if API fails
                 movies = getFallbackMovies();
                 renderMovieGrid();
                 updateMovieCount();
@@ -1300,5 +1280,8 @@
             });
         });
     </script>
+    
+    <!-- Frontend API for TMDB integration -->
+    <script src="js/frontend-api.js"></script>
 </body>
 </html>

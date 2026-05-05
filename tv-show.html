@@ -959,50 +959,38 @@
         let currentTVIndex = 0;
         let currentVideoSource = 'MappleTV';
 
-        // Fetch TV shows using fallback data for static hosting
+        // Fetch TV shows using frontend-api.js for real TMDB API calls
         async function fetchTVShows(type, searchQuery = '') {
             try {
-                console.log('Loading TV shows from fallback data for static hosting...');
+                console.log('Loading TV shows from TMDB API via frontend-api.js...');
                 
-                // Get all fallback TV shows
-                let allTVShows = getFallbackTVShows();
+                // Use the frontend-api.js function
+                const result = await window.fetchTVShows(type, searchQuery);
                 
-                // Filter based on search query if provided
-                if (searchQuery && searchQuery.trim() !== '') {
-                    const query = searchQuery.toLowerCase();
-                    allTVShows = allTVShows.filter(show => 
-                        show.title.toLowerCase().includes(query) || 
-                        show.overview.toLowerCase().includes(query)
-                    );
+                if (result.error) {
+                    throw new Error(result.error);
                 }
                 
-                // Sort based on category
-                switch(type) {
-                    case 'top_rated':
-                        allTVShows.sort((a, b) => b.rating - a.rating);
-                        break;
-                    case 'airing_today':
-                    case 'on_the_air':
-                        // Sort by release date (newest first)
-                        allTVShows.sort((a, b) => b.releaseDate - a.releaseDate);
-                        break;
-                    case 'popular':
-                    default:
-                        // Sort by rating for popular
-                        allTVShows.sort((a, b) => b.rating - a.rating);
-                        break;
+                if (result.shows && result.shows.length > 0) {
+                    // Transform shows data to match expected format
+                    tvShows = result.shows.map(show => ({
+                        title: show.name,
+                        releaseDate: show.firstAirDate ? show.firstAirDate.split('-')[0] : 'Unknown',
+                        rating: show.rating,
+                        posterPath: show.posterPath,
+                        overview: show.overview,
+                        id: show.id
+                    }));
+                    renderTVGrid();
+                    updateTVCount();
+                    showNotification('Loaded from TMDB API', 'success');
+                } else {
+                    throw new Error('No TV shows data received');
                 }
-                
-                tvShows = allTVShows;
-                renderTVGrid();
-                updateTVCount();
-                
-                // Show notification for static hosting
-                showNotification('Using offline TV show database', 'info');
                 
             } catch (error) {
-                console.error('Error loading TV shows:', error);
-                // Use fallback data
+                console.error('Error fetching TV shows from API:', error);
+                // Use fallback data if API fails
                 tvShows = getFallbackTVShows();
                 renderTVGrid();
                 updateTVCount();
@@ -1504,5 +1492,8 @@
             });
         });
     </script>
+    
+    <!-- Frontend API for TMDB integration -->
+    <script src="js/frontend-api.js"></script>
 </body>
 </html>
