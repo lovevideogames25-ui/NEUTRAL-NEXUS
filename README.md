@@ -4,46 +4,61 @@
 
 ---
 
-## 🎉 **Latest Release: 0.9.0 - MAJOR UPDATE**
+## 🎉 **Latest Release: 0.9.1 - MAJOR UPDATE**
 
-### 🌟 **MAJOR ANNOUNCEMENT: NEUTRAL NEXUS IS HERE!**
-**Complete rebrand with major feature additions!**
+### 🌟 **MAJOR ANNOUNCEMENT: MASSIVE DATABASE EXPANSION!**
+**67+ new links added with proxy fixes and AI improvements!**
 
-### 🌐 **ADDED PROXY**
-- **🔍 Proxy Browser** - Brave search integration with multiple proxy site support
-- **� Speed Testing** - Proxy connection speed indicators
-- **📖 Proxy History** - Track your proxy usage
-- **⭐ Proxy Bookmarks** - Save favorite proxy sites
-- **🔄 Auto-Switching** - Automatic proxy switching for best performance
+### 🔗 **67+ NEW LINKS ADDED**
+- **🍓 Strawberry Category** - 14 new proxy links
+- **📚 StudyHub Category** - 13 new educational links
+- **✨ Xylora Category** - 6 new gaming/proxy links
+- **🌙 Lunar Category** - 10 new learning links
+- **� DayDreamX Category** - 4 new resource links
+- **🚀 Space Category** - 5 new utility links
+- **🐸 Frogie Arcade Category** - 2 new arcade links
+- **� Shadow Category** - 4 new proxy links
+- **☁️ Cloud Browser Coming Soon** - Added to navigation menu
 
-### 🎬 **ADDED MOVIES**
-- **🎥 Full Movie Streaming** - Complete movie playback experience
-- **� TMDB API Integration** - Real-time movie data from The Movie Database
-- **� Movie Search** - Search for any movie instantly
-- **⭐ Ratings & Reviews** - View movie ratings and reviews
-- **🎨 Movie Posters** - High-quality movie poster display
-- **📺 Multiple Sources** - Multiple video streaming sources
+### 🔧 **PROXY BROWSER FIXES**
+- **🔧 Fixed Binary Data Issues** - Resolved gibberish output when visiting sites
+- **🚀 Enhanced Proxy Methods** - Better CORS proxy handling with ScramJet bypass techniques
+- **🎯 Compression Handling** - Added proper decompression support for binary content
+- **🔒 School Bypass Focus** - ScramJet proxy methods for GoGuardian bypass
 
-### 📺 **ADDED TV SHOWS**
-- **📺 TV Show Streaming** - Complete TV show playback experience
-- **🎬 Dynamic Season Selection** - Choose from all available seasons
-- **📝 Episode Selection** - Select specific episodes within seasons
-- **🔍 TMDB API Integration** - Real-time TV show data
-- **⭐ Show Information** - View show ratings, descriptions, and metadata
-- **🎭 Featured Shows** - Highlighted popular TV shows
+### 🤖 **AI SYSTEM UPDATES**
+- **🤖 Changed AI Models to Free Models** - Switched from expensive to free AI alternatives
+- **💰 Cost Savings** - 100% free access to all AI capabilities
+- **⚡ Performance Boost** - Faster response times with free models
+- **🌍 Global Access** - Available to everyone without cost barriers
+- **🔧 Same Features** - All AI tools included with free models
 
-### ✨ **NEUTRAL NEXUS REBRAND**
-- **🎨 Complete Rebrand** - Renamed from ULTIMATEUNBLOCKER to NEUTRAL NEXUS
-- **📝 Updated Branding** - All files, interfaces, and documentation updated
-- **🔗 New Repository** - Updated GitHub repository URLs
-- **📦 Package Updates** - Package.json and dependencies updated
-- **🎯 Consistent Identity** - Unified branding across all platforms
+### 🎵 **MEDIA PLATFORM FIXES**
+- **🎵 Fixed Music Problem** - All music loading issues resolved
+- **▶️ Video Playback** - All YouTube videos now work correctly
+- **🔓 Topic Restrictions** - Properly handled for music streaming
+- **⚡ Loading Speed** - Faster than ever before
+- **🎧 Audio Quality** - Enhanced music experience
 
-### 🙏 **Credits & Plans**
-- **📜 Comprehensive Credits** - Added CREDITS.md with all API, library, and service attributions
-- **🗺️ Version Plans** - Added PLANS.md with v0.9.1 roadmap
-- **ℹ️ Information Tab** - Added Credits and Plans tabs to Information section
-- **📊 Progress Tracking** - Track development progress for upcoming features
+### 🎬 **ENTERTAINMENT SYSTEM**
+- **🎬 Fixed Movies and TV Shows** - API integration completely fixed
+- **🔗 API Integration** - Fully functional TMDB integration
+- **🎥 Video Playback** - Enhanced video quality
+- **🔍 Search System** - Improved search results
+- **⚡ Loading Speed** - Faster streaming performance
+
+### 💬 **INTERFACE IMPROVEMENTS**
+- **💬 Removed AI Quick Chat** - Streamlined user experience
+- **🧹 Cleaner UI** - Less clutter, more focused interface
+- **⚡ Better Performance** - Faster loading with simplified design
+- **🎯 Focused Experience** - Reduced distractions
+- **� Sleek Design** - Modern, clean interface
+
+### � **TECHNICAL ENHANCEMENTS**
+- **� Fixed Link Search** - Search now works for both category names and link names
+- **� Vapor Category Merged** - Combined Vapor Plus into original Vapor category
+- **📄 Updated Version** - Changed from v2.0 to v0.9.1 in changelog popup
+- **🤖 Updated Models List** - Simplified models used section in README
 
 ### 🎨 **Design Excellence:**
 - **🏛️ Luxury Box Design** - Multi-layered shadows with inset borders
@@ -56,15 +71,15 @@
 ### 📊 **Release Stats:**
 ```json
 {
-  "version": "0.9.0",
+  "version": "0.9.1",
   "status": "MAJOR UPDATE",
-  "proxy_browser": "ADDED",
-  "movie_streaming": "ADDED",
-  "tv_shows": "ADDED",
-  "tmdb_integration": "COMPLETE",
-  "rebrand": "NEUTRAL NEXUS",
-  "credits": "COMPREHENSIVE",
-  "plans": "V0.9.1 ROADMAP"
+  "new_links": "67+ ADDED",
+  "proxy_browser": "FIXED",
+  "ai_models": "FREE MODELS",
+  "music_platform": "FIXED",
+  "movies_tv": "FIXED",
+  "link_search": "WORKING",
+  "cloud_browser": "COMING SOON"
 }
 ```
 
@@ -190,18 +205,42 @@
 
 ## 🔄 **Version History**
 
-### 🎉 **v0.8.1 - LINK UPDATE** (Current)
+### 🎉 **v0.9.1 - MAJOR UPDATE** (Current)
+- **🔗 67+ NEW LINKS** - Massive database expansion with 9 new categories
+- **🍓 Strawberry Category** - 14 new proxy links
+- **📚 StudyHub Category** - 13 new educational links
+- **✨ Xylora Category** - 6 new gaming/proxy links
+- **🌙 Lunar Category** - 10 new learning links
+- **💭 DayDreamX Category** - 4 new resource links
+- **🚀 Space Category** - 5 new utility links
+- **🐸 Frogie Arcade Category** - 2 new arcade links
+- **👻 Shadow Category** - 4 new proxy links
+- **🔧 Proxy Browser Fixes** - Fixed binary data issues and compression handling
+- **🤖 Free AI Models** - Switched to cost-free AI alternatives
+- **🎵 Music Platform Fixed** - All loading issues resolved
+- **🎬 Movies & TV Shows Fixed** - API integration completely fixed
+- **🔍 Link Search Working** - Search now works for categories and links
+- **☁️ Cloud Browser Coming Soon** - Added to navigation menu
+
+### 🎉 **v0.9.0 - MAJOR UPDATE**
+- **🌐 ADDED PROXY** - Complete proxy browser integration with Brave search
+- **🎬 ADDED MOVIES** - Full movie streaming with TMDB API integration
+- **📺 ADDED TV SHOWS** - TV show streaming with dynamic season selection
+- **✨ NEUTRAL NEXUS REBRAND** - Complete rebrand from ULTIMATEUNBLOCKER
+- **📜 Credits & Plans** - Added comprehensive documentation
+
+### 🎉 **v0.8.1 - LINK UPDATE**
 - **🔗 35+ NEW LINKS** - Added 35+ new unblocking links across 5 categories
-- **📂 FERN CATEGORY** - I Love Maths, I Love Literatures, Bull Best YouTuber (original links preserved)
-- **📂 MIST CATEGORY** - I Love Calc, Math Is Great AF, Reading Is Great AF, Bull33 Is Great AF
+- **📂 FERN CATEGORY** - I Love Maths, I Love Literatures, Bull Best YouTuber
+- **📂 MIST CATEGORY** - I Love Calc, Math Is Great AF, Reading Is Great AF
 - **⚡ LUCIDE CATEGORY** - 5 new Lucide proxy links with various subdomains
-- **💨 VAPOR CATEGORY** - Vapor Math, Math Is Cool Science, Vork Lionere, and more
+- **💨 VAPOR CATEGORY** - Vapor Math, Math Is Cool Science, Vork Lionere
 - **🐕 DODGEUB CATEGORY** - 15+ new Dodgeub links including CloudFront CDNs
-- **📄 MSIT COMPATIBILITY** - All Mist links include /index.html for MSIT compatibility
-- **🚀 VERCEL API SUPPORT** - Added Vercel API functions for music and AI endpoints
-- **🌐 DUAL DEPLOYMENT** - Now works seamlessly on both Netlify and Vercel
-- **🧠 CLAUDE-OPUS-4 MODEL** - Added Anthropic's most powerful AI model for advanced reasoning
-- **📱 WORKS ON EVERY SCREEN** - Fully responsive design that adapts to any screen size
+- **📄 MSIT COMPATIBILITY** - All Mist links include /index.html
+- **🚀 VERCEL API SUPPORT** - Added Vercel API functions
+- **🌐 DUAL DEPLOYMENT** - Works on both Netlify and Vercel
+- **🧠 CLAUDE-OPUS-4 MODEL** - Added Anthropic's most powerful AI model
+- **📱 WORKS ON EVERY SCREEN** - Fully responsive design
 
 ### 🎉 **v0.8.0 BETA - MAJOR UPDATE**
 - **🤖 AI SYSTEM OVERHAUL** - Completely redesigned AI interface with premium glassmorphism
@@ -271,15 +310,19 @@ The `env_creator.bat` script handles everything automatically - no manual setup 
 
 **📊 Statistics**: AI System Overhaul, Music Player, Links Updated, Premium Design
 
-**🔄 Last Updated**: April 2026
+**🔄 Last Updated**: May 2026
 
 **🎨 Design Status**: 100% Redesigned
 
-**🤖 AI Status**: Complete System Transformation
+**🤖 AI Status**: Free Models Active
 
-**🎵 Music Status**: YouTube Integration Complete
+**🎵 Music Status**: Fixed & Working
 
-**🔗 Links Status**: All Verified and Updated
+**🔗 Links Status**: 67+ New Links Added
+
+**🔧 Proxy Status**: Binary Issues Fixed
+
+**☁️ Cloud Browser**: Coming Soon
 
 ---
 
@@ -319,10 +362,10 @@ local_deployment.bat
 
 ---
 
-**NEUTRAL NEXUS v0.8.0 - Major Update with AI Overhaul, Music Player, and Updated Links**
+**NEUTRAL NEXUS v0.9.1 - Major Update with 67+ New Links, Proxy Fixes, and Free AI Models**
 
 Built with ❤️ and 🤖 for the ultimate user experience
 
 ---
 
-*Last updated: April 2026 - Complete System Transformation*
+*Last updated: May 2026 - Massive Database Expansion*
