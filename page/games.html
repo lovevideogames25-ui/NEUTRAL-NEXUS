@@ -215,17 +215,10 @@
   <body>
     <div id="particles-js"></div>
     <div class="content">
-      <div class="toggle-container">
-        <button class="toggle-button active" id="gmButton">gn-math</button>
-        <button class="toggle-button" id="seleniteButton">selenite</button>
-      </div>
       <small
         >Gầme images are being added.<br />All gầmes should function
         normally.</small
       >
-      <small id="seleniteDisclaimer" style="display: none; color: #fbbf24; margin-top: 10px;">
-        ⚠️ Some games may not work properly due to downloading issues.
-      </small>
       <div class="progress-container" id="progressContainer">
         <div class="progress-bar">
           <div class="progress-bar-fill" id="progressBarFill"></div>
@@ -250,59 +243,15 @@
     <script>
       let games = [];
       let activeFilters = [];
-      let currentMode = 'gm'; // 'gm' or 'selenite'
-      let gmGames = [];
-      let seleniteGames = [];
       let progressBarFill = document.getElementById("progressBarFill");
       let progressText = document.getElementById("progressText");
       let progressContainer = document.getElementById("progressContainer");
       let gameGrid = document.getElementById("gameGrid");
-      const gmButton = document.getElementById("gmButton");
-      const seleniteButton = document.getElementById("seleniteButton");
-      const seleniteDisclaimer = document.getElementById("seleniteDisclaimer");
-
-      // Toggle between GM and Selenite modes
-      gmButton.addEventListener("click", () => {
-        if (currentMode !== 'gm') {
-          currentMode = 'gm';
-          gmButton.classList.add('active');
-          seleniteButton.classList.remove('active');
-          seleniteDisclaimer.style.display = "none";
-          if (gmGames.length > 0) {
-            games = gmGames;
-            renderGames();
-          } else {
-            loadGames();
-          }
-        }
-      });
-
-      seleniteButton.addEventListener("click", () => {
-        if (currentMode !== 'selenite') {
-          currentMode = 'selenite';
-          seleniteButton.classList.add('active');
-          gmButton.classList.remove('active');
-          seleniteDisclaimer.style.display = "block";
-          if (seleniteGames.length > 0) {
-            games = seleniteGames;
-            renderGames();
-          } else {
-            loadGames();
-          }
-        }
-      });
 
       async function loadGames() {
-        const path = currentMode === 'gm' ? '/games.json' : '/Selenite/games.json';
-        const response = await fetch(path);
+        const response = await fetch('/games.json');
         const data = await response.json();
         games = data.sort((a, b) => a.name.localeCompare(b.name)); // Sort games alphabetically
-
-        if (currentMode === 'gm') {
-          gmGames = games;
-        } else {
-          seleniteGames = games;
-        }
 
         progressText.textContent = `0/${games.length}`;
 
@@ -346,32 +295,27 @@
 
         let htmlPath = null;
 
-        if (currentMode === 'gm') {
-          // Try different filename variations for gn-math
-          const variations = [
-            `${gameId}.html`,
-            `${gameId}-fix.html`,
-            `${gameId}-copy.html`,
-            `${gameId}-f.html`,
-            `${gameId}-win.html`,
-            `${gameId}-fde.html`
-          ];
+        // Try different filename variations for gn-math
+        const variations = [
+          `${gameId}.html`,
+          `${gameId}-fix.html`,
+          `${gameId}-copy.html`,
+          `${gameId}-f.html`,
+          `${gameId}-win.html`,
+          `${gameId}-fde.html`
+        ];
 
-          for (const variation of variations) {
-            const testPath = `/gn-math/gn-math-html/html-main/${variation}`;
-            try {
-              const response = await fetch(testPath, { method: 'HEAD' });
-              if (response.ok) {
-                htmlPath = testPath;
-                break;
-              }
-            } catch (e) {
-              // Continue to next variation
+        for (const variation of variations) {
+          const testPath = `/gn-math/gn-math-html/html-main/${variation}`;
+          try {
+            const response = await fetch(testPath, { method: 'HEAD' });
+            if (response.ok) {
+              htmlPath = testPath;
+              break;
             }
+          } catch (e) {
+            // Continue to next variation
           }
-        } else {
-          // Selenite mode - use the game folder structure
-          htmlPath = `/Selenite/semag/${gameId}/index.html`;
         }
 
         if (htmlPath) {
