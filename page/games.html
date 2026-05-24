@@ -10,142 +10,189 @@
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: "Inter", Arial, sans-serif;
+        font-family: "Outfit", Arial, sans-serif;
         background: transparent;
         color: white;
       }
 
       .content {
-        padding-top: 20px;
+        padding-top: 30px;
         height: 100%;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
         text-align: center;
         padding-bottom: 60px;
+        padding-left: 30px;
+        padding-right: 30px;
       }
 
       .filter-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         width: auto;
-        margin-top: 10px;
+        margin-top: 15px;
       }
 
-      .search-input {
-        width: 450px;
-        padding: 10px;
-        border-radius: 15px;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 2px solid rgba(255, 255, 255, 0.1);
+      .toggle-container {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+        justify-content: center;
+      }
+
+      .toggle-button {
+        padding: 12px 32px;
+        background: rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(168, 85, 247, 0.3);
+        border-radius: 16px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 16px;
+        font-weight: 600;
+        font-family: "Outfit", Arial, sans-serif;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         backdrop-filter: blur(10px);
-        padding: 12px 15px;
-        margin-right: 4px;
-        border: none;
-        font-size: 18px;
-        outline: none;
-        color: rgba(255, 255, 255, 0.8);
-        transition: width 0.2s ease;
       }
 
-      .search-input:focus {
-        width: 475px;
+      .toggle-button:hover {
+        background: rgba(168, 85, 247, 0.15);
+        border-color: rgba(168, 85, 247, 0.5);
+        color: rgba(255, 255, 255, 0.9);
+        transform: translateY(-2px);
       }
 
-      .search-input::placeholder {
-        transition: opacity 0.2s ease;
-        opacity: 1;
-      }
-
-      .search-input:focus::placeholder {
-        opacity: 0;
+      .toggle-button.active {
+        background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+        border-color: rgba(168, 85, 247, 0.6);
+        color: #ffffff;
+        box-shadow: 0 8px 24px rgba(147, 51, 234, 0.4);
       }
 
       .game-grid {
         display: grid;
-        grid-template-columns: repeat(3, 320px);
-        gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
         justify-content: center;
         padding: 20px;
-        margin-top: 0px;
-        transition: 0.15s ease;
+        margin-top: 10px;
       }
 
       .game {
         position: relative;
-        width: 320px;
-        aspect-ratio: 16 / 5;
+        width: 100%;
+        aspect-ratio: 16 / 9;
         background-size: cover;
         background-position: center;
-        border-radius: 20px;
+        border-radius: 16px;
         overflow: hidden;
         cursor: pointer;
-        transition: all 0.15s ease, transform 0.25s ease;
-        text-align: left;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(168, 85, 247, 0.2);
+        box-shadow: 0 4px 16px rgba(147, 51, 234, 0.2);
       }
 
       .game:hover {
-        transform: scale(1.03);
+        transform: translateY(-4px) scale(1.02);
+        border-color: rgba(168, 85, 247, 0.6);
+        box-shadow: 0 8px 24px rgba(147, 51, 234, 0.4);
       }
 
-      .game:hover .overlay {
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(0px);
-      }
-
-      .game:hover h2 {
-        font-size: 20px;
-        filter: blur(10px);
-        opacity: 0;
-      }
-
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(5px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 15px;
-        transition: 0.15s;
-      }
-
-      .overlay h2 {
-        margin: 0;
-        font-size: 25px;
-        font-weight: 400;
-        transition: all 0.15s ease, opacity 0.25s ease;
-      }
 
       .progress-container {
         width: 200px;
         margin: 0 auto;
-        margin-top: 10px;
+        margin-top: 12px;
       }
       .progress-bar {
         width: 100%;
-        height: 4px;
+        height: 6px;
         background: rgba(255, 255, 255, 0.1);
-        border-radius: 2px;
+        border-radius: 4px;
         overflow: hidden;
       }
       .progress-bar-fill {
         height: 100%;
         width: 0%;
-        background: #49517c;
-        transition: 0.15s ease;
+        background: linear-gradient(90deg, #9333ea 0%, #a855f7 100%);
+        transition: 0.3s ease;
       }
       .progress-text {
-        margin-top: 5px;
-        font-size: 15px;
+        margin-top: 8px;
+        font-size: 16px;
         color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
       }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        position: relative;
+        width: 1200px;
+        height: 800px;
+        background: black;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .modal-content.fullscreen {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        background: rgba(0, 0, 0, 0.8);
+        border-bottom: 1px solid rgba(147, 51, 234, 0.3);
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .modal-btn {
+        padding: 8px 16px;
+        background: rgba(147, 51, 234, 0.2);
+        border: 1px solid rgba(147, 51, 234, 0.4);
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+      }
+
+      .modal-btn:hover {
+        background: rgba(147, 51, 234, 0.4);
+      }
+
+      .modal-iframe {
+        width: 100%;
+        height: calc(100% - 49px);
+        border: none;
+      }
+
       #ad {
         position: fixed;
         right: 20px;
@@ -168,19 +215,17 @@
   <body>
     <div id="particles-js"></div>
     <div class="content">
-      <div class="filter-container">
-        <input
-          type="text"
-          class="search-input"
-          placeholder="Loading..."
-          id="searchInput"
-          disabled
-        />
+      <div class="toggle-container">
+        <button class="toggle-button active" id="gmButton">gn-math</button>
+        <button class="toggle-button" id="seleniteButton">selenite</button>
       </div>
       <small
         >Gầme images are being added.<br />All gầmes should function
         normally.</small
       >
+      <small id="seleniteDisclaimer" style="display: none; color: #fbbf24; margin-top: 10px;">
+        ⚠️ Some games may not work properly due to downloading issues.
+      </small>
       <div class="progress-container" id="progressContainer">
         <div class="progress-bar">
           <div class="progress-bar-fill" id="progressBarFill"></div>
@@ -189,32 +234,75 @@
       </div>
       <div class="game-grid" id="gameGrid" style="opacity: 0"></div>
     </div>
+    <div class="modal" id="modal">
+      <div class="modal-content" id="modalContent">
+        <div class="modal-header">
+          <span id="modalTitle">Game</span>
+          <div class="modal-buttons">
+            <button class="modal-btn" id="fullscreenBtn">Fullscreen</button>
+            <button class="modal-btn" id="closeBtn">Close</button>
+          </div>
+        </div>
+        <iframe class="modal-iframe" id="modalIframe"></iframe>
+      </div>
+    </div>
     <iframe id="ad" data-aa='2395310' src='//ad.a-ads.com/2395310?size=120x600' style='width:120px; height:600px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>
     <script>
       let games = [];
       let activeFilters = [];
-      let searchInput = document.getElementById("searchInput");
+      let currentMode = 'gm'; // 'gm' or 'selenite'
+      let gmGames = [];
+      let seleniteGames = [];
       let progressBarFill = document.getElementById("progressBarFill");
       let progressText = document.getElementById("progressText");
       let progressContainer = document.getElementById("progressContainer");
       let gameGrid = document.getElementById("gameGrid");
+      const gmButton = document.getElementById("gmButton");
+      const seleniteButton = document.getElementById("seleniteButton");
+      const seleniteDisclaimer = document.getElementById("seleniteDisclaimer");
 
-      function encodeBase64(str) {
-        return btoa(unescape(encodeURIComponent(str)));
-      }
+      // Toggle between GM and Selenite modes
+      gmButton.addEventListener("click", () => {
+        if (currentMode !== 'gm') {
+          currentMode = 'gm';
+          gmButton.classList.add('active');
+          seleniteButton.classList.remove('active');
+          seleniteDisclaimer.style.display = "none";
+          if (gmGames.length > 0) {
+            games = gmGames;
+            renderGames();
+          } else {
+            loadGames();
+          }
+        }
+      });
 
-      function formatGameTitle(title) {
-        return title
-          .replace(/-/g, " ")
-          .split(" ")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-      }
+      seleniteButton.addEventListener("click", () => {
+        if (currentMode !== 'selenite') {
+          currentMode = 'selenite';
+          seleniteButton.classList.add('active');
+          gmButton.classList.remove('active');
+          seleniteDisclaimer.style.display = "block";
+          if (seleniteGames.length > 0) {
+            games = seleniteGames;
+            renderGames();
+          } else {
+            loadGames();
+          }
+        }
+      });
 
       async function loadGames() {
-        const response = await fetch("/_a/games.json");
+        const path = currentMode === 'gm' ? '/games.json' : '/Selenite/games.json';
+        const response = await fetch(path);
         const data = await response.json();
         games = data.sort((a, b) => a.name.localeCompare(b.name)); // Sort games alphabetically
+
+        if (currentMode === 'gm') {
+          gmGames = games;
+        } else {
+          seleniteGames = games;
+        }
 
         progressText.textContent = `0/${games.length}`;
 
@@ -224,9 +312,6 @@
         }
 
         await new Promise((resolve) => setTimeout(resolve, 100));
-
-        searchInput.placeholder = `Search ${games.length} gầmes...`;
-        searchInput.disabled = false;
 
         progressContainer.style.display = "none";
         gameGrid.style.opacity = "1";
@@ -238,53 +323,94 @@
         const grid = document.getElementById("gameGrid");
         grid.innerHTML = "";
 
-        const searchValue = document
-          .getElementById("searchInput")
-          .value.toLowerCase();
-
         games.forEach((game) => {
-          const displayGame = game.name;
           const backgroundUrl = game.img;
-          const url = game.url;
 
-          if (displayGame.toLowerCase().includes(searchValue)) {
-            const gameDiv = document.createElement("div");
-            gameDiv.classList.add("game");
-            gameDiv.style.backgroundImage = `url(${backgroundUrl})`;
+          const gameDiv = document.createElement("div");
+          gameDiv.classList.add("game");
+          gameDiv.style.backgroundImage = `url(${backgroundUrl})`;
+          gameDiv.style.cursor = "pointer";
 
-            gameDiv.addEventListener("click", () => {
-              const proxGame = localStorage.getItem("proxGame") === "true";
-              const gameUrl = proxGame ? `/embed.html#${url}` : url;
+          gameDiv.addEventListener("click", () => {
+            openGameModal(game.name);
+          });
 
-              fetch(gameUrl, { method: "HEAD" })
-                .then((response) => {
-                  if (response.ok) {
-                    window.location.href = gameUrl;
-                  } else {
-                    window.location.href = url;
-                  }
-                })
-                .catch(() => {
-                  window.location.href = url;
-                });
-            });
-
-            const overlay = document.createElement("div");
-            overlay.classList.add("overlay");
-
-            const title = document.createElement("h2");
-            title.textContent = formatGameTitle(displayGame);
-
-            overlay.appendChild(title);
-            gameDiv.appendChild(overlay);
-            grid.appendChild(gameDiv);
-          }
+          grid.appendChild(gameDiv);
         });
       }
 
-      document
-        .getElementById("searchInput")
-        .addEventListener("input", renderGames);
+      async function openGameModal(gameId) {
+        const modal = document.getElementById("modal");
+        const modalIframe = document.getElementById("modalIframe");
+        const modalTitle = document.getElementById("modalTitle");
+
+        let htmlPath = null;
+
+        if (currentMode === 'gm') {
+          // Try different filename variations for gn-math
+          const variations = [
+            `${gameId}.html`,
+            `${gameId}-fix.html`,
+            `${gameId}-copy.html`,
+            `${gameId}-f.html`,
+            `${gameId}-win.html`,
+            `${gameId}-fde.html`
+          ];
+
+          for (const variation of variations) {
+            const testPath = `/gn-math/gn-math-html/html-main/${variation}`;
+            try {
+              const response = await fetch(testPath, { method: 'HEAD' });
+              if (response.ok) {
+                htmlPath = testPath;
+                break;
+              }
+            } catch (e) {
+              // Continue to next variation
+            }
+          }
+        } else {
+          // Selenite mode - use the game folder structure
+          htmlPath = `/Selenite/semag/${gameId}/index.html`;
+        }
+
+        if (htmlPath) {
+          modalIframe.src = htmlPath;
+          modalTitle.textContent = `Game ${gameId}`;
+          modal.classList.add("active");
+        } else {
+          alert(`HTML file not found for game ${gameId}`);
+        }
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modal");
+        const modalIframe = document.getElementById("modalIframe");
+        modal.classList.remove("active");
+        modalIframe.src = "";
+      }
+
+      function toggleFullscreen() {
+        const modalContent = document.getElementById("modalContent");
+        modalContent.classList.toggle("fullscreen");
+      }
+
+      document.getElementById("closeBtn").addEventListener("click", closeModal);
+      document.getElementById("fullscreenBtn").addEventListener("click", toggleFullscreen);
+
+      // Close modal on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // Close modal when clicking outside content
+      document.getElementById("modal").addEventListener("click", (e) => {
+        if (e.target.id === "modal") {
+          closeModal();
+        }
+      });
 
       function filterGames(category) {
         const index = activeFilters.indexOf(category);

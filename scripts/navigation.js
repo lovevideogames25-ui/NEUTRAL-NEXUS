@@ -1,5 +1,6 @@
 /**
- * this creates the navigation items in the sidebar
+ * Neutral Nexus - Navigation
+ * A completely new design by HamburgerGuy
  */
 
 const navContainer = document.getElementById("nav-items");
@@ -16,7 +17,9 @@ navItems.forEach((item, index) => {
   navItemstem.href = "#";
   navItemstem.onclick = (e) => {
     e.preventDefault();
-    loadPage(item.url, navItemstem);
+    if (item.url) {
+      loadPage(item.url, navItemstem);
+    }
   };
   navContainer.appendChild(navItemstem);
 });
@@ -28,14 +31,6 @@ function loadPage(url, selectedItem) {
   navItems.forEach((item) => item.classList.remove("active"));
   selectedItem.classList.add("active");
 }
-
-document.querySelector(".fa-discord").parentElement.onclick = () => {
-  window.location.href = "https://dsc.gg/vaporr";
-};
-
-document.querySelector(".fa-coins").parentElement.onclick = () => {
-  showDonateModal();
-};
 
 document.querySelector(".fa-handshake").parentElement.onclick = () => {
   const partnersUrl = "page/partners.html";
@@ -63,13 +58,10 @@ document.querySelector(".fa-expand").parentElement.onclick = () => {
   if (frame.requestFullscreen) {
     frame.requestFullscreen();
   } else if (frame.mozRequestFullScreen) {
-    // firefoxy :)
     frame.mozRequestFullScreen();
   } else if (frame.webkitRequestFullscreen) {
-    // ew, chrome, safari??, whats opera..?
     frame.webkitRequestFullscreen();
   } else if (frame.msRequestFullscreen) {
-    // INTERNET EXPLORER AND EDGE *vomits*
     frame.msRequestFullscreen();
   }
 };

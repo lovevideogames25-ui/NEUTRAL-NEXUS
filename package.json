@@ -1,0 +1,32 @@
+{
+  "name": "neutral-nexus",
+  "version": "1.0.0",
+  "description": "Neutral Nexus by HamburgerGuy - Your ultimate destination for games, browsing, virtual machines, movies, emulators, and more.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "nodemon --watch server.js --exec \"node server.js\"",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "games",
+    "browsing",
+    "vm",
+    "virtual machine",
+    "movies",
+    "emulators",
+    "ai",
+    "entertainment",
+    "neutral nexus"
+  ],
+  "author": "HamburgerGuy",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "axios": "^1.6.0"
+  }
+}

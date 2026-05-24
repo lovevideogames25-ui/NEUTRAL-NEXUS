@@ -1,32 +1,36 @@
 /**
-* default styles
-* these are the root styles for the whole site
+* Neutral Nexus - Default Styles
+* A completely new design by HamburgerGuy
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap");
 @import url("/_a/fa/css/all.min.css");
 
 :root {
-  --bg: #0a111d;
-  --secondary-bg: #2b384d;
-  --third-bg: #444f60;
-  --fourth-bg: #212630;
-  --primary: #a4b8db;
-  --secondary: #7d93ba;
-  --text-color: #d5dce8;
+  --bg: #0f0a1a;
+  --secondary-bg: #1a1225;
+  --third-bg: #251a30;
+  --fourth-bg: #2d1f3d;
+  --primary: #a855f7;
+  --secondary: #9333ea;
+  --accent: #c084fc;
+  --text-color: #e9d5ff;
+  --text-muted: #a78bfa;
+  --border: #4c1d95;
+  --glow: rgba(168, 85, 247, 0.3);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter";
+  font-family: "Outfit", sans-serif;
 }
 
 body {
   height: 100vh;
   background: var(--bg);
   color: var(--text-color);
-  font-family: "Inter", sans-serif;
+  font-family: "Outfit", sans-serif;
   overflow: hidden;
 }

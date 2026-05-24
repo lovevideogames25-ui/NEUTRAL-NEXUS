@@ -1,13 +1,14 @@
 /**
- * these ARE the navigation items for the sidebar
+ * Neutral Nexus - Navigation Items
+ * A completely new design by HamburgerGuy
  */
 
 const navItems = [
-  { title: "Home", icon: "fa-home", url: "page/home.html" },
-  { title: "Games", icon: "fa-gamepad-modern", url: "page/games.html" },
-  { title: "VM", icon: "fa-desktop", url: "page/vm-priv.html" },
-  { title: "Browser", icon: "fa-search", url: "/scram.html" },
-  { title: "Apps", icon: "fa-grid", url: "page/apps.html" },
-  { title: "Chat", icon: "fa-comments-alt", url: "page/chat.html" },
-  { title: "Movies", icon: "fa-clapperboard", url: "page/mov.html" },
+  { title: "Dashboard", icon: "fa-house", url: "page/home.html" },
+  { title: "Arcade", icon: "fa-gamepad", url: "page/games.html" },
+  { title: "Surf", icon: "fa-globe", url: "/scram.html" },
+  { title: "Applications", icon: "fa-cubes", url: "page/apps.html" },
+  { title: "Messages", icon: "fa-message", url: "page/chat.html" },
+  { title: "Cinema", icon: "fa-film", url: "page/mov.html" },
+  { title: "Links", icon: "fa-link", url: "page/links.html" },
 ];

@@ -8,11 +8,6 @@
       "id": "music",
       "name": "Music",
       "url": "/page/apps/music.html"
-    },
-    {
-      "id": "emu",
-      "name": "Emulators",
-      "url": "/page/apps/emu.html"
     }
   ]
   

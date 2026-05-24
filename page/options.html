@@ -7,7 +7,7 @@
     <style>
       * {
         box-sizing: border-box;
-        font-family: "Inter", sans-serif;
+        font-family: "Outfit", sans-serif;
       }
 
       body {
@@ -47,11 +47,11 @@
       }
 
       .menu-item:hover {
-        background-color: #1f1f33;
+        background-color: rgba(168, 85, 247, 0.2);
       }
 
       .menu-item.active {
-        background-color: #1f1f33;
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(124, 58, 237, 0.3) 100%);
         color: #ffffff;
       }
 
@@ -114,7 +114,7 @@
       }
 
       .option:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
       }
 
       .server-notification {
@@ -179,7 +179,7 @@
       }
 
       .input-container button:hover {
-        background-color: #4caf50;
+        background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
       }
     </style>
   </head>
@@ -188,30 +188,23 @@
       <div class="sidebar">
         <div class="menu-item active" data-target="about">
           <i class="fa-regular fa-info-circle"></i>
-          About VAPOR
+          About Neutral Nexus
         </div>
         <div class="menu-item" data-target="prx">
           <i class="fa-regular fa-ghost"></i>
           Prøxy
         </div>
-        <div class="menu-item" data-target="cloak">
-          <i class="fa-regular fa-hood-cloak"></i>
-          Cloaking
-        </div>
       </div>
 
       <div class="content about active">
         <div class="card">
-          <h2>About VAPOR</h2>
+          <h2>About Neutral Nexus</h2>
           <p>where games, privacy, and more come together in a clean and effortless experience.
-            <br><br>technonyte0 - creator
-            <br>mercuryworkshop - ultraviolet + wisp
-            <br>3kh0 - most of the games
-            <br>hyperbeam - chromium vm
-            <br>vidsrc - most movies
-            <br>google - gemini ai
-            <br>emulatorjs - emulator
-            <br>javascript - being annoying
+            <br><br>HamburgerGuy - creator
+            <br>mercuryworkshop - scramjet + wisp
+            <br>gn-math & selenite - games
+            <br>vidnest - movie player
+            <br>groq - ai integration
           </p>
         </div>
       </div>
@@ -246,35 +239,6 @@
           </div>
         </div>
       </div>
-
-      <div class="content cloak">
-        <div class="card">
-          <h2>about:blank Cloaking</h2>
-          <p>
-            Immediately open a "fake" browser tab with VAPOR in it. This causes
-            VAPOR to not be shown in your history, and is practically
-            undetectable.<br /><br />
-          </p>
-          <div class="dropdown" id="cloakToggle">
-            <span id="cloakStatus">Disabled</span>
-            <i class="fa-regular fa-times" id="cloakIcon"></i>
-          </div>
-          <div class="input-container">
-            <input type="text" id="cloakUrl" value="https://google.com" />
-            <button id="saveCloakUrl">
-              <i class="fa-regular fa-check"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <h2>Close Prevention</h2>
-          <p>Prevent the browser from closing VAPOR tabs.</p>
-          <div class="dropdown" id="closePreventToggle">
-            <span id="closePreventStatus">Disabled</span>
-            <i class="fa-regular fa-times" id="closePreventIcon"></i>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="server-notification" id="serverNotification">
@@ -282,26 +246,13 @@
     </div>
 
     <script>
-      if (localStorage.getItem("abCloak") === null) {
-        localStorage.setItem("abCloak", "true");
-      }
-
       const menuItems = document.querySelectorAll(".menu-item");
       const contentDivs = document.querySelectorAll(".content");
       const options = document.querySelectorAll(".option");
       const serverNotification = document.getElementById("serverNotification");
-      const cloakToggle = document.getElementById("cloakToggle");
-      const cloakStatus = document.getElementById("cloakStatus");
-      const cloakIcon = document.getElementById("cloakIcon");
-      const cloakUrlInput = document.getElementById("cloakUrl");
-      const saveCloakUrlButton = document.getElementById("saveCloakUrl");
       const prxGamesToggle = document.getElementById("prxGamesToggle");
       const prxGamesStatus = document.getElementById("prxGamesStatus");
       const prxGamesIcon = document.getElementById("prxGamesIcon");
-
-      const closePreventToggle = document.getElementById("closePreventToggle");
-      const closePreventStatus = document.getElementById("closePreventStatus");
-      const closePreventIcon = document.getElementById("closePreventIcon");
 
       const proxGame = localStorage.getItem("proxGame");
       prxGamesStatus.textContent =
@@ -316,43 +267,6 @@
           ? "fa-regular fa-times"
           : "fa-regular fa-check";
         localStorage.setItem("proxGame", !isEnabled);
-      });
-
-      cloakStatus.textContent =
-        localStorage.getItem("abCloak") === "true" ? "Enabled" : "Disabled";
-      cloakIcon.className =
-        localStorage.getItem("abCloak") === "true"
-          ? "fa-regular fa-check"
-          : "fa-regular fa-times";
-
-      cloakToggle.addEventListener("click", () => {
-        const isEnabled = cloakStatus.textContent === "Enabled";
-        cloakStatus.textContent = isEnabled ? "Disabled" : "Enabled";
-        cloakIcon.className = isEnabled
-          ? "fa-regular fa-times"
-          : "fa-regular fa-check";
-        localStorage.setItem("abCloak", !isEnabled);
-      });
-
-      const closePrevent = localStorage.getItem("closePrevent");
-      closePreventStatus.textContent =
-        closePrevent === "true" ? "Enabled" : "Disabled";
-      closePreventIcon.className =
-        closePrevent === "true" ? "fa-regular fa-check" : "fa-regular fa-times";
-
-      closePreventToggle.addEventListener("click", () => {
-        const isEnabled = closePreventStatus.textContent === "Enabled";
-        closePreventStatus.textContent = isEnabled ? "Disabled" : "Enabled";
-        closePreventIcon.className = isEnabled
-          ? "fa-regular fa-times"
-          : "fa-regular fa-check";
-        localStorage.setItem("closePrevent", !isEnabled);
-      });
-
-      saveCloakUrlButton.addEventListener("click", () => {
-        const cloakUrl = cloakUrlInput.value;
-        localStorage.setItem("abCloakUrl", cloakUrl);
-        alert("ABCloak URL saved as " + cloakUrl);
       });
 
       menuItems.forEach((item) => {

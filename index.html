@@ -1,16 +1,16 @@
 <!DOCTYPE html>
  <!----------------------------!
- ! Heya! You should join the discord.
- ! https://dsc.gg/vaporr
+ ! Welcome to Neutral Nexus by HamburgerGuy
+ ! https://discord.gg/neutralnexus
  !----------------------------->
 <html lang="en">
   <head>
     <script>
       const splashTexts = [
-        "Loading things you can't see...",
-        "Starting up, almost there.",
-        "Don't check the VM.",
-        "This won't take long. Probably.",
+        "Initializing Neutral Nexus...",
+        "Loading your experience...",
+        "Almost ready...",
+        "Preparing the interface...",
       ];
 
       const randomIndex = Math.floor(Math.random() * splashTexts.length);
@@ -32,7 +32,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VAPOR v3</title>
+    <title>Neutral Nexus</title>
 
     <link href="/styles/defaults.css" rel="stylesheet" />
     <link href="/styles/index.css" rel="stylesheet" />
@@ -42,7 +42,7 @@
       rel="stylesheet"
     />
 
-    <link rel="icon" href="/_a/logo.new.png" type="image/x-icon" />
+    <link rel="icon" href="/_a/logo.svg" type="image/svg+xml" />
 
     <!-- google analytics -->
     <script
@@ -59,29 +59,29 @@
     </script>
 
     <!-- SEO Meta -->
-    <meta name="title" content="VAPOR v3" />
+    <meta name="title" content="Neutral Nexus" />
     <meta
       name="description"
-      content="VAPOR has over 400 games, speedy pr0xy, an entire Chrome + Android VM, movies, emulators, AI, and more."
+      content="Neutral Nexus by HamburgerGuy - Your ultimate destination for games, browsing, virtual machines, movies, emulators, and more."
     />
     <meta
       name="keywords"
-      content="games, pr0xy, vm, virtual machine, movies, emulators, ai, fun, unbl0ck, unbl0cked"
+      content="games, browsing, vm, virtual machine, movies, emulators, ai, entertainment, neutral nexus"
     />
     <meta name="robots" content="index, follow" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
-    <meta name="author" content="technonyte" />
+    <meta name="author" content="HamburgerGuy" />
 
     <!-- Discord embed -->
-    <meta property="og:title" content="☄️ VAPOR v3" />
-    <meta name="theme-color" content="#49517c" />
-    <meta name="msapplication-TileColor" content="#49517c" />
-    <meta property="og:image" content="/_a/logo.png" />
+    <meta property="og:title" content="⚡ Neutral Nexus" />
+    <meta name="theme-color" content="#9333ea" />
+    <meta name="msapplication-TileColor" content="#9333ea" />
+    <meta property="og:image" content="/_a/logo.svg" />
     <meta
       property="og:description"
-      content="Your #1 destination for unblocking."
+      content="Your ultimate destination for entertainment by HamburgerGuy."
     />
 
     <!-- Benrogo meta -->
@@ -103,10 +103,6 @@
 
       <div class="nav-bottom">
         <div class="quick-actions">
-          <a class="quick-action-btn"><i class="fa-brands fa-discord"></i></a>
-          <a class="quick-action-btn"
-            ><i class="fa-regular fa-coins"></i
-          ></a>
           <a class="quick-action-btn"><i class="fa-regular fa-expand"></i></a>
           <a class="quick-action-btn"
             ><i class="fa-regular fa-handshake"></i
@@ -117,13 +113,13 @@
         <a class="nav-item">
           <div class="icon-container">
             <img
-              src="/_a/logo.new.png"
+              src="/_a/logo.svg"
               style="width: 30px; transform: translateY(-2px)"
             />
           </div>
           <span class="nav-text" style="margin-left: 18px">
-            VAPOR v3&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<span id="commit-id"
-              >c0mm1t-</span
+            Neutral Nexus&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;<span id="commit-id"
+              >build-</span
             >
           </span>
         </a>
@@ -139,34 +135,23 @@
     <div id="modal-overlay" class="modal-overlay"></div>
     <div id="main-modal" class="main-modal">
       <div class="modal-content">
-        <h2 class="modal-title">VAPOR 3.16</h2>
+        <h2 class="modal-title">Neutral Nexus 1.0</h2>
         <p class="modal-body">
-          - Updated Private VMs<br>They now load using an SDK, instead of an embed. They SHOULD be unblocked...<br><br>- New Music Player!<br>Better controls, ambience mode, and synced lyrics!<br><br>- New Music Backend<br>Good news: The music player should almost NEVER go down. We're using our own API, instead of dumb googles.
+          - Welcome to Neutral Nexus!<br>A completely new experience by HamburgerGuy.<br><br>- New Purple Theme<br>Beautiful purple gradients and modern design.<br><br>- Enhanced Performance<br>Faster loading and smoother interactions.<br><br>- New Navigation<br>Completely redesigned sidebar with improved UX.
         </p>
-        <button id="modal-close" class="modal-button">yay!</button>
+        <button id="modal-close" class="modal-button">Awesome!</button>
       </div>
     </div>
 
-    <div id="donate-modal" class="main-modal">
-      <div class="modal-content">
-        <h2 class="modal-title">💸 Support VAPOR</h2>
-        <p class="modal-body">
-          If you enjoy VAPOR, consider donating to help server costs and adding features!
-        </p>
-        <pre><code>BTC: bc1qxcuaahnaqgreahj0x42u29hcsuncgwaasvw94a</code></pre>
-        <button onclick="hideDonateModal()" class="modal-button">Alright</button>
-      </div>
-    </div>
-    
 
-    <script src="vpr/vpr.bundle.js"></script>
-    <script src="vpr/vpr.config.js"></script>
+    <script src="nn/nn.bundle.js"></script>
+    <script src="nn/nn.config.js"></script>
     <script src="scripts/navi.js"></script>
     <script src="scripts/navigation.js"></script>
     <script src="scripts/commit.js"></script>
 
     <script>
-      const MODAL_VERSION = "v3.16";
+      const MODAL_VERSION = "v1.0";
       const modal = document.getElementById("main-modal");
       const overlay = document.getElementById("modal-overlay");
       const closeBtn = document.getElementById("modal-close");
@@ -195,20 +180,5 @@
         }
       });
     </script>
-    <script>
-      const donateModal = document.getElementById("donate-modal");
-    
-      function showDonateModal() {
-        donateModal.classList.add("active");
-        document.getElementById("modal-overlay").classList.add("active");
-      }
-    
-      function hideDonateModal() {
-        donateModal.classList.remove("active");
-        document.getElementById("modal-overlay").classList.remove("active");
-      }
-    </script>
-    
-    
   </body>
 </html>

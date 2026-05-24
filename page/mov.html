@@ -10,48 +10,49 @@
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: "Inter", Arial, sans-serif;
+        font-family: "Outfit", Arial, sans-serif;
         background: transparent;
         color: white;
       }
 
       .content {
-        padding-top: 20px;
+        padding-top: 30px;
         height: 100%;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
         text-align: center;
         padding-bottom: 60px;
+        padding-left: 30px;
+        padding-right: 30px;
       }
 
       .filter-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         width: auto;
-        margin-top: 10px;
+        margin-top: 15px;
       }
 
       .search-input {
-        width: 450px;
-        padding: 10px;
-        border-radius: 15px;
-        background-color: rgba(255, 255, 255, 0.15);
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 12px 15px;
-        margin-right: 4px;
-        border: none;
-        font-size: 18px;
+        width: 500px;
+        padding: 16px 20px;
+        border-radius: 8px;
+        background: rgba(168, 85, 247, 0.15);
+        border: 2px solid rgba(168, 85, 247, 0.3);
+        font-size: 16px;
         outline: none;
-        color: rgba(255, 255, 255, 0.8);
-        transition: width 0.2s ease;
+        color: rgba(255, 255, 255, 0.9);
+        transition: all 0.3s ease;
+        margin-right: 10px;
       }
 
       .search-input:focus {
-        width: 475px;
+        width: 520px;
+        border-color: #9333ea;
+        box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
       }
 
       .search-input::placeholder {
@@ -64,33 +65,35 @@
       }
       .game-grid {
         display: grid;
-        grid-template-columns: repeat(3, 320px);
-        gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
         justify-content: center;
         padding: 20px;
-        margin-top: 0px;
+        margin-top: 10px;
       }
 
       .game {
         position: relative;
-        width: 320px;
-        aspect-ratio: 16 / 5;
+        width: 100%;
+        aspect-ratio: 16 / 9;
         background-size: cover;
         background-position: center;
-        border-radius: 20px;
+        border-radius: 16px;
         overflow: hidden;
         cursor: pointer;
-        transition: all 0.15s ease, transform 0.25s ease;
-        text-align: left;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(168, 85, 247, 0.2);
+        box-shadow: 0 4px 16px rgba(147, 51, 234, 0.2);
       }
 
       .game:hover {
-        transform: scale(1.03);
+        transform: translateY(-4px) scale(1.02);
+        border-color: rgba(168, 85, 247, 0.6);
+        box-shadow: 0 8px 24px rgba(147, 51, 234, 0.4);
       }
 
       .game:hover .overlay {
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(0px);
+        background: rgba(0, 0, 0, 0.6);
       }
 
       .game:hover .movie-title {
@@ -120,6 +123,89 @@
         font-size: 25px;
         transition: all 0.15s ease, opacity 0.25s ease;
       }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        position: relative;
+        width: 1200px;
+        height: 800px;
+        background: black;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .modal-content.fullscreen {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        background: rgba(0, 0, 0, 0.8);
+        border-bottom: 1px solid rgba(147, 51, 234, 0.3);
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .modal-btn {
+        padding: 8px 16px;
+        background: rgba(147, 51, 234, 0.2);
+        border: 1px solid rgba(147, 51, 234, 0.4);
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+      }
+
+      .modal-btn:hover {
+        background: rgba(147, 51, 234, 0.4);
+      }
+
+      .modal-iframe {
+        width: 100%;
+        height: calc(100% - 49px);
+        border: none;
+      }
+
+      .iframe-container {
+        flex: 1;
+        position: relative;
+        width: 100%;
+        height: calc(100% - 49px);
+      }
+
+      .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
     </style>
     <style>
       #particles-js {
@@ -131,6 +217,10 @@
     </style>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="/scripts/particle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dreamland"></script>
+    <script src="/baremux/index.js"></script>
+    <script src="/scram/scramjet.controller.js"></script>
+    <script src="/config.js"></script>
   </head>
   <body>
     <div id="particles-js"></div>
@@ -145,10 +235,57 @@
       </div>
       <div class="game-grid" id="gameGrid"></div>
     </div>
+    <div class="modal" id="modal">
+      <div class="modal-content" id="modalContent">
+        <div class="modal-header">
+          <span id="modalTitle">Movie</span>
+          <div class="modal-buttons">
+            <button class="modal-btn" id="fullscreenBtn">Fullscreen</button>
+            <button class="modal-btn" id="closeBtn">Close</button>
+          </div>
+        </div>
+        <div class="iframe-container" id="iframeContainer"></div>
+      </div>
+    </div>
     <script src="/scripts/secrets.js"></script>
     <script>
       const searchInput = document.getElementById("searchInput"),
         gameGrid = document.getElementById("gameGrid");
+
+      // Initialize Scramjet
+      const scramjet = new ScramjetController({
+        files: {
+          wasm: "/scram/scramjet.wasm.wasm",
+          worker: "/scram/scramjet.worker.js",
+          client: "/scram/scramjet.client.js",
+          shared: "/scram/scramjet.shared.js",
+          sync: "/scram/scramjet.sync.js",
+        },
+      });
+
+      scramjet.init();
+
+      const connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+
+      const store = {
+        wispurl:
+          _CONFIG?.wispurl ||
+          (location.protocol === "https:" ? "wss" : "ws") +
+            "://" +
+            location.host +
+            "/wisp/",
+        bareurl:
+          _CONFIG?.bareurl ||
+          (location.protocol === "https:" ? "https" : "http") +
+            "://" +
+            location.host +
+            "/bare/",
+      };
+
+      connection.setTransport("/epoxy/index.mjs", [{ wisp: store.wispurl }]);
+
+      let movieFrame = null;
+
       async function getPopularMov() {
         const e = await fetch(
           `https://api.themoviedb.org/3/movie/popular?api_key=${movSec}`
@@ -171,11 +308,61 @@
               (t.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${e.poster_path})`),
               (t.innerHTML = `\n            <div class="overlay">\n              <div class="movie-title">${e.title}</div>\n            </div>\n          `),
               t.addEventListener("click", () => {
-                window.location.href = `/_a/mov/p.html#${e.id}`;
+                openMovieModal(e.id, e.title);
               }),
               gameGrid.appendChild(t);
           });
       }
+
+      function openMovieModal(movieId, movieTitle) {
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modalTitle");
+        const iframeContainer = document.getElementById("iframeContainer");
+
+        // Clear previous frame
+        iframeContainer.innerHTML = "";
+
+        // Create new scramjet frame
+        movieFrame = scramjet.createFrame();
+        iframeContainer.appendChild(movieFrame.frame);
+
+        const movieUrl = `https://vidnest.fun/movie/${movieId}`;
+        movieFrame.go(movieUrl);
+
+        modalTitle.textContent = movieTitle;
+        modal.classList.add("active");
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modal");
+        const iframeContainer = document.getElementById("iframeContainer");
+        modal.classList.remove("active");
+        iframeContainer.innerHTML = "";
+        movieFrame = null;
+      }
+
+      function toggleFullscreen() {
+        const modalContent = document.getElementById("modalContent");
+        modalContent.classList.toggle("fullscreen");
+      }
+
+      document.getElementById("closeBtn").addEventListener("click", closeModal);
+      document.getElementById("fullscreenBtn").addEventListener("click", toggleFullscreen);
+
+      // Close modal on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // Close modal when clicking outside content
+      document.getElementById("modal").addEventListener("click", (e) => {
+        if (e.target.id === "modal") {
+          closeModal();
+        }
+      });
+
       searchInput.addEventListener("keypress", function (e) {
         if ("Enter" === e.key) {
           const e = searchInput.value;

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "utopia",
+    "name": "Utopia",
+    "links": [
+      "https://vcsautopia.wirtschaftslexikon.co/",
+      "https://vcsalightsped.elemporio.ar/"
+    ],
+    "img": "https://avatars.githubusercontent.com/u/126352888?s=200&v=4"
+  },
+  {
+    "id": "parcoil",
+    "name": "Parcoil",
+    "links": [
+      "https://parcoils.elemporio.ar/",
+      "https://coil.ultradec.com/",
+      "https://coiling.ultradec.com/",
+      "https://german.ultradec.com/",
+      "https://jellybean.ultradec.com/",
+      "https://parcoil.ultradec.com/"
+    ],
+    "img": "https://github.com/thedogecraft/lunaar.org/raw/main/public/media/logo.svg"
+  },
+  {
+    "id": "tungtung",
+    "name": "Tung Tung",
+    "links": [
+      "https://vcsa.elemporio.ar/",
+      "https://tungtung.cfd/",
+      "https://vcsagoat.elemporio.ar/",
+      "https://vcsa.wirtschaftslexikon.co/",
+      "https://cipher.tanenbaumchat.org/",
+      "https://greenlight.tanenbaumchat.org/",
+      "https://triplet.tanenbaumchat.org/",
+      "https://vcsa.tanenbaumchat.org/",
+      "https://vcsatriplet.tanenbaumchat.org/",
+      "https://player-nation.chroniclesoftimes.com/",
+      "https://thanksvcsa.chroniclesoftimes.com/",
+      "https://vcsa-yt.chroniclesoftimes.com/",
+      "https://vcsayt.chroniclesoftimes.com/",
+      "https://wvcsa.chroniclesoftimes.com/",
+      "https://chat.fastresponseit.co.uk/",
+      "https://playernation.fastresponseit.co.uk/",
+      "https://vcsa.fastresponseit.co.uk/",
+      "https://vcsamath.fastresponseit.co.uk/",
+      "https://triplet.fastresponseit.co.uk/",
+      "https://shopping.elemporio.ar/",
+      "https://smartbio.elemporio.ar/",
+      "https://triplet.elemporio.ar/"
+    ],
+    "img": "https://vcsa.elemporio.ar/favicon.png"
+  },
+  {
+    "id": "ford",
+    "name": "Ford",
+    "links": [
+      "https://strawberry.elemporio.ar/",
+      "https://vcsaford.wirtschaftslexikon.co/"
+    ],
+    "img": "https://imgs.search.brave.com/8ZydlZ2XGfBDwJgmMkWV-qgSITlWrHx5y81gUWpqOME/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzE1LzIzLzAyLzY4/LzM2MF9GXzE1MjMw/MjY4NjdfUlNmQWVz/ZjhkWFlUTk95UURL/WTVpWHFzOHVBdDcw/dDUuanBn"
+  },
+  {
+    "id": "voya",
+    "name": "Voya Financial",
+    "links": [
+      "https://voya.elemporio.ar/"
+    ],
+    "img": "https://github.com/Lunar-Proxy/lunar-v2/raw/main/lunar.svg"
+  },
+  {
+    "id": "lunarv2",
+    "name": "Lunar V2",
+    "links": [
+      "https://science.elemporio.ar/"
+    ],
+    "img": "https://github.com/Lunar-Proxy/lunar-v2/raw/main/lunar.svg"
+  },
+  {
+    "id": "xylora",
+    "name": "Xylora",
+    "links": [
+      "https://m.oh.wow.eow.elemporio.ar/"
+    ],
+    "img": "https://imgs.search.brave.com/MjMY9g5R8HAG-BUhQKfJDY9Gs2JoyaPHLqQ7rMRe4KA/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2JkZmY1NjNl/ZWY0YzkwZThjMjk2/MmJjMTllMzE0Mzlh/MzdmZWRhNWZhMWEy/YTExZmMzMjk0NzVl/ZDMzMWU4OC94eWxv/cmEub3JnLw"
+  }
+]

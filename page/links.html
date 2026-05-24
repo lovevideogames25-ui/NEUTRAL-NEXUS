@@ -135,6 +135,129 @@
         font-size: 15px;
         color: rgba(255, 255, 255, 0.8);
       }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background: linear-gradient(135deg, rgba(30, 30, 50, 0.98), rgba(20, 20, 35, 0.98));
+        border: 2px solid rgba(168, 85, 247, 0.6);
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 900px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(147, 51, 234, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+        animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .modal-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 25px;
+        color: white;
+        text-shadow: 0 2px 10px rgba(168, 85, 247, 0.5);
+        letter-spacing: -0.5px;
+      }
+
+      .link-button {
+        display: block;
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px auto;
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(147, 51, 234, 0.15));
+        border: 2px solid rgba(168, 85, 247, 0.5);
+        border-radius: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: "Outfit", "Inter", sans-serif;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: pointer;
+        text-align: center;
+        letter-spacing: 0.3px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .link-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .link-button:hover::before {
+        left: 100%;
+      }
+
+      .link-button:hover {
+        background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(147, 51, 234, 0.35));
+        border-color: rgba(168, 85, 247, 0.8);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4);
+      }
+
+      .close-button {
+        margin-top: 25px;
+        padding: 12px 40px;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.2));
+        border: 2px solid rgba(239, 68, 68, 0.5);
+        border-radius: 12px;
+        color: white;
+        font-size: 16px;
+        font-family: "Outfit", "Inter", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        letter-spacing: 0.5px;
+      }
+
+      .close-button:hover {
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.4), rgba(220, 38, 38, 0.4));
+        border-color: rgba(239, 68, 68, 0.8);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+      }
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -178,6 +301,14 @@
       </div>
       <div class="game-grid" id="gameGrid" style="opacity: 0"></div>
     </div>
+
+    <div id="linkModal" class="modal">
+      <div class="modal-content">
+        <h2 class="modal-title" id="modalTitle">Available Links</h2>
+        <div id="modalLinks"></div>
+        <button class="close-button" onclick="closeModal()">Close</button>
+      </div>
+    </div>
     <script>
       let games = [];
       let activeFilters = [];
@@ -200,7 +331,7 @@
       }
 
       async function loadGames() {
-        const response = await fetch("/_a/partners.json");
+        const response = await fetch("/_a/links.json");
         const data = await response.json();
         games = data;
 
@@ -213,7 +344,7 @@
 
         await new Promise((resolve) => setTimeout(resolve, 100));
 
-        searchInput.placeholder = `Search ${games.length} games...`;
+        searchInput.placeholder = `Search ${games.length} links...`;
         searchInput.disabled = false;
 
         progressContainer.style.display = "none";
@@ -233,7 +364,6 @@
         games.forEach((game) => {
           const displayGame = game.name;
           let backgroundUrl = game.img;
-          const url = game.url;
 
           if (displayGame.toLowerCase().includes(searchValue)) {
             const gameDiv = document.createElement("div");
@@ -245,7 +375,11 @@
             gameDiv.style.backgroundImage = `url(${backgroundUrl})`;
 
             gameDiv.addEventListener("click", () => {
-              window.open(url, "_blank");
+              if (game.links) {
+                showModal(game.name, game.links);
+              } else if (game.url) {
+                window.open(game.url, "_blank");
+              }
             });
 
             const overlay = document.createElement("div");
@@ -259,6 +393,38 @@
             grid.appendChild(gameDiv);
           }
         });
+      }
+
+      function showModal(name, links) {
+        const modal = document.getElementById("linkModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalLinks = document.getElementById("modalLinks");
+
+        modalTitle.textContent = `${name} - Available Links`;
+        modalLinks.innerHTML = "";
+
+        links.forEach((link) => {
+          const button = document.createElement("a");
+          button.className = "link-button";
+          button.href = link;
+          button.target = "_blank";
+          button.textContent = link;
+          modalLinks.appendChild(button);
+        });
+
+        modal.style.display = "flex";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("linkModal");
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        const modal = document.getElementById("linkModal");
+        if (event.target == modal) {
+          closeModal();
+        }
       }
 
       document
