@@ -1,0 +1,69 @@
+{
+  "name": "GPT-OSS-120B",
+  "model": "openai/gpt-oss-120b:free",
+  "provider": "OpenRouter",
+  "description": "Advanced reasoning model with 120B parameters",
+  "capabilities": [
+    "Complex reasoning",
+    "Mathematical problem solving",
+    "Code generation",
+    "Logical analysis",
+    "Multi-step thinking"
+  ],
+  "features": {
+    "reasoning_tokens": true,
+    "streaming": true,
+    "context_length": "128k",
+    "cost_per_token": "Free tier available",
+    "specialization": "Advanced reasoning tasks"
+  },
+  "api_config": {
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "HTTP-Referer": "http://localhost:3000",
+      "X-Title": "ULTIMATELINKS AI Chat"
+    },
+    "requires_streaming": true,
+    "supports_reasoning_tokens": true
+  },
+  "parameters": {
+    "temperature": {
+      "default": 0.7,
+      "min": 0,
+      "max": 2,
+      "description": "Controls randomness in responses"
+    },
+    "max_tokens": {
+      "default": 4096,
+      "min": 1,
+      "max": 8192,
+      "description": "Maximum response length"
+    },
+    "top_p": {
+      "default": 0.9,
+      "min": 0,
+      "max": 1,
+      "description": "Nucleus sampling parameter"
+    }
+  },
+  "usage_example": {
+    "prompt": "How many r's are in the word 'strawberry'?",
+    "expected_behavior": "Will count and analyze the letters with reasoning tokens",
+    "reasoning_tokens": "Expected to show reasoning process"
+  },
+  "integration": {
+    "client_sdk": "@openrouter/sdk",
+    "server_support": true,
+    "fallback_support": true,
+    "model_switching": true
+  },
+  "metadata": {
+    "added_date": "2026-03-28",
+    "version": "1.0.0",
+    "status": "Active",
+    "priority": "High",
+    "category": "Reasoning Models"
+  }
+}

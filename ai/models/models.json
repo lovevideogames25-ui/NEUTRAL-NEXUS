@@ -1,0 +1,18 @@
+{
+  "gpt-oss-20b": {
+    "name": "GPT-OSS-20B",
+    "provider": "openrouter",
+    "model": "openai/gpt-oss-20b:free",
+    "api_key": "API",
+    "description": "Fast open-source model with reasoning capabilities",
+    "icon": "⚡",
+    "badge": "free",
+    "stats": ["⚡ Lightning Fast", "🧠 Reasoning", "🆓 Free"],
+    "features": {
+      "streaming": true,
+      "reasoning_tokens": true,
+      "usage_tracking": true
+    },
+    "fallback_order": 1
+  }
+}

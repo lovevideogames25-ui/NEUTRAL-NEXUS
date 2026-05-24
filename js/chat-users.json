@@ -1,0 +1,12 @@
+{
+  "users": [],
+  "chat": {
+    "messages": [],
+    "lastUpdated": null
+  },
+  "settings": {
+    "maxMessages": 100,
+    "allowAnonymous": true,
+    "requireVerification": false
+  }
+}

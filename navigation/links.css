@@ -1,0 +1,40 @@
+/* Links Button Navigation Styling */
+.menu-item[data-item="links"] {
+    background: linear-gradient(135deg, 
+        rgba(155, 89, 182, 0.08) 0%, 
+        rgba(142, 68, 173, 0.06) 50%, 
+        rgba(155, 89, 182, 0.04) 100%) !important;
+    border: 2px solid rgba(155, 89, 182, 0.15) !important;
+    box-shadow: 
+        0 15px 45px rgba(0, 0, 0, 0.08),
+        0 5px 15px rgba(0, 0, 0, 0.05),
+        inset 0 2px 0 rgba(155, 89, 182, 0.15),
+        inset 0 -2px 0 rgba(155, 89, 182, 0.05),
+        inset 0 0 0 3px rgba(155, 89, 182, 0.12) !important;
+}
+
+.menu-item[data-item="links"]:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    border-color: rgba(155, 89, 182, 0.3) !important;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.12),
+        0 15px 45px rgba(155, 89, 182, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.08),
+        inset 0 3px 0 rgba(155, 89, 182, 0.25),
+        inset 0 -3px 0 rgba(155, 89, 182, 0.1),
+        inset 0 0 0 3px rgba(155, 89, 182, 0.2) !important;
+}
+
+.menu-item[data-item="links"] .menu-icon {
+    color: #9b59b6 !important;
+    text-shadow: 0 0 20px rgba(155, 89, 182, 0.8) !important;
+}
+
+.menu-item[data-item="links"]:hover .menu-icon {
+    transform: scale(1.2) rotate(-5deg) !important;
+    text-shadow: 0 0 25px rgba(155, 89, 182, 1) !important;
+}
+
+.menu-item[data-item="links"]:active {
+    transform: translateY(-2px) scale(1.01) !important;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "LLAMA-3.2-3B",
+  "badge": "free",
+  "icon": "🦙",
+  "description": "Lightweight and efficient model for quick responses",
+  "apis": {
+    "openrouter": {
+      "model": "meta-llama/llama-3.2-3b-instruct:free",
+      "available": true
+    },
+    "lockllm": {
+      "model": "meta-llama/llama-3.2-3b-instruct:free",
+      "available": true
+    },
+    "huggingface": {
+      "model": "meta-llama/Llama-3.2-3B-Instruct:hyperbolic",
+      "available": true
+    },
+    "replicate": {
+      "model": null,
+      "available": false
+    }
+  },
+  "stats": {
+    "context": "128K",
+    "speed": "⚡⚡⚡⚡⚡",
+    "accuracy": "85%"
+  }
+}

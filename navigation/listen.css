@@ -1,0 +1,40 @@
+/* Listen Button Navigation Styling */
+.menu-item[data-item="listen"] {
+    background: linear-gradient(135deg, 
+        rgba(241, 196, 15, 0.08) 0%, 
+        rgba(243, 156, 18, 0.06) 50%, 
+        rgba(241, 196, 15, 0.04) 100%) !important;
+    border: 2px solid rgba(241, 196, 15, 0.15) !important;
+    box-shadow: 
+        0 15px 45px rgba(0, 0, 0, 0.08),
+        0 5px 15px rgba(0, 0, 0, 0.05),
+        inset 0 2px 0 rgba(241, 196, 15, 0.15),
+        inset 0 -2px 0 rgba(241, 196, 15, 0.05),
+        inset 0 0 0 3px rgba(241, 196, 15, 0.12) !important;
+}
+
+.menu-item[data-item="listen"]:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    border-color: rgba(241, 196, 15, 0.3) !important;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.12),
+        0 15px 45px rgba(241, 196, 15, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.08),
+        inset 0 3px 0 rgba(241, 196, 15, 0.25),
+        inset 0 -3px 0 rgba(241, 196, 15, 0.1),
+        inset 0 0 0 3px rgba(241, 196, 15, 0.2) !important;
+}
+
+.menu-item[data-item="listen"] .menu-icon {
+    color: #f1c40f !important;
+    text-shadow: 0 0 20px rgba(241, 196, 15, 0.8) !important;
+}
+
+.menu-item[data-item="listen"]:hover .menu-icon {
+    transform: scale(1.2) rotate(-5deg) !important;
+    text-shadow: 0 0 25px rgba(241, 196, 15, 1) !important;
+}
+
+.menu-item[data-item="listen"]:active {
+    transform: translateY(-2px) scale(1.01) !important;
+}

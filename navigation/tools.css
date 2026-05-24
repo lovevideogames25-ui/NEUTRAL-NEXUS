@@ -1,0 +1,401 @@
+/* Tools Button Navigation Styling */
+.menu-item[data-item="tools"] {
+    background: linear-gradient(135deg,
+        rgba(255, 193, 7, 0.08) 0%,
+        rgba(255, 152, 0, 0.06) 50%,
+        rgba(255, 87, 34, 0.04) 100%);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.menu-item[data-item="tools"]:hover {
+    background: linear-gradient(135deg,
+        rgba(255, 193, 7, 0.15) 0%,
+        rgba(255, 152, 0, 0.12) 50%,
+        rgba(255, 87, 34, 0.08) 100%);
+    border-color: rgba(255, 193, 7, 0.4);
+    box-shadow:
+        0 8px 32px rgba(255, 193, 7, 0.2),
+        inset 0 0 0 3px rgba(255, 193, 7, 0.2) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+}
+
+.menu-item[data-item="tools"] .menu-icon {
+    color: #ffc107 !important;
+    text-shadow: 0 0 20px rgba(255, 193, 7, 0.8) !important;
+}
+
+.menu-item[data-item="tools"]:hover .menu-icon {
+    transform: scale(1.2) rotate(-5deg) !important;
+    text-shadow: 0 0 25px rgba(255, 193, 7, 1) !important;
+}
+
+.menu-item[data-item="tools"]:active {
+    transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* Tools Section Styling */
+.tools-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+}
+
+.tools-section.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+}
+
+.tools-container {
+    background: linear-gradient(135deg,
+        rgba(26, 26, 46, 0.9) 0%,
+        rgba(15, 15, 31, 0.9) 100%);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 100px rgba(255, 193, 7, 0.1);
+    text-rendering: optimizeLegibility;
+}
+
+.tools-section.active .tools-container {
+    transform: scale(1) translateY(0);
+}
+
+.tools-header {
+    background: linear-gradient(135deg,
+        rgba(255, 193, 7, 0.2) 0%,
+        rgba(255, 152, 0, 0.1) 100%);
+    padding: 30px;
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tools-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+}
+
+.tools-close-btn {
+    background: rgba(255, 193, 7, 0.2);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: #ffc107;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.tools-close-btn:hover {
+    background: rgba(255, 193, 7, 0.4);
+    transform: rotate(90deg);
+}
+
+/* Tab Navigation */
+.tools-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 30px;
+    gap: 10px;
+}
+
+.tools-tabs .tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.tools-tabs .tab-btn:hover {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.tools-tabs .tab-btn.active {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 152, 0, 0.2) 100%);
+    color: #ffc107;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+/* Tab Content */
+.tools-content {
+    padding: 30px;
+    overflow-y: auto;
+    max-height: calc(90vh - 160px);
+}
+
+.tools-section .tab-content {
+    display: none;
+}
+
+.tools-section .tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tools-section .content-wrapper {
+    min-height: 200px;
+}
+
+.content-wrapper h3 {
+    color: #ffc107;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Dictionary Styles */
+.dictionary-search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dictionary-search input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.dictionary-search input:focus {
+    outline: none;
+    border-color: #ffc107;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+#dictionaryResult {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    min-height: 100px;
+}
+
+/* Calculator Styles */
+.calculator {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#calculatorDisplay {
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    text-align: right;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 10px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.calc-btn {
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calc-btn:hover {
+    background: rgba(255, 193, 7, 0.2);
+    transform: scale(1.05);
+}
+
+.calc-btn.function {
+    background: rgba(102, 126, 234, 0.2);
+    font-size: 14px;
+}
+
+.calc-btn.variable {
+    background: rgba(245, 87, 108, 0.2);
+}
+
+.calc-btn.operator {
+    background: rgba(255, 152, 0, 0.2);
+}
+
+.calc-btn.equals {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 152, 0, 0.2) 100%);
+    grid-column: span 2;
+}
+
+.calc-btn.clear {
+    background: rgba(255, 87, 34, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tools-container {
+        width: 98%;
+        max-height: 95vh;
+    }
+
+    .tools-header {
+        padding: 25px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .tools-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .tools-tabs {
+        padding: 0 20px;
+        gap: 3px;
+    }
+
+    .tools-tabs .tab-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .tools-content {
+        padding: 20px;
+    }
+}
+
+/* Scrollbar styling */
+.tools-content::-webkit-scrollbar,
+.content-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+.tools-content::-webkit-scrollbar-track,
+.content-wrapper::-webkit-scrollbar-track {
+    background: rgba(26, 26, 46, 0.3);
+    border-radius: 5px;
+}
+
+.tools-content::-webkit-scrollbar-thumb,
+.content-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 193, 7, 0.6);
+    border-radius: 5px;
+}
+
+.tools-content::-webkit-scrollbar-thumb:hover,
+.content-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 193, 7, 0.8);
+}
+
+/* Button Styles for Tools Page */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(245, 87, 108, 0.3);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #667eea;
+  color: #667eea;
+}
+
+.btn-outline:hover {
+  background: #667eea;
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}

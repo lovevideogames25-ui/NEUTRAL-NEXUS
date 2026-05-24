@@ -1,0 +1,90 @@
+{
+  "name": "GEMMA-3-4B",
+  "model": "google-deepmind/gemma-3-4b-it:00139d2960396352b671f7b5c2ece5313bf6d45fe0a052efe14f023d2a81e196",
+  "provider": "Replicate",
+  "description": "Vision-capable model with multimodal processing",
+  "capabilities": [
+    "Image analysis",
+    "Visual reasoning",
+    "Multimodal understanding",
+    "Text generation",
+    "Vision-language tasks"
+  ],
+  "features": {
+    "vision_support": true,
+    "multimodal": true,
+    "image_understanding": true,
+    "streaming": true,
+    "context_length": "8k",
+    "cost_per_token": "Available on Replicate",
+    "specialization": "Vision and multimodal tasks"
+  },
+  "api_config": {
+    "endpoint": "https://api.replicate.com/v1/predictions",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Token <REPLICATE_API_TOKEN>"
+    },
+    "supports_multimodal": true,
+    "supports_vision": true,
+    "supports_streaming": true,
+    "replicate_version": "00139d2960396352b671f7b5c2ece5313bf6d45fe0a052efe14f023d2a81e196"
+  },
+  "parameters": {
+    "temperature": {
+      "default": 0.7,
+      "min": 0,
+      "max": 2,
+      "description": "Controls randomness in responses"
+    },
+    "max_tokens": {
+      "default": 2000,
+      "min": 1,
+      "max": 4096,
+      "description": "Maximum response length"
+    },
+    "top_p": {
+      "default": 0.9,
+      "min": 0,
+      "max": 1,
+      "description": "Nucleus sampling parameter"
+    }
+  },
+  "usage_example": {
+    "prompt": "Describe this image in detail",
+    "image": "https://replicate.delivery/pbxt/MeCAHbtSRpAk7h1JI0TmuZVyLFPinwGhmNf0suRMNtlXSnkG/bee.jpg",
+    "expected_behavior": "Will analyze the image and describe its contents",
+    "multimodal_support": "Can process both text and images"
+  },
+  "vision_example": {
+    "input": {
+      "image": "https://replicate.delivery/pbxt/MeCAHbtSRpAk7h1JI0TmuZVyLFPinwGhmNf0suRMNtlXSnkG/bee.jpg",
+      "prompt": "Describe this image in detail"
+    },
+    "model": "google-deepmind/gemma-3-4b-it:00139d2960396352b671f7b5c2ece5313bf6d45fe0a052efe14f023d2a81e196"
+  },
+  "replicate_example": {
+    "import": "import Replicate from \"replicate\";",
+    "code": "const replicate = new Replicate();\n\nconst input = {\n    image: \"https://replicate.delivery/pbxt/MeCAHbtSRpAk7h1JI0TmuZVyLFPinwGhmNf0suRMNtlXSnkG/bee.jpg\",\n    prompt: \"Describe this image in detail\"\n};\n\nconst output = await replicate.run(\"google-deepmind/gemma-3-4b-it:00139d2960396352b671f7b5c2ece5313bf6d45fe0a052efe14f023d2a81e196\", { input });"
+  },
+  "integration": {
+    "client_sdk": "replicate",
+    "server_support": true,
+    "fallback_support": true,
+    "model_switching": true,
+    "vision_api": true,
+    "region_availability": "Available on Replicate (not HuggingFace in some regions)"
+  },
+  "metadata": {
+    "added_date": "2026-03-29",
+    "version": "1.0.0",
+    "status": "Active",
+    "priority": "High",
+    "category": "Vision Models",
+    "model_size": "4B parameters",
+    "developer": "Google DeepMind",
+    "platform": "Replicate",
+    "region_note": "Unavailable on HuggingFace in some regions, available on Replicate"
+  }
+}

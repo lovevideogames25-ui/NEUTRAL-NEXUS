@@ -1,0 +1,29 @@
+{
+  "name": "LLAMA-3.3-70B",
+  "badge": "advanced",
+  "icon": "🦙",
+  "description": "Large-scale model with advanced reasoning and comprehensive knowledge",
+  "apis": {
+    "openrouter": {
+      "model": "meta-llama/llama-3.3-70b-instruct:free",
+      "available": true
+    },
+    "lockllm": {
+      "model": "meta-llama/llama-3.3-70b-instruct:free",
+      "available": true
+    },
+    "huggingface": {
+      "model": "meta-llama/Llama-3.3-70B-Instruct:groq",
+      "available": true
+    },
+    "replicate": {
+      "model": null,
+      "available": false
+    }
+  },
+  "stats": {
+    "context": "128K",
+    "speed": "⚡⚡⚡⚡",
+    "accuracy": "92%"
+  }
+}

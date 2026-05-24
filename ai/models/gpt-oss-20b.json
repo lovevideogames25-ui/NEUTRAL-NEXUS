@@ -1,0 +1,79 @@
+{
+  "id": "gpt-oss-20b",
+  "name": "GPT-OSS-20B",
+  "displayName": "GPT-OSS (FASTER)",
+  "provider": "openrouter",
+  "model": "openai/gpt-oss-20b:free",
+  "api_key": "API",
+  "description": "Fast open-source model with reasoning capabilities",
+  "icon": "⚡",
+  "badge": "free",
+  "badgeColor": "#a29bfe",
+  "stats": [
+    "⚡ Lightning Fast",
+    "🧠 Reasoning", 
+    "🆓 Free"
+  ],
+  "features": {
+    "streaming": true,
+    "reasoning_tokens": true,
+    "usage_tracking": true,
+    "max_tokens": 4000,
+    "context_window": "8K"
+  },
+  "capabilities": [
+    "text_generation",
+    "conversation",
+    "reasoning",
+    "analysis",
+    "coding"
+  ],
+  "fallback_order": 1,
+  "api_endpoints": {
+    "primary": {
+      "provider": "openrouter",
+      "url": "https://openrouter.ai/api/v1/chat/completions",
+      "key": "API",
+      "model": "openai/gpt-oss-20b:free"
+    },
+    "secondary": {
+      "provider": "huggingface",
+      "url": "https://router.huggingface.co/v1/chat/completions",
+      "key": "API2",
+      "model": "microsoft/DialoGPT-medium"
+    },
+    "tertiary": {
+      "provider": "replicate",
+      "url": "https://api.replicate.com/v1/predictions",
+      "key": "API3",
+      "model": "replicate/dolly-v2-12b"
+    }
+  },
+  "error_handling": {
+    "retry_attempts": 3,
+    "retry_delay": 1000,
+    "fallback_on_any_error": true,
+    "error_message": "SORRY I HAVE ENCOUNTERED AN ERROR"
+  },
+  "ui_config": {
+    "card_color": "fast",
+    "hover_effect": "scale",
+    "animation_speed": "fast",
+    "show_stats": true,
+    "show_badge": true
+  },
+  "metadata": {
+    "created": "2026-03-28",
+    "version": "1.0.0",
+    "type": "open_source",
+    "cost": "free",
+    "performance": "high_speed",
+    "language_support": ["en", "es", "fr", "de", "it", "pt", "zh", "ja"],
+    "specialties": [
+      "general_conversation",
+      "reasoning_tasks",
+      "quick_responses",
+      "coding_assistance"
+    ]
+  }
+}

@@ -1,0 +1,274 @@
+/* Hacking Theme - Terminal Matrix Style */
+
+/* CSS Variables */
+:root {
+    --hacking-primary: #00ff41;
+    --hacking-secondary: #00cccc;
+    --hacking-accent: #ff0040;
+    --hacking-bg: #000000;
+    --hacking-text: #00ff41;
+    --hacking-border: #00ff41;
+    --hacking-glow: rgba(0, 255, 65, 0.5);
+}
+
+/* Body and Background */
+body.hacking-theme {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
+    color: var(--hacking-text);
+    font-family: 'Courier New', monospace;
+    overflow-x: hidden;
+}
+
+/* Matrix Rain Effect */
+body.hacking-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50%" font-size="10" fill="%2300ff41">01</text></svg>');
+    background-size: 50px 50px;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+    animation: matrix-fall 20s linear infinite;
+}
+
+@keyframes matrix-fall {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(100vh); }
+}
+
+/* Navigation */
+.hacking-theme .navbar {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 2px solid var(--hacking-primary);
+    box-shadow: 0 0 20px var(--hacking-glow);
+}
+
+.hacking-theme .nav-logo-text {
+    color: var(--hacking-primary);
+    text-shadow: 0 0 10px var(--hacking-glow);
+    font-weight: bold;
+}
+
+.hacking-theme .nav-link {
+    color: var(--hacking-text);
+    border: 1px solid var(--hacking-border);
+    background: rgba(0, 255, 65, 0.1);
+    transition: all 0.3s ease;
+}
+
+.hacking-theme .nav-link:hover {
+    background: var(--hacking-primary);
+    color: var(--hacking-bg);
+    box-shadow: 0 0 15px var(--hacking-glow);
+    transform: translateY(-2px);
+}
+
+.hacking-theme .nav-link.active {
+    background: var(--hacking-primary);
+    color: var(--hacking-bg);
+    box-shadow: 0 0 20px var(--hacking-glow);
+}
+
+/* Sections */
+.hacking-theme .section {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--hacking-border);
+    box-shadow: 0 0 30px var(--hacking-glow);
+}
+
+.hacking-theme .section-title {
+    color: var(--hacking-primary);
+    text-shadow: 0 0 15px var(--hacking-glow);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hacking-theme .section-subtitle {
+    color: var(--hacking-secondary);
+    text-shadow: 0 0 8px var(--hacking-glow);
+    font-family: 'Courier New', monospace;
+}
+
+/* Cards */
+.hacking-theme .category-card,
+.hacking-theme .link-card,
+.hacking-theme .settings-card {
+    background: rgba(0, 255, 65, 0.05);
+    border: 1px solid var(--hacking-border);
+    box-shadow: 0 0 15px var(--hacking-glow);
+    transition: all 0.3s ease;
+}
+
+.hacking-theme .category-card:hover,
+.hacking-theme .link-card:hover,
+.hacking-theme .settings-card:hover {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: var(--hacking-primary);
+    box-shadow: 0 0 25px var(--hacking-glow);
+    transform: translateY(-5px);
+}
+
+.hacking-theme .category-header h3,
+.hacking-theme .link-header h3 {
+    color: var(--hacking-primary);
+    text-shadow: 0 0 10px var(--hacking-glow);
+    font-family: 'Courier New', monospace;
+}
+
+.hacking-theme .category-description,
+.hacking-theme .link-content p {
+    color: var(--hacking-secondary);
+    text-shadow: 0 0 5px var(--hacking-glow);
+    font-family: 'Courier New', monospace;
+}
+
+/* Buttons */
+.hacking-theme .btn {
+    background: linear-gradient(135deg, var(--hacking-primary), var(--hacking-secondary));
+    color: var(--hacking-bg);
+    border: 1px solid var(--hacking-primary);
+    box-shadow: 0 0 10px var(--hacking-glow);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.hacking-theme .btn:hover {
+    background: linear-gradient(135deg, var(--hacking-secondary), var(--hacking-primary));
+    box-shadow: 0 0 20px var(--hacking-glow);
+    transform: translateY(-3px);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.hacking-theme .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 5px var(--hacking-glow);
+}
+
+/* Search and Input Fields */
+.hacking-theme .search-input,
+.hacking-theme .setting-select {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--hacking-border);
+    color: var(--hacking-text);
+    font-family: 'Courier New', monospace;
+    box-shadow: inset 0 0 10px var(--hacking-glow);
+}
+
+.hacking-theme .search-input:focus,
+.hacking-theme .setting-select:focus {
+    border-color: var(--hacking-primary);
+    box-shadow: 0 0 15px var(--hacking-glow), inset 0 0 10px var(--hacking-glow);
+    outline: none;
+}
+
+/* Footer */
+.hacking-theme .footer {
+    background: rgba(0, 0, 0, 0.95);
+    border-top: 2px solid var(--hacking-primary);
+    box-shadow: 0 -10px 30px var(--hacking-glow);
+}
+
+.hacking-theme .footer-section h3,
+.hacking-theme .footer-section h4 {
+    color: var(--hacking-primary);
+    text-shadow: 0 0 10px var(--hacking-glow);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.hacking-theme .footer-section p,
+.hacking-theme .footer-section ul li a {
+    color: var(--hacking-secondary);
+    text-shadow: 0 0 5px var(--hacking-glow);
+    font-family: 'Courier New', monospace;
+}
+
+.hacking-theme .footer-section ul li a:hover {
+    color: var(--hacking-primary);
+    text-shadow: 0 0 10px var(--hacking-glow);
+}
+
+/* Glitch Effect */
+.hacking-theme .glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% {
+        text-shadow: 0 0 10px var(--hacking-glow);
+    }
+    25% {
+        text-shadow: -2px 0 10px var(--hacking-accent);
+    }
+    50% {
+        text-shadow: 2px 0 10px var(--hacking-secondary);
+    }
+    75% {
+        text-shadow: 0 0 10px var(--hacking-accent);
+    }
+}
+
+/* Terminal Cursor */
+.hacking-theme .terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background: var(--hacking-primary);
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Scan Lines */
+.hacking-theme .scan-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hacking-theme .scan-lines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--hacking-primary);
+    animation: scan-line 8s linear infinite;
+}
+
+@keyframes scan-line {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hacking-theme .section-title {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .hacking-theme .btn {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+}

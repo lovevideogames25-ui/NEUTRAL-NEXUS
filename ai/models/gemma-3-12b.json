@@ -1,0 +1,173 @@
+{
+  "name": "GEMMA-3-12B",
+  "model": "google/gemma-3-12b-it:free",
+  "provider": "OpenRouter",
+  "description": "Advanced vision model with enhanced reasoning and superior image understanding",
+  "capabilities": [
+    "Advanced image analysis",
+    "Enhanced visual reasoning",
+    "Multimodal processing",
+    "Complex text generation",
+    "Superior vision-language tasks",
+    "High-performance reasoning"
+  ],
+  "features": {
+    "vision_support": true,
+    "multimodal": true,
+    "enhanced_reasoning": true,
+    "image_understanding": true,
+    "streaming": true,
+    "context_length": "8k",
+    "cost_per_token": "Free tier available",
+    "specialization": "Advanced vision and multimodal reasoning",
+    "parameters": "12B"
+  },
+  "api_config": {
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "HTTP-Referer": "http://localhost:3000",
+      "X-Title": "ULTIMATEUNBLOCKER AI Chat"
+    },
+    "supports_multimodal": true,
+    "supports_vision": true,
+    "supports_streaming": true
+  },
+  "parameters": {
+    "temperature": {
+      "default": 0.7,
+      "min": 0,
+      "max": 2,
+      "description": "Controls randomness in responses"
+    },
+    "max_tokens": {
+      "default": 2000,
+      "min": 1,
+      "max": 4096,
+      "description": "Maximum response length"
+    },
+    "top_p": {
+      "default": 0.9,
+      "min": 0,
+      "max": 1,
+      "description": "Nucleus sampling parameter"
+    }
+  },
+  "usage_example": {
+    "prompt": "Analyze this image in detail and explain what you see",
+    "image_url": "https://live.staticflickr.com/3851/14825276609_098cac593d_b.jpg",
+    "expected_behavior": "Will provide detailed image analysis with enhanced reasoning",
+    "multimodal_support": "Can process both text and images with superior understanding"
+  },
+  "vision_example": {
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "What is in this image?"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "https://live.staticflickr.com/3851/14825276609_098cac593d_b.jpg"
+            }
+          }
+        ]
+      }
+    ],
+    "stream": true,
+    "model": "google/gemma-3-12b-it:free"
+  },
+  "openrouter_example": {
+    "import": "import { OpenRouter } from \"@openrouter/sdk\";",
+    "code": "const openrouter = new OpenRouter({\n  apiKey: \"<OPENROUTER_API_KEY>\"\n});\n\nconst stream = await openrouter.chat.send({\n  model: \"google/gemma-3-12b-it:free\",\n  messages: [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"What is in this image?\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"https://live.staticflickr.com/3851/14825276609_098cac593d_b.jpg\"\n          }\n        }\n      ]\n    }\n  ],\n  stream: true\n});\n\nfor await (const chunk of stream) {\n  const content = chunk.choices[0]?.delta?.content;\n  if (content) {\n    process.stdout.write(content);\n  }\n}"
+  },
+  "replicate_example": {
+    "import": "import Replicate from \"replicate\";",
+    "code": "const replicate = new Replicate();\n\nconst input = {\n  image: \"https://live.staticflickr.com/3851/14825276609_098cac593d_b.jpg\",\n  prompt: \"Analyze this image in detail and explain what you see\"\n};\n\nconst output = await replicate.run(\"google-deepmind/gemma-3-12b-it:free\", { input });"
+  },
+  "lockllm_example": {
+    "endpoint": "https://api.lockllm.com/v1/proxy/chat/completions",
+    "method": "POST",
+    "headers": {
+      "Authorization": "Bearer <LOCKLLM_API_TOKEN>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "model": "google/gemma-3-12b-it:free",
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "What is in this image?"
+            },
+            {
+              "type": "image_url",
+              "image_url": {
+                "url": "https://live.staticflickr.com/3851/14825276609_098cac593d_b.jpg"
+              }
+            }
+          ]
+        }
+      ],
+      "max_tokens": 2000,
+      "temperature": 0.7,
+      "stream": false
+    }
+  },
+  "integration": {
+    "client_sdk": "@openrouter/sdk",
+    "server_support": true,
+    "fallback_support": true,
+    "model_switching": true,
+    "vision_api": true,
+    "streaming_support": true,
+    "all_apis_available": true
+  },
+  "metadata": {
+    "added_date": "2026-03-29",
+    "version": "1.0.0",
+    "status": "Active",
+    "priority": "High",
+    "category": "Vision Models",
+    "model_size": "12B parameters",
+    "developer": "Google DeepMind",
+    "platform": "OpenRouter, Replicate, LockLLM",
+    "vision_capabilities": "Advanced",
+    "reasoning_level": "Enhanced",
+    "special_features": [
+      "Superior image understanding",
+      "Enhanced multimodal reasoning",
+      "Advanced visual analysis",
+      "High-performance processing"
+    ]
+  },
+  "comparison": {
+    "vs_gemma_3_4b": {
+      "parameters": "12B vs 4B (3x larger)",
+      "vision_quality": "Enhanced vs Standard",
+      "reasoning": "Advanced vs Basic",
+      "performance": "High vs Medium",
+      "use_case": "Complex tasks vs Simple tasks"
+    },
+    "advantages": [
+      "Better image understanding",
+      "More detailed analysis",
+      "Enhanced reasoning capabilities",
+      "Superior multimodal processing"
+    ]
+  },
+  "performance_metrics": {
+    "image_analysis": "Advanced",
+    "text_generation": "High Quality",
+    "reasoning": "Enhanced",
+    "speed": "Medium-High",
+    "accuracy": "High",
+    "context_understanding": "Excellent"
+  }
+}
